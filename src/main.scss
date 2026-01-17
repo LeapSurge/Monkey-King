@@ -1,0 +1,49 @@
+// Monkey King Obsidian Theme
+// Main entry point
+
+// Style Settings integration
+@use 'style-settings';
+
+// Core configuration
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// Base styles
+// @use 'base/typography';
+// @use 'base/layout';
+
+// Editor styles
+// @use 'editor/editor-base';
+// @use 'editor/headings';
+// @use 'editor/paragraphs';
+// @use 'editor/lists';
+// @use 'editor/tables';
+// @use 'editor/code';
+// @use 'editor/blockquotes';
+// @use 'editor/links';
+// @use 'editor/images';
+// @use 'editor/emphasis';
+// @use 'editor/math';
+// @use 'editor/callouts';
+
+// Obsidian features
+// @use 'obsidian-features/tags';
+// @use 'obsidian-features/backlinks';
+// @use 'obsidian-features/embeds';
+// @use 'obsidian-features/canvas';
+// @use 'obsidian-features/graph';
+
+// Interface
+// @use 'interface/sidebar';
+// @use 'interface/tabs';
+// @use 'interface/modals';
+// @use 'interface/ribbons';
+// @use 'interface/statusbar';
+// @use 'interface/command-palette';
+
+// Theme variants
+@use 'themes/light';
+@use 'themes/dark';
+
+// Utilities
+// @use 'utilities/helpers';

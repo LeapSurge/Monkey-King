@@ -1,0 +1,23 @@
+// Dark theme variables
+.theme-dark {
+  // Text colors
+  --text-normal: #dcddde;
+  --text-muted: #999999;
+  --text-faint: #666666;
+  
+  // Background colors
+  --background-primary: #202020;
+  --background-secondary: #161616;
+  --background-modifier-border: #333333;
+  
+  // Editor specific
+  --editor-background: #202020;
+  --editor-text: #dcddde;
+  
+  // Syntax highlighting (for code blocks)
+  --code-background: #161616;
+  --code-text: #dcddde;
+  --code-keyword: #ff7b72;
+  --code-string: #a5d6ff;
+  --code-comment: #8b949e;
+}

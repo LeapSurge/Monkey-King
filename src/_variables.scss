@@ -1,0 +1,64 @@
+// Global Variables
+// Colors, spacing, typography, and other design tokens
+
+// Color palette (can be overridden by Style Settings and theme files)
+:root {
+  // Base colors (fallbacks if Style Settings not available)
+  --color-primary: var(--accent-color, #007acc);
+  --color-secondary: #6c757d;
+  --color-success: #28a745;
+  --color-warning: #ffc107;
+  --color-danger: #dc3545;
+  
+  // Text colors (use Style Settings variables when available)
+  --text-normal: var(--text-color-primary, #2e3338);
+  --text-muted: #6c757d;
+  --text-faint: #999999;
+  
+  // Background colors
+  --background-primary: var(--background-color-primary, #ffffff);
+  --background-secondary: #f8f9fa;
+  --background-modifier-border: #e1e4e8;
+  
+  // Spacing system (use Style Settings when available)
+  --spacing-xs: 0.25rem;   // 4px
+  --spacing-sm: 0.5rem;    // 8px
+  --spacing-md: 1rem;      // 16px
+  --spacing-lg: 1.5rem;    // 24px
+  --spacing-xl: 2rem;      // 32px
+  --spacing-xxl: 3rem;     // 48px
+  
+  // Paragraph and heading spacing from Style Settings
+  --paragraph-spacing-value: var(--paragraph-spacing, 16px);
+  --heading-spacing-value: var(--heading-spacing, 24px);
+  
+  // Typography (use Style Settings when available)
+  --font-family-text: var(--font-family-text, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
+  --font-family-code: var(--font-family-code, "JetBrains Mono", "Fira Code", Consolas, monospace);
+  
+  --font-size-xs: 0.75rem;   // 12px
+  --font-size-sm: 0.875rem;  // 14px
+  --font-size-md: var(--font-size-base, 1rem);      // 16px (from Style Settings)
+  --font-size-lg: 1.125rem;  // 18px
+  --font-size-xl: 1.25rem;   // 20px
+  --font-size-xxl: 1.5rem;   // 24px
+  
+  // Line heights
+  --line-height-tight: 1.2;
+  --line-height-normal: var(--line-height-base, 1.5);
+  --line-height-relaxed: 1.7;
+  
+  // Border radius
+  --radius-sm: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --code-radius: var(--code-block-radius, 0.375rem);
+  
+  // Editor
+  --editor-max-width-value: var(--editor-max-width, 700px);
+  
+  // Shadows
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+}

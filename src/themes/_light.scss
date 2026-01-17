@@ -1,0 +1,23 @@
+// Light theme variables
+.theme-light {
+  // Text colors
+  --text-normal: #2e3338;
+  --text-muted: #6c757d;
+  --text-faint: #999999;
+  
+  // Background colors
+  --background-primary: #ffffff;
+  --background-secondary: #f8f9fa;
+  --background-modifier-border: #e1e4e8;
+  
+  // Editor specific
+  --editor-background: #ffffff;
+  --editor-text: #2e3338;
+  
+  // Syntax highlighting (for code blocks)
+  --code-background: #f6f8fa;
+  --code-text: #24292e;
+  --code-keyword: #d73a49;
+  --code-string: #032f62;
+  --code-comment: #6a737d;
+}

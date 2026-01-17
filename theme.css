@@ -1,0 +1,214 @@
+/* @settings
+
+name: Monkey King Theme
+id: monkey-king-theme
+settings:
+    -
+        id: colors-heading
+        title: Colors
+        type: heading
+        level: 2
+        collapsed: true
+    -
+        id: accent-color
+        title: Accent Color
+        description: Main accent color for links, buttons, and highlights
+        type: variable-themed-color
+        format: hex
+        default-light: '#007acc'
+        default-dark: '#4c9eff'
+    -
+        id: text-color-primary
+        title: Primary Text Color
+        description: Main text color
+        type: variable-themed-color
+        format: hex
+        default-light: '#2e3338'
+        default-dark: '#dcddde'
+    -
+        id: background-color-primary
+        title: Primary Background
+        description: Main background color
+        type: variable-themed-color
+        format: hex
+        default-light: '#ffffff'
+        default-dark: '#202020'
+    -
+        id: typography-heading
+        title: Typography
+        type: heading
+        level: 2
+        collapsed: true
+    -
+        id: font-family-text
+        title: Text Font Family
+        description: Font family for body text
+        type: variable-text
+        default: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
+    -
+        id: font-family-code
+        title: Code Font Family
+        description: Font family for code blocks and inline code
+        type: variable-text
+        default: '"JetBrains Mono", "Fira Code", Consolas, monospace'
+    -
+        id: font-size-base
+        title: Base Font Size
+        description: Base font size for body text
+        type: variable-number-slider
+        default: 16
+        min: 12
+        max: 24
+        step: 1
+        format: px
+    -
+        id: line-height-base
+        title: Base Line Height
+        description: Line height for body text
+        type: variable-number-slider
+        default: 1.5
+        min: 1.2
+        max: 2.0
+        step: 0.1
+    -
+        id: spacing-heading
+        title: Spacing
+        type: heading
+        level: 2
+        collapsed: true
+    -
+        id: paragraph-spacing
+        title: Paragraph Spacing
+        description: Space between paragraphs
+        type: variable-number-slider
+        default: 16
+        min: 8
+        max: 32
+        step: 2
+        format: px
+    -
+        id: heading-spacing
+        title: Heading Spacing
+        description: Space above headings
+        type: variable-number-slider
+        default: 24
+        min: 12
+        max: 48
+        step: 4
+        format: px
+    -
+        id: editor-heading
+        title: Editor
+        type: heading
+        level: 2
+        collapsed: true
+    -
+        id: editor-max-width
+        title: Editor Max Width
+        description: Maximum width of the editor content
+        type: variable-number-slider
+        default: 700
+        min: 500
+        max: 1200
+        step: 50
+        format: px
+    -
+        id: code-block-radius
+        title: Code Block Border Radius
+        description: Border radius for code blocks
+        type: variable-number-slider
+        default: 6
+        min: 0
+        max: 16
+        step: 1
+        format: px
+
+*/
+body {
+  --accent-color: var(--accent-color);
+  --text-color-primary: var(--text-color-primary);
+  --background-color-primary: var(--background-color-primary);
+  --font-family-text: var(--font-family-text);
+  --font-family-code: var(--font-family-code);
+  --font-size-base: var(--font-size-base);
+  --line-height-base: var(--line-height-base);
+  --paragraph-spacing: var(--paragraph-spacing);
+  --heading-spacing: var(--heading-spacing);
+  --editor-max-width: var(--editor-max-width);
+  --code-block-radius: var(--code-block-radius);
+}
+
+:root {
+  --color-primary: var(--accent-color, #007acc);
+  --color-secondary: #6c757d;
+  --color-success: #28a745;
+  --color-warning: #ffc107;
+  --color-danger: #dc3545;
+  --text-normal: var(--text-color-primary, #2e3338);
+  --text-muted: #6c757d;
+  --text-faint: #999999;
+  --background-primary: var(--background-color-primary, #ffffff);
+  --background-secondary: #f8f9fa;
+  --background-modifier-border: #e1e4e8;
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-xxl: 3rem;
+  --paragraph-spacing-value: var(--paragraph-spacing, 16px);
+  --heading-spacing-value: var(--heading-spacing, 24px);
+  --font-family-text: var(--font-family-text, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
+  --font-family-code: var(--font-family-code, "JetBrains Mono", "Fira Code", Consolas, monospace);
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-md: var(--font-size-base, 1rem);
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-xxl: 1.5rem;
+  --line-height-tight: 1.2;
+  --line-height-normal: var(--line-height-base, 1.5);
+  --line-height-relaxed: 1.7;
+  --radius-sm: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --code-radius: var(--code-block-radius, 0.375rem);
+  --editor-max-width-value: var(--editor-max-width, 700px);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.theme-light {
+  --text-normal: #2e3338;
+  --text-muted: #6c757d;
+  --text-faint: #999999;
+  --background-primary: #ffffff;
+  --background-secondary: #f8f9fa;
+  --background-modifier-border: #e1e4e8;
+  --editor-background: #ffffff;
+  --editor-text: #2e3338;
+  --code-background: #f6f8fa;
+  --code-text: #24292e;
+  --code-keyword: #d73a49;
+  --code-string: #032f62;
+  --code-comment: #6a737d;
+}
+
+.theme-dark {
+  --text-normal: #dcddde;
+  --text-muted: #999999;
+  --text-faint: #666666;
+  --background-primary: #202020;
+  --background-secondary: #161616;
+  --background-modifier-border: #333333;
+  --editor-background: #202020;
+  --editor-text: #dcddde;
+  --code-background: #161616;
+  --code-text: #dcddde;
+  --code-keyword: #ff7b72;
+  --code-string: #a5d6ff;
+  --code-comment: #8b949e;
+}
+
+/*# sourceMappingURL=theme.css.map */

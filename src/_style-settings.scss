@@ -1,0 +1,148 @@
+/* @settings
+
+name: Monkey King Theme
+id: monkey-king-theme
+settings:
+    -
+        id: colors-heading
+        title: Colors
+        type: heading
+        level: 2
+        collapsed: true
+    -
+        id: accent-color
+        title: Accent Color
+        description: Main accent color for links, buttons, and highlights
+        type: variable-themed-color
+        format: hex
+        default-light: '#007acc'
+        default-dark: '#4c9eff'
+    -
+        id: text-color-primary
+        title: Primary Text Color
+        description: Main text color
+        type: variable-themed-color
+        format: hex
+        default-light: '#2e3338'
+        default-dark: '#dcddde'
+    -
+        id: background-color-primary
+        title: Primary Background
+        description: Main background color
+        type: variable-themed-color
+        format: hex
+        default-light: '#ffffff'
+        default-dark: '#202020'
+    -
+        id: typography-heading
+        title: Typography
+        type: heading
+        level: 2
+        collapsed: true
+    -
+        id: font-family-text
+        title: Text Font Family
+        description: Font family for body text
+        type: variable-text
+        default: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
+    -
+        id: font-family-code
+        title: Code Font Family
+        description: Font family for code blocks and inline code
+        type: variable-text
+        default: '"JetBrains Mono", "Fira Code", Consolas, monospace'
+    -
+        id: font-size-base
+        title: Base Font Size
+        description: Base font size for body text
+        type: variable-number-slider
+        default: 16
+        min: 12
+        max: 24
+        step: 1
+        format: px
+    -
+        id: line-height-base
+        title: Base Line Height
+        description: Line height for body text
+        type: variable-number-slider
+        default: 1.5
+        min: 1.2
+        max: 2.0
+        step: 0.1
+    -
+        id: spacing-heading
+        title: Spacing
+        type: heading
+        level: 2
+        collapsed: true
+    -
+        id: paragraph-spacing
+        title: Paragraph Spacing
+        description: Space between paragraphs
+        type: variable-number-slider
+        default: 16
+        min: 8
+        max: 32
+        step: 2
+        format: px
+    -
+        id: heading-spacing
+        title: Heading Spacing
+        description: Space above headings
+        type: variable-number-slider
+        default: 24
+        min: 12
+        max: 48
+        step: 4
+        format: px
+    -
+        id: editor-heading
+        title: Editor
+        type: heading
+        level: 2
+        collapsed: true
+    -
+        id: editor-max-width
+        title: Editor Max Width
+        description: Maximum width of the editor content
+        type: variable-number-slider
+        default: 700
+        min: 500
+        max: 1200
+        step: 50
+        format: px
+    -
+        id: code-block-radius
+        title: Code Block Border Radius
+        description: Border radius for code blocks
+        type: variable-number-slider
+        default: 6
+        min: 0
+        max: 16
+        step: 1
+        format: px
+
+*/
+
+// Style Settings CSS Variables
+body {
+  // Colors
+  --accent-color: var(--accent-color);
+  --text-color-primary: var(--text-color-primary);
+  --background-color-primary: var(--background-color-primary);
+  
+  // Typography
+  --font-family-text: var(--font-family-text);
+  --font-family-code: var(--font-family-code);
+  --font-size-base: var(--font-size-base);
+  --line-height-base: var(--line-height-base);
+  
+  // Spacing
+  --paragraph-spacing: var(--paragraph-spacing);
+  --heading-spacing: var(--heading-spacing);
+  
+  // Editor
+  --editor-max-width: var(--editor-max-width);
+  --code-block-radius: var(--code-block-radius);
+}
