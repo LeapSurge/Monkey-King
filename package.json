@@ -1,0 +1,17 @@
+{
+  "name": "monkey-king-obsidian-theme",
+  "version": "1.0.0",
+  "description": "A custom Obsidian theme built with Sass",
+  "main": "theme.css",
+  "scripts": {
+    "build": "sass src/main.scss theme.css",
+    "watch": "sass --watch src/main.scss:theme.css",
+    "dev": "npm run watch"
+  },
+  "keywords": ["obsidian", "theme", "css", "sass"],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "sass": "^1.97.2"
+  }
+}
