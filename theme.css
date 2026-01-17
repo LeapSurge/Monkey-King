@@ -138,47 +138,96 @@ body {
   --code-block-radius: var(--code-block-radius);
 }
 
-:root {
-  --color-primary: var(--accent-color, #007acc);
-  --color-secondary: #6c757d;
-  --color-success: #28a745;
-  --color-warning: #ffc107;
-  --color-danger: #dc3545;
-  --text-normal: var(--text-color-primary, #2e3338);
-  --text-muted: #6c757d;
-  --text-faint: #999999;
-  --background-primary: var(--background-color-primary, #ffffff);
-  --background-secondary: #f8f9fa;
-  --background-modifier-border: #e1e4e8;
-  --spacing-xs: 0.25rem;
-  --spacing-sm: 0.5rem;
-  --spacing-md: 1rem;
-  --spacing-lg: 1.5rem;
-  --spacing-xl: 2rem;
-  --spacing-xxl: 3rem;
-  --paragraph-spacing-value: var(--paragraph-spacing, 16px);
-  --heading-spacing-value: var(--heading-spacing, 24px);
-  --font-family-text: var(--font-family-text, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
-  --font-family-code: var(--font-family-code, "JetBrains Mono", "Fira Code", Consolas, monospace);
-  --font-size-xs: 0.75rem;
-  --font-size-sm: 0.875rem;
-  --font-size-md: var(--font-size-base, 1rem);
-  --font-size-lg: 1.125rem;
-  --font-size-xl: 1.25rem;
-  --font-size-xxl: 1.5rem;
-  --line-height-tight: 1.2;
-  --line-height-normal: var(--line-height-base, 1.5);
-  --line-height-relaxed: 1.7;
-  --radius-sm: 0.25rem;
-  --radius-md: 0.375rem;
-  --radius-lg: 0.5rem;
-  --code-radius: var(--code-block-radius, 0.375rem);
-  --editor-max-width-value: var(--editor-max-width, 700px);
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+@font-face {
+  font-family: "SystemHei";
+  font-style: normal;
+  font-weight: 400;
+  src: local("PingFang SC Semibold"), local("PingFang SC Bold"), local("PingFangSC-Semibold"), local("Hiragino Sans GB W6"), local("Microsoft YaHei Bold"), local("Microsoft YaHei-Bold"), local("Microsoft YaHei UI Bold"), local("Source Han Sans SC Bold"), local("SourceHanSansSC-Bold"), local("Noto Sans SC Bold"), local("NotoSansSC-Bold");
 }
-
+@font-face {
+  font-family: "SystemSong";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Songti SC Bold"), local("Songti-SC-Bold"), local("Source Han Serif SC Bold"), local("SourceHanSerifSC-Bold"), local("Noto Serif SC Bold"), local("NotoSerifSC-Bold");
+}
+@font-face {
+  font-family: "SystemKai";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Kaiti SC Bold"), local("Kaiti-SC-Bold");
+}
+@font-face {
+  font-family: "SystemFang";
+  font-style: normal;
+  font-weight: 400;
+  src: local("STFangsong Bold");
+}
+@font-face {
+  font-family: "SystemHei";
+  font-style: normal;
+  font-weight: bold;
+  src: local("PingFang SC"), local("Hiragino Sans GB"), local("Microsoft YaHei UI"), local("Microsoft YaHei"), local("Source Han Sans SC"), local("Noto Sans SC"), local("SimHei");
+}
+@font-face {
+  font-family: "SystemSong";
+  font-style: normal;
+  font-weight: bold;
+  src: local("Songti SC"), local("STSong"), local("Source Han Serif SC"), local("Noto Serif SC"), local("SimSun"), local("NSimSun");
+}
+@font-face {
+  font-family: "SystemKai";
+  font-style: normal;
+  font-weight: bold;
+  src: local("Kaiti SC"), local("STKaiti"), local("KaiTi"), local("KaiTi_GB2312");
+}
+@font-face {
+  font-family: "SystemFang";
+  font-style: normal;
+  font-weight: bold;
+  src: local("STFangsong"), local("FangSong"), local("FangSong_GB2312");
+}
+@font-face {
+  font-family: "SystemSans";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Segoe UI"), local("Roboto"), local("Oxygen"), local("Ubuntu"), local("Cantarell"), local("Fira Sans"), local("Droid Sans"), local("Helvetica Neue"), local("Helvetica"), local("Arial"), local("Verdana"), local("Tahoma");
+  unicode-range: U+0080-00B6, U+00B8-00FF, U+0100-017F, U+0180-024F, U+1E00-1EFF;
+}
+@font-face {
+  font-family: "SystemSerif";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Georgia"), local("Charter"), local("Bitstream Charter"), local("Times New Roman"), local("Times");
+  unicode-range: U+0080-00B6, U+00B8-00FF, U+0100-017F, U+0180-024F, U+1E00-1EFF;
+}
+@font-face {
+  font-family: "SystemSans";
+  font-style: normal;
+  font-weight: Bold;
+  src: local("Segoe UI Bold"), local("Segoe UI-Bold"), local("Roboto Bold"), local("Roboto-Bold"), local("Oxygen Bold"), local("Oxygen-Bold"), local("Ubuntu Bold"), local("Ubuntu-Bold"), local("Cantarell Bold"), local("Cantarell-Bold"), local("Fira Sans Bold"), local("Fira Sans-Bold"), local("Droid Sans Bold"), local("Droid Sans-Bold"), local("Helvetica Neue Bold"), local("Helvetica Neue-Bold"), local("Helvetica Bold"), local("Helvetica-Bold"), local("Arial Bold"), local("Arial-Bold"), local("Verdana Bold"), local("Verdana-Bold"), local("Tahoma Bold"), local("Tahoma-Bold");
+  unicode-range: U+0080-00B6, U+00B8-00FF, U+0100-017F, U+0180-024F, U+1E00-1EFF;
+}
+@font-face {
+  font-family: "SystemSerif";
+  font-style: normal;
+  font-weight: Bold;
+  src: local("Georgia Bold"), local("Georgia-Bold"), local("Charter Bold"), local("Charter-Bold"), local("Bitstream Charter Bold"), local("Bitstream Charter-Bold"), local("Times New Roman Bold"), local("Times New Roman-Bold"), local("Times Bold"), local("Times-Bold");
+  unicode-range: U+0080-00B6, U+00B8-00FF, U+0100-017F, U+0180-024F, U+1E00-1EFF;
+}
+@font-face {
+  font-family: "SystemSansItalic";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Segoe UI Italic"), local("Segoe UI-Italic"), local("Roboto Italic"), local("Roboto-Italic"), local("Oxygen Italic"), local("Oxygen-Italic"), local("Ubuntu Italic"), local("Ubuntu-Italic"), local("Cantarell Italic"), local("Cantarell-Italic"), local("Fira Sans Italic"), local("Fira Sans-Italic"), local("Droid Sans Italic"), local("Droid Sans-Italic"), local("Helvetica Neue Italic"), local("Helvetica Neue-Italic"), local("Helvetica Italic"), local("Helvetica-Italic"), local("Arial Italic"), local("Arial-Italic"), local("Verdana Italic"), local("Verdana-Italic"), local("Tahoma Italic"), local("Tahoma-Italic");
+  unicode-range: U+0080-00B6, U+00B8-00FF, U+0100-017F, U+0180-024F, U+1E00-1EFF;
+}
+@font-face {
+  font-family: "SystemSerifItalic";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Georgia Italic"), local("Georgia-Italic"), local("Charter Italic"), local("Charter-Italic"), local("Bitstream Charter Italic"), local("Bitstream Charter-Italic"), local("Times New Roman Italic"), local("Times New Roman-Italic"), local("Times Italic"), local("Times-Italic");
+  unicode-range: U+0080-00B6, U+00B8-00FF, U+0100-017F, U+0180-024F, U+1E00-1EFF;
+}
 .theme-light {
   --text-normal: #2e3338;
   --text-muted: #6c757d;

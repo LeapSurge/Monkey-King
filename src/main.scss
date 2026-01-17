@@ -9,7 +9,7 @@
 @use 'mixins' as *;
 
 // Base styles
-// @use 'base/typography';
+@use 'base/typography';
 // @use 'base/layout';
 
 // Editor styles
@@ -47,3 +47,4 @@
 
 // Utilities
 // @use 'utilities/helpers';
+@use 'utilities/functions';
