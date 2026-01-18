@@ -1,0 +1,28 @@
+    /* =========================================================
+      Style Settings 注入的静态变量
+    ========================================================= */
+:root {
+    /* 用户自定义字体 */
+    --u-cn-hei: "";
+    --u-cn-song: "";
+    --u-cn-kai: "";
+    --u-cn-fang: "";
+}
+
+body {
+    /* =========================================================
+      字体栈 (用户自定义 > 系统栈 > 兜底)
+    ========================================================= */
+    --stack-hei: var(--u-cn-hei), "SystemHei", sans-serif;
+    --stack-song: var(--u-cn-song), "SystemSong", serif;
+    // 楷体没字时回退到黑体比宋体好
+    --stack-kai: var(--u-cn-kai), "SystemKai", "SystemHei", sans-serif; 
+    --stack-fang: var(--u-cn-fang), "SystemFang", "SystemSong", serif;
+
+    /* =========================================================
+       引用块专用变量
+    ========================================================= */
+    /* 默认值 */
+    --quote-west-style: "SystemSerifItalic";
+    --quote-cn-style: var(--stack-kai);
+}

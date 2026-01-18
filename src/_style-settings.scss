@@ -1,148 +1,147 @@
 /* @settings
 
-name: Monkey King Theme
-id: monkey-king-theme
+name: 字体与引用块配置
+id: my-font-customization
 settings:
     -
-        id: colors-heading
-        title: Colors
+        id: section_base_fonts
+        title: 基础字体自定义 (Base Fonts)
         type: heading
-        level: 2
-        collapsed: true
+        level: 1
+        description: 输入你电脑上已安装的字体名称（如 "LXGW WenKai", "PingFang SC"）。留空则使用内置优化方案。
     -
-        id: accent-color
-        title: Accent Color
-        description: Main accent color for links, buttons, and highlights
-        type: variable-themed-color
-        format: hex
-        default-light: '#007acc'
-        default-dark: '#4c9eff'
-    -
-        id: text-color-primary
-        title: Primary Text Color
-        description: Main text color
-        type: variable-themed-color
-        format: hex
-        default-light: '#2e3338'
-        default-dark: '#dcddde'
-    -
-        id: background-color-primary
-        title: Primary Background
-        description: Main background color
-        type: variable-themed-color
-        format: hex
-        default-light: '#ffffff'
-        default-dark: '#202020'
-    -
-        id: typography-heading
-        title: Typography
-        type: heading
-        level: 2
-        collapsed: true
-    -
-        id: font-family-text
-        title: Text Font Family
-        description: Font family for body text
+        id: u-cn-hei
+        title: 自定义黑体 (Hei / Sans)
         type: variable-text
-        default: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
+        default: ""
+        description: 用于无衬线场景。留空默认使用 SystemHei。
     -
-        id: font-family-code
-        title: Code Font Family
-        description: Font family for code blocks and inline code
+        id: u-cn-song
+        title: 自定义宋体 (Song / Serif)
         type: variable-text
-        default: '"JetBrains Mono", "Fira Code", Consolas, monospace'
+        default: ""
+        description: 用于衬线场景。留空默认使用 SystemSong。
     -
-        id: font-size-base
-        title: Base Font Size
-        description: Base font size for body text
-        type: variable-number-slider
-        default: 16
-        min: 12
-        max: 24
-        step: 1
-        format: px
+        id: u-cn-kai
+        title: 自定义楷体 (Kai / Script)
+        type: variable-text
+        default: ""
+        description: 用于手写/笔记场景。留空默认使用 SystemKai。
     -
-        id: line-height-base
-        title: Base Line Height
-        description: Line height for body text
-        type: variable-number-slider
-        default: 1.5
-        min: 1.2
-        max: 2.0
-        step: 0.1
+        id: u-cn-fang
+        title: 自定义仿宋 (Fangsong)
+        type: variable-text
+        default: ""
+        description: 用于公文/引用场景。留空默认使用 SystemFang。
     -
-        id: spacing-heading
-        title: Spacing
+        id: section_blockquote
+        title: 引用块样式 (Blockquote)
         type: heading
-        level: 2
-        collapsed: true
+        level: 1
     -
-        id: paragraph-spacing
-        title: Paragraph Spacing
-        description: Space between paragraphs
-        type: variable-number-slider
-        default: 16
-        min: 8
-        max: 32
-        step: 2
-        format: px
+        id: quote-west-style
+        title: 引用块：西文风格
+        type: variable-select
+        default: '"SystemSerifItalic"'
+        description: 选择西文的显示风格。若选择【🚫 跟随中文字体】，英文将直接使用后面设置的中文字体。
+        options:
+            -
+                label: "衬线斜体 (Serif Italic)"
+                value: '"SystemSerifItalic"'
+            -
+                label: "无衬线斜体 (Sans Italic)"
+                value: '"SystemSansItalic"'
+            -
+                label: "手写体 (Handwriting)"
+                value: '"SystemHand"'
+            -
+                label: "古典花体 (Calligraphy)"
+                value: '"SystemCalligraphy"'
+            -
+                label: "连笔草书 (Cursive)"
+                value: '"SystemCursive"'
+            -
+                label: "🚫 跟随中文字体 (不单独设置)"
+                value: '"__SKIP__"'
     -
-        id: heading-spacing
-        title: Heading Spacing
-        description: Space above headings
-        type: variable-number-slider
-        default: 24
-        min: 12
-        max: 48
-        step: 4
-        format: px
-    -
-        id: editor-heading
-        title: Editor
+        id: quote-cn-style
+        title: 引用块：中文字体
+        type: variable-select
+        default: 'var(--stack-kai)'
+        description: 选择中文部分的字体类型（将读取上方自定义的基础字体）。
+        options:
+            -
+                label: "楷体 (Kai)"
+                value: 'var(--stack-kai)'
+            -
+                label: "宋体 (Song)"
+                value: 'var(--stack-song)'
+            -
+                label: "黑体 (Hei)"
+                value: 'var(--stack-hei)'
+            -
+                label: "仿宋 (Fangsong)"
+                value: 'var(--stack-fang)'
+    - 
+        id: group_serif
+        title: 主力衬线体/宋体 (Serif)
+        description: 点击展开设置。系统会自动将西文排在中文前面。
         type: heading
-        level: 2
-        collapsed: true
-    -
-        id: editor-max-width
-        title: Editor Max Width
-        description: Maximum width of the editor content
-        type: variable-number-slider
-        default: 700
-        min: 500
-        max: 1200
-        step: 50
-        format: px
-    -
-        id: code-block-radius
-        title: Code Block Border Radius
-        description: Border radius for code blocks
-        type: variable-number-slider
-        default: 6
-        min: 0
-        max: 16
-        step: 1
-        format: px
+        level: 1
+        settings:
+    - 
+        id: u-serif-west
+        title: 西文衬线体 (Western)
+        description: "无需加引号。例: Times New Roman, Merriweather"
+        type: variable-text
+        default: ""
+    - 
+        id: u-serif-cn
+        title: 中文宋体 (Chinese)
+        description: "无需加引号。例: 思源宋体, 霞鹜文楷"
+        type: variable-text
+        default: ""
+    - 
+        id: group_sans
+        title: 主力无衬线体/黑体 (Sans)
+        description: 点击展开设置。
+        type: heading
+        level: 1
+        settings:
+    - 
+        id: u-sans-west
+        title: 西文无衬线 (Western)
+        description: "例: Inter, Arial"
+        type: variable-text
+        default: ""
+    - 
+        id: u-sans-cn
+        title: 中文黑体 (Chinese)
+        description: "例: 苹方-简, 微软雅黑"
+        type: variable-text
+        default: ""
+
 
 */
 
-// Style Settings CSS Variables
-body {
-  // Colors
-  --accent-color: var(--accent-color);
-  --text-color-primary: var(--text-color-primary);
-  --background-color-primary: var(--background-color-primary);
-  
-  // Typography
-  --font-family-text: var(--font-family-text);
-  --font-family-code: var(--font-family-code);
-  --font-size-base: var(--font-size-base);
-  --line-height-base: var(--line-height-base);
-  
-  // Spacing
-  --paragraph-spacing: var(--paragraph-spacing);
-  --heading-spacing: var(--heading-spacing);
-  
-  // Editor
-  --editor-max-width: var(--editor-max-width);
-  --code-block-radius: var(--code-block-radius);
+:root{
+    --u-serif-west:"";
+    --u-serif-cn:"";
 }
+
+
+/* =========================================================
+   4. 应用层：Blockquote 样式
+// ========================================================= */
+// blockquote {
+//     /* 
+//        逻辑解析：
+//        1. 如果选了 "SystemSerifItalic"，英文用斜体，中文用楷体。
+//        2. 如果选了 "__SKIP__"，浏览器找不到该字体，跳过，中西文都用楷体。
+//     */
+//     font-family: var(--quote-west-style), var(--quote-cn-style);
+    
+//     /* 核心：强制 Normal，利用字体栈本身的设计来实现斜体/手写感，
+//        防止中文被浏览器强行拉斜 */
+//     font-style: normal;
+// }

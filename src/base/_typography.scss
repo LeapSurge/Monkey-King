@@ -16,7 +16,10 @@ $unicode-latin:
   U+0180-024F,
 
   // 5. Latin Extended Additional (越南语 / 完整的汉语拼音)
-  U+1E00-1EFF;
+  U+1E00-1EFF,
+
+  // 6. 最基本的西文标点(不与中文交叉)
+   U+2000-2013, U+2100-214F; 
 
 // 定义字体栈映射 (中文部分)
 // 顺序原则：Mac/iOS 优先 -> 开源/现代字体 -> Windows 标配 -> 旧版兼容
@@ -59,7 +62,7 @@ $chinese-font-stacks: (
   )
 );
 
-// 中文粗体栈 (只包含有"真粗体"文件的字体)
+// 中文粗体栈
 // 如果列表里的字体都没找到，浏览器会自动回退到系统默认字体并应用"伪粗体"
 $chinese-font-stacks-bold: (
   // 1. 黑体粗体
@@ -95,20 +98,7 @@ $chinese-font-stacks-bold: (
     "NotoSerifSC-Bold"
   ),
 
-  // 3. 楷体粗体 (极少有真粗体)
-  "SystemKai": (
-    // macOS
-    "Kaiti SC Bold",           // 苹果楷体有真粗体
-    "Kaiti-SC-Bold"
-    
-    // Windows 的 KaiTi 没有粗体。
-  ),
-
-  // 4. 仿宋粗体 (几乎没有真粗体)
-  "SystemFang": (
-    // 绝大多数系统都没有仿宋的真粗体文件
-    "STFangsong Bold"          // 极其少见，华文仿宋粗体
-  )
+  // 楷体和仿宋基本没有粗体
 );
 
 // 定义字体栈映射 (西文部分)
@@ -145,8 +135,47 @@ $latin-font-stacks: (
   )
 );
 
+// 手写体和装饰体，这些特殊字体没有变体
+$latin-special-font-stacks: (
+
+  // 3. SystemHand (手写印刷体 - 非连笔)
+  "SystemHand": (
+    // macOS / iOS
+    "Bradley Hand",         // 经典的铅笔手写，笔画分离
+    "Bradley Hand IT Mirror",
+    "Chalkboard SE",        // 黑板报字体 (比 Comic Sans 高级)
+    "Hannotate SC",         // 手札体 (Mac 自带中文手写，西文部分也不错)
+    "Wawati SC",            // 娃娃体
+    
+    // Windows 10/11
+    "Segoe Print",          // 打印手写体，虽然有连笔意向
+    "Ink Free",             // Win10 新增的优质手写，非常自然，不连笔
+    "Gabriola",             // (可选) 字偏小，稍微有点花
+    
+    
+    // 通用/兜底
+    "Comic Sans MS"         // 虽然被设计师鄙视，但它确实是"非连笔手写"的代表
+  ),
+
+
+  // 4. SystemCursive (手写体- 连笔)
+  "SystemCursive": (
+    // macOS
+    "Snell Roundhand",      // 极度华丽的圆体
+    "Savoye LET",           // 高瘦的法式连笔
+    "Zapfino",              // 书法艺术字 (行高很大，慎用)
+    "Kunstler Script",
+    
+    // Windows
+    "Edwardian Script ITC", // 极其古典的连笔
+    "Vladimir Script",
+    "Mistral",              // 快速草写
+    "Script MT Bold"
+  )
+);
+
 // 中文字体族
-@each $alias, $fonts in $chinese-font-stacks-bold {
+@each $alias, $fonts in $chinese-font-stacks {
   @font-face {
     font-family: '#{$alias}';
     font-style: normal;
@@ -156,7 +185,7 @@ $latin-font-stacks: (
 }
 
 // 中文字体族-粗体
-@each $alias, $fonts in $chinese-font-stacks {
+@each $alias, $fonts in $chinese-font-stacks-bold {
   @font-face {
     font-family: '#{$alias}';
     font-style: normal;
@@ -176,8 +205,21 @@ $latin-font-stacks: (
   }
 }
 
+// 拉丁特殊字体族
+$scale-factor: 92%; // 缩小手写体和楷体匹配
+@each $alias, $fonts in $latin-special-font-stacks {
+  @font-face {
+    font-family: '#{$alias}';
+    font-style: normal;
+    font-weight: 400; // 这些字体通常不区分粗细，设为 400 即可
+    
+    src: generate-local-src($fonts);
+   size-adjust: $scale-factor; 
+    unicode-range: $unicode-latin;
+  }
+}
 
-// 拉丁字体族
+// 拉丁字体族 粗体
 @each $alias, $fonts in $latin-font-stacks {
   @font-face {
     font-family: '#{$alias}';

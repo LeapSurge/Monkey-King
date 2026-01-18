@@ -6,6 +6,7 @@
 
 // Core configuration
 @use 'variables' as *;
+@use 'css-variables'; 
 @use 'mixins' as *;
 
 // Base styles
@@ -19,7 +20,8 @@
 // @use 'editor/lists';
 // @use 'editor/tables';
 // @use 'editor/code';
-// @use 'editor/blockquotes';
+@use 'editor/blocks/blockquotes';
+@use 'editor/inline';
 // @use 'editor/links';
 // @use 'editor/images';
 // @use 'editor/emphasis';

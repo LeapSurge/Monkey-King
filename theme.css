@@ -1,233 +1,277 @@
+@charset "UTF-8";
 /* @settings
 
-name: Monkey King Theme
-id: monkey-king-theme
+name: 字体与引用块配置
+id: my-font-customization
 settings:
     -
-        id: colors-heading
-        title: Colors
+        id: section_base_fonts
+        title: 基础字体自定义 (Base Fonts)
         type: heading
-        level: 2
-        collapsed: true
+        level: 1
+        description: 输入你电脑上已安装的字体名称（如 "LXGW WenKai", "PingFang SC"）。留空则使用内置优化方案。
     -
-        id: accent-color
-        title: Accent Color
-        description: Main accent color for links, buttons, and highlights
-        type: variable-themed-color
-        format: hex
-        default-light: '#007acc'
-        default-dark: '#4c9eff'
-    -
-        id: text-color-primary
-        title: Primary Text Color
-        description: Main text color
-        type: variable-themed-color
-        format: hex
-        default-light: '#2e3338'
-        default-dark: '#dcddde'
-    -
-        id: background-color-primary
-        title: Primary Background
-        description: Main background color
-        type: variable-themed-color
-        format: hex
-        default-light: '#ffffff'
-        default-dark: '#202020'
-    -
-        id: typography-heading
-        title: Typography
-        type: heading
-        level: 2
-        collapsed: true
-    -
-        id: font-family-text
-        title: Text Font Family
-        description: Font family for body text
+        id: u-cn-hei
+        title: 自定义黑体 (Hei / Sans)
         type: variable-text
-        default: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
+        default: ""
+        description: 用于无衬线场景。留空默认使用 SystemHei。
     -
-        id: font-family-code
-        title: Code Font Family
-        description: Font family for code blocks and inline code
+        id: u-cn-song
+        title: 自定义宋体 (Song / Serif)
         type: variable-text
-        default: '"JetBrains Mono", "Fira Code", Consolas, monospace'
+        default: ""
+        description: 用于衬线场景。留空默认使用 SystemSong。
     -
-        id: font-size-base
-        title: Base Font Size
-        description: Base font size for body text
-        type: variable-number-slider
-        default: 16
-        min: 12
-        max: 24
-        step: 1
-        format: px
+        id: u-cn-kai
+        title: 自定义楷体 (Kai / Script)
+        type: variable-text
+        default: ""
+        description: 用于手写/笔记场景。留空默认使用 SystemKai。
     -
-        id: line-height-base
-        title: Base Line Height
-        description: Line height for body text
-        type: variable-number-slider
-        default: 1.5
-        min: 1.2
-        max: 2.0
-        step: 0.1
+        id: u-cn-fang
+        title: 自定义仿宋 (Fangsong)
+        type: variable-text
+        default: ""
+        description: 用于公文/引用场景。留空默认使用 SystemFang。
     -
-        id: spacing-heading
-        title: Spacing
+        id: section_blockquote
+        title: 引用块样式 (Blockquote)
         type: heading
-        level: 2
-        collapsed: true
+        level: 1
     -
-        id: paragraph-spacing
-        title: Paragraph Spacing
-        description: Space between paragraphs
-        type: variable-number-slider
-        default: 16
-        min: 8
-        max: 32
-        step: 2
-        format: px
+        id: quote-west-style
+        title: 引用块：西文风格
+        type: variable-select
+        default: '"SystemSerifItalic"'
+        description: 选择西文的显示风格。若选择【🚫 跟随中文字体】，英文将直接使用后面设置的中文字体。
+        options:
+            -
+                label: "衬线斜体 (Serif Italic)"
+                value: '"SystemSerifItalic"'
+            -
+                label: "无衬线斜体 (Sans Italic)"
+                value: '"SystemSansItalic"'
+            -
+                label: "手写体 (Handwriting)"
+                value: '"SystemHand"'
+            -
+                label: "古典花体 (Calligraphy)"
+                value: '"SystemCalligraphy"'
+            -
+                label: "连笔草书 (Cursive)"
+                value: '"SystemCursive"'
+            -
+                label: "🚫 跟随中文字体 (不单独设置)"
+                value: '"__SKIP__"'
     -
-        id: heading-spacing
-        title: Heading Spacing
-        description: Space above headings
-        type: variable-number-slider
-        default: 24
-        min: 12
-        max: 48
-        step: 4
-        format: px
-    -
-        id: editor-heading
-        title: Editor
+        id: quote-cn-style
+        title: 引用块：中文字体
+        type: variable-select
+        default: 'var(--stack-kai)'
+        description: 选择中文部分的字体类型（将读取上方自定义的基础字体）。
+        options:
+            -
+                label: "楷体 (Kai)"
+                value: 'var(--stack-kai)'
+            -
+                label: "宋体 (Song)"
+                value: 'var(--stack-song)'
+            -
+                label: "黑体 (Hei)"
+                value: 'var(--stack-hei)'
+            -
+                label: "仿宋 (Fangsong)"
+                value: 'var(--stack-fang)'
+    - 
+        id: group_serif
+        title: 主力衬线体/宋体 (Serif)
+        description: 点击展开设置。系统会自动将西文排在中文前面。
         type: heading
-        level: 2
-        collapsed: true
-    -
-        id: editor-max-width
-        title: Editor Max Width
-        description: Maximum width of the editor content
-        type: variable-number-slider
-        default: 700
-        min: 500
-        max: 1200
-        step: 50
-        format: px
-    -
-        id: code-block-radius
-        title: Code Block Border Radius
-        description: Border radius for code blocks
-        type: variable-number-slider
-        default: 6
-        min: 0
-        max: 16
-        step: 1
-        format: px
+        level: 1
+        settings:
+    - 
+        id: u-serif-west
+        title: 西文衬线体 (Western)
+        description: "无需加引号。例: Times New Roman, Merriweather"
+        type: variable-text
+        default: ""
+    - 
+        id: u-serif-cn
+        title: 中文宋体 (Chinese)
+        description: "无需加引号。例: 思源宋体, 霞鹜文楷"
+        type: variable-text
+        default: ""
+    - 
+        id: group_sans
+        title: 主力无衬线体/黑体 (Sans)
+        description: 点击展开设置。
+        type: heading
+        level: 1
+        settings:
+    - 
+        id: u-sans-west
+        title: 西文无衬线 (Western)
+        description: "例: Inter, Arial"
+        type: variable-text
+        default: ""
+    - 
+        id: u-sans-cn
+        title: 中文黑体 (Chinese)
+        description: "例: 苹方-简, 微软雅黑"
+        type: variable-text
+        default: ""
+
 
 */
+:root {
+  --u-serif-west:"";
+  --u-serif-cn:"";
+}
+
+/* =========================================================
+   4. 应用层：Blockquote 样式
+// ========================================================= */
+/* =========================================================
+  Style Settings 注入的静态变量
+========================================================= */
+:root {
+  /* 用户自定义字体 */
+  --u-cn-hei: "";
+  --u-cn-song: "";
+  --u-cn-kai: "";
+  --u-cn-fang: "";
+}
+
 body {
-  --accent-color: var(--accent-color);
-  --text-color-primary: var(--text-color-primary);
-  --background-color-primary: var(--background-color-primary);
-  --font-family-text: var(--font-family-text);
-  --font-family-code: var(--font-family-code);
-  --font-size-base: var(--font-size-base);
-  --line-height-base: var(--line-height-base);
-  --paragraph-spacing: var(--paragraph-spacing);
-  --heading-spacing: var(--heading-spacing);
-  --editor-max-width: var(--editor-max-width);
-  --code-block-radius: var(--code-block-radius);
+  /* =========================================================
+    字体栈 (用户自定义 > 系统栈 > 兜底)
+  ========================================================= */
+  --stack-hei: var(--u-cn-hei), "SystemHei", sans-serif;
+  --stack-song: var(--u-cn-song), "SystemSong", serif;
+  --stack-kai: var(--u-cn-kai), "SystemKai", "SystemHei", sans-serif;
+  --stack-fang: var(--u-cn-fang), "SystemFang", "SystemSong", serif;
+  /* =========================================================
+     引用块专用变量
+  ========================================================= */
+  /* 默认值 */
+  --quote-west-style: "SystemSerifItalic";
+  --quote-cn-style: var(--stack-kai);
 }
 
 @font-face {
   font-family: "SystemHei";
   font-style: normal;
   font-weight: 400;
-  src: local("PingFang SC Semibold"), local("PingFang SC Bold"), local("PingFangSC-Semibold"), local("Hiragino Sans GB W6"), local("Microsoft YaHei Bold"), local("Microsoft YaHei-Bold"), local("Microsoft YaHei UI Bold"), local("Source Han Sans SC Bold"), local("SourceHanSansSC-Bold"), local("Noto Sans SC Bold"), local("NotoSansSC-Bold");
-}
-@font-face {
-  font-family: "SystemSong";
-  font-style: normal;
-  font-weight: 400;
-  src: local("Songti SC Bold"), local("Songti-SC-Bold"), local("Source Han Serif SC Bold"), local("SourceHanSerifSC-Bold"), local("Noto Serif SC Bold"), local("NotoSerifSC-Bold");
-}
-@font-face {
-  font-family: "SystemKai";
-  font-style: normal;
-  font-weight: 400;
-  src: local("Kaiti SC Bold"), local("Kaiti-SC-Bold");
-}
-@font-face {
-  font-family: "SystemFang";
-  font-style: normal;
-  font-weight: 400;
-  src: local("STFangsong Bold");
-}
-@font-face {
-  font-family: "SystemHei";
-  font-style: normal;
-  font-weight: bold;
   src: local("PingFang SC"), local("Hiragino Sans GB"), local("Microsoft YaHei UI"), local("Microsoft YaHei"), local("Source Han Sans SC"), local("Noto Sans SC"), local("SimHei");
 }
 @font-face {
   font-family: "SystemSong";
   font-style: normal;
-  font-weight: bold;
+  font-weight: 400;
   src: local("Songti SC"), local("STSong"), local("Source Han Serif SC"), local("Noto Serif SC"), local("SimSun"), local("NSimSun");
 }
 @font-face {
   font-family: "SystemKai";
   font-style: normal;
-  font-weight: bold;
+  font-weight: 400;
   src: local("Kaiti SC"), local("STKaiti"), local("KaiTi"), local("KaiTi_GB2312");
 }
 @font-face {
   font-family: "SystemFang";
   font-style: normal;
-  font-weight: bold;
+  font-weight: 400;
   src: local("STFangsong"), local("FangSong"), local("FangSong_GB2312");
+}
+@font-face {
+  font-family: "SystemHei";
+  font-style: normal;
+  font-weight: bold;
+  src: local("PingFang SC Semibold"), local("PingFang SC Bold"), local("PingFangSC-Semibold"), local("Hiragino Sans GB W6"), local("Microsoft YaHei Bold"), local("Microsoft YaHei-Bold"), local("Microsoft YaHei UI Bold"), local("Source Han Sans SC Bold"), local("SourceHanSansSC-Bold"), local("Noto Sans SC Bold"), local("NotoSansSC-Bold");
+}
+@font-face {
+  font-family: "SystemSong";
+  font-style: normal;
+  font-weight: bold;
+  src: local("Songti SC Bold"), local("Songti-SC-Bold"), local("Source Han Serif SC Bold"), local("SourceHanSerifSC-Bold"), local("Noto Serif SC Bold"), local("NotoSerifSC-Bold");
 }
 @font-face {
   font-family: "SystemSans";
   font-style: normal;
   font-weight: 400;
   src: local("Segoe UI"), local("Roboto"), local("Oxygen"), local("Ubuntu"), local("Cantarell"), local("Fira Sans"), local("Droid Sans"), local("Helvetica Neue"), local("Helvetica"), local("Arial"), local("Verdana"), local("Tahoma");
-  unicode-range: U+0080-00B6, U+00B8-00FF, U+0100-017F, U+0180-024F, U+1E00-1EFF;
+  unicode-range: U+0000-007F, U+0080-00B6, U+00B8-00FF, U+0100-017F, U+0180-024F, U+1E00-1EFF, U+2000-2013, U+2100-214F;
 }
 @font-face {
   font-family: "SystemSerif";
   font-style: normal;
   font-weight: 400;
   src: local("Georgia"), local("Charter"), local("Bitstream Charter"), local("Times New Roman"), local("Times");
-  unicode-range: U+0080-00B6, U+00B8-00FF, U+0100-017F, U+0180-024F, U+1E00-1EFF;
+  unicode-range: U+0000-007F, U+0080-00B6, U+00B8-00FF, U+0100-017F, U+0180-024F, U+1E00-1EFF, U+2000-2013, U+2100-214F;
+}
+@font-face {
+  font-family: "SystemHand";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Bradley Hand"), local("Bradley Hand IT Mirror"), local("Chalkboard SE"), local("Hannotate SC"), local("Wawati SC"), local("Segoe Print"), local("Ink Free"), local("Gabriola"), local("Comic Sans MS");
+  size-adjust: 92%;
+  unicode-range: U+0000-007F, U+0080-00B6, U+00B8-00FF, U+0100-017F, U+0180-024F, U+1E00-1EFF, U+2000-2013, U+2100-214F;
+}
+@font-face {
+  font-family: "SystemCursive";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Snell Roundhand"), local("Savoye LET"), local("Zapfino"), local("Kunstler Script"), local("Edwardian Script ITC"), local("Vladimir Script"), local("Mistral"), local("Script MT Bold");
+  size-adjust: 92%;
+  unicode-range: U+0000-007F, U+0080-00B6, U+00B8-00FF, U+0100-017F, U+0180-024F, U+1E00-1EFF, U+2000-2013, U+2100-214F;
 }
 @font-face {
   font-family: "SystemSans";
   font-style: normal;
   font-weight: Bold;
   src: local("Segoe UI Bold"), local("Segoe UI-Bold"), local("Roboto Bold"), local("Roboto-Bold"), local("Oxygen Bold"), local("Oxygen-Bold"), local("Ubuntu Bold"), local("Ubuntu-Bold"), local("Cantarell Bold"), local("Cantarell-Bold"), local("Fira Sans Bold"), local("Fira Sans-Bold"), local("Droid Sans Bold"), local("Droid Sans-Bold"), local("Helvetica Neue Bold"), local("Helvetica Neue-Bold"), local("Helvetica Bold"), local("Helvetica-Bold"), local("Arial Bold"), local("Arial-Bold"), local("Verdana Bold"), local("Verdana-Bold"), local("Tahoma Bold"), local("Tahoma-Bold");
-  unicode-range: U+0080-00B6, U+00B8-00FF, U+0100-017F, U+0180-024F, U+1E00-1EFF;
+  unicode-range: U+0000-007F, U+0080-00B6, U+00B8-00FF, U+0100-017F, U+0180-024F, U+1E00-1EFF, U+2000-2013, U+2100-214F;
 }
 @font-face {
   font-family: "SystemSerif";
   font-style: normal;
   font-weight: Bold;
   src: local("Georgia Bold"), local("Georgia-Bold"), local("Charter Bold"), local("Charter-Bold"), local("Bitstream Charter Bold"), local("Bitstream Charter-Bold"), local("Times New Roman Bold"), local("Times New Roman-Bold"), local("Times Bold"), local("Times-Bold");
-  unicode-range: U+0080-00B6, U+00B8-00FF, U+0100-017F, U+0180-024F, U+1E00-1EFF;
+  unicode-range: U+0000-007F, U+0080-00B6, U+00B8-00FF, U+0100-017F, U+0180-024F, U+1E00-1EFF, U+2000-2013, U+2100-214F;
 }
 @font-face {
   font-family: "SystemSansItalic";
   font-style: normal;
   font-weight: 400;
   src: local("Segoe UI Italic"), local("Segoe UI-Italic"), local("Roboto Italic"), local("Roboto-Italic"), local("Oxygen Italic"), local("Oxygen-Italic"), local("Ubuntu Italic"), local("Ubuntu-Italic"), local("Cantarell Italic"), local("Cantarell-Italic"), local("Fira Sans Italic"), local("Fira Sans-Italic"), local("Droid Sans Italic"), local("Droid Sans-Italic"), local("Helvetica Neue Italic"), local("Helvetica Neue-Italic"), local("Helvetica Italic"), local("Helvetica-Italic"), local("Arial Italic"), local("Arial-Italic"), local("Verdana Italic"), local("Verdana-Italic"), local("Tahoma Italic"), local("Tahoma-Italic");
-  unicode-range: U+0080-00B6, U+00B8-00FF, U+0100-017F, U+0180-024F, U+1E00-1EFF;
+  unicode-range: U+0000-007F, U+0080-00B6, U+00B8-00FF, U+0100-017F, U+0180-024F, U+1E00-1EFF, U+2000-2013, U+2100-214F;
 }
 @font-face {
   font-family: "SystemSerifItalic";
   font-style: normal;
   font-weight: 400;
   src: local("Georgia Italic"), local("Georgia-Italic"), local("Charter Italic"), local("Charter-Italic"), local("Bitstream Charter Italic"), local("Bitstream Charter-Italic"), local("Times New Roman Italic"), local("Times New Roman-Italic"), local("Times Italic"), local("Times-Italic");
-  unicode-range: U+0080-00B6, U+00B8-00FF, U+0100-017F, U+0180-024F, U+1E00-1EFF;
+  unicode-range: U+0000-007F, U+0080-00B6, U+00B8-00FF, U+0100-017F, U+0180-024F, U+1E00-1EFF, U+2000-2013, U+2100-214F;
 }
+.markdown-source-view.cm-s-obsidian.mod-cm6.is-live-preview .cm-quote,
+.markdown-rendered blockquote {
+  font-family: var(--quote-west-style), var(--quote-cn-style);
+}
+
+.markdown-source-view.cm-s-obsidian.mod-cm6.is-live-preview .cm-em,
+.markdown-rendered em {
+  font-family: "SystemSerifItalic", "SystemSong", serif;
+  font-style: normal;
+  color: rgb(197, 49, 49);
+  font-weight: bold;
+}
+
+.markdown-source-view.cm-s-obsidian.mod-cm6.is-live-preview .cm-strong,
+.markdown-rendered strong {
+  font-family: "SystemSans", "SystemHei", sans-serif;
+  font-weight: bold;
+}
+
 .theme-light {
   --text-normal: #2e3338;
   --text-muted: #6c757d;
