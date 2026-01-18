@@ -28,12 +28,13 @@
 // @use 'editor/math';
 // @use 'editor/callouts';
 
-// Obsidian features
-// @use 'obsidian-features/tags';
-// @use 'obsidian-features/backlinks';
-// @use 'obsidian-features/embeds';
-// @use 'obsidian-features/canvas';
-// @use 'obsidian-features/graph';
+// Plugins
+// @use 'plugins/obsidian_tags';
+// @use 'plugins/obsidian_backlinks';
+// @use 'plugins/obsidian_embeds';
+// @use 'plugins/obsidian_canvas';
+// @use 'plugins/obsidian_graph';
+@use 'plugins/style-settings-ui';
 
 // Interface
 // @use 'interface/sidebar';
