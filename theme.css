@@ -1,181 +1,278 @@
 @charset "UTF-8";
 /* @settings
 
-name: 字体与引用块配置
-id: my-font-customization
+name: Monkey King Theme
+id: monkey-king-theme
 settings:
     -
-        id: section_base_fonts
-        title: 基础字体自定义 (Base Fonts)
+        id: simple-settings-heading
+        title: 简单设置
         type: heading
         level: 1
-        description: 输入你电脑上已安装的字体名称（如 "LXGW WenKai", "PingFang SC"）。留空则使用内置优化方案。
+        collapsed: false
+    -
+        id: color-scheme
+        title: 配色
+        type: class-select
+        default: 'default'
+        description: 选择主题配色方案
+        options:
+            -
+                label: "默认配色"
+                value: 'default'
+            -
+                label: "暖色调"
+                value: 'warm'
+            -
+                label: "冷色调"
+                value: 'cool'
+            -
+                label: "高对比度"
+                value: 'high-contrast'
+    -
+        id: theme-mode
+        title: 模式
+        type: class-select
+        default: 'style-mode-heaven'
+        description: 选择主题模式
+        options:
+            -
+                label: "天宫"
+                value: 'style-mode-heaven'
+            -
+                label: "浅色模式"
+                value: 'light'
+            -
+                label: "深色模式"
+                value: 'dark'
+    -
+        id: optimization-settings-heading
+        title: 优化设置
+        type: heading
+        level: 1
+        collapsed: true
+    -
+        id: font-settings-heading
+        title: 字体
+        type: heading
+        level: 2
+        collapsed: true
+    -
+        id: code-font
+        title: 代码字体
+        type: variable-text
+        default: '"JetBrains Mono", "Fira Code", Consolas, monospace'
+        description: 代码块和行内代码的字体
+    -
+        id: chinese-font-heading
+        title: 中文字体
+        collapsed: false
+        type: heading
+        level: 3
     -
         id: u-cn-hei
         title: 黑体
         type: variable-text
         default: ""
-        description: 用于无衬线场景。留空使用系统自带黑体。
+        description: 用于无衬线场景。留空使用系统自带黑体
     -
         id: u-cn-song
         title: 宋体
         type: variable-text
         default: ""
-        description: 用于衬线场景。留空使用系统自带宋体。
+        description: 用于衬线场景。留空使用系统自带宋体
     -
         id: u-cn-kai
         title: 楷体
         type: variable-text
         default: ""
-        description: 用于手写/笔记场景。留空使用系统自带楷体。
+        description: 用于手写/笔记场景。留空使用系统自带楷体
     -
         id: u-cn-fang
         title: 仿宋
         type: variable-text
         default: ""
-        description: 用于公文/引用场景。留空使用系统自带仿宋体。
+        description: 用于公文/引用场景。留空使用系统自带仿宋体
     -
-        id: section_blockquote
-        title: 引用块样式 (Blockquote)
+        id: western-font-heading
+        title: 西文字体
+        collapsed: false
         type: heading
-        level: 1
+        level: 3
     -
-        id: quote-west-style
-        title: 引用块：西文风格
+        id: u-west-serif
+        title: 衬线
+        type: variable-text
+        default: ""
+        description: 西文衬线字体。留空使用系统默认
+    -
+        id: u-west-sans
+        title: 无衬线
+        type: variable-text
+        default: ""
+        description: 西文无衬线字体。留空使用系统默认
+    -
+        id: block-font-settings-heading
+        title: 块字体设置
+        type: heading
+        level: 3
+        collapsed: true
+        description: 想完全自定义，请前往高级设置
+    -
+        id: u-font-quote-west
+        title: 引用块西文字体
         type: variable-select
         default: '"SystemSerifItalic"'
-        description: 选择西文的显示风格。若选择【🚫 跟随中文字体】，英文将直接使用后面设置的中文字体。
+        description: 选择引用块西文的显示风格。
         options:
             -
-                label: "衬线斜体"
-                value: '"SystemSerifItalic"'
+                label: "衬线"
+                value: 'var(--stack-serif)'
             -
-                label: "无衬线斜体"
-                value: '"SystemSansItalic"'
+                label: "非衬线"
+                value: 'var(--stack-sans)'
             -
-                label: "手写体"
-                value: '"SystemHand"'
+                label: "系统手写"
+                value: 'var(--stack-hand)'
             -
-                label: "古典花体"
-                value: '"SystemCalligraphy"'
+                label: "系统衬线斜体"
+                value: 'var(--stack-serif-italic)'
             -
-                label: "连笔草书"
-                value: '"SystemCursive"'
-            -
-                label: "跟随中文"
-                value: '"__SKIP__"'
+                label: "系统非衬线斜体"
+                value: 'var(--stack-sans-italic)'
     -
-        id: quote-cn-style
-        title: 引用块：中文字体
+        id: u-font-quote-cn
+        title: 引用块中文字体
         type: variable-select
-        default: 'var(--stack-kai)'
-        description: 选择中文部分的字体类型（将读取上方自定义的基础字体）。
+        default: ""
+        description: 选择引用块中文字体类型
         options:
             -
-                label: "楷体 (Kai)"
-                value: 'var(--stack-kai)'
-            -
-                label: "宋体 (Song)"
-                value: 'var(--stack-song)'
-            -
-                label: "黑体 (Hei)"
+                label: "黑体"
                 value: 'var(--stack-hei)'
             -
-                label: "仿宋 (Fangsong)"
+                label: "宋体"
+                value: 'var(--stack-song)'
+            -
+                label: "楷体"
+                value: 'var(--stack-kai)'
+            -
+                label: "仿宋"
                 value: 'var(--stack-fang)'
-    - 
-        id: group_serif
-        title: 主力衬线体/宋体 (Serif)
-        description: 点击展开设置。系统会自动将西文排在中文前面。
+    -
+        id: layout-settings-heading
+        title: 布局
+        type: heading
+        level: 2
+        collapsed: true
+    -
+        id: loose-layout
+        title: 开启宽松布局
+        type: variable-checkbox
+        default: false
+        description: 增加段落和元素之间的间距
+    -
+        id: preview-line-collapse
+        title: 预览模式空行收缩
+        type: variable-checkbox
+        default: true
+        description: 在预览模式中收缩多余的空行
+    -
+        id: heading-tight
+        title: 标题收紧
+        type: variable-checkbox
+        default: false
+        description: 减少标题上下的间距
+    -
+        id: text-justify
+        title: 两端对齐
+        type: variable-checkbox
+        default: false
+        description: 正文内容两端对齐显示
+    -
+        id: ui-elements-heading
+        title: 界面元素
+        type: heading
+        level: 2
+        collapsed: true
+    -
+        id: border-radius
+        title: 圆角大小
+        type: variable-number-slider
+        default: 8
+        min: 0
+        max: 20
+        step: 1
+        format: px
+        description: 界面元素的圆角大小
+    -
+        id: sidebar-width
+        title: 侧边栏宽度
+        type: variable-number-slider
+        default: 300
+        min: 200
+        max: 500
+        step: 10
+        format: px
+        description: 左右侧边栏的宽度
+    -
+        id: advanced-settings-heading
+        title: 高级设置
         type: heading
         level: 1
-        settings:
-    - 
-        id: u-serif-west
-        title: 西文衬线体 (Western)
-        description: "无需加引号。例: Times New Roman, Merriweather"
+        collapsed: true
+        description: 各种自定义选项
+    -
+        id: custom-css
+        title: 自定义CSS
         type: variable-text
         default: ""
-    - 
-        id: u-serif-cn
-        title: 中文宋体 (Chinese)
-        description: "无需加引号。例: 思源宋体, 霞鹜文楷"
-        type: variable-text
-        default: ""
-    - 
-        id: group_sans
-        title: 主力无衬线体/黑体 (Sans)
-        description: 点击展开设置。
-        type: heading
-        level: 1
-        settings:
-    - 
-        id: u-sans-west
-        title: 西文无衬线 (Western)
-        description: "例: Inter, Arial"
-        type: variable-text
-        default: ""
-    - 
-        id: u-sans-cn
-        title: 中文黑体 (Chinese)
-        description: "例: 苹方-简, 微软雅黑"
-        type: variable-text
-        default: ""
-
+        description: 输入自定义CSS代码（高级用户）
+    -
+        id: editor-max-width
+        title: 编辑器最大宽度
+        type: variable-number-slider
+        default: 700
+        min: 500
+        max: 1200
+        step: 50
+        format: px
+        description: 编辑器内容的最大宽度
 
 */
 :root {
-  --u-serif-west:"";
-  --u-serif-cn:"";
-}
-
-/* =========================================================
-   4. 应用层：Blockquote 样式
-// ========================================================= */
-/* =========================================================
-  Style Settings 注入的静态变量
-========================================================= */
-:root {
-  /* 用户自定义字体 */
-  --u-cn-hei: "";
-  --u-cn-song: "";
-  --u-cn-kai: "";
-  --u-cn-fang: "";
-}
-
-body {
-  --radius-s: 8px;
-  --radius-m: 16px;
-  --radius-l: 24px;
-  --radius-xl: 32px;
-  /* =========================================================
-      字体栈 (用户自定义 > 系统栈 > 兜底)
-    ========================================================= */
-  --stack-hei: var(--u-cn-hei), "SystemHei", sans-serif;
-  --stack-song: var(--u-cn-song), "SystemSong", serif;
-  --stack-kai: var(--u-cn-kai), "SystemKai", "SystemHei", sans-serif;
-  --stack-fang: var(--u-cn-fang), "SystemFang", "SystemSong", serif;
-  --stack-serif: var(--u-west-serif), "SystemSerif";
-  --stack-sans: var(--u-west-sams), "SystemSans";
-  /* =========================================================
-       引用块专用变量
-    ========================================================= */
-  /* 默认值 */
-  --quote-stack-west: "SystemSerifItalic";
-  --quote-stack-cn: var(--stack-kai);
+  --color-scheme: var(--color-scheme);
+  --theme-mode: var(--theme-mode);
+  --code-font: var(--code-font);
+  --u-cn-hei: var(--u-cn-hei);
+  --u-cn-song: var(--u-cn-song);
+  --u-cn-kai: var(--u-cn-kai);
+  --u-cn-fang: var(--u-cn-fang);
+  --u-west-serif: var(--u-west-serif);
+  --u-west-sans: var(--u-west-sans);
+  --quote-west-style: var(--quote-west-style);
+  --quote-cn-style: var(--quote-cn-style);
+  --loose-layout: var(--loose-layout);
+  --preview-line-collapse: var(--preview-line-collapse);
+  --heading-tight: var(--heading-tight);
+  --text-justify: var(--text-justify);
+  --border-radius: var(--border-radius);
+  --sidebar-width: var(--sidebar-width);
+  --custom-css: var(--custom-css);
+  --editor-max-width: var(--editor-max-width);
 }
 
 @font-face {
   font-family: "SystemHei";
   font-style: normal;
   font-weight: 400;
-  src: local("PingFang SC"), local("Hiragino Sans GB"), local("Microsoft YaHei UI"), local("Microsoft YaHei"), local("Source Han Sans SC"), local("Noto Sans SC"), local("SimHei");
+  src: local("Source Han Sans SC"), local("Noto Sans SC"), local("PingFang SC"), local("Hiragino Sans GB"), local("Microsoft YaHei UI"), local("Microsoft YaHei"), local("SimHei");
 }
 @font-face {
   font-family: "SystemSong";
   font-style: normal;
   font-weight: 400;
-  src: local("Songti SC"), local("STSong"), local("Source Han Serif SC"), local("Noto Serif SC"), local("SimSun"), local("NSimSun");
+  src: local("Source Han Serif SC"), local("Noto Serif SC"), local("Songti SC"), local("STSong"), local("SimSun"), local("NSimSun");
 }
 @font-face {
   font-family: "SystemKai";
@@ -193,13 +290,13 @@ body {
   font-family: "SystemHei";
   font-style: normal;
   font-weight: bold;
-  src: local("PingFang SC Semibold"), local("PingFang SC Bold"), local("PingFangSC-Semibold"), local("Hiragino Sans GB W6"), local("Microsoft YaHei Bold"), local("Microsoft YaHei-Bold"), local("Microsoft YaHei UI Bold"), local("Source Han Sans SC Bold"), local("SourceHanSansSC-Bold"), local("Noto Sans SC Bold"), local("NotoSansSC-Bold");
+  src: local("Source Han Sans SC Bold"), local("SourceHanSansSC-Bold"), local("Noto Sans SC Bold"), local("NotoSansSC-Bold"), local("PingFang SC Semibold"), local("PingFang SC Bold"), local("PingFangSC-Semibold"), local("Hiragino Sans GB W6"), local("Microsoft YaHei Bold"), local("Microsoft YaHei-Bold"), local("Microsoft YaHei UI Bold");
 }
 @font-face {
   font-family: "SystemSong";
   font-style: normal;
   font-weight: bold;
-  src: local("Songti SC Bold"), local("Songti-SC-Bold"), local("Source Han Serif SC Bold"), local("SourceHanSerifSC-Bold"), local("Noto Serif SC Bold"), local("NotoSerifSC-Bold");
+  src: local("Source Han Serif SC Bold"), local("SourceHanSerifSC-Bold"), local("Noto Serif SC Bold"), local("NotoSerifSC-Bold"), local("Songti SC Bold"), local("Songti-SC-Bold");
 }
 @font-face {
   font-family: "SystemSans";
@@ -259,9 +356,57 @@ body {
   src: local("Georgia Italic"), local("Georgia-Italic"), local("Charter Italic"), local("Charter-Italic"), local("Bitstream Charter Italic"), local("Bitstream Charter-Italic"), local("Times New Roman Italic"), local("Times New Roman-Italic"), local("Times Italic"), local("Times-Italic");
   unicode-range: U+0000-007F, U+0080-00B6, U+00B8-00FF, U+0100-017F, U+0180-024F, U+1E00-1EFF, U+2000-2013, U+2100-214F;
 }
+body.style-mode-heaven {
+  --preset-font-headings-cn: var(--stack-fang);
+  --preset-font-headings-cn: var(--stack-fang);
+  --preset-font-quote-west: var(--stack-hand);
+  --preset-font-quote-west: var(--stack-hand);
+  --preset-font-quote-cn: var(--stack-kai);
+  --preset-font-quote-cn: var(--stack-kai);
+  --preset-font-emphasis-west: var(--stack-serif-italic);
+  --preset-font-emphasis-west: var(--stack-serif-italic);
+}
+
+/* =========================================================
+  Style Settings 注入的静态变量
+========================================================= */
+:root {
+  /* 用户自定义字体 */
+  --u-cn-hei: "";
+  --u-cn-song: "";
+  --u-cn-kai: "";
+  --u-cn-fang: "";
+  --u-west-serif: "";
+  --u-west-sans: "";
+}
+
+body {
+  --radius-s: 8px;
+  --radius-m: 16px;
+  --radius-l: 24px;
+  --radius-xl: 32px;
+  /* =========================================================
+      字体栈 (用户自定义 > 系统栈 > 兜底)
+    ========================================================= */
+  --stack-hei: var(--u-cn-hei), "SystemHei", sans-serif;
+  --stack-song: var(--u-cn-song), "SystemSong", serif;
+  --stack-kai: var(--u-cn-kai), "SystemKai", "SystemHei", sans-serif;
+  --stack-fang: var(--u-cn-fang), "SystemFang", "SystemSong", serif;
+  --stack-serif: var(--u-west-serif), "SystemSerif";
+  --stack-sans: var(--u-west-sans), "SystemSans";
+  --stack-hand: "SystemHand", "SystemSans";
+  --stack-serif-italic: "SystemSerifItalic", "SystemHand";
+  --stack-sans-italic: "SystemSansItalic", "SystemHand";
+  /* =========================================================
+       引用块专用变量
+    ========================================================= */
+  --res-font-quote-west: var(--u-font-quote-west, var(--preset-font-quote-west));
+  --res-font-quote-cn: var(--u-font-quote-cn, var(--preset-font-quote-cn, serif));
+}
+
 .markdown-source-view.cm-s-obsidian.mod-cm6.is-live-preview .cm-quote,
 .markdown-rendered blockquote {
-  font-family: var(--quote-stack-west), var(--quote-stack-cn);
+  font-family: var(--res-font-quote-west), var(--res-font-quote-cn);
 }
 
 .markdown-source-view.cm-s-obsidian.mod-cm6.is-live-preview .cm-em,
@@ -278,18 +423,22 @@ body {
   font-weight: bold;
 }
 
-[data-id=my-font-customization] + .style-settings-container {
+[data-id=monkey-king-theme] + .style-settings-container {
   width: 100%;
 }
-[data-id=my-font-customization] + .style-settings-container input, [data-id=my-font-customization] + .style-settings-container select, [data-id=my-font-customization] + .style-settings-container textarea {
+[data-id=monkey-king-theme] + .style-settings-container input,
+[data-id=monkey-king-theme] + .style-settings-container select,
+[data-id=monkey-king-theme] + .style-settings-container textarea {
   width: 100%;
+  flex: 1 1 0;
 }
-[data-id=my-font-customization] + .style-settings-container .style-settings-container {
+[data-id=monkey-king-theme] + .style-settings-container .style-settings-container {
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
-[data-id=my-font-customization] + .style-settings-container .style-settings-container > .setting-item {
+[data-id=monkey-king-theme] + .style-settings-container .style-settings-container > .setting-item:not(.style-settings-heading) {
   width: auto;
   min-width: min(180px, 100%);
   flex: 1 1 180px;
@@ -297,12 +446,13 @@ body {
   justify-content: space-between;
   align-items: flex-start;
 }
-[data-id=my-font-customization] + .style-settings-container .style-settings-container > .setting-item .setting-item-info,
-[data-id=my-font-customization] + .style-settings-container .style-settings-container > .setting-item .setting-item-control {
+[data-id=monkey-king-theme] + .style-settings-container .style-settings-container > .setting-item:not(.style-settings-heading) .setting-item-info,
+[data-id=monkey-king-theme] + .style-settings-container .style-settings-container > .setting-item:not(.style-settings-heading) .setting-item-control {
   flex: none;
 }
 
 .style-settings-heading {
+  width: 100%;
   font-size: var(--font-size-lg);
   margin-bottom: var(--spacing-md);
 }
@@ -418,38 +568,6 @@ body {
 }
 .style-settings-button:active {
   transform: translateY(1px);
-}
-
-.theme-light {
-  --text-normal: #2e3338;
-  --text-muted: #6c757d;
-  --text-faint: #999999;
-  --background-primary: #ffffff;
-  --background-secondary: #f8f9fa;
-  --background-modifier-border: #e1e4e8;
-  --editor-background: #ffffff;
-  --editor-text: #2e3338;
-  --code-background: #f6f8fa;
-  --code-text: #24292e;
-  --code-keyword: #d73a49;
-  --code-string: #032f62;
-  --code-comment: #6a737d;
-}
-
-.theme-dark {
-  --text-normal: #dcddde;
-  --text-muted: #999999;
-  --text-faint: #666666;
-  --background-primary: #202020;
-  --background-secondary: #161616;
-  --background-modifier-border: #333333;
-  --editor-background: #202020;
-  --editor-text: #dcddde;
-  --code-background: #161616;
-  --code-text: #dcddde;
-  --code-keyword: #ff7b72;
-  --code-string: #a5d6ff;
-  --code-comment: #8b949e;
 }
 
 /*# sourceMappingURL=theme.css.map */

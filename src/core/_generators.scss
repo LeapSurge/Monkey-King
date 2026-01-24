@@ -1,0 +1,28 @@
+@use 'sass:string';
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+
+@each $name, $props in $visual-forms {
+
+  // 生成 class，例如 body.style-mode-toy-box
+  body.style-mode-#{$name} {
+    @each $key, $val in $props {
+
+      // 【逻辑判定】：只有 $val 不为 null 且不为空字符串时才执行
+      @if $val !=null and $val !="" {
+
+        // 1. 注入字体映射变量
+        @if string.index($key, "font-") {
+          --preset-#{$key}: var(--stack-#{$val});
+          --preset-#{$key}: var(--stack-#{$val});
+        }
+
+        // 2. 注入 UI 形状变量
+        @else {
+          --preset-#{$key}: #{$val};
+        }
+      }
+    }
+  }
+}

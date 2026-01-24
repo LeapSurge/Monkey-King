@@ -1,9 +1,8 @@
-@use '../utilities/functions' as *;
+@use '../abstracts/functions' as *;
 
 // Latin Extended字符集
-$unicode-latin:
-  // 1. 基础拉丁文(A-Z, 0-9)
-  U+0000-007F, 
+$unicode-latin: // 1. 基础拉丁文(A-Z, 0-9)
+  U+0000-007F,
 
   // 2. Latin-1 Supplement (挖去 U+00B7 间隔号)
   // U+00B7 是西文的 Middle Dot，中文排版需要用更宽大的间隔号
@@ -19,46 +18,42 @@ $unicode-latin:
   U+1E00-1EFF,
 
   // 6. 最基本的西文标点(不与中文交叉)
-   U+2000-2013, U+2100-214F; 
+  U+2000-2013, U+2100-214F;
 
 // 定义字体栈映射 (中文部分)
-// 顺序原则：Mac/iOS 优先 -> 开源/现代字体 -> Windows 标配 -> 旧版兼容
+// 顺序原则：开源/现代字体 -> Mac/iOS 和 Windows 标配 
 $chinese-font-stacks: (
   // 1. 黑体 (Sans-serif)
-  "SystemHei": (
-    "PingFang SC",          // macOS / iOS (苹方)
-    "Hiragino Sans GB",     // Mac 旧版 (冬青黑体)
-    "Microsoft YaHei UI",   // Windows (微软雅黑 UI版)
-    "Microsoft YaHei",      // Windows (微软雅黑 标准版)
-    "Source Han Sans SC",   // 开源 (思源黑体)
-    "Noto Sans SC",         // Google (Noto黑体)
-    "SimHei"                // Windows 旧版 (中易黑体)
+  "SystemHei": ("Source Han Sans SC", // 开源 (思源黑体)
+    "Noto Sans SC", // Google (Noto黑体)
+    "PingFang SC", // macOS / iOS (苹方)
+    "Hiragino Sans GB", // Mac 旧版 (冬青黑体)
+    "Microsoft YaHei UI", // Windows (微软雅黑 UI版)
+    "Microsoft YaHei", // Windows (微软雅黑 标准版)
+    "SimHei" // Windows 旧版 (中易黑体)
   ),
 
   // 2. 宋体 (Serif)
-  "SystemSong": (
-    "Songti SC",            // macOS (宋体)
-    "STSong",               // Mac 旧版 (华文宋体)
-    "Source Han Serif SC",  // 开源 (思源宋体)
-    "Noto Serif SC",        // Google (Noto宋体)
-    "SimSun",               // Windows (中易宋体)
-    "NSimSun"               // Windows (新宋体)
+  "SystemSong": ("Source Han Serif SC", // 开源 (思源宋体)
+    "Noto Serif SC", // Google (Noto宋体)
+    "Songti SC", // macOS (宋体)
+    "STSong", // Mac 旧版 (华文宋体)
+    "SimSun", // Windows (中易宋体)
+    "NSimSun" // Windows (新宋体)
   ),
 
   // 3. 楷体 (Kaiti / Script)
-  "SystemKai": (
-    "Kaiti SC",             // macOS (楷体)
-    "STKaiti",              // Mac (华文楷体)
-    "KaiTi",                // Windows (楷体)
-    "KaiTi_GB2312"          // Windows 旧版 (楷体_GB2312)
+  "SystemKai": ("Kaiti SC", // macOS (楷体)
+    "STKaiti", // Mac (华文楷体)
+    "KaiTi", // Windows (楷体)
+    "KaiTi_GB2312" // Windows 旧版 (楷体_GB2312)
   ),
 
   // 4. 仿宋 (Fangsong)
   // 用于公文或特殊排版
-  "SystemFang": (
-    "STFangsong",           // Mac (华文仿宋)
-    "FangSong",             // Windows (仿宋)
-    "FangSong_GB2312"       // Windows 旧版
+  "SystemFang": ("STFangsong", // Mac (华文仿宋)
+    "FangSong", // Windows (仿宋)
+    "FangSong_GB2312" // Windows 旧版
   )
 );
 
@@ -66,36 +61,32 @@ $chinese-font-stacks: (
 // 如果列表里的字体都没找到，浏览器会自动回退到系统默认字体并应用"伪粗体"
 $chinese-font-stacks-bold: (
   // 1. 黑体粗体
-  "SystemHei": (
-    // macOS / iOS
-    "PingFang SC Semibold",    // 苹方中粗 (Apple 设计体系中常把 Semibold 当 Bold 用)
-    "PingFang SC Bold",        // 苹方粗体
-    "PingFangSC-Semibold",     // PS Name
-    "Hiragino Sans GB W6",     // 冬青黑体 W6
-    
-    // Windows
-    "Microsoft YaHei Bold",    // 微软雅黑 粗体
-    "Microsoft YaHei-Bold",    // PS Name
-    "Microsoft YaHei UI Bold", // UI 版粗体
-    
-    // Open Source / Google
+  "SystemHei": ( // Open Source / Google
     "Source Han Sans SC Bold", // 思源黑体 Bold
     "SourceHanSansSC-Bold",
     "Noto Sans SC Bold",
-    "NotoSansSC-Bold"
+    "NotoSansSC-Bold",
+    // macOS / iOS
+    "PingFang SC Semibold", // 苹方中粗 (Apple 设计体系中常把 Semibold 当 Bold 用)
+    "PingFang SC Bold", // 苹方粗体
+    "PingFangSC-Semibold", // PS Name
+    "Hiragino Sans GB W6", // 冬青黑体 W6
+
+    // Windows
+    "Microsoft YaHei Bold", // 微软雅黑 粗体
+    "Microsoft YaHei-Bold", // PS Name
+    "Microsoft YaHei UI Bold" // UI 版粗体
   ),
 
   // 2. 宋体粗体
-  "SystemSong": (
-    // macOS
-    "Songti SC Bold",          // 苹果宋体有真粗体
-    "Songti-SC-Bold",
-    
-    // Open Source (Windows 标配宋体没粗体)
+  "SystemSong": ( // Open Source (Windows 标配宋体没粗体)
     "Source Han Serif SC Bold", // 思源宋体 Bold
     "SourceHanSerifSC-Bold",
     "Noto Serif SC Bold",
-    "NotoSerifSC-Bold"
+    "NotoSerifSC-Bold",
+    // macOS
+    "Songti SC Bold", // 苹果宋体有真粗体
+    "Songti-SC-Bold",
   ),
 
   // 楷体和仿宋基本没有粗体
@@ -104,72 +95,67 @@ $chinese-font-stacks-bold: (
 // 定义字体栈映射 (西文部分)
 $latin-font-stacks: (
   // 1. 无衬线 (Sans-serif)
-  "SystemSans": (
-    // 现代系统 UI 字体
-    "Segoe UI",            // Windows 10/11 标准
-    "Roboto",              // Android / ChromeOS 标准
-    "Oxygen",              // KDE (Linux)
-    "Ubuntu",              // Ubuntu (Linux)
-    "Cantarell",           // GNOME (Linux)
-    "Fira Sans",           // Firefox OS
-    "Droid Sans",          // Old Android
-    "Helvetica Neue",      // macOS 旧版
-    "Helvetica",           // macOS 标准
-    
+  "SystemSans": ( // 现代系统 UI 字体
+    "Segoe UI", // Windows 10/11 标准
+    "Roboto", // Android / ChromeOS 标准
+    "Oxygen", // KDE (Linux)
+    "Ubuntu", // Ubuntu (Linux)
+    "Cantarell", // GNOME (Linux)
+    "Fira Sans", // Firefox OS
+    "Droid Sans", // Old Android
+    "Helvetica Neue", // macOS 旧版
+    "Helvetica", // macOS 标准
+
     // Web 安全字体
-    "Arial",               // 行业标准
-    "Verdana",             // 宽体，高可读性
-    "Tahoma"               // 紧凑，高可读性
+    "Arial", // 行业标准
+    "Verdana", // 宽体，高可读性
+    "Tahoma" // 紧凑，高可读性
   ),
 
   // 2. 衬线 (Serif)
-  "SystemSerif": (
-    // 屏幕阅读
-    "Georgia",             // 屏幕衬线体之王
-    "Charter",             // iOS/macOS 隐藏的好字体 (Bitstream设计)
-    "Bitstream Charter",   // Linux 对应版本
-    
+  "SystemSerif": ( // 屏幕阅读
+    "Georgia", // 屏幕衬线体之王
+    "Charter", // iOS/macOS 隐藏的好字体 (Bitstream设计)
+    "Bitstream Charter", // Linux 对应版本
+
     // 经典印刷风格
-    "Times New Roman",     // 经典
-    "Times"                // Mac 经典
+    "Times New Roman", // 经典
+    "Times" // Mac 经典
   )
 );
 
 // 手写体和装饰体，这些特殊字体没有变体
 $latin-special-font-stacks: (
-
   // 3. SystemHand (手写印刷体 - 非连笔)
-  "SystemHand": (
-    // macOS / iOS
-    "Bradley Hand",         // 经典的铅笔手写，笔画分离
+  "SystemHand": ( // macOS / iOS
+    "Bradley Hand", // 经典的铅笔手写，笔画分离
     "Bradley Hand IT Mirror",
-    "Chalkboard SE",        // 黑板报字体 (比 Comic Sans 高级)
-    "Hannotate SC",         // 手札体 (Mac 自带中文手写，西文部分也不错)
-    "Wawati SC",            // 娃娃体
-    
+    "Chalkboard SE", // 黑板报字体 (比 Comic Sans 高级)
+    "Hannotate SC", // 手札体 (Mac 自带中文手写，西文部分也不错)
+    "Wawati SC", // 娃娃体
+
     // Windows 10/11
-    "Segoe Print",          // 打印手写体，虽然有连笔意向
-    "Ink Free",             // Win10 新增的优质手写，非常自然，不连笔
-    "Gabriola",             // (可选) 字偏小，稍微有点花
-    
-    
+    "Segoe Print", // 打印手写体，虽然有连笔意向
+    "Ink Free", // Win10 新增的优质手写，非常自然，不连笔
+    "Gabriola", // (可选) 字偏小，稍微有点花
+
+
     // 通用/兜底
-    "Comic Sans MS"         // 虽然被设计师鄙视，但它确实是"非连笔手写"的代表
+    "Comic Sans MS" // 虽然被设计师鄙视，但它确实是"非连笔手写"的代表
   ),
 
 
   // 4. SystemCursive (手写体- 连笔)
-  "SystemCursive": (
-    // macOS
-    "Snell Roundhand",      // 极度华丽的圆体
-    "Savoye LET",           // 高瘦的法式连笔
-    "Zapfino",              // 书法艺术字 (行高很大，慎用)
+  "SystemCursive": ( // macOS
+    "Snell Roundhand", // 极度华丽的圆体
+    "Savoye LET", // 高瘦的法式连笔
+    "Zapfino", // 书法艺术字 (行高很大，慎用)
     "Kunstler Script",
-    
+
     // Windows
     "Edwardian Script ITC", // 极其古典的连笔
     "Vladimir Script",
-    "Mistral",              // 快速草写
+    "Mistral", // 快速草写
     "Script MT Bold"
   )
 );
@@ -179,7 +165,7 @@ $latin-special-font-stacks: (
   @font-face {
     font-family: '#{$alias}';
     font-style: normal;
-    font-weight: 400; 
+    font-weight: 400;
     src: generate-local-src($fonts);
   }
 }
@@ -189,7 +175,7 @@ $latin-special-font-stacks: (
   @font-face {
     font-family: '#{$alias}';
     font-style: normal;
-    font-weight: bold; 
+    font-weight: bold;
     src: generate-local-src($fonts);
   }
 }
@@ -199,7 +185,7 @@ $latin-special-font-stacks: (
   @font-face {
     font-family: '#{$alias}';
     font-style: normal;
-    font-weight: 400; 
+    font-weight: 400;
     src: generate-local-src($fonts);
     unicode-range: $unicode-latin;
   }
@@ -207,14 +193,15 @@ $latin-special-font-stacks: (
 
 // 拉丁特殊字体族
 $scale-factor: 92%; // 缩小手写体和楷体匹配
+
 @each $alias, $fonts in $latin-special-font-stacks {
   @font-face {
     font-family: '#{$alias}';
     font-style: normal;
     font-weight: 400; // 这些字体通常不区分粗细，设为 400
-    
+
     src: generate-local-src($fonts);
-   size-adjust: $scale-factor; 
+    size-adjust: $scale-factor;
     unicode-range: $unicode-latin;
   }
 }
@@ -224,8 +211,8 @@ $scale-factor: 92%; // 缩小手写体和楷体匹配
   @font-face {
     font-family: '#{$alias}';
     font-style: normal;
-    font-weight: Bold; 
-    src: generate-variant-src($fonts,'Bold');
+    font-weight: Bold;
+    src: generate-variant-src($fonts, 'Bold');
     unicode-range: $unicode-latin;
   }
 }
@@ -237,7 +224,7 @@ $scale-factor: 92%; // 缩小手写体和楷体匹配
   @font-face {
     font-family: '#{$alias}Italic';
     font-style: normal;
-    font-weight: 400; 
+    font-weight: 400;
     src: generate-variant-src($fonts, 'Italic');
     unicode-range: $unicode-latin;
   }

@@ -1,53 +1,47 @@
-// Monkey King Obsidian Theme
-// Main entry point
+// 1. 抽象层(Abstracts) 
+@use 'abstracts/variables';
+@use 'abstracts/functions';
+@use 'abstracts/maps';
+@use 'abstracts/mixins';
 
-// Style Settings integration
-@use 'style-settings';
+// 2. stylesetting配置
+@use 'config/style-settings';
 
-// Core configuration
-@use 'variables' as *;
-@use 'css-variables'; 
-@use 'mixins' as *;
+// 3. 代码生成层
+@use 'core/font-face';
+@use 'core/generators';
+@use 'core/resolution';
 
-// Base styles
-@use 'base/typography';
-// @use 'base/layout';
+
+// 4. 应用层
 
 // Editor styles
-// @use 'editor/editor-base';
-// @use 'editor/headings';
-// @use 'editor/paragraphs';
-// @use 'editor/lists';
-// @use 'editor/tables';
-// @use 'editor/code';
-@use 'editor/blocks/blockquotes';
-@use 'editor/inline';
-// @use 'editor/links';
-// @use 'editor/images';
-// @use 'editor/emphasis';
-// @use 'editor/math';
-// @use 'editor/callouts';
+// @use 'components/editor/editor-base';
+// @use 'components/editor/headings';
+// @use 'components/editor/paragraphs';
+// @use 'components/editor/lists';
+// @use 'components/editor/tables';
+// @use 'components/editor/code';
+@use 'components/editor/blocks/blockquotes';
+@use 'components/editor/inline';
+// @use 'components/editor/links';
+// @use 'components/editor/images';
+// @use 'components/editor/emphasis';
+// @use 'components/editor/math';
+// @use 'components/editor/callouts';
 
 // Plugins
-// @use 'plugins/obsidian_tags';
-// @use 'plugins/obsidian_backlinks';
-// @use 'plugins/obsidian_embeds';
-// @use 'plugins/obsidian_canvas';
-// @use 'plugins/obsidian_graph';
-@use 'plugins/style-settings-ui';
+// @use 'components/plugins/obsidian_tags';
+// @use 'components/plugins/obsidian_backlinks';
+// @use 'components/plugins/obsidian_embeds';
+// @use 'components/plugins/obsidian_canvas';
+// @use 'components/plugins/obsidian_graph';
+@use 'components/plugins/style-settings-ui';
 
 // Interface
-// @use 'interface/sidebar';
-// @use 'interface/tabs';
-// @use 'interface/modals';
-// @use 'interface/ribbons';
-// @use 'interface/statusbar';
-// @use 'interface/command-palette';
-
-// Theme variants
-@use 'themes/light';
-@use 'themes/dark';
-
-// Utilities
-// @use 'utilities/helpers';
-@use 'utilities/functions';
+// @use 'components/interface/sidebar';
+// @use 'components/interface/tabs';
+// @use 'components/interface/modals';
+// @use 'components/interface/ribbons';
+// @use 'components/interface/statusbar';
+// @use 'components/interface/command-palette';

@@ -7,6 +7,8 @@
   --u-cn-song: "";
   --u-cn-kai: "";
   --u-cn-fang: "";
+  --u-west-serif: "";
+  --u-west-sans: "";
 }
 
 body {
@@ -27,14 +29,16 @@ body {
   --stack-kai: var(--u-cn-kai), "SystemKai", "SystemHei", sans-serif;
   --stack-fang: var(--u-cn-fang), "SystemFang", "SystemSong", serif;
 
-  // 西文字体栈 可选值：SystemSans | SystemSerif | SystemHand | SystemCursive
+  // 西文字体栈
   --stack-serif: var(--u-west-serif), "SystemSerif";
-  --stack-sans: var(--u-west-sams), "SystemSans";
+  --stack-sans: var(--u-west-sans), "SystemSans";
+  --stack-hand: "SystemHand", "SystemSans";
+  --stack-serif-italic: "SystemSerifItalic", "SystemHand";
+  --stack-sans-italic: "SystemSansItalic", "SystemHand";
 
   /* =========================================================
        引用块专用变量
     ========================================================= */
-  /* 默认值 */
-  --quote-stack-west: "SystemSerifItalic";
-  --quote-stack-cn: var(--stack-kai);
+  --res-font-quote-west: var(--u-font-quote-west, var(--preset-font-quote-west));
+  --res-font-quote-cn: var(--u-font-quote-cn, var(--preset-font-quote-cn, serif));
 }

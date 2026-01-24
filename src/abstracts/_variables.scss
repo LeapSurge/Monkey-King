@@ -7,84 +7,58 @@
 $reading: '.markdown-rendered';
 $preview: '.markdown-source-view.cm-s-obsidian.mod-cm6.is-live-preview';
 
-// #region 字体配置
-// cn可选值:
-// --stack-hei |--stack-song | --stack-kai | --stack-fang
-// west可选值：
-// SystemSans | SystemSerif | SystemHand | SystemCursive
-$editor-elements-stacks: (
-  "headings":("cn":"",
-    "west":"",
-  ),
-  // "paragraph":(
-  //     "cn":"",
-  //     "west":"",
-  //    ),
-  "code-block":("cn":"",
-    "west":"",
-  ),
-  "quote-block":("cn":"SystemSerifItalic",
-    "west": "var(--stack-kai)",
-  ),
-  // "list":(
-  //   "cn":"",
-  //   "west":"",
-  //   ),
-  "table":("cn":"",
-    "west":"",
-  ),
-  // "math":(
-  //   "cn":"",
-  //   "west":"",
-  //   ),
-  "yaml":("cn":"",
-    "west":"",
-  ),
-  "callout":("cn":"",
-    "west":"",
+// 字体映射
+// west: 英文西文字体
+// west可选值：serif | sans | hand | serif-italic | sans-italic
+// cn: 中文字体
+// cn可选值：hei | song | kai | fang
+
+$visual-forms: (
+  "heaven" : ( // #region
+    // 字体绑定
+
+    "font-headings-west":"",
+    "font-headings-cn":"fang",
+
+    "font-code-west":"",
+    "font-code-cn":"",
+
+    "font-quote-west":"hand",
+    "font-quote-cn":"kai",
+    // "font-list-west":"",
+    // "font-list-cn":"",
+    // +"font-table-west":"",
+    // +"font-table-cn":"",
+    // +"font-yaml-west":"",
+    // +"font-yaml-cn":"",
+    // +"font-callout-west":"",
+    // +"font-callot-cn":"",
+
+    // settings for inline elements
+    // "font-link-west":"",
+    // "font-link-cn":"",
+    "font-emphasis-west":"serif-italic",
+    "font-emphasis-cn":"",
+    "font-strong-west":"",
+    "font-strong-cn":"",
+    "font-mark-west":"",
+    "font-mark-cn":"",
+    // "font-delete-west":"",
+    // "font-delete-cn":"",
+    "font-tag-west":"",
+    "font-tag-cn":"",
+    // "font-footnote-west":"",
+    // "font-footnote-cn":"",
+    // "font-block-indentifier-west":"",
+    // "font-block-indentifier-cn":"",
+    // "font-comment-west":"",
+    // "font-comment-cn":"",
+
+    // other plugins
+    "font-dataview-west":"",
+    "font-dataview-cn":"",
+    // #endregion
   ),
 
-
-  // settings for inline elements
-  // "link":(
-  //   "cn":"",
-  //   "west":"",
-  //   ),
-  "inline-block":("cn":"",
-    "west":"",
-  ),
-  "emphasis":("cn":"",
-    "west":"",
-  ),
-  "strong":("cn":"",
-    "west":"",
-  ),
-  "mark":("cn":"",
-    "west":"",
-  ),
-  // "del":(
-  //   "cn":"",
-  //   "west":"",
-  //   ),
-  "tag":("cn":"",
-    "west":"",
-  ),
-  // "footnote":(
-  //   "cn":"",
-  //   "west":"",
-  //   ),
-  // "block-identifier":(
-  //   "cn":"",
-  //   "west":"",
-  //   ),
-  // "comment":(
-  //   "cn":"",
-  //   "west":"",
-  //   ),
-
-  // other plugins
-  "dataview":("cn":"",
-    "west":"",
-  ),
+  //"huaguoshan":();
 );
-// #endregion
