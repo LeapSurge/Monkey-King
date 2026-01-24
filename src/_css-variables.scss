@@ -1,34 +1,40 @@
-    /* =========================================================
-      Style Settings 注入的静态变量
-    ========================================================= */
+/* =========================================================
+  Style Settings 注入的静态变量
+========================================================= */
 :root {
-    /* 用户自定义字体 */
-    --u-cn-hei: "";
-    --u-cn-song: "";
-    --u-cn-kai: "";
-    --u-cn-fang: "";
+  /* 用户自定义字体 */
+  --u-cn-hei: "";
+  --u-cn-song: "";
+  --u-cn-kai: "";
+  --u-cn-fang: "";
 }
 
 body {
-    --radius-s :	8px;
-    --radius-m :	16px;
-    --radius-l :	24px;
-    --radius-xl :	32px;
+  // obsidian自带变量
+  // build-in
+  --radius-s: 8px;
+  --radius-m: 16px;
+  --radius-l: 24px;
+  --radius-xl: 32px;
 
 
-    /* =========================================================
+  /* =========================================================
       字体栈 (用户自定义 > 系统栈 > 兜底)
     ========================================================= */
-    --stack-hei: var(--u-cn-hei), "SystemHei", sans-serif;
-    --stack-song: var(--u-cn-song), "SystemSong", serif;
-    // 楷体没字时回退到黑体比宋体好
-    --stack-kai: var(--u-cn-kai), "SystemKai", "SystemHei", sans-serif; 
-    --stack-fang: var(--u-cn-fang), "SystemFang", "SystemSong", serif;
+  --stack-hei: var(--u-cn-hei), "SystemHei", sans-serif;
+  --stack-song: var(--u-cn-song), "SystemSong", serif;
+  // 楷体没字时回退到黑体比宋体好
+  --stack-kai: var(--u-cn-kai), "SystemKai", "SystemHei", sans-serif;
+  --stack-fang: var(--u-cn-fang), "SystemFang", "SystemSong", serif;
 
-    /* =========================================================
+  // 西文字体栈 可选值：SystemSans | SystemSerif | SystemHand | SystemCursive
+  --stack-serif: var(--u-west-serif), "SystemSerif";
+  --stack-sans: var(--u-west-sams), "SystemSans";
+
+  /* =========================================================
        引用块专用变量
     ========================================================= */
-    /* 默认值 */
-    --quote-west-style: "SystemSerifItalic";
-    --quote-cn-style: var(--stack-kai);
+  /* 默认值 */
+  --quote-stack-west: "SystemSerifItalic";
+  --quote-stack-cn: var(--stack-kai);
 }

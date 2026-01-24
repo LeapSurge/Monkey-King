@@ -1,4 +1,18 @@
 // Mixins and utility functions
+@mixin generate-font-stacks-variables($elements) {
+  @each $element, $config in $elements {
+    --#{$element}-stack-cn: #{map-get($config, 'cn')};
+    --#{$element}-stack-west: #{map-get($config, 'west')};
+  }
+}
+
+@mixin generate-font-stacks($element) {
+  @if map-has-key($font-stacks, $element) {
+    font-family: var(--#{$element}-stack-west),
+    var(--#{$element}-stack-cn),
+    sans-serif;
+  }
+}
 
 // Responsive breakpoints
 @mixin mobile {
@@ -66,15 +80,15 @@
     width: 8px;
     height: 8px;
   }
-  
+
   &::-webkit-scrollbar-track {
     background: var(--background-secondary);
   }
-  
+
   &::-webkit-scrollbar-thumb {
     background: var(--text-muted);
     border-radius: var(--radius-sm);
-    
+
     &:hover {
       background: var(--text-normal);
     }

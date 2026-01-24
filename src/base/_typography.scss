@@ -211,7 +211,7 @@ $scale-factor: 92%; // 缩小手写体和楷体匹配
   @font-face {
     font-family: '#{$alias}';
     font-style: normal;
-    font-weight: 400; // 这些字体通常不区分粗细，设为 400 即可
+    font-weight: 400; // 这些字体通常不区分粗细，设为 400
     
     src: generate-local-src($fonts);
    size-adjust: $scale-factor; 
