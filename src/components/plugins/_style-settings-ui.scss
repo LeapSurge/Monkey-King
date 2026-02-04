@@ -45,127 +45,127 @@
 // Settings sections
 .style-settings-heading {
   width: 100%;
-  font-size: var(--font-size-lg);
-  margin-bottom: var(--spacing-md);
+  //   font-size: var(--font-size-lg);
+  //   margin-bottom: var(--spacing-md);
 
-  @include mobile {
-    font-size: var(--font-size-md);
-    margin-bottom: var(--spacing-sm);
-  }
+  //   @include mobile {
+  //     font-size: var(--font-size-md);
+  //     margin-bottom: var(--spacing-sm);
+  //   }
 }
 
-// Settings controls
-.style-item-control {
-  margin-bottom: var(--spacing-md);
+// // Settings controls
+// .style-item-control {
+//   margin-bottom: var(--spacing-md);
 
-  @include mobile {
-    margin-bottom: var(--spacing-sm);
-  }
-}
+//   @include mobile {
+//     margin-bottom: var(--spacing-sm);
+//   }
+// }
 
 
 
-// Sliders
-.style-settings-slider {
-  width: 100%;
+// // Sliders
+// .style-settings-slider {
+//   width: 100%;
 
-  @include mobile {
-    // Increase touch target size on mobile
-    height: 24px;
-  }
-}
+//   @include mobile {
+//     // Increase touch target size on mobile
+//     height: 24px;
+//   }
+// }
 
-// Color pickers
-.style-settings-color {
-  width: 100%;
-  height: 40px;
+// // Color pickers
+// .style-settings-color {
+//   width: 100%;
+//   height: 40px;
 
-  @include mobile {
-    height: 48px; // Larger touch target
-  }
-}
+//   @include mobile {
+//     height: 48px; // Larger touch target
+//   }
+// }
 
-// Dropdown selects
-.style-settings-select {
-  width: 100%;
-  padding: var(--spacing-sm);
+// // Dropdown selects
+// .style-settings-select {
+//   width: 100%;
+//   padding: var(--spacing-sm);
 
-  @include mobile {
-    padding: var(--spacing-xs);
-    font-size: var(--font-size-sm);
-  }
-}
+//   @include mobile {
+//     padding: var(--spacing-xs);
+//     font-size: var(--font-size-sm);
+//   }
+// }
 
-// Labels
-.style-settings-label {
-  display: block;
-  margin-bottom: var(--spacing-xs);
-  font-weight: 500;
+// // Labels
+// .style-settings-label {
+//   display: block;
+//   margin-bottom: var(--spacing-xs);
+//   font-weight: 500;
 
-  @include mobile {
-    font-size: var(--font-size-sm);
-  }
-}
+//   @include mobile {
+//     font-size: var(--font-size-sm);
+//   }
+// }
 
-// Description text
-.style-settings-description {
-  font-size: var(--font-size-xs);
-  color: var(--text-muted);
-  margin-top: var(--spacing-xs);
+// // Description text
+// .style-settings-description {
+//   font-size: var(--font-size-xs);
+//   color: var(--text-muted);
+//   margin-top: var(--spacing-xs);
 
-  @include mobile {
-    font-size: 0.7rem;
-  }
-}
+//   @include mobile {
+//     font-size: 0.7rem;
+//   }
+// }
 
-// Collapsible sections
-.style-settings-collapsible {
-  .style-settings-header {
-    cursor: pointer;
-    padding: var(--spacing-sm);
-    background: var(--background-secondary);
-    border-radius: var(--radius-sm);
+// // Collapsible sections
+// .style-settings-collapsible {
+//   .style-settings-header {
+//     cursor: pointer;
+//     padding: var(--spacing-sm);
+//     background: var(--background-secondary);
+//     border-radius: var(--radius-sm);
 
-    @include mobile {
-      padding: var(--spacing-xs);
-    }
+//     @include mobile {
+//       padding: var(--spacing-xs);
+//     }
 
-    &:hover {
-      background: var(--background-modifier-border);
-    }
-  }
+//     &:hover {
+//       background: var(--background-modifier-border);
+//     }
+//   }
 
-  .style-settings-content {
-    padding: var(--spacing-md) 0;
+//   .style-settings-content {
+//     padding: var(--spacing-md) 0;
 
-    @include mobile {
-      padding: var(--spacing-sm) 0;
-    }
-  }
-}
+//     @include mobile {
+//       padding: var(--spacing-sm) 0;
+//     }
+//   }
+// }
 
-// Button controls
-.style-settings-button {
-  padding: var(--spacing-sm) var(--spacing-md);
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--background-modifier-border);
-  background: var(--background-primary);
-  color: var(--text-normal);
-  cursor: pointer;
-  @include smooth-transition();
+// // Button controls
+// .style-settings-button {
+//   padding: var(--spacing-sm) var(--spacing-md);
+//   border-radius: var(--radius-sm);
+//   border: 1px solid var(--background-modifier-border);
+//   background: var(--background-primary);
+//   color: var(--text-normal);
+//   cursor: pointer;
+//   @include smooth-transition();
 
-  @include mobile {
-    padding: var(--spacing-xs) var(--spacing-sm);
-    font-size: var(--font-size-sm);
-    // Larger touch target
-    min-height: 44px;
-  }
+//   @include mobile {
+//     padding: var(--spacing-xs) var(--spacing-sm);
+//     font-size: var(--font-size-sm);
+//     // Larger touch target
+//     min-height: 44px;
+//   }
 
-  &:hover {
-    background: var(--background-secondary);
-  }
+//   &:hover {
+//     background: var(--background-secondary);
+//   }
 
-  &:active {
-    transform: translateY(1px);
-  }
-}
+//   &:active {
+//     transform: translateY(1px);
+//   }
+// }

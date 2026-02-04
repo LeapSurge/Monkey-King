@@ -1,8 +1,13 @@
+@use '../abstracts/maps' as *;
+@use 'sass:string';
+@use 'sass:map';
+
 /* =========================================================
   Style Settings 注入的静态变量
 ========================================================= */
 :root {
   /* 用户自定义字体 */
+  --u-font-text-theme: initial;
   --u-cn-hei: "";
   --u-cn-song: "";
   --u-cn-kai: "";
@@ -13,7 +18,6 @@
 
 body {
   // obsidian自带变量
-  // build-in
   --radius-s: 8px;
   --radius-m: 16px;
   --radius-l: 24px;
@@ -36,9 +40,29 @@ body {
   --stack-serif-italic: "SystemSerifItalic", "SystemHand";
   --stack-sans-italic: "SystemSansItalic", "SystemHand";
 
-  /* =========================================================
-       引用块专用变量
-    ========================================================= */
-  --res-font-quote-west: var(--u-font-quote-west, var(--preset-font-quote-west));
-  --res-font-quote-cn: var(--u-font-quote-cn, var(--preset-font-quote-cn, serif));
+  // 生成resolution变量
+  @each $key, $val in map.get($visual-forms, "heaven") {
+
+    // 字体
+    @if string.index($key, "font-") {
+      // 如果用户未设置，preset也没设置，就回退为空。
+      --res-#{$key}:var(--u-#{$key}, var(--preset-#{$key}, ""));
+    }
+  }
+
+  // obsidian自带变量应用
+  // 通用变量
+  --font-text-theme: var(--res-font-text-theme);
+  --font-monospace-theme: var(--res-font-monospace-theme);
+
+  // 标题块变量
+  @for $i from 1 through 6 {
+    --h#{$i}-font: var(--res-font-headings-west), var(--res-font-headings-cn);
+  }
+
+  // 引用块变量
+
+
+  // 行内块变量
+
 }

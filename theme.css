@@ -46,6 +46,18 @@ settings:
                 label: "深色模式"
                 value: 'dark'
     -
+        id: u-cn-hei
+        title: 黑体
+        type: variable-text
+        default: ""
+        description: 用于无衬线场景。留空使用系统自带黑体
+    -
+        id: u-cn-song
+        title: 宋体
+        type: variable-text
+        default: ""
+        description: 用于衬线场景。留空使用系统自带宋体
+    -
         id: optimization-settings-heading
         title: 优化设置
         type: heading
@@ -61,26 +73,15 @@ settings:
         id: code-font
         title: 代码字体
         type: variable-text
-        default: '"JetBrains Mono", "Fira Code", Consolas, monospace'
-        description: 代码块和行内代码的字体
+        default: ""
+        description: 代码块和行内代码的字体,留空使用黑体。
     -
         id: chinese-font-heading
         title: 中文字体
         collapsed: false
         type: heading
         level: 3
-    -
-        id: u-cn-hei
-        title: 黑体
-        type: variable-text
-        default: ""
-        description: 用于无衬线场景。留空使用系统自带黑体
-    -
-        id: u-cn-song
-        title: 宋体
-        type: variable-text
-        default: ""
-        description: 用于衬线场景。留空使用系统自带宋体
+
     -
         id: u-cn-kai
         title: 楷体
@@ -112,27 +113,86 @@ settings:
         default: ""
         description: 西文无衬线字体。留空使用系统默认
     -
+        id: u-west-hand
+        title: 手写体
+        type: variable-text
+        default: ""
+        description: 西文手写字体。留空使用系统默认
+    -
         id: block-font-settings-heading
-        title: 块字体设置
+        title: 编辑器元素字体配置
         type: heading
         level: 3
         collapsed: true
-        description: 想完全自定义，请前往高级设置
+        description: 配置文章中常用元素的字体族。注意：只能用给定的西文字体来实现西文斜体（Italic）和不斜的中文混排。
     -
-        id: u-font-quote-west
-        title: 引用块西文字体
+        id: block-font-settings-headings-heading
+        title: 标题
+        type: heading
+        level: 4
+        collapsed: true
+    -
+        id: u-font-headings-west
+        title: 西文
         type: variable-select
-        default: '"SystemSerifItalic"'
-        description: 选择引用块西文的显示风格。
+        default: initial
         options:
-            -
-                label: "衬线"
-                value: 'var(--stack-serif)'
+            - 
+                label: "模式默认"
+                value: initial
             -
                 label: "非衬线"
                 value: 'var(--stack-sans)'
             -
-                label: "系统手写"
+                label: "手写体"
+                value: 'var(--stack-hand)'
+            -
+                label: "系统衬线斜体"
+                value: 'var(--stack-serif-italic)'
+            -
+                label: "系统非衬线斜体"
+                value: 'var(--stack-sans-italic)'
+    -
+        id: u-font-headings-cn
+        title: 中文
+        type: variable-select
+        default: initial
+        options:
+            - 
+                label: "模式默认"
+                value: initial
+            -
+                label: "黑体"
+                value: 'var(--stack-hei)'
+            -
+                label: "宋体"
+                value: 'var(--stack-song)'
+            -
+                label: "楷体"
+                value: 'var(--stack-kai)'
+            -
+                label: "仿宋"
+                value: 'var(--stack-fang)'
+    -
+        id: block-font-settings-quote-heading
+        title: 引用块
+        type: heading
+        level: 4
+        collapsed: true
+    -
+        id: u-font-quote-west
+        title: 西文
+        type: variable-select
+        default: initial
+        options:
+            - 
+                label: "模式默认"
+                value: initial
+            -
+                label: "非衬线"
+                value: 'var(--stack-sans)'
+            -
+                label: "手写体"
                 value: 'var(--stack-hand)'
             -
                 label: "系统衬线斜体"
@@ -142,11 +202,109 @@ settings:
                 value: 'var(--stack-sans-italic)'
     -
         id: u-font-quote-cn
-        title: 引用块中文字体
+        title: 中文
         type: variable-select
-        default: ""
-        description: 选择引用块中文字体类型
+        default: initial
         options:
+            - 
+                label: "模式默认"
+                value: initial
+            -
+                label: "黑体"
+                value: 'var(--stack-hei)'
+            -
+                label: "宋体"
+                value: 'var(--stack-song)'
+            -
+                label: "楷体"
+                value: 'var(--stack-kai)'
+            -
+                label: "仿宋"
+                value: 'var(--stack-fang)'
+    -
+        id: block-font-settings-em-heading
+        title: 强调块（*text*）
+        type: heading
+        level: 4
+        collapsed: true
+    -
+        id: u-font-em-west
+        title: 西文
+        type: variable-select
+        default: initial
+        options:
+            - 
+                label: "模式默认"
+                value: initial
+            -
+                label: "非衬线"
+                value: 'var(--stack-sans)'
+            -
+                label: "手写体"
+                value: 'var(--stack-hand)'
+            -
+                label: "系统衬线斜体"
+                value: 'var(--stack-serif-italic)'
+            -
+                label: "系统非衬线斜体"
+                value: 'var(--stack-sans-italic)'
+    -
+        id: u-font-em-cn
+        title: 中文
+        type: variable-select
+        default: initial
+        options:
+            - 
+                label: "模式默认"
+                value: initial
+            -
+                label: "黑体"
+                value: 'var(--stack-hei)'
+            -
+                label: "宋体"
+                value: 'var(--stack-song)'
+            -
+                label: "楷体"
+                value: 'var(--stack-kai)'
+            -
+                label: "仿宋"
+                value: 'var(--stack-fang)'
+    -
+        id: block-font-settings-strong-heading
+        title: 加重块（**text**）
+        type: heading
+        level: 4
+        collapsed: true
+    -
+        id: u-font-strong-west
+        title: 西文
+        type: variable-select
+        default: initial
+        options:
+            - 
+                label: "模式默认"
+                value: initial
+            -
+                label: "非衬线"
+                value: 'var(--stack-sans)'
+            -
+                label: "手写体"
+                value: 'var(--stack-hand)'
+            -
+                label: "系统衬线斜体"
+                value: 'var(--stack-serif-italic)'
+            -
+                label: "系统非衬线斜体"
+                value: 'var(--stack-sans-italic)'
+    -
+        id: u-font-strong-cn
+        title: 中文
+        type: variable-select
+        default: initial
+        options:
+            - 
+                label: "模式默认"
+                value: initial
             -
                 label: "黑体"
                 value: 'var(--stack-hei)'
@@ -240,28 +398,6 @@ settings:
         description: 编辑器内容的最大宽度
 
 */
-:root {
-  --color-scheme: var(--color-scheme);
-  --theme-mode: var(--theme-mode);
-  --code-font: var(--code-font);
-  --u-cn-hei: var(--u-cn-hei);
-  --u-cn-song: var(--u-cn-song);
-  --u-cn-kai: var(--u-cn-kai);
-  --u-cn-fang: var(--u-cn-fang);
-  --u-west-serif: var(--u-west-serif);
-  --u-west-sans: var(--u-west-sans);
-  --quote-west-style: var(--quote-west-style);
-  --quote-cn-style: var(--quote-cn-style);
-  --loose-layout: var(--loose-layout);
-  --preview-line-collapse: var(--preview-line-collapse);
-  --heading-tight: var(--heading-tight);
-  --text-justify: var(--text-justify);
-  --border-radius: var(--border-radius);
-  --sidebar-width: var(--sidebar-width);
-  --custom-css: var(--custom-css);
-  --editor-max-width: var(--editor-max-width);
-}
-
 @font-face {
   font-family: "SystemHei";
   font-style: normal;
@@ -357,14 +493,16 @@ settings:
   unicode-range: U+0000-007F, U+0080-00B6, U+00B8-00FF, U+0100-017F, U+0180-024F, U+1E00-1EFF, U+2000-2013, U+2100-214F;
 }
 body.style-mode-heaven {
-  --preset-font-headings-cn: var(--stack-fang);
+  --preset-font-text-theme: var(--stack-song);
   --preset-font-headings-cn: var(--stack-fang);
   --preset-font-quote-west: var(--stack-hand);
-  --preset-font-quote-west: var(--stack-hand);
   --preset-font-quote-cn: var(--stack-kai);
-  --preset-font-quote-cn: var(--stack-kai);
-  --preset-font-emphasis-west: var(--stack-serif-italic);
-  --preset-font-emphasis-west: var(--stack-serif-italic);
+  --preset-font-em-west: var(--stack-serif-italic);
+  --preset-font-em-cn: var(--stack-kai);
+  --preset-font-strong-west: var(--stack-sans);
+  --preset-font-strong-cn: var(--stack-hei);
+  --preset-font-tag-west: var(--stack-hei);
+  --preset-font-tag-cn: var(--stack-hei);
 }
 
 /* =========================================================
@@ -372,6 +510,7 @@ body.style-mode-heaven {
 ========================================================= */
 :root {
   /* 用户自定义字体 */
+  --u-font-text-theme: initial;
   --u-cn-hei: "";
   --u-cn-song: "";
   --u-cn-kai: "";
@@ -397,11 +536,28 @@ body {
   --stack-hand: "SystemHand", "SystemSans";
   --stack-serif-italic: "SystemSerifItalic", "SystemHand";
   --stack-sans-italic: "SystemSansItalic", "SystemHand";
-  /* =========================================================
-       引用块专用变量
-    ========================================================= */
-  --res-font-quote-west: var(--u-font-quote-west, var(--preset-font-quote-west));
-  --res-font-quote-cn: var(--u-font-quote-cn, var(--preset-font-quote-cn, serif));
+  --res-font-text-theme:var(--u-font-text-theme, var(--preset-font-text-theme, ""));
+  --res-font-monospace-theme:var(--u-font-monospace-theme, var(--preset-font-monospace-theme, ""));
+  --res-font-headings-west:var(--u-font-headings-west, var(--preset-font-headings-west, ""));
+  --res-font-headings-cn:var(--u-font-headings-cn, var(--preset-font-headings-cn, ""));
+  --res-font-quote-west:var(--u-font-quote-west, var(--preset-font-quote-west, ""));
+  --res-font-quote-cn:var(--u-font-quote-cn, var(--preset-font-quote-cn, ""));
+  --res-font-em-west:var(--u-font-em-west, var(--preset-font-em-west, ""));
+  --res-font-em-cn:var(--u-font-em-cn, var(--preset-font-em-cn, ""));
+  --res-font-strong-west:var(--u-font-strong-west, var(--preset-font-strong-west, ""));
+  --res-font-strong-cn:var(--u-font-strong-cn, var(--preset-font-strong-cn, ""));
+  --res-font-tag-west:var(--u-font-tag-west, var(--preset-font-tag-west, ""));
+  --res-font-tag-cn:var(--u-font-tag-cn, var(--preset-font-tag-cn, ""));
+  --res-font-dataview-west:var(--u-font-dataview-west, var(--preset-font-dataview-west, ""));
+  --res-font-dataview-cn:var(--u-font-dataview-cn, var(--preset-font-dataview-cn, ""));
+  --font-text-theme: var(--res-font-text-theme);
+  --font-monospace-theme: var(--res-font-monospace-theme);
+  --h1-font: var(--res-font-headings-west), var(--res-font-headings-cn);
+  --h2-font: var(--res-font-headings-west), var(--res-font-headings-cn);
+  --h3-font: var(--res-font-headings-west), var(--res-font-headings-cn);
+  --h4-font: var(--res-font-headings-west), var(--res-font-headings-cn);
+  --h5-font: var(--res-font-headings-west), var(--res-font-headings-cn);
+  --h6-font: var(--res-font-headings-west), var(--res-font-headings-cn);
 }
 
 .markdown-source-view.cm-s-obsidian.mod-cm6.is-live-preview .cm-quote,
@@ -411,16 +567,14 @@ body {
 
 .markdown-source-view.cm-s-obsidian.mod-cm6.is-live-preview .cm-em,
 .markdown-rendered em {
-  font-family: "SystemSerifItalic", "SystemSong", serif;
+  font-family: var(--res-font-em-west), var(--res-font-em-cn);
   font-style: normal;
   color: rgb(197, 49, 49);
-  font-weight: bold;
 }
 
 .markdown-source-view.cm-s-obsidian.mod-cm6.is-live-preview .cm-strong,
 .markdown-rendered strong {
-  font-family: "SystemSans", "SystemHei", sans-serif;
-  font-weight: bold;
+  font-family: var(--res-font-strong-west), var(--res-font-strong-cn);
 }
 
 [data-id=monkey-king-theme] + .style-settings-container {
@@ -453,121 +607,6 @@ body {
 
 .style-settings-heading {
   width: 100%;
-  font-size: var(--font-size-lg);
-  margin-bottom: var(--spacing-md);
-}
-@media (max-width: 768px) {
-  .style-settings-heading {
-    font-size: var(--font-size-md);
-    margin-bottom: var(--spacing-sm);
-  }
-}
-
-.style-item-control {
-  margin-bottom: var(--spacing-md);
-}
-@media (max-width: 768px) {
-  .style-item-control {
-    margin-bottom: var(--spacing-sm);
-  }
-}
-
-.style-settings-slider {
-  width: 100%;
-}
-@media (max-width: 768px) {
-  .style-settings-slider {
-    height: 24px;
-  }
-}
-
-.style-settings-color {
-  width: 100%;
-  height: 40px;
-}
-@media (max-width: 768px) {
-  .style-settings-color {
-    height: 48px;
-  }
-}
-
-.style-settings-select {
-  width: 100%;
-  padding: var(--spacing-sm);
-}
-@media (max-width: 768px) {
-  .style-settings-select {
-    padding: var(--spacing-xs);
-    font-size: var(--font-size-sm);
-  }
-}
-
-.style-settings-label {
-  display: block;
-  margin-bottom: var(--spacing-xs);
-  font-weight: 500;
-}
-@media (max-width: 768px) {
-  .style-settings-label {
-    font-size: var(--font-size-sm);
-  }
-}
-
-.style-settings-description {
-  font-size: var(--font-size-xs);
-  color: var(--text-muted);
-  margin-top: var(--spacing-xs);
-}
-@media (max-width: 768px) {
-  .style-settings-description {
-    font-size: 0.7rem;
-  }
-}
-
-.style-settings-collapsible .style-settings-header {
-  cursor: pointer;
-  padding: var(--spacing-sm);
-  background: var(--background-secondary);
-  border-radius: var(--radius-sm);
-}
-@media (max-width: 768px) {
-  .style-settings-collapsible .style-settings-header {
-    padding: var(--spacing-xs);
-  }
-}
-.style-settings-collapsible .style-settings-header:hover {
-  background: var(--background-modifier-border);
-}
-.style-settings-collapsible .style-settings-content {
-  padding: var(--spacing-md) 0;
-}
-@media (max-width: 768px) {
-  .style-settings-collapsible .style-settings-content {
-    padding: var(--spacing-sm) 0;
-  }
-}
-
-.style-settings-button {
-  padding: var(--spacing-sm) var(--spacing-md);
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--background-modifier-border);
-  background: var(--background-primary);
-  color: var(--text-normal);
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-}
-@media (max-width: 768px) {
-  .style-settings-button {
-    padding: var(--spacing-xs) var(--spacing-sm);
-    font-size: var(--font-size-sm);
-    min-height: 44px;
-  }
-}
-.style-settings-button:hover {
-  background: var(--background-secondary);
-}
-.style-settings-button:active {
-  transform: translateY(1px);
 }
 
 /*# sourceMappingURL=theme.css.map */

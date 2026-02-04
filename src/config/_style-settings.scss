@@ -45,6 +45,18 @@ settings:
                 label: "深色模式"
                 value: 'dark'
     -
+        id: u-cn-hei
+        title: 黑体
+        type: variable-text
+        default: ""
+        description: 用于无衬线场景。留空使用系统自带黑体
+    -
+        id: u-cn-song
+        title: 宋体
+        type: variable-text
+        default: ""
+        description: 用于衬线场景。留空使用系统自带宋体
+    -
         id: optimization-settings-heading
         title: 优化设置
         type: heading
@@ -60,26 +72,15 @@ settings:
         id: code-font
         title: 代码字体
         type: variable-text
-        default: '"JetBrains Mono", "Fira Code", Consolas, monospace'
-        description: 代码块和行内代码的字体
+        default: ""
+        description: 代码块和行内代码的字体,留空使用黑体。
     -
         id: chinese-font-heading
         title: 中文字体
         collapsed: false
         type: heading
         level: 3
-    -
-        id: u-cn-hei
-        title: 黑体
-        type: variable-text
-        default: ""
-        description: 用于无衬线场景。留空使用系统自带黑体
-    -
-        id: u-cn-song
-        title: 宋体
-        type: variable-text
-        default: ""
-        description: 用于衬线场景。留空使用系统自带宋体
+
     -
         id: u-cn-kai
         title: 楷体
@@ -111,27 +112,86 @@ settings:
         default: ""
         description: 西文无衬线字体。留空使用系统默认
     -
+        id: u-west-hand
+        title: 手写体
+        type: variable-text
+        default: ""
+        description: 西文手写字体。留空使用系统默认
+    -
         id: block-font-settings-heading
-        title: 块字体设置
+        title: 编辑器元素字体配置
         type: heading
         level: 3
         collapsed: true
-        description: 想完全自定义，请前往高级设置
+        description: 配置文章中常用元素的字体族。注意：只能用给定的西文字体来实现西文斜体（Italic）和不斜的中文混排。
     -
-        id: u-font-quote-west
-        title: 引用块西文字体
+        id: block-font-settings-headings-heading
+        title: 标题
+        type: heading
+        level: 4
+        collapsed: true
+    -
+        id: u-font-headings-west
+        title: 西文
         type: variable-select
-        default: '"SystemSerifItalic"'
-        description: 选择引用块西文的显示风格。
+        default: initial
         options:
-            -
-                label: "衬线"
-                value: 'var(--stack-serif)'
+            - 
+                label: "模式默认"
+                value: initial
             -
                 label: "非衬线"
                 value: 'var(--stack-sans)'
             -
-                label: "系统手写"
+                label: "手写体"
+                value: 'var(--stack-hand)'
+            -
+                label: "系统衬线斜体"
+                value: 'var(--stack-serif-italic)'
+            -
+                label: "系统非衬线斜体"
+                value: 'var(--stack-sans-italic)'
+    -
+        id: u-font-headings-cn
+        title: 中文
+        type: variable-select
+        default: initial
+        options:
+            - 
+                label: "模式默认"
+                value: initial
+            -
+                label: "黑体"
+                value: 'var(--stack-hei)'
+            -
+                label: "宋体"
+                value: 'var(--stack-song)'
+            -
+                label: "楷体"
+                value: 'var(--stack-kai)'
+            -
+                label: "仿宋"
+                value: 'var(--stack-fang)'
+    -
+        id: block-font-settings-quote-heading
+        title: 引用块
+        type: heading
+        level: 4
+        collapsed: true
+    -
+        id: u-font-quote-west
+        title: 西文
+        type: variable-select
+        default: initial
+        options:
+            - 
+                label: "模式默认"
+                value: initial
+            -
+                label: "非衬线"
+                value: 'var(--stack-sans)'
+            -
+                label: "手写体"
                 value: 'var(--stack-hand)'
             -
                 label: "系统衬线斜体"
@@ -141,11 +201,109 @@ settings:
                 value: 'var(--stack-sans-italic)'
     -
         id: u-font-quote-cn
-        title: 引用块中文字体
+        title: 中文
         type: variable-select
-        default: ""
-        description: 选择引用块中文字体类型
+        default: initial
         options:
+            - 
+                label: "模式默认"
+                value: initial
+            -
+                label: "黑体"
+                value: 'var(--stack-hei)'
+            -
+                label: "宋体"
+                value: 'var(--stack-song)'
+            -
+                label: "楷体"
+                value: 'var(--stack-kai)'
+            -
+                label: "仿宋"
+                value: 'var(--stack-fang)'
+    -
+        id: block-font-settings-em-heading
+        title: 强调块（*text*）
+        type: heading
+        level: 4
+        collapsed: true
+    -
+        id: u-font-em-west
+        title: 西文
+        type: variable-select
+        default: initial
+        options:
+            - 
+                label: "模式默认"
+                value: initial
+            -
+                label: "非衬线"
+                value: 'var(--stack-sans)'
+            -
+                label: "手写体"
+                value: 'var(--stack-hand)'
+            -
+                label: "系统衬线斜体"
+                value: 'var(--stack-serif-italic)'
+            -
+                label: "系统非衬线斜体"
+                value: 'var(--stack-sans-italic)'
+    -
+        id: u-font-em-cn
+        title: 中文
+        type: variable-select
+        default: initial
+        options:
+            - 
+                label: "模式默认"
+                value: initial
+            -
+                label: "黑体"
+                value: 'var(--stack-hei)'
+            -
+                label: "宋体"
+                value: 'var(--stack-song)'
+            -
+                label: "楷体"
+                value: 'var(--stack-kai)'
+            -
+                label: "仿宋"
+                value: 'var(--stack-fang)'
+    -
+        id: block-font-settings-strong-heading
+        title: 加重块（**text**）
+        type: heading
+        level: 4
+        collapsed: true
+    -
+        id: u-font-strong-west
+        title: 西文
+        type: variable-select
+        default: initial
+        options:
+            - 
+                label: "模式默认"
+                value: initial
+            -
+                label: "非衬线"
+                value: 'var(--stack-sans)'
+            -
+                label: "手写体"
+                value: 'var(--stack-hand)'
+            -
+                label: "系统衬线斜体"
+                value: 'var(--stack-serif-italic)'
+            -
+                label: "系统非衬线斜体"
+                value: 'var(--stack-sans-italic)'
+    -
+        id: u-font-strong-cn
+        title: 中文
+        type: variable-select
+        default: initial
+        options:
+            - 
+                label: "模式默认"
+                value: initial
             -
                 label: "黑体"
                 value: 'var(--stack-hei)'
@@ -226,7 +384,7 @@ settings:
         title: 自定义CSS
         type: variable-text
         default: ""
-        description: 输入自定义CSS代码（高级用户）
+        description: 输入自定义CSS代码
     -
         id: editor-max-width
         title: 编辑器最大宽度
@@ -239,36 +397,3 @@ settings:
         description: 编辑器内容的最大宽度
 
 */
-
-:root {
-    // 简单设置
-    --color-scheme: var(--color-scheme);
-    --theme-mode: var(--theme-mode);
-
-    // 字体设置
-    --code-font: var(--code-font);
-    --u-cn-hei: var(--u-cn-hei);
-    --u-cn-song: var(--u-cn-song);
-    --u-cn-kai: var(--u-cn-kai);
-    --u-cn-fang: var(--u-cn-fang);
-    --u-west-serif: var(--u-west-serif);
-    --u-west-sans: var(--u-west-sans);
-
-    // 块字体设置
-    --quote-west-style: var(--quote-west-style);
-    --quote-cn-style: var(--quote-cn-style);
-
-    // 布局设置
-    --loose-layout: var(--loose-layout);
-    --preview-line-collapse: var(--preview-line-collapse);
-    --heading-tight: var(--heading-tight);
-    --text-justify: var(--text-justify);
-
-    // 界面元素
-    --border-radius: var(--border-radius);
-    --sidebar-width: var(--sidebar-width);
-
-    // 高级设置
-    --custom-css: var(--custom-css);
-    --editor-max-width: var(--editor-max-width);
-}

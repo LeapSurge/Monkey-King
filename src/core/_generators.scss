@@ -1,5 +1,5 @@
 @use 'sass:string';
-@use '../abstracts/variables' as *;
+@use '../abstracts/maps' as *;
 @use '../abstracts/mixins' as *;
 
 
@@ -14,7 +14,6 @@
 
         // 1. 注入字体映射变量
         @if string.index($key, "font-") {
-          --preset-#{$key}: var(--stack-#{$val});
           --preset-#{$key}: var(--stack-#{$val});
         }
 

@@ -2,14 +2,14 @@
 
 #{$preview} .cm-em,
 #{$reading} em {
-  font-family: "SystemSerifItalic", "SystemSong", serif;
+  font-family: var(--res-font-em-west), var(--res-font-em-cn);
   font-style: normal;
   color: rgb(197, 49, 49);
-  font-weight: bold;
+  // font-weight: bold;
 }
 
 #{$preview} .cm-strong,
 #{$reading} strong {
-  font-family: "SystemSans", "SystemHei", sans-serif;
-  font-weight: bold;
+  font-family: var(--res-font-strong-west), var(--res-font-strong-cn);
+  // font-weight: bold;
 }
