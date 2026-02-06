@@ -3,10 +3,10 @@
 @use '../abstracts/mixins' as *;
 
 
-@each $name, $props in $visual-forms {
+@each $name, $props in $style-modes {
 
   // 生成 class，例如 body.style-mode-toy-box
-  body.style-mode-#{$name} {
+  body.style-#{$name} {
     @each $key, $val in $props {
 
       // 【逻辑判定】：只有 $val 不为 null 且不为空字符串时才执行

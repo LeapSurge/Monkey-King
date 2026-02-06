@@ -4,13 +4,14 @@
 // cn: 中文字体
 // cn可选值：hei | song | kai | fang
 
-$visual-forms: (
-  "heaven" : ( // #region
-    // 字体绑定
-    //---------------------------------
-    // "font-interface-theme":"",
-    "font-text-theme":"song",
-    "font-monospace-theme":"",
+$style-modes: (
+  "great-hall" : ( // #region
+    // 字体设定
+    // ---------------------------------
+    // #region
+    // "font-stack-interface-theme":"",
+    "font-stack-text-theme":"song",
+    "font-stack-monospace-theme":"",
 
     "font-headings-west":"",
     "font-headings-cn":"fang",

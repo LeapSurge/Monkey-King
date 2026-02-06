@@ -29,21 +29,18 @@ settings:
                 label: "高对比度"
                 value: 'high-contrast'
     -
-        id: theme-mode
+        id: style-mode
         title: 模式
         type: class-select
-        default: 'style-mode-heaven'
+        default: 'style-great-hall'
         description: 选择主题模式
         options:
             -
-                label: "天宫"
-                value: 'style-mode-heaven'
+                label: "凌霄宝殿"
+                value: 'style-great-hall'
             -
-                label: "浅色模式"
-                value: 'light'
-            -
-                label: "深色模式"
-                value: 'dark'
+                label: "花果山"
+                value: 'style-huaguo-mount'
     -
         id: u-cn-hei
         title: 黑体

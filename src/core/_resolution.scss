@@ -42,7 +42,7 @@ body {
   --stack-sans-italic: "SystemSansItalic", "SystemHand";
 
   // 生成resolution变量
-  @each $key, $val in map.get($visual-forms, "heaven") {
+  @each $key, $val in map.get($style-modes, "great-hall") {
 
     // 字体
     @if string.index($key, "font-") {
