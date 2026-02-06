@@ -13,7 +13,7 @@
       @if $val !=null and $val !="" {
 
         // 1. 注入字体映射变量
-        @if string.index($key, "font-") {
+        @if string.index($key, "font-stack-") {
           --preset-#{$key}: var(--stack-#{$val});
         }
 

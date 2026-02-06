@@ -15,6 +15,7 @@
   --u-west-serif: "";
   --u-west-sans: "";
   --u-font-em-cn: "";
+
 }
 
 body {
@@ -45,7 +46,7 @@ body {
   @each $key, $val in map.get($style-modes, "great-hall") {
 
     // 字体
-    @if string.index($key, "font-") {
+    @if string.index($key, "font-stack-") {
       // 如果用户未设置，preset也没设置，就回退为空。
       --res-#{$key}:var(--u-#{$key}, var(--preset-#{$key}, ""));
     }
@@ -58,7 +59,8 @@ body {
 
   // 标题块变量
   @for $i from 1 through 6 {
-    --h#{$i}-font: var(--res-font-headings-west), var(--res-font-headings-cn);
+    --h#{$i}-font: var(--res-font-stack-headings-west), var(--res-font-stack-headings-cn);
+    --h#{$i}-weight: var(--res-font-weight-headings);
   }
 
   // 引用块变量
