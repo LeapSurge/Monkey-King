@@ -1,0 +1,7 @@
+@use "../../../abstracts/variables" as *;
+
+#{$preview} .cm-strong,
+#{$reading} strong {
+  font-family: var(--res-font-stack-strong-west), var(--res-font-stack-strong-cn);
+  font-weight: var(--res-font-weight-strong);
+}

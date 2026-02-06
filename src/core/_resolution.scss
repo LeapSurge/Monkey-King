@@ -69,16 +69,4 @@ body {
   // --text-normal: var(--res-text0);
 
 
-  // 标题块变量
-  @for $i from 1 through 6 {
-    --h#{$i}-font: var(--res-font-stack-headings-west), var(--res-font-stack-headings-cn);
-    --h#{$i}-weight: var(--res-font-weight-headings);
-  }
-
-  // 引用块变量
-
-
-  // 行内块变量
-  // --italic-weight:var(--res-font-weight-em);
-
 }

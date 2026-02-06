@@ -23,7 +23,8 @@
 // @use 'components/editor/tables';
 // @use 'components/editor/code';
 @use 'components/editor/blocks/blockquotes';
-@use 'components/editor/inline';
+@use 'components/editor/inlines/em';
+@use 'components/editor/inlines/strong';
 // @use 'components/editor/links';
 // @use 'components/editor/images';
 // @use 'components/editor/emphasis';
