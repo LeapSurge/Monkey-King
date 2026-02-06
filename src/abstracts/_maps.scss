@@ -135,8 +135,11 @@ $style-modes: (
   // )
 );
 
-// $color-scheme: (
-//   "monkey" : (
-
-//   )
-// )
+$color-schemes: (
+  "monkey" : ( // #region
+    "mode": "light",
+    "bg0": #fcf8e0,
+    // "text0": black,
+    // #endregion
+  )
+);

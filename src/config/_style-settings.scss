@@ -13,12 +13,12 @@ settings:
         id: color-scheme
         title: 配色
         type: class-select
-        default: 'default'
+        default: 'scheme-monkey'
         description: 选择主题配色方案
         options:
             -
-                label: "默认配色"
-                value: 'default'
+                label: "美猴王"
+                value: 'scheme-monkey'
             -
                 label: "暖色调"
                 value: 'warm'

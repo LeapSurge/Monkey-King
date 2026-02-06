@@ -1,4 +1,5 @@
 @use 'sass:string';
+@use 'sass:map';
 @use '../abstracts/maps' as *;
 @use '../abstracts/mixins' as *;
 
@@ -21,6 +22,20 @@
         @else {
           --preset-#{$key}: #{$val};
         }
+      }
+    }
+  }
+}
+
+@each $name, $props in $color-schemes {
+  $mode : map.get($props, "mode");
+
+  body.theme-#{$mode}.scheme-#{$name} {
+    @each $key, $val in $props {
+
+      // 【逻辑判定】：只有 $val 不为 null 且不为空字符串时才执行
+      @if $val !=null and $val !="" {
+        --preset-#{$key}: #{$val};
       }
     }
   }

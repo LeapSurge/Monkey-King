@@ -14,17 +14,10 @@
   --u-cn-fang: "";
   --u-west-serif: "";
   --u-west-sans: "";
-  --u-font-em-cn: "";
 
 }
 
 body {
-  // obsidian自带变量
-  --radius-s: 8px;
-  --radius-m: 16px;
-  --radius-l: 24px;
-  --radius-xl: 32px;
-
 
   /* =========================================================
       字体栈 (用户自定义 > 系统栈 > 兜底)
@@ -50,12 +43,31 @@ body {
       // 如果用户未设置，preset也没设置，就回退为空。
       --res-#{$key}:var(--u-#{$key}, var(--preset-#{$key}, ""));
     }
+
+    @else {
+      --res-#{$key}:var(--preset-#{$key}, "");
+    }
   }
+
+  @each $key, $val in map.get($color-schemes, "monkey") {
+    --res-#{$key}:var(--preset-#{$key}, "");
+  }
+
 
   // obsidian自带变量应用
   // 通用变量
-  --font-text-theme: var(--res-font-text-theme);
-  --font-monospace-theme: var(--res-font-monospace-theme);
+  --font-text-theme: var(--res-font-stack-text-theme);
+  --font-monospace-theme: var(--res-font-stack-monospace-theme);
+  // 圆角
+  --radius-s: 8px;
+  --radius-m: 16px;
+  --radius-l: 24px;
+  --radius-xl: 32px;
+
+  // colors
+  --background-primary: var(--res-bg0);
+  // --text-normal: var(--res-text0);
+
 
   // 标题块变量
   @for $i from 1 through 6 {

@@ -14,12 +14,12 @@ settings:
         id: color-scheme
         title: 配色
         type: class-select
-        default: 'default'
+        default: 'scheme-monkey'
         description: 选择主题配色方案
         options:
             -
-                label: "默认配色"
-                value: 'default'
+                label: "美猴王"
+                value: 'scheme-monkey'
             -
                 label: "暖色调"
                 value: 'warm'
@@ -30,21 +30,18 @@ settings:
                 label: "高对比度"
                 value: 'high-contrast'
     -
-        id: theme-mode
+        id: style-mode
         title: 模式
         type: class-select
-        default: 'style-mode-heaven'
+        default: 'style-great-hall'
         description: 选择主题模式
         options:
             -
-                label: "天宫"
-                value: 'style-mode-heaven'
+                label: "凌霄宝殿"
+                value: 'style-great-hall'
             -
-                label: "浅色模式"
-                value: 'light'
-            -
-                label: "深色模式"
-                value: 'dark'
+                label: "花果山"
+                value: 'style-huaguo-mount'
     -
         id: u-cn-hei
         title: 黑体
@@ -57,6 +54,12 @@ settings:
         type: variable-text
         default: ""
         description: 用于衬线场景。留空使用系统自带宋体
+    -
+        id: res-weight-em
+        title: em字重
+        type: variable-text
+        default: ""
+        description: 设置em标签的字重，留空使用默认值
     -
         id: optimization-settings-heading
         title: 优化设置
@@ -385,7 +388,7 @@ settings:
         title: 自定义CSS
         type: variable-text
         default: ""
-        description: 输入自定义CSS代码（高级用户）
+        description: 输入自定义CSS代码
     -
         id: editor-max-width
         title: 编辑器最大宽度
@@ -492,17 +495,36 @@ settings:
   src: local("Georgia Italic"), local("Georgia-Italic"), local("Charter Italic"), local("Charter-Italic"), local("Bitstream Charter Italic"), local("Bitstream Charter-Italic"), local("Times New Roman Italic"), local("Times New Roman-Italic"), local("Times Italic"), local("Times-Italic");
   unicode-range: U+0000-007F, U+0080-00B6, U+00B8-00FF, U+0100-017F, U+0180-024F, U+1E00-1EFF, U+2000-2013, U+2100-214F;
 }
-body.style-mode-heaven {
-  --preset-font-text-theme: var(--stack-song);
-  --preset-font-headings-cn: var(--stack-fang);
-  --preset-font-quote-west: var(--stack-hand);
-  --preset-font-quote-cn: var(--stack-kai);
-  --preset-font-em-west: var(--stack-serif-italic);
-  --preset-font-em-cn: var(--stack-kai);
-  --preset-font-strong-west: var(--stack-sans);
-  --preset-font-strong-cn: var(--stack-hei);
-  --preset-font-tag-west: var(--stack-hei);
-  --preset-font-tag-cn: var(--stack-hei);
+body.style-great-hall {
+  --preset-font-stack-text-theme: var(--stack-song);
+  --preset-font-stack-headings-cn: var(--stack-fang);
+  --preset-font-stack-quote-west: var(--stack-hand);
+  --preset-font-stack-quote-cn: var(--stack-kai);
+  --preset-font-stack-em-west: var(--stack-serif-italic);
+  --preset-font-stack-em-cn: var(--stack-kai);
+  --preset-font-stack-strong-west: var(--stack-sans);
+  --preset-font-stack-strong-cn: var(--stack-hei);
+  --preset-font-stack-tag-west: var(--stack-hei);
+  --preset-font-stack-tag-cn: var(--stack-hei);
+  --preset-font-weight: normal;
+  --preset-font-weight-headings: normal;
+  --preset-font-weight-code: normal;
+  --preset-font-weight-table-header: normal;
+  --preset-font-weight-metadata-label: normal;
+  --preset-font-weight-callout-title: normal;
+  --preset-font-weight-link: normal;
+  --preset-font-weight-em: normal;
+  --preset-font-weight-strong: 500;
+  --preset-font-weight-tag: normal;
+}
+
+body.style-huaguo-mount {
+  --preset-font-weight-em: 800;
+}
+
+body.theme-light.scheme-monkey {
+  --preset-mode: light;
+  --preset-bg0: #fcf8e0;
 }
 
 /* =========================================================
@@ -517,13 +539,10 @@ body.style-mode-heaven {
   --u-cn-fang: "";
   --u-west-serif: "";
   --u-west-sans: "";
+  --u-font-em-cn: "";
 }
 
 body {
-  --radius-s: 8px;
-  --radius-m: 16px;
-  --radius-l: 24px;
-  --radius-xl: 32px;
   /* =========================================================
       字体栈 (用户自定义 > 系统栈 > 兜底)
     ========================================================= */
@@ -536,45 +555,70 @@ body {
   --stack-hand: "SystemHand", "SystemSans";
   --stack-serif-italic: "SystemSerifItalic", "SystemHand";
   --stack-sans-italic: "SystemSansItalic", "SystemHand";
-  --res-font-text-theme:var(--u-font-text-theme, var(--preset-font-text-theme, ""));
-  --res-font-monospace-theme:var(--u-font-monospace-theme, var(--preset-font-monospace-theme, ""));
-  --res-font-headings-west:var(--u-font-headings-west, var(--preset-font-headings-west, ""));
-  --res-font-headings-cn:var(--u-font-headings-cn, var(--preset-font-headings-cn, ""));
-  --res-font-quote-west:var(--u-font-quote-west, var(--preset-font-quote-west, ""));
-  --res-font-quote-cn:var(--u-font-quote-cn, var(--preset-font-quote-cn, ""));
-  --res-font-em-west:var(--u-font-em-west, var(--preset-font-em-west, ""));
-  --res-font-em-cn:var(--u-font-em-cn, var(--preset-font-em-cn, ""));
-  --res-font-strong-west:var(--u-font-strong-west, var(--preset-font-strong-west, ""));
-  --res-font-strong-cn:var(--u-font-strong-cn, var(--preset-font-strong-cn, ""));
-  --res-font-tag-west:var(--u-font-tag-west, var(--preset-font-tag-west, ""));
-  --res-font-tag-cn:var(--u-font-tag-cn, var(--preset-font-tag-cn, ""));
-  --res-font-dataview-west:var(--u-font-dataview-west, var(--preset-font-dataview-west, ""));
-  --res-font-dataview-cn:var(--u-font-dataview-cn, var(--preset-font-dataview-cn, ""));
-  --font-text-theme: var(--res-font-text-theme);
-  --font-monospace-theme: var(--res-font-monospace-theme);
-  --h1-font: var(--res-font-headings-west), var(--res-font-headings-cn);
-  --h2-font: var(--res-font-headings-west), var(--res-font-headings-cn);
-  --h3-font: var(--res-font-headings-west), var(--res-font-headings-cn);
-  --h4-font: var(--res-font-headings-west), var(--res-font-headings-cn);
-  --h5-font: var(--res-font-headings-west), var(--res-font-headings-cn);
-  --h6-font: var(--res-font-headings-west), var(--res-font-headings-cn);
+  --res-font-stack-text-theme:var(--u-font-stack-text-theme, var(--preset-font-stack-text-theme, ""));
+  --res-font-stack-monospace-theme:var(--u-font-stack-monospace-theme, var(--preset-font-stack-monospace-theme, ""));
+  --res-font-stack-headings-west:var(--u-font-stack-headings-west, var(--preset-font-stack-headings-west, ""));
+  --res-font-stack-headings-cn:var(--u-font-stack-headings-cn, var(--preset-font-stack-headings-cn, ""));
+  --res-font-stack-quote-west:var(--u-font-stack-quote-west, var(--preset-font-stack-quote-west, ""));
+  --res-font-stack-quote-cn:var(--u-font-stack-quote-cn, var(--preset-font-stack-quote-cn, ""));
+  --res-font-stack-em-west:var(--u-font-stack-em-west, var(--preset-font-stack-em-west, ""));
+  --res-font-stack-em-cn:var(--u-font-stack-em-cn, var(--preset-font-stack-em-cn, ""));
+  --res-font-stack-strong-west:var(--u-font-stack-strong-west, var(--preset-font-stack-strong-west, ""));
+  --res-font-stack-strong-cn:var(--u-font-stack-strong-cn, var(--preset-font-stack-strong-cn, ""));
+  --res-font-stack-tag-west:var(--u-font-stack-tag-west, var(--preset-font-stack-tag-west, ""));
+  --res-font-stack-tag-cn:var(--u-font-stack-tag-cn, var(--preset-font-stack-tag-cn, ""));
+  --res-font-stack-dataview-west:var(--u-font-stack-dataview-west, var(--preset-font-stack-dataview-west, ""));
+  --res-font-stack-dataview-cn:var(--u-font-stack-dataview-cn, var(--preset-font-stack-dataview-cn, ""));
+  --res-font-weight:var(--preset-font-weight, "");
+  --res-font-weight-headings:var(--preset-font-weight-headings, "");
+  --res-font-weight-code:var(--preset-font-weight-code, "");
+  --res-font-weight-table-header:var(--preset-font-weight-table-header, "");
+  --res-font-weight-metadata-label:var(--preset-font-weight-metadata-label, "");
+  --res-font-weight-callout-title:var(--preset-font-weight-callout-title, "");
+  --res-font-weight-link:var(--preset-font-weight-link, "");
+  --res-font-weight-em:var(--preset-font-weight-em, "");
+  --res-font-weight-strong:var(--preset-font-weight-strong, "");
+  --res-font-weight-tag:var(--preset-font-weight-tag, "");
+  --res-mode:var(--preset-mode, "");
+  --res-bg0:var(--preset-bg0, "");
+  --font-text-theme: var(--res-font-stack-text-theme);
+  --font-monospace-theme: var(--res-font-stack-monospace-theme);
+  --radius-s: 8px;
+  --radius-m: 16px;
+  --radius-l: 24px;
+  --radius-xl: 32px;
+  --background-primary: var(--res-bg0);
+  --h1-font: var(--res-font-stack-headings-west), var(--res-font-stack-headings-cn);
+  --h1-weight: var(--res-font-weight-headings);
+  --h2-font: var(--res-font-stack-headings-west), var(--res-font-stack-headings-cn);
+  --h2-weight: var(--res-font-weight-headings);
+  --h3-font: var(--res-font-stack-headings-west), var(--res-font-stack-headings-cn);
+  --h3-weight: var(--res-font-weight-headings);
+  --h4-font: var(--res-font-stack-headings-west), var(--res-font-stack-headings-cn);
+  --h4-weight: var(--res-font-weight-headings);
+  --h5-font: var(--res-font-stack-headings-west), var(--res-font-stack-headings-cn);
+  --h5-weight: var(--res-font-weight-headings);
+  --h6-font: var(--res-font-stack-headings-west), var(--res-font-stack-headings-cn);
+  --h6-weight: var(--res-font-weight-headings);
 }
 
 .markdown-source-view.cm-s-obsidian.mod-cm6.is-live-preview .cm-quote,
 .markdown-rendered blockquote {
-  font-family: var(--res-font-quote-west), var(--res-font-quote-cn);
+  font-family: var(--res-font-stack-quote-west), var(--res-font-stack-quote-cn);
 }
 
 .markdown-source-view.cm-s-obsidian.mod-cm6.is-live-preview .cm-em,
 .markdown-rendered em {
-  font-family: var(--res-font-em-west), var(--res-font-em-cn);
+  font-family: var(--res-font-stack-em-west), var(--res-font-stack-em-cn);
+  font-weight: var(--res-font-weight-em);
   font-style: normal;
   color: rgb(197, 49, 49);
 }
 
 .markdown-source-view.cm-s-obsidian.mod-cm6.is-live-preview .cm-strong,
 .markdown-rendered strong {
-  font-family: var(--res-font-strong-west), var(--res-font-strong-cn);
+  font-family: var(--res-font-stack-strong-west), var(--res-font-stack-strong-cn);
+  font-weight: var(--res-font-weight-strong);
 }
 
 [data-id=monkey-king-theme] + .style-settings-container {
