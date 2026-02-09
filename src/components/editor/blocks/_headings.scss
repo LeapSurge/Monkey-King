@@ -2,9 +2,8 @@
 
 // 1. 接管默认css变量
 body {
-
   @for $i from 1 through 6 {
-    --h#{$i}-font: var(--res-font-stack-headings-west), var(--res-font-stack-headings-cn);
-    --h#{$i}-weight: var(--res-font-weight-headings);
+    --h#{$i}-font: var(--res-font-headings-west), var(--res-font-headings-cn);
+    --h#{$i}-weight: var(--res-font-headings-weight);
   }
 }

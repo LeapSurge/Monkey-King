@@ -6,9 +6,8 @@
 
 #{$preview} .cm-em,
 #{$reading} em {
-  font-family: var(--res-font-stack-em-west), var(--res-font-stack-em-cn);
-  font-weight: var(--res-font-weight-em);
+  font-family: var(--res-font-em-west), var(--res-font-em-cn);
+  font-weight: var(--res-font-em-weight);
   font-style: normal;
   color: rgb(197, 49, 49);
-
 }

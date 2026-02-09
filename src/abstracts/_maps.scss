@@ -1,145 +1,51 @@
 // 字体映射
-// west: 英文西文字体
+// west: 西文字体
 // west可选值：serif | sans | hand | serif-italic | sans-italic
 // cn: 中文字体
 // cn可选值：hei | song | kai | fang
 
+// prettier-ignore
 $style-modes: (
-  "great-hall" : ( // #region
-    // 字体设定
-    // ---------------------------------
-    // #region
-    // "font-stack-interface-theme":"",
-    "font-stack-text-theme":"song",
-    "font-stack-monospace-theme":"",
+  great-hall : (
+    fonts:(// #region
+      interface     : (west:null,      cn:null,   weight:normal),
+      theme         : (west:null,      cn:"song", weight:normal),
+      mono          : (west:null,      cn:null,           ),  // No code block
+      headings      : (west:null,      cn:"fang", weight:normal),
+      quote         : (west:"hand",    cn:"kai",  weight:normal),
+      // ul            : (west:null,        cn:null,           ),
+      // ol            : (west:null,        cn:null,           ),
 
-    "font-stack-headings-west":"",
-    "font-stack-headings-cn":"fang",
-    // "font-stack-code-west":"",
-    // "font-stack-code-cn":"",
-    "font-stack-quote-west":"hand",
-    "font-stack-quote-cn":"kai",
-    // "font-stack-list-west":"",
-    // "font-stack-list-cn":"",
-    // +"font-stack-table-west":"",
-    // +"font-stack-table-cn":"",
-    // +"font-stack-yaml-west":"",
-    // +"font-stack-yaml-cn":"",
-    // +"font-stack-callout-west":"",
-    // +"font-stack-callot-cn":"",
+      // ul-w          : (west:null,        cn:null,       ),
+      // ol-w          : (west:null,        cn:null,       ),
+      // task-list     : (west:null,        cn:null,       ),
+      // table-header  : (west:null,        cn:null,       ),
+      // metadata-label: (west:null,        cn:null,       ),
+      // callout-title : (west:null,        cn:null,       ),
 
-    // fonts for inline elements
-    //---------------------------------
-    // "font-stack-link-west":"",
-    // "font-stack-link-cn":"",
-    "font-stack-em-west":"serif-italic",
-    "font-stack-em-cn":"kai",
-    "font-stack-strong-west":"sans",
-    "font-stack-strong-cn":"hei",
-    // "font-stack-mark-west":"",
-    // "font-stack-mark-cn":"",
-    // "font-stack-delete-west":"",
-    // "font-stack-delete-cn":"",
-    "font-stack-tag-west":"hei",
-    "font-stack-tag-cn":"hei",
-    // "font-stack-footnote-west":"",
-    // "font-stack-footnote-cn":"",
-    // "font-stack-block-indentifier-west":"",
-    // "font-stack-block-indentifier-cn":"",
-    // "font-stack-comment-west":"",
-    // "font-stack-comment-cn":"",
+      // link          : (west:null,        cn:null,          ),
+      em            : (west:"serif-i", cn:"kai",  weight:normal),
+      strong        : (west:"sans",    cn:"hei",  weight:400),
+      // mark          : (west:null,        cn:null,            ),
+      // delete        : (west:null,        cn:null,            ),
+      tag           : (west:"hei",     cn:"hei",  weight:normal),
+      // footnote      : (west:null,        cn:null,          ),
+      // block-id      : (west:null,        cn:null,          ),
+      // comment       : (west:null,        cn:null,          ),
 
-    // other plugins
-    "font-stack-dataview-west":"",
-    "font-stack-dataview-cn":"",
-    // #endregion
-
-    // 字重设定
-    // ----------------------------
-    "font-weight": normal,
-    "font-weight-headings": normal,
-    "font-weight-code":normal,
-    // "quote":,
-    // "ul": ,
-    // "ol": ,
-    "font-weight-table-header":normal,
-    "font-weight-metadata-label": normal,
-    "font-weight-callout-title": normal,
-    "font-weight-link": normal,
-    "font-weight-em": normal, //em
-    "font-weight-strong": 400,
-    // "mark"
-    // "delete"
-    "font-weight-tag":normal,
-    // "footnote"
-    // "comment"
-
-
-    // #endregion
+      // dataview      : (west:null,        cn:null,),
+      // #endregion
+    )
   ),
-  // "huaguo-mount":( // #region
-  //   // 字体设定
-  //   // --------------------------
-  // #region
-  //   "font-stack-text-theme":"song",
-  //   "font-stack-monospace-theme":"",
-
-  //   "font-stack-headings-west":"",
-  //   "font-stack-headings-cn":"fang",
-
-  //   "font-stack-code-west":"",
-  //   "font-stack-code-cn":"",
-
-  //   "font-stack-quote-west":"hand",
-  //   "font-stack-quote-cn":"kai",
-  //   // "font-stack-list-west":"",
-  //   // "font-stack-list-cn":"",
-  //   // +"font-stack-table-west":"",
-  //   // +"font-stack-table-cn":"",
-  //   // +"font-stack-yaml-west":"",
-  //   // +"font-stack-yaml-cn":"",
-  //   // +"font-stack-callout-west":"",
-  //   // +"font-stack-callot-cn":"",
-
-  //   // settings for inline elements
-  //   // "font-stack-link-west":"",
-  //   // "font-stack-link-cn":"",
-  //   "font-stack-em-west":"serif-italic",
-  //   "font-stack-em-cn":"kai",
-  //   "font-stack-strong-west":"sans",
-  //   "font-stack-strong-cn":"hei",
-  //   // "font-stack-mark-west":"",
-  //   // "font-stack-mark-cn":"",
-  //   // "font-stack-delete-west":"",
-  //   // "font-stack-delete-cn":"",
-  //   "font-stack-tag-west":"",
-  //   "font-stack-tag-cn":"",
-  //   // "font-stack-footnote-west":"",
-  //   // "font-stack-footnote-cn":"",
-  //   // "font-stack-block-indentifier-west":"",
-  //   // "font-stack-block-indentifier-cn":"",
-  //   // "font-stack-comment-west":"",
-  //   // "font-stack-comment-cn":"",
-
-  //   // other plugins
-  //   "font-stack-dataview-west":"",
-  //   "font-stack-dataview-cn":"",
-  // #endregion
-
-  // 字重设定
-  // ----------------------------
-
-  // "font-weight-em": 800,
-
-  // #endregion
-  // )
+  // "huaguo-mount":(),
 );
 
 $color-schemes: (
-  "monkey" : ( // #region
+  "monkey": (
+    // #region
     "mode": "light",
     "bg0": #fcf8e0,
     // "text0": black,
-    // #endregion
-  )
+     // #endregion
+  ),
 );

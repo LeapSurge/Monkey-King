@@ -490,26 +490,23 @@ settings:
   unicode-range: U+0000-007F, U+0080-00B6, U+00B8-00FF, U+0100-017F, U+0180-024F, U+1E00-1EFF, U+2000-2013, U+2100-214F;
 }
 body.style-great-hall {
-  --preset-font-stack-text-theme: var(--stack-song);
-  --preset-font-stack-headings-cn: var(--stack-fang);
-  --preset-font-stack-quote-west: var(--stack-hand);
-  --preset-font-stack-quote-cn: var(--stack-kai);
-  --preset-font-stack-em-west: var(--stack-serif-italic);
-  --preset-font-stack-em-cn: var(--stack-kai);
-  --preset-font-stack-strong-west: var(--stack-sans);
-  --preset-font-stack-strong-cn: var(--stack-hei);
-  --preset-font-stack-tag-west: var(--stack-hei);
-  --preset-font-stack-tag-cn: var(--stack-hei);
-  --preset-font-weight: normal;
-  --preset-font-weight-headings: normal;
-  --preset-font-weight-code: normal;
-  --preset-font-weight-table-header: normal;
-  --preset-font-weight-metadata-label: normal;
-  --preset-font-weight-callout-title: normal;
-  --preset-font-weight-link: normal;
-  --preset-font-weight-em: normal;
-  --preset-font-weight-strong: 400;
-  --preset-font-weight-tag: normal;
+  --preset-font-interface-weight: normal;
+  --preset-font-theme-cn: var(--stack-song);
+  --preset-font-theme-weight: normal;
+  --preset-font-headings-cn: var(--stack-fang);
+  --preset-font-headings-weight: normal;
+  --preset-font-quote-west: var(--stack-hand);
+  --preset-font-quote-cn: var(--stack-kai);
+  --preset-font-quote-weight: normal;
+  --preset-font-em-west: var(--stack-serif-i);
+  --preset-font-em-cn: var(--stack-kai);
+  --preset-font-em-weight: normal;
+  --preset-font-strong-west: var(--stack-sans);
+  --preset-font-strong-cn: var(--stack-hei);
+  --preset-font-strong-weight: 400;
+  --preset-font-tag-west: var(--stack-hei);
+  --preset-font-tag-cn: var(--stack-hei);
+  --preset-font-tag-weight: normal;
 }
 
 body.theme-light.scheme-monkey {
@@ -542,36 +539,108 @@ body {
   --stack-serif: var(--u-west-serif), "SystemSerif";
   --stack-sans: var(--u-west-sans), "SystemSans";
   --stack-hand: "SystemHand", "SystemSans";
-  --stack-serif-italic: "SystemSerifItalic", "SystemHand";
-  --stack-sans-italic: "SystemSansItalic", "SystemHand";
-  --res-font-stack-text-theme:var(--u-font-stack-text-theme, var(--preset-font-stack-text-theme, ""));
-  --res-font-stack-monospace-theme:var(--u-font-stack-monospace-theme, var(--preset-font-stack-monospace-theme, ""));
-  --res-font-stack-headings-west:var(--u-font-stack-headings-west, var(--preset-font-stack-headings-west, ""));
-  --res-font-stack-headings-cn:var(--u-font-stack-headings-cn, var(--preset-font-stack-headings-cn, ""));
-  --res-font-stack-quote-west:var(--u-font-stack-quote-west, var(--preset-font-stack-quote-west, ""));
-  --res-font-stack-quote-cn:var(--u-font-stack-quote-cn, var(--preset-font-stack-quote-cn, ""));
-  --res-font-stack-em-west:var(--u-font-stack-em-west, var(--preset-font-stack-em-west, ""));
-  --res-font-stack-em-cn:var(--u-font-stack-em-cn, var(--preset-font-stack-em-cn, ""));
-  --res-font-stack-strong-west:var(--u-font-stack-strong-west, var(--preset-font-stack-strong-west, ""));
-  --res-font-stack-strong-cn:var(--u-font-stack-strong-cn, var(--preset-font-stack-strong-cn, ""));
-  --res-font-stack-tag-west:var(--u-font-stack-tag-west, var(--preset-font-stack-tag-west, ""));
-  --res-font-stack-tag-cn:var(--u-font-stack-tag-cn, var(--preset-font-stack-tag-cn, ""));
-  --res-font-stack-dataview-west:var(--u-font-stack-dataview-west, var(--preset-font-stack-dataview-west, ""));
-  --res-font-stack-dataview-cn:var(--u-font-stack-dataview-cn, var(--preset-font-stack-dataview-cn, ""));
-  --res-font-weight:var(--preset-font-weight, "");
-  --res-font-weight-headings:var(--preset-font-weight-headings, "");
-  --res-font-weight-code:var(--preset-font-weight-code, "");
-  --res-font-weight-table-header:var(--preset-font-weight-table-header, "");
-  --res-font-weight-metadata-label:var(--preset-font-weight-metadata-label, "");
-  --res-font-weight-callout-title:var(--preset-font-weight-callout-title, "");
-  --res-font-weight-link:var(--preset-font-weight-link, "");
-  --res-font-weight-em:var(--preset-font-weight-em, "");
-  --res-font-weight-strong:var(--preset-font-weight-strong, "");
-  --res-font-weight-tag:var(--preset-font-weight-tag, "");
-  --res-mode:var(--preset-mode, "");
-  --res-bg0:var(--preset-bg0, "");
-  --font-text-theme: var(--res-font-stack-text-theme);
-  --font-monospace-theme: var(--res-font-stack-monospace-theme);
+  --stack-serif-i: "SystemSerifItalic", "SystemHand";
+  --stack-sans-i: "SystemSansItalic", "SystemHand";
+  --res-font-interface-west: var(
+    --u-font-interface-west,
+    var(--preset-font-interface-west, "")
+  );
+  --res-font-interface-cn: var(
+    --u-font-interface-cn,
+    var(--preset-font-interface-cn, "")
+  );
+  --res-font-interface-weight: var(
+    --u-font-interface-weight,
+    var(--preset-font-interface-weight, normal)
+  );
+  --res-font-theme-west: var(
+    --u-font-theme-west,
+    var(--preset-font-theme-west, "")
+  );
+  --res-font-theme-cn: var(
+    --u-font-theme-cn,
+    var(--preset-font-theme-cn, "")
+  );
+  --res-font-theme-weight: var(
+    --u-font-theme-weight,
+    var(--preset-font-theme-weight, normal)
+  );
+  --res-font-mono-west: var(
+    --u-font-mono-west,
+    var(--preset-font-mono-west, "")
+  );
+  --res-font-mono-cn: var(
+    --u-font-mono-cn,
+    var(--preset-font-mono-cn, "")
+  );
+  --res-font-mono-weight: var(
+    --u-font-mono-weight,
+    var(--preset-font-mono-weight, normal)
+  );
+  --res-font-headings-west: var(
+    --u-font-headings-west,
+    var(--preset-font-headings-west, "")
+  );
+  --res-font-headings-cn: var(
+    --u-font-headings-cn,
+    var(--preset-font-headings-cn, "")
+  );
+  --res-font-headings-weight: var(
+    --u-font-headings-weight,
+    var(--preset-font-headings-weight, normal)
+  );
+  --res-font-quote-west: var(
+    --u-font-quote-west,
+    var(--preset-font-quote-west, "")
+  );
+  --res-font-quote-cn: var(
+    --u-font-quote-cn,
+    var(--preset-font-quote-cn, "")
+  );
+  --res-font-quote-weight: var(
+    --u-font-quote-weight,
+    var(--preset-font-quote-weight, normal)
+  );
+  --res-font-em-west: var(
+    --u-font-em-west,
+    var(--preset-font-em-west, "")
+  );
+  --res-font-em-cn: var(
+    --u-font-em-cn,
+    var(--preset-font-em-cn, "")
+  );
+  --res-font-em-weight: var(
+    --u-font-em-weight,
+    var(--preset-font-em-weight, normal)
+  );
+  --res-font-strong-west: var(
+    --u-font-strong-west,
+    var(--preset-font-strong-west, "")
+  );
+  --res-font-strong-cn: var(
+    --u-font-strong-cn,
+    var(--preset-font-strong-cn, "")
+  );
+  --res-font-strong-weight: var(
+    --u-font-strong-weight,
+    var(--preset-font-strong-weight, normal)
+  );
+  --res-font-tag-west: var(
+    --u-font-tag-west,
+    var(--preset-font-tag-west, "")
+  );
+  --res-font-tag-cn: var(
+    --u-font-tag-cn,
+    var(--preset-font-tag-cn, "")
+  );
+  --res-font-tag-weight: var(
+    --u-font-tag-weight,
+    var(--preset-font-tag-weight, normal)
+  );
+  --res-mode: var(--preset-mode, "");
+  --res-bg0: var(--preset-bg0, "");
+  --font-text-theme: var(--res-font-theme-west), var(--res-font-theme-cn);
+  --font-monospace-theme: var(--res-font-mono-west), var(--res-font-mono-cn);
   --radius-s: 8px;
   --radius-m: 16px;
   --radius-l: 24px;
@@ -579,23 +648,38 @@ body {
   --background-primary: var(--res-bg0);
 }
 
+body {
+  --h1-font: var(--res-font-headings-west), var(--res-font-headings-cn);
+  --h1-weight: var(--res-font-headings-weight);
+  --h2-font: var(--res-font-headings-west), var(--res-font-headings-cn);
+  --h2-weight: var(--res-font-headings-weight);
+  --h3-font: var(--res-font-headings-west), var(--res-font-headings-cn);
+  --h3-weight: var(--res-font-headings-weight);
+  --h4-font: var(--res-font-headings-west), var(--res-font-headings-cn);
+  --h4-weight: var(--res-font-headings-weight);
+  --h5-font: var(--res-font-headings-west), var(--res-font-headings-cn);
+  --h5-weight: var(--res-font-headings-weight);
+  --h6-font: var(--res-font-headings-west), var(--res-font-headings-cn);
+  --h6-weight: var(--res-font-headings-weight);
+}
+
 .markdown-source-view.cm-s-obsidian.mod-cm6.is-live-preview .cm-quote,
 .markdown-rendered blockquote {
-  font-family: var(--res-font-stack-quote-west), var(--res-font-stack-quote-cn);
+  font-family: var(--res-font-quote-west), var(--res-font-quote-cn);
 }
 
 .markdown-source-view.cm-s-obsidian.mod-cm6.is-live-preview .cm-em,
 .markdown-rendered em {
-  font-family: var(--res-font-stack-em-west), var(--res-font-stack-em-cn);
-  font-weight: var(--res-font-weight-em);
+  font-family: var(--res-font-em-west), var(--res-font-em-cn);
+  font-weight: var(--res-font-em-weight);
   font-style: normal;
   color: rgb(197, 49, 49);
 }
 
 .markdown-source-view.cm-s-obsidian.mod-cm6.is-live-preview .cm-strong,
 .markdown-rendered strong {
-  font-family: var(--res-font-stack-strong-west), var(--res-font-stack-strong-cn);
-  font-weight: var(--res-font-weight-strong);
+  font-family: var(--res-font-strong-west), var(--res-font-strong-cn);
+  font-weight: var(--res-font-strong-weight);
 }
 
 [data-id=monkey-king-theme] + .style-settings-container {

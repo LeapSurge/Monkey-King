@@ -1,40 +1,23 @@
-@use 'sass:string';
-@use 'sass:map';
-@use '../abstracts/maps' as *;
-@use '../abstracts/mixins' as *;
+@each $mode, $groups in $style-modes {
+  $fonts: map.get($groups, fonts);
+  @if $fonts == null {
+    @error "style-mode '#{$mode}' is missing required 'fonts' config";
+  }
 
-
-@each $name, $props in $style-modes {
-
-  // 生成 class，例如 body.style-mode-toy-box
-  body.style-#{$name} {
-    @each $key, $val in $props {
-
-      // 【逻辑判定】：只有 $val 不为 null 且不为空字符串时才执行
-      @if $val !=null and $val !="" {
-
-        // 1. 注入字体映射变量
-        @if string.index($key, "font-stack-") {
-          --preset-#{$key}: var(--stack-#{$val});
-        }
-
-        // 2. 注入 UI 形状变量
-        @else {
-          --preset-#{$key}: #{$val};
-        }
-      }
+  body.style-#{$mode} {
+    @each $element, $font-config in $fonts {
+      @include generate-font-preset($element, $font-config);
     }
   }
 }
 
 @each $name, $props in $color-schemes {
-  $mode : map.get($props, "mode");
+  $mode: map.get($props, "mode");
 
   body.theme-#{$mode}.scheme-#{$name} {
     @each $key, $val in $props {
-
       // 【逻辑判定】：只有 $val 不为 null 且不为空字符串时才执行
-      @if $val !=null and $val !="" {
+      @if $val !=null and $val != "" {
         --preset-#{$key}: #{$val};
       }
     }

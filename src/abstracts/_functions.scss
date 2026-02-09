@@ -1,34 +1,43 @@
-@use 'sass:list';
+@use "sass:list";
 // --------------------------------------------------------
-// 函数：给没有 local() 的字体名列表加上 local()
+// 描述：给没有 local() 的字体名列表加上 local()
 // --------------------------------------------------------
 @function generate-local-src($font-list) {
   $src-string: ();
   @each $font in $font-list {
     // 给每个字体名包裹 local()
-    $src-string: list.append($src-string, local('#{$font}'), comma);
+    $src-string: list.append($src-string, local("#{$font}"), comma);
   }
   @return $src-string;
 }
 
 // --------------------------------------------------------
-// 函数：给正常字体列表拼接变体名
+// 描述：给正常字体列表拼接变体名
 // 中文字体命名不规范，不要用这个函数拼接。
 // $font-list, 字体列表
 // $suffix, 变体后缀，比如Bold，Italic
 // --------------------------------------------------------
 @function generate-variant-src($font-list, $suffix) {
   $src-string: ();
-  
+
   @each $font in $font-list {
     // 1. 生成带空格的标准命名 (Windows/Linux 常见)
     // 例如: local('Georgia Italic')
-    $src-string: list.append($src-string, local('#{$font} #{$suffix}'), comma);
-    
+    $src-string: list.append($src-string, local("#{$font} #{$suffix}"), comma);
+
     // 2. 生成带连字符的 PostScript 命名 (macOS 常见)
     // 例如: local('Georgia-Italic')
-    $src-string: list.append($src-string, local('#{$font}-#{$suffix}'), comma);
+    $src-string: list.append($src-string, local("#{$font}-#{$suffix}"), comma);
   }
-  
+
   @return $src-string;
+}
+
+// -------------------------------------------------------
+// description: get the specific group map in the style-modes map.
+// -------------------------------------------------------
+@function get-group-map($matrix, $mode, $group) {
+  $mode-map: map-get($matrix, $mode);
+
+  @return map-get($mode-map, $group);
 }

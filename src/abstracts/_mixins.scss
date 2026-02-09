@@ -1,16 +1,23 @@
-// Mixins and utility functions
-@mixin generate-font-stacks-variables($elements) {
-  @each $element, $config in $elements {
-    --#{$element}-stack-cn: #{map-get($config, 'cn')};
-    --#{$element}-stack-west: #{map-get($config, 'west')};
-  }
-}
+@use "sass:map";
+@use "sass:meta";
 
-@mixin generate-font-stacks($element) {
-  @if map-has-key($font-stacks, $element) {
-    font-family: var(--#{$element}-stack-west),
-    var(--#{$element}-stack-cn),
-    sans-serif;
+@mixin generate-font-preset($element, $config) {
+  @if meta.type-of($config) != map {
+    @error "font config for #{$element} must be a map";
+  }
+
+  $west: map.get($config, west);
+  $cn: map.get($config, cn);
+  $weight: map.get($config, weight);
+
+  @if $west != null {
+    --preset-font-#{$element}-west: var(--stack-#{$west});
+  }
+  @if $cn != null {
+    --preset-font-#{$element}-cn: var(--stack-#{$cn});
+  }
+  @if $weight != null {
+    --preset-font-#{$element}-weight: #{$weight};
   }
 }
 

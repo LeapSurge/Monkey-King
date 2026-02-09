@@ -14,11 +14,9 @@
   --u-cn-fang: "";
   --u-west-serif: "";
   --u-west-sans: "";
-
 }
 
 body {
-
   /* =========================================================
       字体栈 (用户自定义 > 系统栈 > 兜底)
     ========================================================= */
@@ -32,32 +30,33 @@ body {
   --stack-serif: var(--u-west-serif), "SystemSerif";
   --stack-sans: var(--u-west-sans), "SystemSans";
   --stack-hand: "SystemHand", "SystemSans";
-  --stack-serif-italic: "SystemSerifItalic", "SystemHand";
-  --stack-sans-italic: "SystemSansItalic", "SystemHand";
+  --stack-serif-i: "SystemSerifItalic", "SystemHand";
+  --stack-sans-i: "SystemSansItalic", "SystemHand";
 
   // 生成resolution变量
-  @each $key, $val in map.get($style-modes, "great-hall") {
+  @each $group, $def in $token-structure {
+    $elements: map.get($def, elements);
+    $schema: map.get($def, schema);
 
-    // 字体
-    @if string.index($key, "font-stack-") {
-      // 如果用户未设置，preset也没设置，就回退为空。
-      --res-#{$key}:var(--u-#{$key}, var(--preset-#{$key}, ""));
-    }
-
-    @else {
-      --res-#{$key}:var(--preset-#{$key}, "");
+    @each $element in $elements {
+      @each $key, $default in $schema {
+        --res-#{$group}-#{$element}-#{$key}: var(
+          --u-#{$group}-#{$element}-#{$key},
+          var(--preset-#{$group}-#{$element}-#{$key}, #{meta.inspect($default)})
+        );
+      }
     }
   }
 
   @each $key, $val in map.get($color-schemes, "monkey") {
-    --res-#{$key}:var(--preset-#{$key}, "");
+    --res-#{$key}: var(--preset-#{$key}, "");
   }
-
 
   // obsidian自带变量应用
   // 通用变量
-  --font-text-theme: var(--res-font-stack-text-theme);
-  --font-monospace-theme: var(--res-font-stack-monospace-theme);
+  --font-text-theme: var(--res-font-theme-west), var(--res-font-theme-cn);
+  --font-monospace-theme: var(--res-font-mono-west), var(--res-font-mono-cn);
+
   // 圆角
   --radius-s: 8px;
   --radius-m: 16px;
@@ -67,6 +66,4 @@ body {
   // colors
   --background-primary: var(--res-bg0);
   // --text-normal: var(--res-text0);
-
-
 }
