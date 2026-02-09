@@ -1,48 +1,47 @@
-// 1. 抽象层(Abstracts) 
-@use 'abstracts/variables';
-@use 'abstracts/functions';
-@use 'abstracts/maps';
-@use 'abstracts/mixins';
+// 1. 抽象层(Abstracts)
+@use "01. abstracts/variables";
+@use "01. abstracts/functions";
+@use "01. abstracts/maps";
+@use "01. abstracts/mixins";
 
 // 2. stylesetting配置
-@use 'config/style-settings';
+@use "02. config/style-settings";
 
 // 3. 代码生成层
-@use 'core/font-face';
-@use 'core/generators';
-@use 'core/resolution';
-
+@use "03. core/font-face";
+@use "03. core/generators";
+@use "03. core/resolution";
 
 // 4. 应用层
 
 // Editor styles
-// @use 'components/editor/editor-base';
-// @use 'components/editor/headings';
-// @use 'components/editor/paragraphs';
-// @use 'components/editor/lists';
-// @use 'components/editor/tables';
-// @use 'components/editor/code';
-@use 'components/editor/blocks/blockquotes';
-@use 'components/editor/inlines/em';
-@use 'components/editor/inlines/strong';
-// @use 'components/editor/links';
-// @use 'components/editor/images';
-// @use 'components/editor/emphasis';
-// @use 'components/editor/math';
-// @use 'components/editor/callouts';
+// @use '04. components/editor/editor-base';
+@use "04. components/editor/blocks/headings";
+// @use '04. components/editor/paragraphs';
+// @use '04. components/editor/lists';
+// @use '04. components/editor/tables';
+// @use '04. components/editor/code';
+@use "04. components/editor/blocks/blockquotes";
+@use "04. components/editor/inlines/em";
+@use "04. components/editor/inlines/strong";
+// @use '04. components/editor/links';
+// @use '04. components/editor/images';
+// @use '04. components/editor/emphasis';
+// @use '04. components/editor/math';
+// @use '04. components/editor/callouts';
 
 // Plugins
-// @use 'components/plugins/obsidian_tags';
-// @use 'components/plugins/obsidian_backlinks';
-// @use 'components/plugins/obsidian_embeds';
-// @use 'components/plugins/obsidian_canvas';
-// @use 'components/plugins/obsidian_graph';
-@use 'components/plugins/style-settings-ui';
+// @use '04. components/plugins/obsidian_tags';
+// @use '04. components/plugins/obsidian_backlinks';
+// @use '04. components/plugins/obsidian_embeds';
+// @use '04. components/plugins/obsidian_canvas';
+// @use '04. components/plugins/obsidian_graph';
+@use "04. components/plugins/style-settings-ui";
 
 // Interface
-// @use 'components/interface/sidebar';
-// @use 'components/interface/tabs';
-// @use 'components/interface/modals';
-// @use 'components/interface/ribbons';
-// @use 'components/interface/statusbar';
-// @use 'components/interface/command-palette';
+// @use '04. components/interface/sidebar';
+// @use '04. components/interface/tabs';
+// @use '04. components/interface/modals';
+// @use '04. components/interface/ribbons';
+// @use '04. components/interface/statusbar';
+// @use '04. components/interface/command-palette';

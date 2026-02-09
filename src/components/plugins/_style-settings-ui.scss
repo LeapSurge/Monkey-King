@@ -1,8 +1,8 @@
 // Style Settings Plugin Responsive Layout
 // Optimized for Obsidian tab/panel context
 
-@use '../../abstracts/variables' as *;
-@use '../../abstracts/mixins' as *;
+@use '../../01. abstracts/variables' as *;
+@use '../../01. abstracts/mixins' as *;
 
 // Specific Style Settings item - optimized for panel width
 [data-id="monkey-king-theme"]+.style-settings-container {
