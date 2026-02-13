@@ -1,6 +1,6 @@
 @use "../../../01. abstracts/variables" as *;
 
-body .view-content {
+body {
   --line-height-normal: var(--res-gap-p-line-height);
 }
 

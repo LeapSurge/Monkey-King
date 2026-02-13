@@ -866,7 +866,11 @@ body {
   --background-primary: var(--res-bg0);
 }
 
-body .view-content {
+.nav-file-tag {
+  line-height: var(--line-height-title);
+}
+
+body {
   --line-height-normal: var(--res-gap-p-line-height);
 }
 

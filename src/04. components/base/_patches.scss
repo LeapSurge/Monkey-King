@@ -1,0 +1,4 @@
+// Fix the excessive line height of nav file tags in loose mode
+.nav-file-tag {
+  line-height: var(--line-height-title);
+}
