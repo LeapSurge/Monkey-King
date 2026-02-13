@@ -869,6 +869,8 @@ body {
 }
 
 body {
+  --font-text:
+    var(--font-text-theme), var(--font-text-override), var(--font-default);
   --font-text-theme: var(--res-font-theme-west), var(--res-font-theme-cn);
   --font-monospace-theme: var(--res-font-mono-west), var(--res-font-mono-cn);
   --line-height-normal: var(--res-gap-p-line-height);
