@@ -41,3 +41,14 @@
 
   @return map-get($mode-map, $group);
 }
+
+///
+/// get a list of his, separate by comma.
+///
+@function get-heading-range($max) {
+  $list: ();
+  @for $i from 1 through $max {
+    $list: list.append($list, h#{$i}, comma);
+  }
+  @return $list;
+}

@@ -1,4 +1,5 @@
 @use "../../../01. abstracts/variables" as *;
+@use "../../../01. abstracts/functions" as *;
 @use "sass:list";
 
 // 1. 接管默认css变量
@@ -11,6 +12,10 @@ body {
   }
 }
 
+#{$preview} .cm-line.HyperMD-header {
+  padding-top: 0;
+}
+
 @for $i from 1 through 6 {
   // #{$preview} .cm-line.HyperMD-header.HyperMD-header-#{$i},
   #{$reading} h#{$i} {
@@ -18,13 +23,7 @@ body {
     margin-bottom: var(--res-gap-h#{$i}-margin-bottom);
   }
 
-  $selectors: ();
-
-  @for $j from 1 through $i {
-    $selectors: list.append($selectors, h#{$j}, comma);
-  }
-
-  #{$reading} div:has(> :is(#{$selectors})) + div > h#{$i} {
+  #{$reading} div:has(> :is(#{get-heading-range($i)})) + div > h#{$i} {
     margin-block-start: 0 !important;
   }
 }

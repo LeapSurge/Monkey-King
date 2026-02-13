@@ -530,8 +530,8 @@ body.style-great-hall {
   --preset-gap-h1-margin-bottom: 18;
   --preset-gap-h2-font-size: 12;
   --preset-gap-h2-line-height: 18;
-  --preset-gap-h2-margin-top: 21;
-  --preset-gap-h2-margin-bottom: 17;
+  --preset-gap-h2-margin-top: 12;
+  --preset-gap-h2-margin-bottom: 12;
   --preset-gap-h3-font-size: 11;
   --preset-gap-h3-line-height: 17;
   --preset-gap-h3-margin-top: 13;
@@ -603,8 +603,8 @@ body.gap-loose {
   --preset-gap-h1-margin-bottom: 18;
   --preset-gap-h2-font-size: 12;
   --preset-gap-h2-line-height: 18;
-  --preset-gap-h2-margin-top: 21;
-  --preset-gap-h2-margin-bottom: 17;
+  --preset-gap-h2-margin-top: 12;
+  --preset-gap-h2-margin-bottom: 12;
   --preset-gap-h3-font-size: 11;
   --preset-gap-h3-line-height: 17;
   --preset-gap-h3-margin-top: 13;
@@ -876,7 +876,7 @@ body {
   --line-height-normal: var(--res-gap-p-line-height);
 }
 
-.markdown-reading-view .markdown-preview-view.markdown-rendered div:has(> :is(h1, h2, h3, h4, h5, h6)) + div > :is(blockquote, p, ol, ul, pre) {
+.markdown-reading-view .markdown-preview-view.markdown-rendered div:is(.el-h1, .el-h2, .el-h3, .el-h4, .el-h5, .el-h6) + div > :is(blockquote, p, ol, ul, pre) {
   margin-top: 0;
 }
 
@@ -905,6 +905,10 @@ body {
   --h6-weight: var(--res-font-headings-weight);
   --h6-size: var(--res-gap-h6-font-size);
   --h6-line-height: var(--res-gap-h6-line-height);
+}
+
+.markdown-source-view.cm-s-obsidian.mod-cm6.is-live-preview .cm-line.HyperMD-header {
+  padding-top: 0;
 }
 
 .markdown-reading-view .markdown-preview-view.markdown-rendered h1 {
