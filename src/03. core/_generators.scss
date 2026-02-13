@@ -8,10 +8,31 @@
   @if $fonts == null {
     @error "style-mode '#{$mode}' is missing required 'fonts' config";
   }
+  $gap-strategy: map.get($groups, gap-strategy);
+  $gap-map: null;
+  @if $gap-strategy != null {
+    $gap-map: map.get($gap-strategies, $gap-strategy);
+    @if $gap-map == null {
+      @error "gap-strategy '#{$gap-strategy}' is not defined in gap-strategies";
+    }
+  }
 
   body.style-#{$mode} {
     @each $element, $font-config in $fonts {
       @include generate-font-preset($element, $font-config);
+    }
+    @if $gap-map != null {
+      @each $token, $config in $gap-map {
+        @include generate-gap-preset($token, $config);
+      }
+    }
+  }
+}
+
+@each $strategy, $tokens in $gap-strategies {
+  body.gap-#{$strategy} {
+    @each $token, $config in $tokens {
+      @include generate-gap-preset($token, $config);
     }
   }
 }

@@ -1,5 +1,5 @@
 // Global Variables
-$reading: ".markdown-rendered";
+$reading: ".markdown-reading-view .markdown-preview-view.markdown-rendered";
 $preview: ".markdown-source-view.cm-s-obsidian.mod-cm6.is-live-preview";
 
 $token-structure: (
@@ -11,4 +11,39 @@ $token-structure: (
       weight: normal,
     ),
   ),
+);
+
+// Gap tokens (array-like structure for extensibility)
+$gap-keys-headings: (font-size, line-height, margin-top, margin-bottom);
+$gap-tokens: (
+  (
+      id: p,
+      keys: (
+        line-height,
+      ),
+    )
+    (
+      id: h1,
+      keys: $gap-keys-headings,
+    )
+    (
+      id: h2,
+      keys: $gap-keys-headings,
+    )
+    (
+      id: h3,
+      keys: $gap-keys-headings,
+    )
+    (
+      id: h4,
+      keys: $gap-keys-headings,
+    )
+    (
+      id: h5,
+      keys: $gap-keys-headings,
+    )
+    (
+      id: h6,
+      keys: $gap-keys-headings,
+    )
 );

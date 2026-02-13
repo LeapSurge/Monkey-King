@@ -7,6 +7,7 @@
 // prettier-ignore
 $style-modes: (
   great-hall : (
+    gap-strategy: loose,
     fonts:(// #region
       interface     : (west:null,      cn:null,   weight:normal),
       theme         : (west:null,      cn:"song", weight:normal),
@@ -35,9 +36,112 @@ $style-modes: (
 
       // dataview      : (west:null,        cn:null,),
       // #endregion
-    )
+    ),
   ),
-  // "huaguo-mount":(),
+  "huaguo-mount":(
+    gap-strategy: compact,
+    fonts:(// #region
+      interface     : (west:null,      cn:null,   weight:normal),
+      theme         : (west:null,      cn:"song", weight:normal),
+      mono          : (west:null,      cn:null,           ),
+      headings      : (west:null,      cn:"fang", weight:normal),
+      quote         : (west:"hand",    cn:"kai",  weight:normal),
+      em            : (west:"serif-i", cn:"kai",  weight:normal),
+      strong        : (west:"sans",    cn:"hei",  weight:400),
+      tag           : (west:"hei",     cn:"hei",  weight:normal),
+      // #endregion
+    ),
+  ),
+);
+
+// Gap strategies (steps, not lengths)
+$gap-strategies: (
+  loose: (
+    // #region
+    p: (
+        line-height: 14,
+      ),
+    h1: (
+      font-size: 14,
+      line-height: 20,
+      margin-top: 18,
+      margin-bottom: 18,
+    ),
+    h2: (
+      font-size: 12,
+      line-height: 18,
+      margin-top: 21,
+      margin-bottom: 17,
+    ),
+    h3: (
+      font-size: 11,
+      line-height: 17,
+      margin-top: 13,
+      margin-bottom: 12,
+    ),
+    h4: (
+      font-size: 10,
+      line-height: 16,
+      margin-top: 15,
+      margin-bottom: 11,
+    ),
+    h5: (
+      font-size: 9,
+      line-height: 15,
+      margin-top: 7,
+      margin-bottom: 6,
+    ),
+    h6: (
+      font-size: 8,
+      line-height: 14,
+      margin-top: 9,
+      margin-bottom: 5,
+    ),
+    // #endregion
+  ),
+  compact: (
+    // #region
+    p: (
+        line-height: 12,
+      ),
+    h1: (
+      font-size: 14,
+      line-height: 18,
+      margin-top: 9,
+      margin-bottom: 2,
+    ),
+    h2: (
+      font-size: 12,
+      line-height: 16,
+      margin-top: 7,
+      margin-bottom: 2,
+    ),
+    h3: (
+      font-size: 11,
+      line-height: 15,
+      margin-top: 6,
+      margin-bottom: 1,
+    ),
+    h4: (
+      font-size: 10,
+      line-height: 14,
+      margin-top: 5,
+      margin-bottom: 1,
+    ),
+    h5: (
+      font-size: 9,
+      line-height: 13,
+      margin-top: 4,
+      margin-bottom: 0,
+    ),
+    h6: (
+      font-size: 8,
+      line-height: 12,
+      margin-top: 4,
+      margin-bottom: 0,
+    ),
+    // #endregion
+  ),
 );
 
 $color-schemes: (

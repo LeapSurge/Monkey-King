@@ -50,6 +50,20 @@ body {
     }
   }
 
+  // Gap base unit (1/8 of text size)
+  --gap-unit: calc(var(--font-text-size) / 8);
+
+  // Gap resolution variables
+  @each $token in $gap-tokens {
+    $id: map.get($token, id);
+    $keys: map.get($token, keys);
+    @each $key in $keys {
+      --res-gap-#{$id}-#{$key}: calc(
+        var(--gap-unit) * var(--preset-gap-#{$id}-#{$key})
+      );
+    }
+  }
+
   @each $key, $val in map.get($color-schemes, "monkey") {
     --res-#{$key}: var(--preset-#{$key}, "");
   }

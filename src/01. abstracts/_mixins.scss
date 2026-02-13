@@ -21,6 +21,18 @@
   }
 }
 
+@mixin generate-gap-preset($token, $config) {
+  @if meta.type-of($config) != map {
+    @error "gap config for #{$token} must be a map";
+  }
+
+  @each $key, $val in $config {
+    @if $val != null and $val != "" {
+      --preset-gap-#{$token}-#{$key}: #{$val};
+    }
+  }
+}
+
 // Responsive breakpoints
 @mixin mobile {
   @media (max-width: 768px) {

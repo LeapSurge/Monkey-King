@@ -1,0 +1,13 @@
+@use "../../../01. abstracts/variables" as *;
+
+body .view-content {
+  --line-height-normal: var(--res-gap-p-line-height);
+}
+
+#{$reading} {
+  div:has(> :is(h1, h2, h3, h4, h5, h6))
+    + div
+    > :is(blockquote, p, ol, ul, pre) {
+    margin-top: 0;
+  }
+}

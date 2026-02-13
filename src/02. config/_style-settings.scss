@@ -320,6 +320,22 @@ settings:
         level: 2
         collapsed: true
     -
+        id: gap-strategy
+        title: 密度策略
+        type: class-select
+        default: 'gap-auto'
+        description: 选择间距/字号密度策略（默认跟随模式）
+        options:
+            -
+                label: "跟随模式"
+                value: 'gap-auto'
+            -
+                label: "宽松"
+                value: 'gap-loose'
+            -
+                label: "紧凑"
+                value: 'gap-compact'
+    -
         id: loose-layout
         title: 开启宽松布局
         type: variable-checkbox
