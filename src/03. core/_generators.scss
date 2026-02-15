@@ -214,6 +214,46 @@ $allowed-color-keys: (mode);
   }
 }
 
+@each $mode, $name in $default-color-scheme-by-theme-mode {
+  @if list.index($theme-modes, $mode) == null {
+    @error "default color-scheme map has unsupported mode '#{$mode}'";
+  }
+  $props: map.get($color-schemes, $name);
+  @if $props == null {
+    @error "default color-scheme map references unknown scheme '#{$name}'";
+  }
+  $scheme-mode: map.get($props, mode);
+  @if $scheme-mode != $mode {
+    @error
+      "default color-scheme '#{$name}' mode '#{$scheme-mode}' does not match '#{$mode}'";
+  }
+
+  body.theme-#{$mode} {
+    @each $key, $val in $props {
+      @if $key != mode and $val != null and $val != "" {
+        --preset-#{$key}: #{$val};
+      }
+    }
+  }
+}
+
+@each $mode, $scheme in $default-color-scheme-by-theme-mode {
+  $mode-tunes: map.get($bg-tune-by-scheme-mode, $scheme);
+  @if $mode-tunes == null {
+    @error "default color-scheme '#{$scheme}' has no bg-tune config";
+  }
+
+  @each $style-mode, $tune in $mode-tunes {
+    @if map.get($style-modes, $style-mode) == null {
+      @error "bg-tune matrix references unknown style-mode '#{$style-mode}'";
+    }
+
+    body.theme-#{$mode}.style-#{$style-mode} {
+      --preset-bg-tune: #{$tune};
+    }
+  }
+}
+
 @each $scheme, $mode-tunes in $bg-tune-by-scheme-mode {
   @if map.get($color-schemes, $scheme) == null {
     @error "bg-tune matrix references unknown scheme '#{$scheme}'";

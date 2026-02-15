@@ -126,6 +126,13 @@ $color-schemes: (
   ),
 );
 
+// default scheme by theme mode (used when no scheme-* class is injected)
+// prettier-ignore
+$default-color-scheme-by-theme-mode: (
+  "light": "monkey",
+  "dark" : "lord",
+);
+
 // scheme x style-mode default background tune
 // prettier-ignore
 $bg-tune-by-scheme-mode: (
