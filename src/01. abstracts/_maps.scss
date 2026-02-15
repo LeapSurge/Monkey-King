@@ -7,24 +7,86 @@
 // 可复用字体预设，style-mode 只引用预设，避免重复定义
 $font-presets: (
   base: (
-    interface: (west: null, cn: null, weight: normal),
-    theme: (west: null, cn: "song", weight: normal),
-    mono: (west: null, cn: null),
-    headings: (west: null, cn: "fang", weight: normal),
-    quote: (west: "hand", cn: "kai", weight: normal),
-    em: (west: "serif-i", cn: "kai", weight: normal),
-    strong: (west: "sans", cn: "hei", weight: 500),
-    tag: (west: "hei", cn: "hei", weight: normal),
+    interface: (
+      west: null,
+      cn: null,
+      weight: normal,
+    ),
+    theme: (
+      west: null,
+      cn: "song",
+      weight: normal,
+    ),
+    mono: (
+      west: null,
+      cn: null,
+    ),
+    headings: (
+      west: null,
+      cn: "fang",
+      weight: normal,
+    ),
+    quote: (
+      west: "hand",
+      cn: "kai",
+      weight: normal,
+    ),
+    em: (
+      west: "serif-i",
+      cn: "kai",
+      weight: normal,
+    ),
+    strong: (
+      west: "sans",
+      cn: "hei",
+      weight: 500,
+    ),
+    tag: (
+      west: "hei",
+      cn: "hei",
+      weight: normal,
+    ),
   ),
   huaguo: (
-    interface: (west: null, cn: null, weight: normal),
-    theme: (west: null, cn: "song", weight: normal),
-    mono: (west: null, cn: null),
-    headings: (west: null, cn: "fang", weight: normal),
-    quote: (west: "hand", cn: "kai", weight: normal),
-    em: (west: "serif-i", cn: "kai", weight: normal),
-    strong: (west: "sans", cn: "hei", weight: 400),
-    tag: (west: "hei", cn: "hei", weight: normal),
+    interface: (
+      west: null,
+      cn: null,
+      weight: normal,
+    ),
+    theme: (
+      west: null,
+      cn: "song",
+      weight: normal,
+    ),
+    mono: (
+      west: null,
+      cn: null,
+    ),
+    headings: (
+      west: null,
+      cn: "fang",
+      weight: normal,
+    ),
+    quote: (
+      west: "hand",
+      cn: "kai",
+      weight: normal,
+    ),
+    em: (
+      west: "serif-i",
+      cn: "kai",
+      weight: normal,
+    ),
+    strong: (
+      west: "sans",
+      cn: "hei",
+      weight: 400,
+    ),
+    tag: (
+      west: "hei",
+      cn: "hei",
+      weight: normal,
+    ),
   ),
 );
 
@@ -135,21 +197,21 @@ $color-schemes: (
     mode: "light",
 
     // Background seeds in H/S/L axes
-    bg0-h: 51.9deg,
-    bg0-s: 72.5%,
-    bg0-l: 90%,
-    bg1-h: 48deg,
-    bg1-s: 100%,
-    bg1-l: 98%,
-    bg2-h: 127.5deg,
-    bg2-s: 87%,
-    bg2-l: 91%,
-    bg3-h: 139.8deg,
-    bg3-s: 40%,
-    bg3-l: 56.9%,
-    bg4-h: 44.8deg,
+    bg0-h: 51.67deg,
+    bg0-s: 72%,
+    bg0-l: 90.2%,
+    bg1-h: 45deg,
+    bg1-s: 42.11%,
+    bg1-l: 92.55%,
+    bg2-h: 127.89deg,
+    bg2-s: 51.35%,
+    bg2-l: 85.49%,
+    bg3-h: 140.25deg,
+    bg3-s: 32.79%,
+    bg3-l: 52.16%,
+    bg4-h: 44.77deg,
     bg4-s: 100%,
-    bg4-l: 74.5%,
+    bg4-l: 74.51%,
 
     // Text (fixed)
     tx1: #000000,
@@ -198,8 +260,8 @@ $color-schemes: (
 // scheme x style-mode default background tune
 $bg-tune-by-scheme-mode: (
   "monkey": (
-    great-hall: 0,
-    huaguo-mount: -8,
+    great-hall: 12,
+    huaguo-mount: 0,
   ),
   "lord": (
     great-hall: -6,

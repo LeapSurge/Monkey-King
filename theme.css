@@ -54,8 +54,8 @@ settings:
         title: 背景总微调
         type: variable-number-slider
         default: 0
-        min: -100
-        max: 100
+        min: -20
+        max: 20
         step: 1
         description: 单滑块统一微调所有背景色的饱和度与亮度（不改变色相）。0 为不偏移。
     -
@@ -594,21 +594,21 @@ body.gap-compact {
 }
 
 body.theme-light.scheme-monkey {
-  --preset-bg0-h: 51.9deg;
-  --preset-bg0-s: 72.5%;
-  --preset-bg0-l: 90%;
-  --preset-bg1-h: 48deg;
-  --preset-bg1-s: 100%;
-  --preset-bg1-l: 98%;
-  --preset-bg2-h: 127.5deg;
-  --preset-bg2-s: 87%;
-  --preset-bg2-l: 91%;
-  --preset-bg3-h: 139.8deg;
-  --preset-bg3-s: 40%;
-  --preset-bg3-l: 56.9%;
-  --preset-bg4-h: 44.8deg;
+  --preset-bg0-h: 51.67deg;
+  --preset-bg0-s: 72%;
+  --preset-bg0-l: 90.2%;
+  --preset-bg1-h: 45deg;
+  --preset-bg1-s: 42.11%;
+  --preset-bg1-l: 92.55%;
+  --preset-bg2-h: 127.89deg;
+  --preset-bg2-s: 51.35%;
+  --preset-bg2-l: 85.49%;
+  --preset-bg3-h: 140.25deg;
+  --preset-bg3-s: 32.79%;
+  --preset-bg3-l: 52.16%;
+  --preset-bg4-h: 44.77deg;
   --preset-bg4-s: 100%;
-  --preset-bg4-l: 74.5%;
+  --preset-bg4-l: 74.51%;
   --preset-tx1: #000000;
   --preset-tx2: #222222;
   --preset-tx3: #333333;
@@ -644,11 +644,11 @@ body.theme-light.scheme-lord {
 }
 
 body.scheme-monkey.style-great-hall {
-  --preset-bg-tune: 0;
+  --preset-bg-tune: 12;
 }
 
 body.scheme-monkey.style-huaguo-mount {
-  --preset-bg-tune: -8;
+  --preset-bg-tune: 0;
 }
 
 body.scheme-lord.style-great-hall {
@@ -864,9 +864,9 @@ body {
   --radius-m: 16px;
   --radius-l: 24px;
   --radius-xl: 32px;
-  --res-bg-tune: var(--preset-bg-tune, 0);
-  --res-bg-ds: calc(var(--res-bg-tune) * 0.08%);
-  --res-bg-dl: calc(var(--res-bg-tune) * -0.12%);
+  --res-bg-tune: clamp(-30, var(--preset-bg-tune, 0), 30);
+  --res-bg-ds: calc(var(--res-bg-tune) * 1.206%);
+  --res-bg-dl: calc(var(--res-bg-tune) * 0.278%);
   --res-bg0-h: var(--preset-bg0-h);
   --res-bg0-s: clamp(
     0%,
@@ -947,7 +947,7 @@ body {
 }
 
 body.bg-tune-override {
-  --res-bg-tune: var(--u-bg-tune, var(--preset-bg-tune, 0));
+  --res-bg-tune: clamp(-30, var(--u-bg-tune, var(--preset-bg-tune, 0)), 30);
 }
 
 body.theme-light.scheme-monkey {

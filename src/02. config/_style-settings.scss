@@ -53,8 +53,8 @@ settings:
         title: 背景总微调
         type: variable-number-slider
         default: 0
-        min: -100
-        max: 100
+        min: -20
+        max: 20
         step: 1
         description: 单滑块统一微调所有背景色的饱和度与亮度（不改变色相）。0 为不偏移。
     -

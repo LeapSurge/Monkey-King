@@ -72,7 +72,7 @@ body {
   --radius-xl: 32px;
 
   // Color resolution variables (resolved from preset on body classes)
-  --res-bg-tune: var(--preset-bg-tune, 0);
+  --res-bg-tune: clamp(-30, var(--preset-bg-tune, 0), 30);
 
   @each $axis, $factor in $bg-tune-factors {
     --res-bg-d#{$axis}: calc(var(--res-bg-tune) * #{$factor});
@@ -102,7 +102,7 @@ body {
 }
 
 body.bg-tune-override {
-  --res-bg-tune: var(--u-bg-tune, var(--preset-bg-tune, 0));
+  --res-bg-tune: clamp(-30, var(--u-bg-tune, var(--preset-bg-tune, 0)), 30);
 }
 
 @each $scheme, $props in $color-schemes {
