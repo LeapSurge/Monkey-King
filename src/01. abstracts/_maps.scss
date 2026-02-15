@@ -1,56 +1,40 @@
 // 字体映射
-// west: 西文字体
-// west可选值：serif | sans | hand | serif-italic | sans-italic
-// cn: 中文字体
-// cn可选值：hei | song | kai | fang
+// west可选值: serif | sans | hand | serif-i | sans-i
+// cn可选值: hei | song | kai | fang
+
+// 可复用字体预设，style-mode 只引用预设，避免重复定义
+$font-presets: (
+  base: (
+    interface: (west: null, cn: null, weight: normal),
+    theme: (west: null, cn: "song", weight: normal),
+    mono: (west: null, cn: null),
+    headings: (west: null, cn: "fang", weight: normal),
+    quote: (west: "hand", cn: "kai", weight: normal),
+    em: (west: "serif-i", cn: "kai", weight: normal),
+    strong: (west: "sans", cn: "hei", weight: 500),
+    tag: (west: "hei", cn: "hei", weight: normal),
+  ),
+  huaguo: (
+    interface: (west: null, cn: null, weight: normal),
+    theme: (west: null, cn: "song", weight: normal),
+    mono: (west: null, cn: null),
+    headings: (west: null, cn: "fang", weight: normal),
+    quote: (west: "hand", cn: "kai", weight: normal),
+    em: (west: "serif-i", cn: "kai", weight: normal),
+    strong: (west: "sans", cn: "hei", weight: 400),
+    tag: (west: "hei", cn: "hei", weight: normal),
+  ),
+);
 
 // prettier-ignore
 $style-modes: (
-  great-hall : (
+  great-hall: (
     gap-strategy: loose,
-    fonts:(// #region
-      interface     : (west:null,      cn:null,   weight:normal),
-      theme         : (west:null,      cn:"song", weight:normal),
-      mono          : (west:null,      cn:null,           ),  // No code block
-      headings      : (west:null,      cn:"fang", weight:normal),
-      quote         : (west:"hand",    cn:"kai",  weight:normal),
-      // ul            : (west:null,        cn:null,           ),
-      // ol            : (west:null,        cn:null,           ),
-
-      // ul-w          : (west:null,        cn:null,       ),
-      // ol-w          : (west:null,        cn:null,       ),
-      // task-list     : (west:null,        cn:null,       ),
-      // table-header  : (west:null,        cn:null,       ),
-      // metadata-label: (west:null,        cn:null,       ),
-      // callout-title : (west:null,        cn:null,       ),
-
-      // link          : (west:null,        cn:null,          ),
-      em            : (west:"serif-i", cn:"kai",  weight:normal),
-      strong        : (west:"sans",    cn:"hei",  weight:500),
-      // mark          : (west:null,        cn:null,            ),
-      // delete        : (west:null,        cn:null,            ),
-      tag           : (west:"hei",     cn:"hei",  weight:normal),
-      // footnote      : (west:null,        cn:null,          ),
-      // block-id      : (west:null,        cn:null,          ),
-      // comment       : (west:null,        cn:null,          ),
-
-      // dataview      : (west:null,        cn:null,),
-      // #endregion
-    ),
+    fonts: map-get($font-presets, base),
   ),
-  "huaguo-mount":(
+  huaguo-mount: (
     gap-strategy: compact,
-    fonts:(// #region
-      interface     : (west:null,      cn:null,   weight:normal),
-      theme         : (west:null,      cn:"song", weight:normal),
-      mono          : (west:null,      cn:null,           ),
-      headings      : (west:null,      cn:"fang", weight:normal),
-      quote         : (west:"hand",    cn:"kai",  weight:normal),
-      em            : (west:"serif-i", cn:"kai",  weight:normal),
-      strong        : (west:"sans",    cn:"hei",  weight:400),
-      tag           : (west:"hei",     cn:"hei",  weight:normal),
-      // #endregion
-    ),
+    fonts: map-get($font-presets, huaguo),
   ),
 );
 
@@ -146,10 +130,13 @@ $gap-strategies: (
 
 $color-schemes: (
   "monkey": (
-    // #region
     "mode": "light",
     "bg0": #fcf8e0,
-    // "text0": black,
-     // #endregion
+    "accent": #c9242b,
+  ),
+  "lord": (
+    "mode": "light",
+    "bg0": #f4efe4,
+    "accent": #d6831f,
   ),
 );
