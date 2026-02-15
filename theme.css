@@ -704,99 +704,171 @@ body {
   --stack-sans-i: "SystemSansItalic", "SystemHand";
   --res-font-interface-west: var(
     --u-font-interface-west,
-    var(--preset-font-interface-west, "")
+    var(
+      --preset-font-interface-west,
+      ""
+    )
   );
   --res-font-interface-zh: var(
     --u-font-interface-zh,
-    var(--preset-font-interface-zh, "")
+    var(
+      --preset-font-interface-zh,
+      ""
+    )
   );
   --res-font-interface-weight: var(
     --u-font-interface-weight,
-    var(--preset-font-interface-weight, normal)
+    var(
+      --preset-font-interface-weight,
+      normal
+    )
   );
   --res-font-theme-west: var(
     --u-font-theme-west,
-    var(--preset-font-theme-west, "")
+    var(
+      --preset-font-theme-west,
+      ""
+    )
   );
   --res-font-theme-zh: var(
     --u-font-theme-zh,
-    var(--preset-font-theme-zh, "")
+    var(
+      --preset-font-theme-zh,
+      ""
+    )
   );
   --res-font-theme-weight: var(
     --u-font-theme-weight,
-    var(--preset-font-theme-weight, normal)
+    var(
+      --preset-font-theme-weight,
+      normal
+    )
   );
   --res-font-mono-west: var(
     --u-font-mono-west,
-    var(--preset-font-mono-west, "")
+    var(
+      --preset-font-mono-west,
+      ""
+    )
   );
   --res-font-mono-zh: var(
     --u-font-mono-zh,
-    var(--preset-font-mono-zh, "")
+    var(
+      --preset-font-mono-zh,
+      ""
+    )
   );
   --res-font-mono-weight: var(
     --u-font-mono-weight,
-    var(--preset-font-mono-weight, normal)
+    var(
+      --preset-font-mono-weight,
+      normal
+    )
   );
   --res-font-headings-west: var(
     --u-font-headings-west,
-    var(--preset-font-headings-west, "")
+    var(
+      --preset-font-headings-west,
+      ""
+    )
   );
   --res-font-headings-zh: var(
     --u-font-headings-zh,
-    var(--preset-font-headings-zh, "")
+    var(
+      --preset-font-headings-zh,
+      ""
+    )
   );
   --res-font-headings-weight: var(
     --u-font-headings-weight,
-    var(--preset-font-headings-weight, normal)
+    var(
+      --preset-font-headings-weight,
+      normal
+    )
   );
   --res-font-quote-west: var(
     --u-font-quote-west,
-    var(--preset-font-quote-west, "")
+    var(
+      --preset-font-quote-west,
+      ""
+    )
   );
   --res-font-quote-zh: var(
     --u-font-quote-zh,
-    var(--preset-font-quote-zh, "")
+    var(
+      --preset-font-quote-zh,
+      ""
+    )
   );
   --res-font-quote-weight: var(
     --u-font-quote-weight,
-    var(--preset-font-quote-weight, normal)
+    var(
+      --preset-font-quote-weight,
+      normal
+    )
   );
   --res-font-em-west: var(
     --u-font-em-west,
-    var(--preset-font-em-west, "")
+    var(
+      --preset-font-em-west,
+      ""
+    )
   );
   --res-font-em-zh: var(
     --u-font-em-zh,
-    var(--preset-font-em-zh, "")
+    var(
+      --preset-font-em-zh,
+      ""
+    )
   );
   --res-font-em-weight: var(
     --u-font-em-weight,
-    var(--preset-font-em-weight, normal)
+    var(
+      --preset-font-em-weight,
+      normal
+    )
   );
   --res-font-strong-west: var(
     --u-font-strong-west,
-    var(--preset-font-strong-west, "")
+    var(
+      --preset-font-strong-west,
+      ""
+    )
   );
   --res-font-strong-zh: var(
     --u-font-strong-zh,
-    var(--preset-font-strong-zh, "")
+    var(
+      --preset-font-strong-zh,
+      ""
+    )
   );
   --res-font-strong-weight: var(
     --u-font-strong-weight,
-    var(--preset-font-strong-weight, normal)
+    var(
+      --preset-font-strong-weight,
+      normal
+    )
   );
   --res-font-tag-west: var(
     --u-font-tag-west,
-    var(--preset-font-tag-west, "")
+    var(
+      --preset-font-tag-west,
+      ""
+    )
   );
   --res-font-tag-zh: var(
     --u-font-tag-zh,
-    var(--preset-font-tag-zh, "")
+    var(
+      --preset-font-tag-zh,
+      ""
+    )
   );
   --res-font-tag-weight: var(
     --u-font-tag-weight,
-    var(--preset-font-tag-weight, normal)
+    var(
+      --preset-font-tag-weight,
+      normal
+    )
   );
   --gap-unit: calc(var(--font-text-size) / 8);
   --res-gap-p-line-height: calc(

@@ -38,15 +38,29 @@ body {
 
   // 生成resolution变量
   @each $group, $def in $token-structure {
-    $elements: map.get($def, elements);
-    $schema: map.get($def, schema);
+    $items: map.get($def, items);
+    $defaults: map.get($def, defaults);
 
-    @each $element in $elements {
-      @each $key, $default in $schema {
-        --res-#{$group}-#{$element}-#{$key}: var(
-          --u-#{$group}-#{$element}-#{$key},
-          var(--preset-#{$group}-#{$element}-#{$key}, #{meta.inspect($default)})
-        );
+    @if $items != null and $defaults != null {
+      @each $item in $items {
+        $element: map.get($item, id);
+        $keys: map.get($item, keys);
+        @if $keys == null {
+          @error "token '#{$group}.#{$element}' is missing required 'keys'";
+        }
+        @each $key in $keys {
+          $default: map.get($defaults, $key);
+          @if $default == null {
+            @error "token '#{$group}' is missing default for key '#{$key}'";
+          }
+          --res-#{$group}-#{$element}-#{$key}: var(
+            --u-#{$group}-#{$element}-#{$key},
+            var(
+              --preset-#{$group}-#{$element}-#{$key},
+              #{meta.inspect($default)}
+            )
+          );
+        }
       }
     }
   }
@@ -55,9 +69,14 @@ body {
   --gap-unit: calc(var(--font-text-size) / 8);
 
   // Gap resolution variables
-  @each $token in $gap-tokens {
-    $id: map.get($token, id);
-    $keys: map.get($token, keys);
+  $gap-structure: map.get($token-structure, gap);
+  $gap-items: map.get($gap-structure, items);
+  @each $item in $gap-items {
+    $id: map.get($item, id);
+    $keys: map.get($item, keys);
+    @if $keys == null {
+      @error "gap token '#{$id}' is missing required 'keys'";
+    }
     @each $key in $keys {
       --res-gap-#{$id}-#{$key}: calc(
         var(--gap-unit) * var(--preset-gap-#{$id}-#{$key})

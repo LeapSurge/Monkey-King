@@ -6,16 +6,53 @@
 @use "../01. abstracts/variables" as *;
 
 $font-structure: map.get($token-structure, font);
-$font-schema: map.get($font-structure, schema);
-$font-elements: map.get($font-structure, elements);
-$font-keys: map.keys($font-schema);
+$font-defaults: map.get($font-structure, defaults);
+$font-items: map.get($font-structure, items);
+$font-elements: ();
+$font-element-keys: ();
+@if meta.type-of($font-items) != list {
+  @error "font token structure items must be a list";
+}
+@if meta.type-of($font-defaults) != map {
+  @error "font token structure defaults must be a map";
+}
+@each $item in $font-items {
+  $id: map.get($item, id);
+  $keys: map.get($item, keys);
+  @if $id == null {
+    @error "font token structure item is missing required 'id'";
+  }
+  @if $keys == null {
+    @error "font token structure item '#{$id}' is missing required 'keys'";
+  }
+  $font-elements: list.append($font-elements, $id, comma);
+  $font-element-keys: map.set($font-element-keys, $id, $keys);
+}
+@each $id, $keys in $font-element-keys {
+  @each $key, $default in $font-defaults {
+    @if list.index($keys, $key) == null {
+      @error "font token '#{$id}' does not include default key '#{$key}'";
+    }
+  }
+}
 
-// Build gap token -> allowed keys lookup once for validation.
+// Build gap token schema lookup once for validation.
+$gap-structure: map.get($token-structure, gap);
+$gap-items: map.get($gap-structure, items);
 $gap-token-keys: ();
-@each $token in $gap-tokens {
-  $token-id: map.get($token, id);
-  $token-allowed-keys: map.get($token, keys);
-  $gap-token-keys: map.set($gap-token-keys, $token-id, $token-allowed-keys);
+@if meta.type-of($gap-items) != list {
+  @error "gap token structure items must be a list";
+}
+@each $item in $gap-items {
+  $token: map.get($item, id);
+  $keys: map.get($item, keys);
+  @if $token == null {
+    @error "gap token structure item is missing required 'id'";
+  }
+  @if $keys == null {
+    @error "gap token '#{$token}' is missing required 'keys'";
+  }
+  $gap-token-keys: map.set($gap-token-keys, $token, $keys);
 }
 
 $allowed-color-keys: (mode);
@@ -88,8 +125,9 @@ $allowed-color-keys: (mode);
       @if meta.type-of($font-config) != map {
         @error "style-mode '#{$mode}' font '#{$element}' must be a map";
       }
+      $allowed-font-keys: map.get($font-element-keys, $element);
       @each $key, $val in $font-config {
-        @if list.index($font-keys, $key) == null {
+        @if list.index($allowed-font-keys, $key) == null {
           @error
             "style-mode '#{$mode}' font '#{$element}' has unknown key '#{$key}'";
         }

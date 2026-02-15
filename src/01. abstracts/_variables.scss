@@ -2,13 +2,37 @@
 $reading: ".markdown-reading-view .markdown-preview-view.markdown-rendered";
 $preview: ".markdown-source-view.cm-s-obsidian.mod-cm6.is-live-preview";
 
+// Common key groups
+$font-keys: (west, zh, weight);
+// Gap token key groups
+$gap-keys-headings: (font-size, line-height, margin-top, margin-bottom);
+
+// Unified token structure table (row format with id + keys).
+// defaults is optional and only needed by groups that require fallback values.
+// prettier-ignore
 $token-structure: (
   font: (
-    elements: interface theme mono headings quote em strong tag,
-    schema: (
-      west: "",
-      zh: "",
-      weight: normal,
+    defaults: ( west: "", zh: "", weight: normal, ),
+    items: (
+      (id: interface, keys: $font-keys,),
+      (id: theme,     keys: $font-keys,),
+      (id: mono,      keys: $font-keys,),
+      (id: headings,  keys: $font-keys,),
+      (id: quote,     keys: $font-keys,),
+      (id: em,        keys: $font-keys,),
+      (id: strong,    keys: $font-keys,),
+      (id: tag,       keys: $font-keys,),
+    ),
+  ),
+  gap: (
+    items: (
+      (id: p,  keys: (line-height,),),
+      (id: h1, keys: $gap-keys-headings,),
+      (id: h2, keys: $gap-keys-headings,),
+      (id: h3, keys: $gap-keys-headings,),
+      (id: h4, keys: $gap-keys-headings,),
+      (id: h5, keys: $gap-keys-headings,),
+      (id: h6, keys: $gap-keys-headings,),
     ),
   ),
 );
@@ -16,19 +40,6 @@ $token-structure: (
 // Font preset validation constants.
 $font-preset-required-groups: (stacks, roles);
 $font-stack-keys: (hei, song, kai, fang, serif, sans, hand);
-
-// Gap tokens (array-like structure for extensibility)
-$gap-keys-headings: (font-size, line-height, margin-top, margin-bottom);
-// prettier-ignore
-$gap-tokens: (
-  ( id: p,  keys: (line-height,))
-  ( id: h1, keys: $gap-keys-headings, )
-  ( id: h2, keys: $gap-keys-headings, )
-  ( id: h3, keys: $gap-keys-headings, )
-  ( id: h4, keys: $gap-keys-headings, )
-  ( id: h5, keys: $gap-keys-headings, )
-  ( id: h6, keys: $gap-keys-headings, )
-);
 
 // Color tokens (minimal table-driven set)
 $color-background-tokens: (bg0, bg1, bg2, bg3, bg4);
