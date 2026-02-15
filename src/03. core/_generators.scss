@@ -155,6 +155,107 @@ $allowed-color-keys: (mode);
   }
 }
 
+$default-style-groups: map.get($style-modes, $default-style-mode);
+@if $default-style-groups == null {
+  @error "default style-mode '#{$default-style-mode}' is not defined in style-modes";
+}
+
+$default-font-preset-name: map.get($default-style-groups, font-preset);
+@if $default-font-preset-name == null {
+  @error
+    "default style-mode '#{$default-style-mode}' is missing required 'font-preset' config";
+}
+$default-font-preset: map.get($font-presets, $default-font-preset-name);
+@if $default-font-preset == null {
+  @error
+    "default style-mode '#{$default-style-mode}' references unknown font-preset '#{$default-font-preset-name}'";
+}
+@each $required-group in $font-preset-required-groups {
+  @if map.get($default-font-preset, $required-group) == null {
+    @error
+      "font-preset '#{$default-font-preset-name}' is missing required group '#{$required-group}'";
+  }
+}
+
+$default-font-stacks: map.get($default-font-preset, stacks);
+@if meta.type-of($default-font-stacks) != map {
+  @error "font-preset '#{$default-font-preset-name}' stacks must be a map";
+}
+@each $stack, $font-family in $default-font-stacks {
+  @if list.index($font-stack-keys, $stack) == null {
+    @error "font-preset '#{$default-font-preset-name}' has unknown stack '#{$stack}'";
+  }
+}
+@each $stack in $font-stack-keys {
+  @if map.has-key($default-font-stacks, $stack) == false {
+    @error "font-preset '#{$default-font-preset-name}' is missing stack '#{$stack}'";
+  }
+}
+
+$default-font-roles: map.get($default-font-preset, roles);
+@if meta.type-of($default-font-roles) != map {
+  @error "font-preset '#{$default-font-preset-name}' roles must be a map";
+}
+$default-gap-strategy: map.get($default-style-groups, gap-strategy);
+$default-gap-map: null;
+@if $default-gap-strategy != null {
+  $default-gap-map: map.get($gap-strategies, $default-gap-strategy);
+  @if $default-gap-map == null {
+    @error
+      "gap-strategy '#{$default-gap-strategy}' is not defined in gap-strategies";
+  }
+}
+
+// Default style preset fallback only when no known style-* class is present.
+$default-style-fallback-selector: "body";
+@each $mode, $groups in $style-modes {
+  $default-style-fallback-selector:
+    "#{$default-style-fallback-selector}:not(.style-#{$mode})";
+}
+#{$default-style-fallback-selector} {
+  @each $stack, $font-family in $default-font-stacks {
+    @include generate-stack-preset($stack, $font-family);
+  }
+  @each $element, $font-config in $default-font-roles {
+    @if list.index($font-elements, $element) == null {
+      @error
+        "default style-mode '#{$default-style-mode}' has unknown font element '#{$element}'";
+    }
+    @if meta.type-of($font-config) != map {
+      @error
+        "default style-mode '#{$default-style-mode}' font '#{$element}' must be a map";
+    }
+    $allowed-font-keys: map.get($font-element-keys, $element);
+    @each $key, $val in $font-config {
+      @if list.index($allowed-font-keys, $key) == null {
+        @error
+          "default style-mode '#{$default-style-mode}' font '#{$element}' has unknown key '#{$key}'";
+      }
+    }
+    @include generate-font-preset($element, $font-config);
+  }
+  @if $default-gap-map != null {
+    @each $token, $config in $default-gap-map {
+      $allowed-keys: map.get($gap-token-keys, $token);
+      @if $allowed-keys == null {
+        @error
+          "gap-strategy '#{$default-gap-strategy}' has unknown token '#{$token}'";
+      }
+      @if meta.type-of($config) != map {
+        @error
+          "gap token '#{$token}' in strategy '#{$default-gap-strategy}' must be a map";
+      }
+      @each $key, $val in $config {
+        @if list.index($allowed-keys, $key) == null {
+          @error
+            "gap token '#{$token}' in strategy '#{$default-gap-strategy}' has unknown key '#{$key}'";
+        }
+      }
+      @include generate-gap-preset($token, $config);
+    }
+  }
+}
+
 @each $strategy, $tokens in $gap-strategies {
   body.gap-#{$strategy} {
     @each $token, $config in $tokens {
@@ -228,7 +329,13 @@ $allowed-color-keys: (mode);
       "default color-scheme '#{$name}' mode '#{$scheme-mode}' does not match '#{$mode}'";
   }
 
-  body.theme-#{$mode} {
+  $default-color-fallback-selector: "body.theme-#{$mode}";
+  @each $scheme-name, $scheme-props in $color-schemes {
+    $default-color-fallback-selector:
+      "#{$default-color-fallback-selector}:not(.scheme-#{$scheme-name})";
+  }
+
+  #{$default-color-fallback-selector} {
     @each $key, $val in $props {
       @if $key != mode and $val != null and $val != "" {
         --preset-#{$key}: #{$val};
@@ -248,7 +355,13 @@ $allowed-color-keys: (mode);
       @error "bg-tune matrix references unknown style-mode '#{$style-mode}'";
     }
 
-    body.theme-#{$mode}.style-#{$style-mode} {
+    $default-bg-tune-fallback-selector: "body.theme-#{$mode}.style-#{$style-mode}";
+    @each $scheme-name, $scheme-props in $color-schemes {
+      $default-bg-tune-fallback-selector:
+        "#{$default-bg-tune-fallback-selector}:not(.scheme-#{$scheme-name})";
+    }
+
+    #{$default-bg-tune-fallback-selector} {
       --preset-bg-tune: #{$tune};
     }
   }

@@ -9,22 +9,6 @@
 $font-presets: (
   base: (
     stacks: (
-      hei: "MiSans", song: "GenWanMin2 JP", kai: "霞鹜文楷", fang: "朱雀仿宋（预览测试版）",
-      serif: "", sans: "", hand: "",
-    ),
-    roles: (
-      interface: (west: null,      zh: null,   weight: normal),
-      theme    : (west: null,      zh: "song", weight: normal),
-      mono     : (west: null,      zh: null,                  ),
-      headings : (west: null,      zh: "fang", weight: normal),
-      quote    : (west: "hand",    zh: "kai",  weight: normal),
-      em       : (west: "serif-i", zh: "kai",  weight: normal),
-      strong   : (west: "sans",    zh: "hei",  weight: 400   ),
-      tag      : (west: "hei",     zh: "hei",  weight: normal),
-    ),
-  ),
-  huaguo: (
-    stacks: (
       hei: "械黑GB", song: "屏显臻宋", kai: "Yozai", fang: "",
       serif: "", sans: "", hand: "",
     ),
@@ -39,19 +23,38 @@ $font-presets: (
       tag      : (west: "hei",    zh: "hei",  weight: normal),
     ),
   ),
+  great-hall: (
+    stacks: (
+      hei: "MiSans", song: "GenWanMin2 JP", kai: "霞鹜文楷", fang: "朱雀仿宋（预览测试版）",
+      serif: "", sans: "", hand: "",
+    ),
+    roles: (
+      interface: (west: null,      zh: null,   weight: normal),
+      theme    : (west: null,      zh: "song", weight: normal),
+      mono     : (west: null,      zh: null,                  ),
+      headings : (west: null,      zh: "fang", weight: normal),
+      quote    : (west: "hand",    zh: "kai",  weight: normal),
+      em       : (west: "serif-i", zh: "kai",  weight: normal),
+      strong   : (west: "sans",    zh: "hei",  weight: 400   ),
+      tag      : (west: "hei",     zh: "hei",  weight: normal),
+    ),
+  ),
 );
 
 // prettier-ignore
 $style-modes: (
-  great-hall: (
-    gap-strategy: loose,
-    font-preset: base,
-  ),
   huaguo-mount: (
     gap-strategy: compact,
-    font-preset: huaguo,
+    font-preset: base,
+  ),
+  great-hall: (
+    gap-strategy: loose,
+    font-preset: great-hall,
   ),
 );
+
+// default style-mode (used when no style-* class is injected)
+$default-style-mode: huaguo-mount;
 
 // Gap strategies (steps, not lengths)
 // prettier-ignore
