@@ -33,9 +33,40 @@ $allowed-color-keys: (mode);
 }
 
 @each $mode, $groups in $style-modes {
-  $fonts: map.get($groups, fonts);
-  @if $fonts == null {
-    @error "style-mode '#{$mode}' is missing required 'fonts' config";
+  $font-preset-name: map.get($groups, font-preset);
+  @if $font-preset-name == null {
+    @error "style-mode '#{$mode}' is missing required 'font-preset' config";
+  }
+  $font-preset: map.get($font-presets, $font-preset-name);
+  @if $font-preset == null {
+    @error
+      "style-mode '#{$mode}' references unknown font-preset '#{$font-preset-name}'";
+  }
+  @each $required-group in $font-preset-required-groups {
+    @if map.get($font-preset, $required-group) == null {
+      @error
+        "font-preset '#{$font-preset-name}' is missing required group '#{$required-group}'";
+    }
+  }
+
+  $font-stacks: map.get($font-preset, stacks);
+  @if meta.type-of($font-stacks) != map {
+    @error "font-preset '#{$font-preset-name}' stacks must be a map";
+  }
+  @each $stack, $font-family in $font-stacks {
+    @if list.index($font-stack-keys, $stack) == null {
+      @error "font-preset '#{$font-preset-name}' has unknown stack '#{$stack}'";
+    }
+  }
+  @each $stack in $font-stack-keys {
+    @if map.has-key($font-stacks, $stack) == false {
+      @error "font-preset '#{$font-preset-name}' is missing stack '#{$stack}'";
+    }
+  }
+
+  $font-roles: map.get($font-preset, roles);
+  @if meta.type-of($font-roles) != map {
+    @error "font-preset '#{$font-preset-name}' roles must be a map";
   }
   $gap-strategy: map.get($groups, gap-strategy);
   $gap-map: null;
@@ -47,7 +78,10 @@ $allowed-color-keys: (mode);
   }
 
   body.style-#{$mode} {
-    @each $element, $font-config in $fonts {
+    @each $stack, $font-family in $font-stacks {
+      @include generate-stack-preset($stack, $font-family);
+    }
+    @each $element, $font-config in $font-roles {
       @if list.index($font-elements, $element) == null {
         @error "style-mode '#{$mode}' has unknown font element '#{$element}'";
       }

@@ -58,13 +58,13 @@ settings:
         step: 1
         description: 单滑块统一微调所有背景色的饱和度与亮度（不改变色相）。0 为不偏移。
     -
-        id: u-cn-hei
+        id: u-zh-hei
         title: 黑体
         type: variable-text
         default: ""
         description: 用于无衬线场景。留空使用系统自带黑体
     -
-        id: u-cn-song
+        id: u-zh-song
         title: 宋体
         type: variable-text
         default: ""
@@ -82,7 +82,7 @@ settings:
         level: 2
         collapsed: true
     -
-        id: u-font-mono-cn
+        id: u-font-mono-zh
         title: 代码字体
         type: variable-text
         default: ""
@@ -95,13 +95,13 @@ settings:
         level: 3
 
     -
-        id: u-cn-kai
+        id: u-zh-kai
         title: 楷体
         type: variable-text
         default: ""
         description: 用于手写/笔记场景。留空使用系统自带楷体
     -
-        id: u-cn-fang
+        id: u-zh-fang
         title: 仿宋
         type: variable-text
         default: ""
@@ -165,7 +165,7 @@ settings:
                 label: "系统非衬线斜体"
                 value: 'var(--stack-sans-i)'
     -
-        id: u-font-headings-cn
+        id: u-font-headings-zh
         title: 中文
         type: variable-select
         default: initial
@@ -213,7 +213,7 @@ settings:
                 label: "系统非衬线斜体"
                 value: 'var(--stack-sans-i)'
     -
-        id: u-font-quote-cn
+        id: u-font-quote-zh
         title: 中文
         type: variable-select
         default: initial
@@ -261,7 +261,7 @@ settings:
                 label: "系统非衬线斜体"
                 value: 'var(--stack-sans-i)'
     -
-        id: u-font-em-cn
+        id: u-font-em-zh
         title: 中文
         type: variable-select
         default: initial
@@ -309,7 +309,7 @@ settings:
                 label: "系统非衬线斜体"
                 value: 'var(--stack-sans-i)'
     -
-        id: u-font-strong-cn
+        id: u-font-strong-zh
         title: 中文
         type: variable-select
         default: initial

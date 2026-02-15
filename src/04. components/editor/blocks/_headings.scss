@@ -4,7 +4,7 @@
 // 1. 接管默认css变量
 body {
   @for $i from 1 through 6 {
-    --h#{$i}-font: var(--res-font-headings-west), var(--res-font-headings-cn);
+    --h#{$i}-font: var(--res-font-headings-west), var(--res-font-headings-zh);
     --h#{$i}-weight: var(--res-font-headings-weight);
     --h#{$i}-size: var(--res-gap-h#{$i}-font-size);
     --h#{$i}-line-height: var(--res-gap-h#{$i}-line-height);

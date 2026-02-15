@@ -7,17 +7,23 @@
   }
 
   $west: map.get($config, west);
-  $cn: map.get($config, cn);
+  $zh: map.get($config, zh);
   $weight: map.get($config, weight);
 
   @if $west != null {
     --preset-font-#{$element}-west: var(--stack-#{$west});
   }
-  @if $cn != null {
-    --preset-font-#{$element}-cn: var(--stack-#{$cn});
+  @if $zh != null {
+    --preset-font-#{$element}-zh: var(--stack-#{$zh});
   }
   @if $weight != null {
     --preset-font-#{$element}-weight: #{$weight};
+  }
+}
+
+@mixin generate-stack-preset($stack, $font-family) {
+  @if $font-family != null {
+    --preset-stack-#{$stack}: #{meta.inspect($font-family)};
   }
 }
 

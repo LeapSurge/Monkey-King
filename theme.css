@@ -59,13 +59,13 @@ settings:
         step: 1
         description: 单滑块统一微调所有背景色的饱和度与亮度（不改变色相）。0 为不偏移。
     -
-        id: u-cn-hei
+        id: u-zh-hei
         title: 黑体
         type: variable-text
         default: ""
         description: 用于无衬线场景。留空使用系统自带黑体
     -
-        id: u-cn-song
+        id: u-zh-song
         title: 宋体
         type: variable-text
         default: ""
@@ -83,7 +83,7 @@ settings:
         level: 2
         collapsed: true
     -
-        id: u-font-mono-cn
+        id: u-font-mono-zh
         title: 代码字体
         type: variable-text
         default: ""
@@ -96,13 +96,13 @@ settings:
         level: 3
 
     -
-        id: u-cn-kai
+        id: u-zh-kai
         title: 楷体
         type: variable-text
         default: ""
         description: 用于手写/笔记场景。留空使用系统自带楷体
     -
-        id: u-cn-fang
+        id: u-zh-fang
         title: 仿宋
         type: variable-text
         default: ""
@@ -166,7 +166,7 @@ settings:
                 label: "系统非衬线斜体"
                 value: 'var(--stack-sans-i)'
     -
-        id: u-font-headings-cn
+        id: u-font-headings-zh
         title: 中文
         type: variable-select
         default: initial
@@ -214,7 +214,7 @@ settings:
                 label: "系统非衬线斜体"
                 value: 'var(--stack-sans-i)'
     -
-        id: u-font-quote-cn
+        id: u-font-quote-zh
         title: 中文
         type: variable-select
         default: initial
@@ -262,7 +262,7 @@ settings:
                 label: "系统非衬线斜体"
                 value: 'var(--stack-sans-i)'
     -
-        id: u-font-em-cn
+        id: u-font-em-zh
         title: 中文
         type: variable-select
         default: initial
@@ -310,7 +310,7 @@ settings:
                 label: "系统非衬线斜体"
                 value: 'var(--stack-sans-i)'
     -
-        id: u-font-strong-cn
+        id: u-font-strong-zh
         title: 中文
         type: variable-select
         default: initial
@@ -448,22 +448,29 @@ settings:
   unicode-range: U+0000-007F, U+0080-00B6, U+00B8-00FF, U+0100-017F, U+0180-024F, U+1E00-1EFF, U+2000-2013, U+2100-214F;
 }
 body.style-great-hall {
+  --preset-stack-hei: "MiSans";
+  --preset-stack-song: "GenWanMin2 JP";
+  --preset-stack-kai: "霞鹜文楷";
+  --preset-stack-fang: "朱雀仿宋（预览测试版）";
+  --preset-stack-serif: "";
+  --preset-stack-sans: "";
+  --preset-stack-hand: "";
   --preset-font-interface-weight: normal;
-  --preset-font-theme-cn: var(--stack-song);
+  --preset-font-theme-zh: var(--stack-song);
   --preset-font-theme-weight: normal;
-  --preset-font-headings-cn: var(--stack-fang);
+  --preset-font-headings-zh: var(--stack-fang);
   --preset-font-headings-weight: normal;
   --preset-font-quote-west: var(--stack-hand);
-  --preset-font-quote-cn: var(--stack-kai);
+  --preset-font-quote-zh: var(--stack-kai);
   --preset-font-quote-weight: normal;
   --preset-font-em-west: var(--stack-serif-i);
-  --preset-font-em-cn: var(--stack-kai);
+  --preset-font-em-zh: var(--stack-kai);
   --preset-font-em-weight: normal;
   --preset-font-strong-west: var(--stack-sans);
-  --preset-font-strong-cn: var(--stack-hei);
-  --preset-font-strong-weight: 500;
+  --preset-font-strong-zh: var(--stack-hei);
+  --preset-font-strong-weight: 400;
   --preset-font-tag-west: var(--stack-hei);
-  --preset-font-tag-cn: var(--stack-hei);
+  --preset-font-tag-zh: var(--stack-hei);
   --preset-font-tag-weight: normal;
   --preset-gap-p-line-height: 14;
   --preset-gap-h1-font-size: 14;
@@ -493,22 +500,29 @@ body.style-great-hall {
 }
 
 body.style-huaguo-mount {
+  --preset-stack-hei: "械黑GB";
+  --preset-stack-song: "屏显臻宋";
+  --preset-stack-kai: "Yozai";
+  --preset-stack-fang: "";
+  --preset-stack-serif: "";
+  --preset-stack-sans: "";
+  --preset-stack-hand: "";
   --preset-font-interface-weight: normal;
-  --preset-font-theme-cn: var(--stack-song);
+  --preset-font-theme-zh: var(--stack-song);
   --preset-font-theme-weight: normal;
-  --preset-font-headings-cn: var(--stack-fang);
-  --preset-font-headings-weight: normal;
+  --preset-font-headings-zh: var(--stack-hei);
+  --preset-font-headings-weight: 900;
   --preset-font-quote-west: var(--stack-hand);
-  --preset-font-quote-cn: var(--stack-kai);
+  --preset-font-quote-zh: var(--stack-kai);
   --preset-font-quote-weight: normal;
-  --preset-font-em-west: var(--stack-serif-i);
-  --preset-font-em-cn: var(--stack-kai);
-  --preset-font-em-weight: normal;
+  --preset-font-em-west: var(--stack-sans-i);
+  --preset-font-em-zh: var(--stack-kai);
+  --preset-font-em-weight: 600;
   --preset-font-strong-west: var(--stack-sans);
-  --preset-font-strong-cn: var(--stack-hei);
-  --preset-font-strong-weight: 400;
+  --preset-font-strong-zh: var(--stack-hei);
+  --preset-font-strong-weight: 700;
   --preset-font-tag-west: var(--stack-hei);
-  --preset-font-tag-cn: var(--stack-hei);
+  --preset-font-tag-zh: var(--stack-hei);
   --preset-font-tag-weight: normal;
   --preset-gap-p-line-height: 12;
   --preset-gap-h1-font-size: 14;
@@ -612,28 +626,28 @@ body.theme-light.scheme-monkey {
   --preset-tx1: #000000;
   --preset-tx2: #222222;
   --preset-tx3: #333333;
-  --preset-tx-sup: #426350;
+  --preset-tx-sup: #7f9688;
   --preset-tx-sup-strong: #03632b;
   --preset-tx-accent: #a8262d;
   --preset-ax1: #c9242b;
 }
 
-body.theme-light.scheme-lord {
-  --preset-bg0-h: 41.2deg;
-  --preset-bg0-s: 42.1%;
-  --preset-bg0-l: 92.5%;
-  --preset-bg1-h: 37.3deg;
-  --preset-bg1-s: 69.6%;
-  --preset-bg1-l: 100%;
-  --preset-bg2-h: 116.8deg;
-  --preset-bg2-s: 56.6%;
-  --preset-bg2-l: 93.5%;
-  --preset-bg3-h: 129.1deg;
-  --preset-bg3-s: 9.6%;
-  --preset-bg3-l: 59.4%;
-  --preset-bg4-h: 34.1deg;
-  --preset-bg4-s: 69.6%;
-  --preset-bg4-l: 77%;
+body.theme-dark.scheme-lord {
+  --preset-bg0-h: 51.67deg;
+  --preset-bg0-s: 72%;
+  --preset-bg0-l: 90.2%;
+  --preset-bg1-h: 45deg;
+  --preset-bg1-s: 42.11%;
+  --preset-bg1-l: 92.55%;
+  --preset-bg2-h: 127.89deg;
+  --preset-bg2-s: 51.35%;
+  --preset-bg2-l: 85.49%;
+  --preset-bg3-h: 140.25deg;
+  --preset-bg3-s: 32.79%;
+  --preset-bg3-l: 52.16%;
+  --preset-bg4-h: 44.77deg;
+  --preset-bg4-s: 100%;
+  --preset-bg4-l: 74.51%;
   --preset-tx1: #1f1a17;
   --preset-tx2: #3a312b;
   --preset-tx3: #5b4f45;
@@ -665,10 +679,10 @@ body.scheme-lord.style-huaguo-mount {
 :root {
   /* 用户自定义字体 */
   --u-font-text-theme: initial;
-  --u-cn-hei: "";
-  --u-cn-song: "";
-  --u-cn-kai: "";
-  --u-cn-fang: "";
+  --u-zh-hei: "";
+  --u-zh-song: "";
+  --u-zh-kai: "";
+  --u-zh-fang: "";
   --u-west-serif: "";
   --u-west-sans: "";
   --u-west-hand: "";
@@ -679,22 +693,22 @@ body {
   /* =========================================================
       字体栈 (用户自定义 > 系统栈 > 兜底)
     ========================================================= */
-  --stack-hei: var(--u-cn-hei), "SystemHei", sans-serif;
-  --stack-song: var(--u-cn-song), "SystemSong", serif;
-  --stack-kai: var(--u-cn-kai), "SystemKai", "SystemHei", sans-serif;
-  --stack-fang: var(--u-cn-fang), "SystemFang", "SystemSong", serif;
-  --stack-serif: var(--u-west-serif), "SystemSerif";
-  --stack-sans: var(--u-west-sans), "SystemSans";
-  --stack-hand: var(--u-west-hand), "SystemHand", "SystemSans";
+  --stack-hei: var(--u-zh-hei), var(--preset-stack-hei, ""), "SystemHei", sans-serif;
+  --stack-song: var(--u-zh-song), var(--preset-stack-song, ""), "SystemSong", serif;
+  --stack-kai: var(--u-zh-kai), var(--preset-stack-kai, ""), "SystemKai", "SystemHei", sans-serif;
+  --stack-fang: var(--u-zh-fang), var(--preset-stack-fang, ""), "SystemFang", "SystemSong", serif;
+  --stack-serif: var(--u-west-serif), var(--preset-stack-serif, ""), "SystemSerif";
+  --stack-sans: var(--u-west-sans), var(--preset-stack-sans, ""), "SystemSans";
+  --stack-hand: var(--u-west-hand), var(--preset-stack-hand, ""), "SystemHand", "SystemSans";
   --stack-serif-i: "SystemSerifItalic", "SystemHand";
   --stack-sans-i: "SystemSansItalic", "SystemHand";
   --res-font-interface-west: var(
     --u-font-interface-west,
     var(--preset-font-interface-west, "")
   );
-  --res-font-interface-cn: var(
-    --u-font-interface-cn,
-    var(--preset-font-interface-cn, "")
+  --res-font-interface-zh: var(
+    --u-font-interface-zh,
+    var(--preset-font-interface-zh, "")
   );
   --res-font-interface-weight: var(
     --u-font-interface-weight,
@@ -704,9 +718,9 @@ body {
     --u-font-theme-west,
     var(--preset-font-theme-west, "")
   );
-  --res-font-theme-cn: var(
-    --u-font-theme-cn,
-    var(--preset-font-theme-cn, "")
+  --res-font-theme-zh: var(
+    --u-font-theme-zh,
+    var(--preset-font-theme-zh, "")
   );
   --res-font-theme-weight: var(
     --u-font-theme-weight,
@@ -716,9 +730,9 @@ body {
     --u-font-mono-west,
     var(--preset-font-mono-west, "")
   );
-  --res-font-mono-cn: var(
-    --u-font-mono-cn,
-    var(--preset-font-mono-cn, "")
+  --res-font-mono-zh: var(
+    --u-font-mono-zh,
+    var(--preset-font-mono-zh, "")
   );
   --res-font-mono-weight: var(
     --u-font-mono-weight,
@@ -728,9 +742,9 @@ body {
     --u-font-headings-west,
     var(--preset-font-headings-west, "")
   );
-  --res-font-headings-cn: var(
-    --u-font-headings-cn,
-    var(--preset-font-headings-cn, "")
+  --res-font-headings-zh: var(
+    --u-font-headings-zh,
+    var(--preset-font-headings-zh, "")
   );
   --res-font-headings-weight: var(
     --u-font-headings-weight,
@@ -740,9 +754,9 @@ body {
     --u-font-quote-west,
     var(--preset-font-quote-west, "")
   );
-  --res-font-quote-cn: var(
-    --u-font-quote-cn,
-    var(--preset-font-quote-cn, "")
+  --res-font-quote-zh: var(
+    --u-font-quote-zh,
+    var(--preset-font-quote-zh, "")
   );
   --res-font-quote-weight: var(
     --u-font-quote-weight,
@@ -752,9 +766,9 @@ body {
     --u-font-em-west,
     var(--preset-font-em-west, "")
   );
-  --res-font-em-cn: var(
-    --u-font-em-cn,
-    var(--preset-font-em-cn, "")
+  --res-font-em-zh: var(
+    --u-font-em-zh,
+    var(--preset-font-em-zh, "")
   );
   --res-font-em-weight: var(
     --u-font-em-weight,
@@ -764,9 +778,9 @@ body {
     --u-font-strong-west,
     var(--preset-font-strong-west, "")
   );
-  --res-font-strong-cn: var(
-    --u-font-strong-cn,
-    var(--preset-font-strong-cn, "")
+  --res-font-strong-zh: var(
+    --u-font-strong-zh,
+    var(--preset-font-strong-zh, "")
   );
   --res-font-strong-weight: var(
     --u-font-strong-weight,
@@ -776,9 +790,9 @@ body {
     --u-font-tag-west,
     var(--preset-font-tag-west, "")
   );
-  --res-font-tag-cn: var(
-    --u-font-tag-cn,
-    var(--preset-font-tag-cn, "")
+  --res-font-tag-zh: var(
+    --u-font-tag-zh,
+    var(--preset-font-tag-zh, "")
   );
   --res-font-tag-weight: var(
     --u-font-tag-weight,
@@ -986,7 +1000,7 @@ body.theme-light.scheme-monkey {
   --background-modifier-border-focus: var(--res-bg4);
 }
 
-body.theme-light.scheme-lord {
+body.theme-dark.scheme-lord {
   --background-primary: var(--res-bg0);
   --background-primary-alt: var(--res-bg1);
   --background-secondary: var(--res-bg2);
@@ -1029,8 +1043,8 @@ body.theme-light.scheme-lord {
 body {
   --font-text:
     var(--font-text-theme), var(--font-text-override), var(--font-default);
-  --font-text-theme: var(--res-font-theme-west), var(--res-font-theme-cn);
-  --font-monospace-theme: var(--res-font-mono-west), var(--res-font-mono-cn);
+  --font-text-theme: var(--res-font-theme-west), var(--res-font-theme-zh);
+  --font-monospace-theme: var(--res-font-mono-west), var(--res-font-mono-zh);
   --line-height-normal: var(--res-gap-p-line-height);
 }
 
@@ -1039,27 +1053,27 @@ body {
 }
 
 body {
-  --h1-font: var(--res-font-headings-west), var(--res-font-headings-cn);
+  --h1-font: var(--res-font-headings-west), var(--res-font-headings-zh);
   --h1-weight: var(--res-font-headings-weight);
   --h1-size: var(--res-gap-h1-font-size);
   --h1-line-height: var(--res-gap-h1-line-height);
-  --h2-font: var(--res-font-headings-west), var(--res-font-headings-cn);
+  --h2-font: var(--res-font-headings-west), var(--res-font-headings-zh);
   --h2-weight: var(--res-font-headings-weight);
   --h2-size: var(--res-gap-h2-font-size);
   --h2-line-height: var(--res-gap-h2-line-height);
-  --h3-font: var(--res-font-headings-west), var(--res-font-headings-cn);
+  --h3-font: var(--res-font-headings-west), var(--res-font-headings-zh);
   --h3-weight: var(--res-font-headings-weight);
   --h3-size: var(--res-gap-h3-font-size);
   --h3-line-height: var(--res-gap-h3-line-height);
-  --h4-font: var(--res-font-headings-west), var(--res-font-headings-cn);
+  --h4-font: var(--res-font-headings-west), var(--res-font-headings-zh);
   --h4-weight: var(--res-font-headings-weight);
   --h4-size: var(--res-gap-h4-font-size);
   --h4-line-height: var(--res-gap-h4-line-height);
-  --h5-font: var(--res-font-headings-west), var(--res-font-headings-cn);
+  --h5-font: var(--res-font-headings-west), var(--res-font-headings-zh);
   --h5-weight: var(--res-font-headings-weight);
   --h5-size: var(--res-gap-h5-font-size);
   --h5-line-height: var(--res-gap-h5-line-height);
-  --h6-font: var(--res-font-headings-west), var(--res-font-headings-cn);
+  --h6-font: var(--res-font-headings-west), var(--res-font-headings-zh);
   --h6-weight: var(--res-font-headings-weight);
   --h6-size: var(--res-gap-h6-font-size);
   --h6-line-height: var(--res-gap-h6-line-height);
@@ -1125,13 +1139,14 @@ body {
 
 .markdown-source-view.cm-s-obsidian.mod-cm6.is-live-preview .cm-quote,
 .markdown-reading-view .markdown-preview-view.markdown-rendered blockquote {
-  font-family: var(--res-font-quote-west), var(--res-font-quote-cn);
-  color: var(--res-color-quote, var(--text-normal));
+  font-family: var(--res-font-quote-west), var(--res-font-quote-zh);
+  font-weight: var(--res-font-quote-weight);
+  color: var(--res-color-quote);
 }
 
 .markdown-source-view.cm-s-obsidian.mod-cm6.is-live-preview .cm-em,
 .markdown-reading-view .markdown-preview-view.markdown-rendered em {
-  font-family: var(--res-font-em-west), var(--res-font-em-cn);
+  font-family: var(--res-font-em-west), var(--res-font-em-zh);
   font-weight: var(--res-font-em-weight);
   font-style: normal;
   color: var(--res-color-em, var(--text-normal));
@@ -1139,7 +1154,7 @@ body {
 
 .markdown-source-view.cm-s-obsidian.mod-cm6.is-live-preview .cm-strong,
 .markdown-reading-view .markdown-preview-view.markdown-rendered strong {
-  font-family: var(--res-font-strong-west), var(--res-font-strong-cn);
+  font-family: var(--res-font-strong-west), var(--res-font-strong-zh);
   font-weight: var(--res-font-strong-weight);
   color: var(--res-color-strong, var(--text-normal));
 }

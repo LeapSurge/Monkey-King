@@ -2,90 +2,51 @@
 
 // 字体映射
 // west可选值: serif | sans | hand | serif-i | sans-i
-// cn可选值: hei | song | kai | fang
+// zh可选值: hei | song | kai | fang
 
 // 可复用字体预设，style-mode 只引用预设，避免重复定义
+// prettier-ignore
 $font-presets: (
   base: (
-    interface: (
-      west: null,
-      cn: null,
-      weight: normal,
+    stacks: (
+      hei: "MiSans",
+      song: "GenWanMin2 JP",
+      kai: "霞鹜文楷",
+      fang: "朱雀仿宋（预览测试版）",
+      serif: "",
+      sans: "",
+      hand: "",
     ),
-    theme: (
-      west: null,
-      cn: "song",
-      weight: normal,
-    ),
-    mono: (
-      west: null,
-      cn: null,
-    ),
-    headings: (
-      west: null,
-      cn: "fang",
-      weight: normal,
-    ),
-    quote: (
-      west: "hand",
-      cn: "kai",
-      weight: normal,
-    ),
-    em: (
-      west: "serif-i",
-      cn: "kai",
-      weight: normal,
-    ),
-    strong: (
-      west: "sans",
-      cn: "hei",
-      weight: 500,
-    ),
-    tag: (
-      west: "hei",
-      cn: "hei",
-      weight: normal,
+    roles: (
+      interface: (west: null,      zh: null,   weight: normal),
+      theme    : (west: null,      zh: "song", weight: normal),
+      mono     : (west: null,      zh: null,                  ),
+      headings : (west: null,      zh: "fang", weight: normal),
+      quote    : (west: "hand",    zh: "kai",  weight: normal),
+      em       : (west: "serif-i", zh: "kai",  weight: normal),
+      strong   : (west: "sans",    zh: "hei",  weight: 400   ),
+      tag      : (west: "hei",     zh: "hei",  weight: normal),
     ),
   ),
   huaguo: (
-    interface: (
-      west: null,
-      cn: null,
-      weight: normal,
+    stacks: (
+      hei: "械黑GB",
+      song: "屏显臻宋",
+      kai: "Yozai",
+      fang: "",
+      serif: "",
+      sans: "",
+      hand: "",
     ),
-    theme: (
-      west: null,
-      cn: "song",
-      weight: normal,
-    ),
-    mono: (
-      west: null,
-      cn: null,
-    ),
-    headings: (
-      west: null,
-      cn: "fang",
-      weight: normal,
-    ),
-    quote: (
-      west: "hand",
-      cn: "kai",
-      weight: normal,
-    ),
-    em: (
-      west: "serif-i",
-      cn: "kai",
-      weight: normal,
-    ),
-    strong: (
-      west: "sans",
-      cn: "hei",
-      weight: 400,
-    ),
-    tag: (
-      west: "hei",
-      cn: "hei",
-      weight: normal,
+    roles: (
+      interface: (west: null,     zh: null,   weight: normal),
+      theme    : (west: null,     zh: "song", weight: normal),
+      mono     : (west: null,     zh: null,                  ),
+      headings : (west: null,     zh: "hei",  weight: 900   ),
+      quote    : (west: "hand",   zh: "kai",  weight: normal),
+      em       : (west: "sans-i", zh: "kai",  weight: 600   ),
+      strong   : (west: "sans",   zh: "hei",  weight: 700   ),
+      tag      : (west: "hei",    zh: "hei",  weight: normal),
     ),
   ),
 );
@@ -94,130 +55,58 @@ $font-presets: (
 $style-modes: (
   great-hall: (
     gap-strategy: loose,
-    fonts: map.get($font-presets, base),
+    font-preset: base,
   ),
   huaguo-mount: (
     gap-strategy: compact,
-    fonts: map.get($font-presets, huaguo),
+    font-preset: huaguo,
   ),
 );
 
 // Gap strategies (steps, not lengths)
+// prettier-ignore
 $gap-strategies: (
   loose: (
     // #region
-    p: (
-        line-height: 14,
-      ),
-    h1: (
-      font-size: 14,
-      line-height: 20,
-      margin-top: 18,
-      margin-bottom: 18,
-    ),
-    h2: (
-      font-size: 12,
-      line-height: 18,
-      margin-top: 12,
-      margin-bottom: 12,
-    ),
-    h3: (
-      font-size: 11,
-      line-height: 17,
-      margin-top: 13,
-      margin-bottom: 12,
-    ),
-    h4: (
-      font-size: 10,
-      line-height: 16,
-      margin-top: 15,
-      margin-bottom: 11,
-    ),
-    h5: (
-      font-size: 9,
-      line-height: 15,
-      margin-top: 7,
-      margin-bottom: 6,
-    ),
-    h6: (
-      font-size: 8,
-      line-height: 14,
-      margin-top: 9,
-      margin-bottom: 5,
-    ),
+    p : (line-height: 14,),
+    h1: (font-size: 14, line-height: 20, margin-top: 18, margin-bottom: 18,),
+    h2: (font-size: 12, line-height: 18, margin-top: 12, margin-bottom: 12,),
+    h3: (font-size: 11, line-height: 17, margin-top: 13, margin-bottom: 12,),
+    h4: (font-size: 10, line-height: 16, margin-top: 15, margin-bottom: 11,),
+    h5: (font-size: 9,  line-height: 15, margin-top: 7,  margin-bottom: 6, ),
+    h6: (font-size: 8,  line-height: 14, margin-top: 9,  margin-bottom: 5, ),
     // #endregion
   ),
   compact: (
     // #region
-    p: (
-        line-height: 12,
-      ),
-    h1: (
-      font-size: 14,
-      line-height: 18,
-      margin-top: 9,
-      margin-bottom: 2,
-    ),
-    h2: (
-      font-size: 12,
-      line-height: 16,
-      margin-top: 7,
-      margin-bottom: 2,
-    ),
-    h3: (
-      font-size: 11,
-      line-height: 15,
-      margin-top: 6,
-      margin-bottom: 1,
-    ),
-    h4: (
-      font-size: 10,
-      line-height: 14,
-      margin-top: 5,
-      margin-bottom: 1,
-    ),
-    h5: (
-      font-size: 9,
-      line-height: 13,
-      margin-top: 4,
-      margin-bottom: 0,
-    ),
-    h6: (
-      font-size: 8,
-      line-height: 12,
-      margin-top: 4,
-      margin-bottom: 0,
-    ),
+    p:  (line-height: 12,),
+    h1: (font-size: 14,  line-height: 18,  margin-top: 9,  margin-bottom: 2,),
+    h2: (font-size: 12,  line-height: 16,  margin-top: 7,  margin-bottom: 2,),
+    h3: (font-size: 11,  line-height: 15,  margin-top: 6,  margin-bottom: 1,),
+    h4: (font-size: 10,  line-height: 14,  margin-top: 5,  margin-bottom: 1,),
+    h5: (font-size: 9,   line-height: 13,  margin-top: 4,  margin-bottom: 0,),
+    h6: (font-size: 8,   line-height: 12,  margin-top: 4,  margin-bottom: 0,),
     // #endregion
   ),
 );
 
+// prettier-ignore
 $color-schemes: (
   "monkey": (
     mode: "light",
 
     // Background seeds in H/S/L axes
-    bg0-h: 51.67deg,
-    bg0-s: 72%,
-    bg0-l: 90.2%,
-    bg1-h: 45deg,
-    bg1-s: 42.11%,
-    bg1-l: 92.55%,
-    bg2-h: 127.89deg,
-    bg2-s: 51.35%,
-    bg2-l: 85.49%,
-    bg3-h: 140.25deg,
-    bg3-s: 32.79%,
-    bg3-l: 52.16%,
-    bg4-h: 44.77deg,
-    bg4-s: 100%,
-    bg4-l: 74.51%,
+    bg0-h: 51.67deg,  bg0-s: 72%,    bg0-l: 90.2%,
+    bg1-h: 45deg,     bg1-s: 42.11%, bg1-l: 92.55%,
+    bg2-h: 127.89deg, bg2-s: 51.35%, bg2-l: 85.49%,
+    bg3-h: 140.25deg, bg3-s: 32.79%, bg3-l: 52.16%,
+    bg4-h: 44.77deg,  bg4-s: 100%,   bg4-l: 74.51%,
 
     // Text (fixed)
     tx1: #000000,
     tx2: #222222,
     tx3: #333333,
-    tx-sup: #426350,
+    tx-sup: #7f9688,
     tx-sup-strong: #03632b,
     tx-accent: #a8262d,
 
@@ -225,24 +114,14 @@ $color-schemes: (
     ax1: #c9242b,
   ),
   "lord": (
-    mode: "light",
+    mode: "dark",
 
     // Background seeds in H/S/L axes
-    bg0-h: 41.2deg,
-    bg0-s: 42.1%,
-    bg0-l: 92.5%,
-    bg1-h: 37.3deg,
-    bg1-s: 69.6%,
-    bg1-l: 100%,
-    bg2-h: 116.8deg,
-    bg2-s: 56.6%,
-    bg2-l: 93.5%,
-    bg3-h: 129.1deg,
-    bg3-s: 9.6%,
-    bg3-l: 59.4%,
-    bg4-h: 34.1deg,
-    bg4-s: 69.6%,
-    bg4-l: 77%,
+    bg0-h: 51.67deg,  bg0-s: 72%,    bg0-l: 90.2%,
+    bg1-h: 45deg,     bg1-s: 42.11%, bg1-l: 92.55%,
+    bg2-h: 127.89deg, bg2-s: 51.35%, bg2-l: 85.49%,
+    bg3-h: 140.25deg, bg3-s: 32.79%, bg3-l: 52.16%,
+    bg4-h: 44.77deg,  bg4-s: 100%,   bg4-l: 74.51%,
 
     // Text (fixed)
     tx1: #1f1a17,
@@ -258,13 +137,8 @@ $color-schemes: (
 );
 
 // scheme x style-mode default background tune
+// prettier-ignore
 $bg-tune-by-scheme-mode: (
-  "monkey": (
-    great-hall: 12,
-    huaguo-mount: 0,
-  ),
-  "lord": (
-    great-hall: -6,
-    huaguo-mount: -12,
-  ),
+  "monkey": (great-hall: 12, huaguo-mount: 0,  ),
+  "lord"  : (great-hall: -6, huaguo-mount: -12,),
 );
