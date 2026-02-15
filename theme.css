@@ -759,13 +759,21 @@ body {
   /* =========================================================
       字体栈 (用户自定义 > 系统栈 > 兜底)
     ========================================================= */
-  --stack-hei: var(--u-zh-hei), var(--preset-stack-hei, ""), "SystemHei", sans-serif;
-  --stack-song: var(--u-zh-song), var(--preset-stack-song, ""), "SystemSong", serif;
-  --stack-kai: var(--u-zh-kai), var(--preset-stack-kai, ""), "SystemKai", "SystemHei", sans-serif;
-  --stack-fang: var(--u-zh-fang), var(--preset-stack-fang, ""), "SystemFang", "SystemSong", serif;
-  --stack-serif: var(--u-west-serif), var(--preset-stack-serif, ""), "SystemSerif";
+  --stack-hei:
+    var(--u-zh-hei), var(--preset-stack-hei, ""), "SystemHei", sans-serif;
+  --stack-song:
+    var(--u-zh-song), var(--preset-stack-song, ""), "SystemSong", serif;
+  --stack-kai:
+    var(--u-zh-kai), var(--preset-stack-kai, ""), "SystemKai", "SystemHei",
+    sans-serif;
+  --stack-fang:
+    var(--u-zh-fang), var(--preset-stack-fang, ""), "SystemFang", "SystemSong",
+    serif;
+  --stack-serif:
+    var(--u-west-serif), var(--preset-stack-serif, ""), "SystemSerif";
   --stack-sans: var(--u-west-sans), var(--preset-stack-sans, ""), "SystemSans";
-  --stack-hand: var(--u-west-hand), var(--preset-stack-hand, ""), "SystemHand", "SystemSans";
+  --stack-hand:
+    var(--u-west-hand), var(--preset-stack-hand, ""), "SystemHand", "SystemSans";
   --stack-serif-i: "SystemSerifItalic", "SystemHand";
   --stack-sans-i: "SystemSansItalic", "SystemHand";
   --res-font-interface-west: var(
@@ -1096,82 +1104,52 @@ body {
   --res-tx-sup-strong: var(--preset-tx-sup-strong);
   --res-tx-accent: var(--preset-tx-accent);
   --res-ax1: var(--preset-ax1);
+  --background-primary: var(--res-bg0);
+  --background-primary-alt: var(--res-bg1);
+  --background-secondary: var(--res-bg2);
+  --icon-color: var(--res-tx1);
+  --ribbon-background: var(--res-bg3);
+  --tab-container-background: var(--res-bg3);
+  --nav-item-color: var(--text-normal);
+  --text-normal: var(--res-tx2);
+  --text-muted: var(--res-tx3);
+  --text-faint: var(--res-tx3);
+  --h1-color: var(--res-tx1);
+  --h2-color: var(--res-tx-accent);
+  --h3-color: var(--res-tx1);
+  --h4-color: var(--res-tx-accent);
+  --h5-color: var(--res-tx1);
+  --h6-color: var(--res-tx-accent);
+  --text-highlight: var(--res-bg0);
+  --background-modifier-hover: var(--res-bg2);
+  --background-modifier-active-hover: var(--res-bg2);
+  --background-modifier-border: var(--res-bg3);
+  --background-modifier-border-hover: var(--res-bg4);
+  --background-modifier-border-focus: var(--res-bg4);
 }
 
 body.bg-tune-override {
   --res-bg-tune: clamp(-30, var(--u-bg-tune, var(--preset-bg-tune, 0)), 30);
 }
 
-body.theme-light.scheme-monkey {
-  --background-primary: var(--res-bg0);
-  --background-primary-alt: var(--res-bg1);
-  --background-secondary: var(--res-bg2);
+.theme-dark {
   --background-secondary-alt: var(--res-bg4);
-  --icon-color: var(--res-tx1);
-  --ribbon-background: var(--res-bg3);
-  --tab-container-background: var(--res-bg3);
-  --text-normal: var(--res-tx2);
-  --text-muted: var(--res-tx3);
-  --text-faint: var(--res-tx3);
-  --text-accent: var(--res-tx-accent);
-  --text-accent-hover: var(--res-ax1);
   --interactive-accent: var(--res-ax1);
   --interactive-accent-hover: var(--res-ax1);
   --interactive-normal: var(--res-bg1);
   --interactive-hover: var(--res-bg2);
-  --nav-item-color: var(--text-normal);
-  --blockquote-color: var(--res-tx-sup);
-  --res-color-em: var(--res-tx-sup);
-  --res-color-strong: var(--res-tx-sup-strong);
-  --res-color-quote: var(--res-tx3);
-  --h1-color: var(--res-tx1);
-  --h2-color: var(--res-tx-accent);
-  --h3-color: var(--res-tx1);
-  --h4-color: var(--res-tx-accent);
-  --h5-color: var(--res-tx1);
-  --h6-color: var(--res-tx-accent);
-  --text-highlight: var(--res-bg0);
-  --background-modifier-hover: var(--res-bg2);
-  --background-modifier-active-hover: var(--res-bg2);
-  --background-modifier-border: var(--res-bg3);
-  --background-modifier-border-hover: var(--res-bg4);
-  --background-modifier-border-focus: var(--res-bg4);
+  --text-accent: var(--res-tx-accent);
+  --text-accent-hover: var(--res-ax1);
 }
 
-body.theme-dark.scheme-lord {
-  --background-primary: var(--res-bg0);
-  --background-primary-alt: var(--res-bg1);
-  --background-secondary: var(--res-bg2);
+.theme-light {
   --background-secondary-alt: var(--res-bg4);
-  --icon-color: var(--res-tx1);
-  --ribbon-background: var(--res-bg3);
-  --tab-container-background: var(--res-bg3);
-  --text-normal: var(--res-tx2);
-  --text-muted: var(--res-tx3);
-  --text-faint: var(--res-tx3);
-  --text-accent: var(--res-tx-accent);
-  --text-accent-hover: var(--res-ax1);
   --interactive-accent: var(--res-ax1);
   --interactive-accent-hover: var(--res-ax1);
   --interactive-normal: var(--res-bg1);
   --interactive-hover: var(--res-bg2);
-  --nav-item-color: var(--text-normal);
-  --blockquote-color: var(--res-tx-sup);
-  --res-color-em: var(--res-tx-sup);
-  --res-color-strong: var(--res-tx-sup-strong);
-  --res-color-quote: var(--res-tx3);
-  --h1-color: var(--res-tx1);
-  --h2-color: var(--res-tx-accent);
-  --h3-color: var(--res-tx1);
-  --h4-color: var(--res-tx-accent);
-  --h5-color: var(--res-tx1);
-  --h6-color: var(--res-tx-accent);
-  --text-highlight: var(--res-bg0);
-  --background-modifier-hover: var(--res-bg2);
-  --background-modifier-active-hover: var(--res-bg2);
-  --background-modifier-border: var(--res-bg3);
-  --background-modifier-border-hover: var(--res-bg4);
-  --background-modifier-border-focus: var(--res-bg4);
+  --text-accent: var(--res-tx-accent);
+  --text-accent-hover: var(--res-ax1);
 }
 
 .nav-file-tag {
@@ -1279,7 +1257,7 @@ body {
 .markdown-reading-view .markdown-preview-view.markdown-rendered blockquote {
   font-family: var(--res-font-quote-west), var(--res-font-quote-zh);
   font-weight: var(--res-font-quote-weight);
-  color: var(--res-color-quote);
+  color: var(--res-tx3);
 }
 
 .markdown-source-view.cm-s-obsidian.mod-cm6.is-live-preview .cm-em,
@@ -1287,14 +1265,14 @@ body {
   font-family: var(--res-font-em-west), var(--res-font-em-zh);
   font-weight: var(--res-font-em-weight);
   font-style: normal;
-  color: var(--res-color-em, var(--text-normal));
+  color: var(--res-tx-sup);
 }
 
 .markdown-source-view.cm-s-obsidian.mod-cm6.is-live-preview .cm-strong,
 .markdown-reading-view .markdown-preview-view.markdown-rendered strong {
   font-family: var(--res-font-strong-west), var(--res-font-strong-zh);
   font-weight: var(--res-font-strong-weight);
-  color: var(--res-color-strong, var(--text-normal));
+  color: var(--res-tx-sup-strong);
 }
 
 body {

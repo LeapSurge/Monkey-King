@@ -23,16 +23,24 @@ body {
   /* =========================================================
       字体栈 (用户自定义 > 系统栈 > 兜底)
     ========================================================= */
-  --stack-hei: var(--u-zh-hei), var(--preset-stack-hei, ""), "SystemHei", sans-serif;
-  --stack-song: var(--u-zh-song), var(--preset-stack-song, ""), "SystemSong", serif;
+  --stack-hei:
+    var(--u-zh-hei), var(--preset-stack-hei, ""), "SystemHei", sans-serif;
+  --stack-song:
+    var(--u-zh-song), var(--preset-stack-song, ""), "SystemSong", serif;
   // 楷体没字时回退到黑体比宋体好
-  --stack-kai: var(--u-zh-kai), var(--preset-stack-kai, ""), "SystemKai", "SystemHei", sans-serif;
-  --stack-fang: var(--u-zh-fang), var(--preset-stack-fang, ""), "SystemFang", "SystemSong", serif;
+  --stack-kai:
+    var(--u-zh-kai), var(--preset-stack-kai, ""), "SystemKai", "SystemHei",
+    sans-serif;
+  --stack-fang:
+    var(--u-zh-fang), var(--preset-stack-fang, ""), "SystemFang", "SystemSong",
+    serif;
 
   // 西文字体栈
-  --stack-serif: var(--u-west-serif), var(--preset-stack-serif, ""), "SystemSerif";
+  --stack-serif:
+    var(--u-west-serif), var(--preset-stack-serif, ""), "SystemSerif";
   --stack-sans: var(--u-west-sans), var(--preset-stack-sans, ""), "SystemSans";
-  --stack-hand: var(--u-west-hand), var(--preset-stack-hand, ""), "SystemHand", "SystemSans";
+  --stack-hand:
+    var(--u-west-hand), var(--preset-stack-hand, ""), "SystemHand", "SystemSans";
   --stack-serif-i: "SystemSerifItalic", "SystemHand";
   --stack-sans-i: "SystemSansItalic", "SystemHand";
 
@@ -118,60 +126,58 @@ body {
   @each $token in $color-fixed-tokens {
     --res-#{$token}: var(--preset-#{$token});
   }
+
+  // Semantic color variables (default mapping from resolved tokens)
+  --background-primary: var(--res-bg0);
+  --background-primary-alt: var(--res-bg1);
+  --background-secondary: var(--res-bg2);
+  --icon-color: var(--res-tx1);
+  --ribbon-background: var(--res-bg3);
+  --tab-container-background: var(--res-bg3);
+  --nav-item-color: var(--text-normal);
+
+  --text-normal: var(--res-tx2);
+  --text-muted: var(--res-tx3);
+  --text-faint: var(--res-tx3);
+
+  --h1-color: var(--res-tx1);
+  --h2-color: var(--res-tx-accent);
+  --h3-color: var(--res-tx1);
+  --h4-color: var(--res-tx-accent);
+  --h5-color: var(--res-tx1);
+  --h6-color: var(--res-tx-accent);
+
+  --text-highlight: var(--res-bg0);
+
+  // Keep useful Obsidian interaction vars
+  --background-modifier-hover: var(--res-bg2);
+  --background-modifier-active-hover: var(--res-bg2);
+  --background-modifier-border: var(--res-bg3);
+  --background-modifier-border-hover: var(--res-bg4);
+  --background-modifier-border-focus: var(--res-bg4);
 }
 
 body.bg-tune-override {
   --res-bg-tune: clamp(-30, var(--u-bg-tune, var(--preset-bg-tune, 0)), 30);
 }
 
-@each $scheme, $props in $color-schemes {
-  $mode: map.get($props, mode);
+.theme-dark {
+  --background-secondary-alt: var(--res-bg4);
 
-  @if $mode == null {
-    @error "color-scheme '#{$scheme}' is missing required 'mode' config";
-  }
+  --interactive-accent: var(--res-ax1);
+  --interactive-accent-hover: var(--res-ax1);
+  --interactive-normal: var(--res-bg1);
+  --interactive-hover: var(--res-bg2);
+  --text-accent: var(--res-tx-accent);
+  --text-accent-hover: var(--res-ax1);
+}
+.theme-light {
+  --background-secondary-alt: var(--res-bg4);
 
-  // Semantic color variables stay on concrete theme class to override base rules.
-  body.theme-#{$mode}.scheme-#{$scheme} {
-    // Color semantic variables (assigned from res-* directly)
-    --background-primary: var(--res-bg0);
-    --background-primary-alt: var(--res-bg1);
-    --background-secondary: var(--res-bg2);
-    --background-secondary-alt: var(--res-bg4);
-    --icon-color: var(--res-tx1);
-    --ribbon-background: var(--res-bg3);
-    --tab-container-background: var(--res-bg3);
-
-    --text-normal: var(--res-tx2);
-    --text-muted: var(--res-tx3);
-    --text-faint: var(--res-tx3);
-    --text-accent: var(--res-tx-accent);
-    --text-accent-hover: var(--res-ax1);
-    --interactive-accent: var(--res-ax1);
-    --interactive-accent-hover: var(--res-ax1);
-    --interactive-normal: var(--res-bg1);
-    --interactive-hover: var(--res-bg2);
-    --nav-item-color: var(--text-normal);
-    --blockquote-color: var(--res-tx-sup);
-
-    --res-color-em: var(--res-tx-sup);
-    --res-color-strong: var(--res-tx-sup-strong);
-    --res-color-quote: var(--res-tx3);
-
-    --h1-color: var(--res-tx1);
-    --h2-color: var(--res-tx-accent);
-    --h3-color: var(--res-tx1);
-    --h4-color: var(--res-tx-accent);
-    --h5-color: var(--res-tx1);
-    --h6-color: var(--res-tx-accent);
-
-    --text-highlight: var(--res-bg0);
-
-    // Keep useful Obsidian interaction vars
-    --background-modifier-hover: var(--res-bg2);
-    --background-modifier-active-hover: var(--res-bg2);
-    --background-modifier-border: var(--res-bg3);
-    --background-modifier-border-hover: var(--res-bg4);
-    --background-modifier-border-focus: var(--res-bg4);
-  }
+  --interactive-accent: var(--res-ax1);
+  --interactive-accent-hover: var(--res-ax1);
+  --interactive-normal: var(--res-bg1);
+  --interactive-hover: var(--res-bg2);
+  --text-accent: var(--res-tx-accent);
+  --text-accent-hover: var(--res-ax1);
 }
