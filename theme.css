@@ -1218,6 +1218,9 @@ body {
   flex-wrap: wrap;
   justify-content: space-between;
 }
+[data-id=monkey-king-theme] + .style-settings-container .style-settings-container .style-settings-heading {
+  width: 100%;
+}
 [data-id=monkey-king-theme] + .style-settings-container .style-settings-container > .setting-item:not(.style-settings-heading) {
   width: auto;
   min-width: min(180px, 100%);
@@ -1229,10 +1232,6 @@ body {
 [data-id=monkey-king-theme] + .style-settings-container .style-settings-container > .setting-item:not(.style-settings-heading) .setting-item-info,
 [data-id=monkey-king-theme] + .style-settings-container .style-settings-container > .setting-item:not(.style-settings-heading) .setting-item-control {
   flex: none;
-}
-
-.style-settings-heading {
-  width: 100%;
 }
 
 /*# sourceMappingURL=theme.css.map */

@@ -1,8 +1,36 @@
 @use "sass:map";
 @use "sass:list";
+@use "sass:meta";
 @use "../01. abstracts/maps" as *;
 @use "../01. abstracts/mixins" as *;
 @use "../01. abstracts/variables" as *;
+
+$font-structure: map.get($token-structure, font);
+$font-schema: map.get($font-structure, schema);
+$font-elements: map.get($font-structure, elements);
+$font-keys: map.keys($font-schema);
+
+// Build gap token -> allowed keys lookup once for validation.
+$gap-token-keys: ();
+@each $token in $gap-tokens {
+  $token-id: map.get($token, id);
+  $token-allowed-keys: map.get($token, keys);
+  $gap-token-keys: map.set($gap-token-keys, $token-id, $token-allowed-keys);
+}
+
+$allowed-color-keys: (mode);
+@each $token in $color-background-tokens {
+  @each $axis in $color-axes {
+    $allowed-color-keys: list.append(
+      $allowed-color-keys,
+      #{$token}-#{$axis},
+      comma
+    );
+  }
+}
+@each $token in $color-fixed-tokens {
+  $allowed-color-keys: list.append($allowed-color-keys, $token, comma);
+}
 
 @each $mode, $groups in $style-modes {
   $fonts: map.get($groups, fonts);
@@ -20,10 +48,35 @@
 
   body.style-#{$mode} {
     @each $element, $font-config in $fonts {
+      @if list.index($font-elements, $element) == null {
+        @error "style-mode '#{$mode}' has unknown font element '#{$element}'";
+      }
+      @if meta.type-of($font-config) != map {
+        @error "style-mode '#{$mode}' font '#{$element}' must be a map";
+      }
+      @each $key, $val in $font-config {
+        @if list.index($font-keys, $key) == null {
+          @error
+            "style-mode '#{$mode}' font '#{$element}' has unknown key '#{$key}'";
+        }
+      }
       @include generate-font-preset($element, $font-config);
     }
     @if $gap-map != null {
       @each $token, $config in $gap-map {
+        $allowed-keys: map.get($gap-token-keys, $token);
+        @if $allowed-keys == null {
+          @error "gap-strategy '#{$gap-strategy}' has unknown token '#{$token}'";
+        }
+        @if meta.type-of($config) != map {
+          @error "gap token '#{$token}' in strategy '#{$gap-strategy}' must be a map";
+        }
+        @each $key, $val in $config {
+          @if list.index($allowed-keys, $key) == null {
+            @error
+              "gap token '#{$token}' in strategy '#{$gap-strategy}' has unknown key '#{$key}'";
+          }
+        }
         @include generate-gap-preset($token, $config);
       }
     }
@@ -33,6 +86,19 @@
 @each $strategy, $tokens in $gap-strategies {
   body.gap-#{$strategy} {
     @each $token, $config in $tokens {
+      $allowed-keys: map.get($gap-token-keys, $token);
+      @if $allowed-keys == null {
+        @error "gap-strategy '#{$strategy}' has unknown token '#{$token}'";
+      }
+      @if meta.type-of($config) != map {
+        @error "gap token '#{$token}' in strategy '#{$strategy}' must be a map";
+      }
+      @each $key, $val in $config {
+        @if list.index($allowed-keys, $key) == null {
+          @error
+            "gap token '#{$token}' in strategy '#{$strategy}' has unknown key '#{$key}'";
+        }
+      }
       @include generate-gap-preset($token, $config);
     }
   }
@@ -42,6 +108,11 @@
   $mode: map.get($props, mode);
   @if $mode == null {
     @error "color-scheme '#{$name}' is missing required 'mode' config";
+  }
+  @each $key, $val in $props {
+    @if list.index($allowed-color-keys, $key) == null {
+      @error "color-scheme '#{$name}' has unknown token '#{$key}'";
+    }
   }
   @if list.index($theme-modes, $mode) == null {
     @error "color-scheme '#{$name}' has unsupported mode '#{$mode}'";

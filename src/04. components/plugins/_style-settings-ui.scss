@@ -20,6 +20,10 @@
     flex-wrap: wrap;
     justify-content: space-between;
 
+    .style-settings-heading {
+      width: 100%;
+    }
+
     & > .setting-item:not(.style-settings-heading) {
       // padding-inline: 0;
       width: auto;
@@ -35,9 +39,4 @@
       }
     }
   }
-}
-
-// Settings sections
-.style-settings-heading {
-  width: 100%;
 }
