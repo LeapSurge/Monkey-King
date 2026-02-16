@@ -51,6 +51,7 @@ $gap-tokens: (
 // Color tokens (minimal table-driven set)
 $color-background-tokens: (bg0, bg1, bg2, bg3, bg4);
 $color-axes: (h, s, l);
+$theme-modes: ("light", "dark");
 $bg-tune-factors: (
   s: 0.08%,
   l: -0.12%,

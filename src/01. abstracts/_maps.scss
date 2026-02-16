@@ -1,3 +1,5 @@
+@use "sass:map";
+
 // 字体映射
 // west可选值: serif | sans | hand | serif-i | sans-i
 // cn可选值: hei | song | kai | fang
@@ -30,11 +32,11 @@ $font-presets: (
 $style-modes: (
   great-hall: (
     gap-strategy: loose,
-    fonts: map-get($font-presets, base),
+    fonts: map.get($font-presets, base),
   ),
   huaguo-mount: (
     gap-strategy: compact,
-    fonts: map-get($font-presets, huaguo),
+    fonts: map.get($font-presets, huaguo),
   ),
 );
 

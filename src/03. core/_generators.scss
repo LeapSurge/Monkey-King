@@ -1,6 +1,8 @@
 @use "sass:map";
+@use "sass:list";
 @use "../01. abstracts/maps" as *;
 @use "../01. abstracts/mixins" as *;
+@use "../01. abstracts/variables" as *;
 
 @each $mode, $groups in $style-modes {
   $fonts: map.get($groups, fonts);
@@ -40,6 +42,24 @@
   $mode: map.get($props, mode);
   @if $mode == null {
     @error "color-scheme '#{$name}' is missing required 'mode' config";
+  }
+  @if list.index($theme-modes, $mode) == null {
+    @error "color-scheme '#{$name}' has unsupported mode '#{$mode}'";
+  }
+
+  @each $token in $color-background-tokens {
+    @each $axis in $color-axes {
+      $key: #{$token}-#{$axis};
+      @if map.get($props, $key) == null {
+        @error "color-scheme '#{$name}' is missing required token '#{$key}'";
+      }
+    }
+  }
+
+  @each $token in $color-fixed-tokens {
+    @if map.get($props, $token) == null {
+      @error "color-scheme '#{$name}' is missing required token '#{$token}'";
+    }
   }
 
   body.theme-#{$mode}.scheme-#{$name} {

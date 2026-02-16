@@ -1,4 +1,5 @@
 @use "sass:list";
+@use "sass:map";
 // --------------------------------------------------------
 // 描述：给没有 local() 的字体名列表加上 local()
 // --------------------------------------------------------
@@ -37,9 +38,17 @@
 // description: get the specific group map in the style-modes map.
 // -------------------------------------------------------
 @function get-group-map($matrix, $mode, $group) {
-  $mode-map: map-get($matrix, $mode);
+  $mode-map: map.get($matrix, $mode);
+  @if $mode-map == null {
+    @error "style-mode '#{$mode}' is not defined";
+  }
 
-  @return map-get($mode-map, $group);
+  $group-map: map.get($mode-map, $group);
+  @if $group-map == null {
+    @error "group '#{$group}' is not defined under style-mode '#{$mode}'";
+  }
+
+  @return $group-map;
 }
 
 ///

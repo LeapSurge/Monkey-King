@@ -83,7 +83,7 @@ settings:
         level: 2
         collapsed: true
     -
-        id: -u-font-mono-cn
+        id: u-font-mono-cn
         title: 代码字体
         type: variable-text
         default: ""
@@ -422,14 +422,14 @@ settings:
 @font-face {
   font-family: "SystemSans";
   font-style: normal;
-  font-weight: Bold;
+  font-weight: 700;
   src: local("Segoe UI Bold"), local("Segoe UI-Bold"), local("Roboto Bold"), local("Roboto-Bold"), local("Oxygen Bold"), local("Oxygen-Bold"), local("Ubuntu Bold"), local("Ubuntu-Bold"), local("Cantarell Bold"), local("Cantarell-Bold"), local("Fira Sans Bold"), local("Fira Sans-Bold"), local("Droid Sans Bold"), local("Droid Sans-Bold"), local("Helvetica Neue Bold"), local("Helvetica Neue-Bold"), local("Helvetica Bold"), local("Helvetica-Bold"), local("Arial Bold"), local("Arial-Bold"), local("Verdana Bold"), local("Verdana-Bold"), local("Tahoma Bold"), local("Tahoma-Bold");
   unicode-range: U+0000-007F, U+0080-00B6, U+00B8-00FF, U+0100-017F, U+0180-024F, U+1E00-1EFF, U+2000-2013, U+2100-214F;
 }
 @font-face {
   font-family: "SystemSerif";
   font-style: normal;
-  font-weight: Bold;
+  font-weight: 700;
   src: local("Georgia Bold"), local("Georgia-Bold"), local("Charter Bold"), local("Charter-Bold"), local("Bitstream Charter Bold"), local("Bitstream Charter-Bold"), local("Times New Roman Bold"), local("Times New Roman-Bold"), local("Times Bold"), local("Times-Bold");
   unicode-range: U+0000-007F, U+0080-00B6, U+00B8-00FF, U+0100-017F, U+0180-024F, U+1E00-1EFF, U+2000-2013, U+2100-214F;
 }
@@ -671,6 +671,7 @@ body.scheme-lord.style-huaguo-mount {
   --u-cn-fang: "";
   --u-west-serif: "";
   --u-west-sans: "";
+  --u-west-hand: "";
   --u-bg-tune: 0;
 }
 
@@ -684,7 +685,7 @@ body {
   --stack-fang: var(--u-cn-fang), "SystemFang", "SystemSong", serif;
   --stack-serif: var(--u-west-serif), "SystemSerif";
   --stack-sans: var(--u-west-sans), "SystemSans";
-  --stack-hand: "SystemHand", "SystemSans";
+  --stack-hand: var(--u-west-hand), "SystemHand", "SystemSans";
   --stack-serif-i: "SystemSerifItalic", "SystemHand";
   --stack-sans-i: "SystemSansItalic", "SystemHand";
   --res-font-interface-west: var(
@@ -859,6 +860,10 @@ body {
   --res-gap-h6-margin-bottom: calc(
     var(--gap-unit) * var(--preset-gap-h6-margin-bottom)
   );
+  --radius-s: 8px;
+  --radius-m: 16px;
+  --radius-l: 24px;
+  --radius-xl: 32px;
   --res-bg-tune: var(--preset-bg-tune, 0);
   --res-bg-ds: calc(var(--res-bg-tune) * 0.08%);
   --res-bg-dl: calc(var(--res-bg-tune) * -0.12%);
@@ -939,10 +944,13 @@ body {
   --res-tx-sup-strong: var(--preset-tx-sup-strong);
   --res-tx-accent: var(--preset-tx-accent);
   --res-ax1: var(--preset-ax1);
-  --radius-s: 8px;
-  --radius-m: 16px;
-  --radius-l: 24px;
-  --radius-xl: 32px;
+}
+
+body.bg-tune-override {
+  --res-bg-tune: var(--u-bg-tune, var(--preset-bg-tune, 0));
+}
+
+body.theme-light.scheme-monkey {
   --background-primary: var(--res-bg0);
   --background-primary-alt: var(--res-bg1);
   --background-secondary: var(--res-bg2);
@@ -978,8 +986,40 @@ body {
   --background-modifier-border-focus: var(--res-bg4);
 }
 
-body.bg-tune-override {
-  --res-bg-tune: var(--u-bg-tune, var(--preset-bg-tune, 0));
+body.theme-light.scheme-lord {
+  --background-primary: var(--res-bg0);
+  --background-primary-alt: var(--res-bg1);
+  --background-secondary: var(--res-bg2);
+  --background-secondary-alt: var(--res-bg4);
+  --icon-color: var(--res-tx1);
+  --ribbon-background: var(--res-bg3);
+  --tab-container-background: var(--res-bg3);
+  --text-normal: var(--res-tx2);
+  --text-muted: var(--res-tx3);
+  --text-faint: var(--res-tx3);
+  --text-accent: var(--res-tx-accent);
+  --text-accent-hover: var(--res-ax1);
+  --interactive-accent: var(--res-ax1);
+  --interactive-accent-hover: var(--res-ax1);
+  --interactive-normal: var(--res-bg1);
+  --interactive-hover: var(--res-bg2);
+  --nav-item-color: var(--text-normal);
+  --blockquote-color: var(--res-tx-sup);
+  --res-color-em: var(--res-tx-sup);
+  --res-color-strong: var(--res-tx-sup-strong);
+  --res-color-quote: var(--res-tx3);
+  --h1-color: var(--res-tx1);
+  --h2-color: var(--res-tx-accent);
+  --h3-color: var(--res-tx1);
+  --h4-color: var(--res-tx-accent);
+  --h5-color: var(--res-tx1);
+  --h6-color: var(--res-tx-accent);
+  --text-highlight: var(--res-bg0);
+  --background-modifier-hover: var(--res-bg2);
+  --background-modifier-active-hover: var(--res-bg2);
+  --background-modifier-border: var(--res-bg3);
+  --background-modifier-border-hover: var(--res-bg4);
+  --background-modifier-border-focus: var(--res-bg4);
 }
 
 .nav-file-tag {
@@ -1110,10 +1150,10 @@ body {
   /* --link-decoration: underline; */
   /* --link-decoration-hover: underline; */
   --link-decoration-thickness: 2px;
-  --preset-link-underline-offset: 4px;
-  --preset-link-decoration-color: #5dad78;
-  --preset-link-decoration-color-hover: #c9242b;
-  --preset-link-decoration-thickness-hover: 4px;
+  --link-underline-offset: 4px;
+  --link-decoration-color: #5dad78;
+  --link-decoration-color-hover: #c9242b;
+  --link-decoration-thickness-hover: 4px;
   /* --link-weight: var(--font-weight); */
   /* --link-external-color: var(--text-accent); */
   /* --link-external-color-hover: var(--text-accent-hover); */
@@ -1124,7 +1164,7 @@ body {
   --link-unresolved-opacity: 0.7;
   /* --link-unresolved-filter: none; */
   --link-unresolved-decoration-style: dashed;
-  --preset-link-unresolved-decoration-style-hover: solid;
+  --link-unresolved-decoration-style-hover: solid;
   --link-unresolved-decoration-color: #5dad78;
 }
 
@@ -1132,12 +1172,12 @@ body {
   /* 通用 underline */
 }
 .markdown-source-view.mod-cm6 .cm-underline {
-  text-underline-offset: var(--preset-link-underline-offset);
-  text-decoration-color: var(--preset-link-decoration-color);
+  text-underline-offset: var(--link-underline-offset);
+  text-decoration-color: var(--link-decoration-color);
 }
 .markdown-source-view.mod-cm6 .cm-underline:hover {
-  text-decoration-color: var(--preset-link-decoration-color-hover);
-  text-decoration-thickness: var(--preset-link-decoration-thickness-hover);
+  text-decoration-color: var(--link-decoration-color-hover);
+  text-decoration-thickness: var(--link-decoration-thickness-hover);
 }
 .markdown-source-view.mod-cm6 {
   /* ===== 内部链接 ===== */
@@ -1152,7 +1192,7 @@ body {
 }
 @media (hover: hover) {
   .markdown-source-view.mod-cm6 .is-unresolved .cm-underline:hover {
-    text-decoration-style: var(--preset-link-unresolved-decoration-style-hover);
+    text-decoration-style: var(--link-unresolved-decoration-style-hover);
   }
 }
 

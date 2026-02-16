@@ -15,6 +15,7 @@
   --u-cn-fang: "";
   --u-west-serif: "";
   --u-west-sans: "";
+  --u-west-hand: "";
   --u-bg-tune: 0;
 }
 
@@ -31,7 +32,7 @@ body {
   // 西文字体栈
   --stack-serif: var(--u-west-serif), "SystemSerif";
   --stack-sans: var(--u-west-sans), "SystemSans";
-  --stack-hand: "SystemHand", "SystemSans";
+  --stack-hand: var(--u-west-hand), "SystemHand", "SystemSans";
   --stack-serif-i: "SystemSerifItalic", "SystemHand";
   --stack-sans-i: "SystemSansItalic", "SystemHand";
 

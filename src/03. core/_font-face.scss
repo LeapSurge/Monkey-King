@@ -211,7 +211,7 @@ $scale-factor: 92%; // 缩小手写体和楷体匹配
   @font-face {
     font-family: '#{$alias}';
     font-style: normal;
-    font-weight: Bold;
+    font-weight: 700;
     src: generate-variant-src($fonts, 'Bold');
     unicode-range: $unicode-latin;
   }
