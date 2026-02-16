@@ -1,0 +1,8 @@
+@use "../../../01. abstracts/variables" as *;
+
+#{$preview} .cm-formatting-highlight,
+#{$preview} .cm-highlight,
+#{$reading} mark {
+  color: var(--text-highlight);
+  background-color: var(--res-tx-accent);
+}
