@@ -3,4 +3,5 @@
 #{$preview} .cm-quote,
 #{$reading} blockquote {
   font-family: var(--res-font-quote-west), var(--res-font-quote-cn);
+  color: var(--res-color-quote, var(--text-normal));
 }

@@ -19,7 +19,7 @@ body {
 @for $i from 1 through 6 {
   // #{$preview} .cm-line.HyperMD-header.HyperMD-header-#{$i},
   #{$reading} h#{$i} {
-    margin-top: var(--res-gap-h#{$i}-margin-top);
+    margin-top: var(--res-gap-h#{$i}-margin-top) !important;
     margin-bottom: var(--res-gap-h#{$i}-margin-bottom);
   }
 
