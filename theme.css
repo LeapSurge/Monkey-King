@@ -21,14 +21,9 @@ settings:
                 label: "美猴王"
                 value: 'scheme-monkey'
             -
-                label: "暖色调"
-                value: 'warm'
-            -
-                label: "冷色调"
-                value: 'cool'
-            -
-                label: "高对比度"
-                value: 'high-contrast'
+                label: "太上老君"
+                value: 'scheme-lord'
+
     -
         id: style-mode
         title: 模式
@@ -67,7 +62,7 @@ settings:
         level: 2
         collapsed: true
     -
-        id: code-font
+        id: -u-font-mono-cn
         title: 代码字体
         type: variable-text
         default: ""
@@ -145,10 +140,10 @@ settings:
                 value: 'var(--stack-hand)'
             -
                 label: "系统衬线斜体"
-                value: 'var(--stack-serif-italic)'
+                value: 'var(--stack-serif-i)'
             -
                 label: "系统非衬线斜体"
-                value: 'var(--stack-sans-italic)'
+                value: 'var(--stack-sans-i)'
     -
         id: u-font-headings-cn
         title: 中文
@@ -193,10 +188,10 @@ settings:
                 value: 'var(--stack-hand)'
             -
                 label: "系统衬线斜体"
-                value: 'var(--stack-serif-italic)'
+                value: 'var(--stack-serif-i)'
             -
                 label: "系统非衬线斜体"
-                value: 'var(--stack-sans-italic)'
+                value: 'var(--stack-sans-i)'
     -
         id: u-font-quote-cn
         title: 中文
@@ -241,10 +236,10 @@ settings:
                 value: 'var(--stack-hand)'
             -
                 label: "系统衬线斜体"
-                value: 'var(--stack-serif-italic)'
+                value: 'var(--stack-serif-i)'
             -
                 label: "系统非衬线斜体"
-                value: 'var(--stack-sans-italic)'
+                value: 'var(--stack-sans-i)'
     -
         id: u-font-em-cn
         title: 中文
@@ -289,10 +284,10 @@ settings:
                 value: 'var(--stack-hand)'
             -
                 label: "系统衬线斜体"
-                value: 'var(--stack-serif-italic)'
+                value: 'var(--stack-serif-i)'
             -
                 label: "系统非衬线斜体"
-                value: 'var(--stack-sans-italic)'
+                value: 'var(--stack-sans-i)'
     -
         id: u-font-strong-cn
         title: 中文
@@ -336,80 +331,6 @@ settings:
             -
                 label: "紧凑"
                 value: 'gap-compact'
-    -
-        id: loose-layout
-        title: 开启宽松布局
-        type: variable-checkbox
-        default: false
-        description: 增加段落和元素之间的间距
-    -
-        id: preview-line-collapse
-        title: 预览模式空行收缩
-        type: variable-checkbox
-        default: true
-        description: 在预览模式中收缩多余的空行
-    -
-        id: heading-tight
-        title: 标题收紧
-        type: variable-checkbox
-        default: false
-        description: 减少标题上下的间距
-    -
-        id: text-justify
-        title: 两端对齐
-        type: variable-checkbox
-        default: false
-        description: 正文内容两端对齐显示
-    -
-        id: ui-elements-heading
-        title: 界面元素
-        type: heading
-        level: 2
-        collapsed: true
-    -
-        id: border-radius
-        title: 圆角大小
-        type: variable-number-slider
-        default: 8
-        min: 0
-        max: 20
-        step: 1
-        format: px
-        description: 界面元素的圆角大小
-    -
-        id: sidebar-width
-        title: 侧边栏宽度
-        type: variable-number-slider
-        default: 300
-        min: 200
-        max: 500
-        step: 10
-        format: px
-        description: 左右侧边栏的宽度
-    -
-        id: advanced-settings-heading
-        title: 高级设置
-        type: heading
-        level: 1
-        collapsed: true
-        description: 各种自定义选项
-    -
-        id: custom-css
-        title: 自定义CSS
-        type: variable-text
-        default: ""
-        description: 输入自定义CSS代码
-    -
-        id: editor-max-width
-        title: 编辑器最大宽度
-        type: variable-number-slider
-        default: 700
-        min: 500
-        max: 1200
-        step: 50
-        format: px
-        description: 编辑器内容的最大宽度
-
 */
 @font-face {
   font-family: "SystemHei";
@@ -519,7 +440,7 @@ body.style-great-hall {
   --preset-font-em-weight: normal;
   --preset-font-strong-west: var(--stack-sans);
   --preset-font-strong-cn: var(--stack-hei);
-  --preset-font-strong-weight: 400;
+  --preset-font-strong-weight: 500;
   --preset-font-tag-west: var(--stack-hei);
   --preset-font-tag-cn: var(--stack-hei);
   --preset-font-tag-weight: normal;
@@ -912,7 +833,7 @@ body {
 }
 
 .markdown-reading-view .markdown-preview-view.markdown-rendered h1 {
-  margin-top: var(--res-gap-h1-margin-top);
+  margin-top: var(--res-gap-h1-margin-top) !important;
   margin-bottom: var(--res-gap-h1-margin-bottom);
 }
 
@@ -921,7 +842,7 @@ body {
 }
 
 .markdown-reading-view .markdown-preview-view.markdown-rendered h2 {
-  margin-top: var(--res-gap-h2-margin-top);
+  margin-top: var(--res-gap-h2-margin-top) !important;
   margin-bottom: var(--res-gap-h2-margin-bottom);
 }
 
@@ -930,7 +851,7 @@ body {
 }
 
 .markdown-reading-view .markdown-preview-view.markdown-rendered h3 {
-  margin-top: var(--res-gap-h3-margin-top);
+  margin-top: var(--res-gap-h3-margin-top) !important;
   margin-bottom: var(--res-gap-h3-margin-bottom);
 }
 
@@ -939,7 +860,7 @@ body {
 }
 
 .markdown-reading-view .markdown-preview-view.markdown-rendered h4 {
-  margin-top: var(--res-gap-h4-margin-top);
+  margin-top: var(--res-gap-h4-margin-top) !important;
   margin-bottom: var(--res-gap-h4-margin-bottom);
 }
 
@@ -948,7 +869,7 @@ body {
 }
 
 .markdown-reading-view .markdown-preview-view.markdown-rendered h5 {
-  margin-top: var(--res-gap-h5-margin-top);
+  margin-top: var(--res-gap-h5-margin-top) !important;
   margin-bottom: var(--res-gap-h5-margin-bottom);
 }
 
@@ -957,7 +878,7 @@ body {
 }
 
 .markdown-reading-view .markdown-preview-view.markdown-rendered h6 {
-  margin-top: var(--res-gap-h6-margin-top);
+  margin-top: var(--res-gap-h6-margin-top) !important;
   margin-bottom: var(--res-gap-h6-margin-bottom);
 }
 
@@ -968,6 +889,7 @@ body {
 .markdown-source-view.cm-s-obsidian.mod-cm6.is-live-preview .cm-quote,
 .markdown-reading-view .markdown-preview-view.markdown-rendered blockquote {
   font-family: var(--res-font-quote-west), var(--res-font-quote-cn);
+  color: var(--res-color-quote, var(--text-normal));
 }
 
 .markdown-source-view.cm-s-obsidian.mod-cm6.is-live-preview .cm-em,
@@ -975,13 +897,14 @@ body {
   font-family: var(--res-font-em-west), var(--res-font-em-cn);
   font-weight: var(--res-font-em-weight);
   font-style: normal;
-  color: rgb(197, 49, 49);
+  color: var(--res-color-em, var(--text-normal));
 }
 
 .markdown-source-view.cm-s-obsidian.mod-cm6.is-live-preview .cm-strong,
 .markdown-reading-view .markdown-preview-view.markdown-rendered strong {
   font-family: var(--res-font-strong-west), var(--res-font-strong-cn);
   font-weight: var(--res-font-strong-weight);
+  color: var(--res-color-strong, var(--text-normal));
 }
 
 body {
