@@ -1,6 +1,5 @@
 @use "../01. abstracts/maps" as *;
 @use "../01. abstracts/variables" as *;
-@use "sass:string";
 @use "sass:map";
 @use "sass:meta";
 
@@ -16,6 +15,7 @@
   --u-cn-fang: "";
   --u-west-serif: "";
   --u-west-sans: "";
+  --u-bg-tune: 0;
 }
 
 body {
@@ -64,20 +64,94 @@ body {
     }
   }
 
-  @each $key, $val in map.get($color-schemes, "monkey") {
-    --res-#{$key}: var(--preset-#{$key}, "");
-  }
-
-  // obsidian自带变量应用
-  // 通用变量
-
   // 圆角
   --radius-s: 8px;
   --radius-m: 16px;
   --radius-l: 24px;
   --radius-xl: 32px;
 
-  // colors
-  --background-primary: var(--res-bg0);
-  // --text-normal: var(--res-text0);
+  // Color resolution variables (resolved from preset on body classes)
+  --res-bg-tune: var(--preset-bg-tune, 0);
+
+  @each $axis, $factor in $bg-tune-factors {
+    --res-bg-d#{$axis}: calc(var(--res-bg-tune) * #{$factor});
+  }
+
+  @each $token in $color-background-tokens {
+    @each $axis in $color-axes {
+      @if $axis == h {
+        // Hue remains fixed; the global slider only tunes saturation/lightness.
+        --res-#{$token}-#{$axis}: var(--preset-#{$token}-#{$axis});
+      } @else {
+        --res-#{$token}-#{$axis}: clamp(
+          0%,
+          calc(var(--preset-#{$token}-#{$axis}) + var(--res-bg-d#{$axis})),
+          100%
+        );
+      }
+    }
+    --res-#{$token}: hsl(
+      var(--res-#{$token}-h) var(--res-#{$token}-s) var(--res-#{$token}-l)
+    );
+  }
+
+  @each $token in $color-fixed-tokens {
+    --res-#{$token}: var(--preset-#{$token});
+  }
+}
+
+body.bg-tune-override {
+  --res-bg-tune: var(--u-bg-tune, var(--preset-bg-tune, 0));
+}
+
+@each $scheme, $props in $color-schemes {
+  $mode: map.get($props, mode);
+
+  @if $mode == null {
+    @error "color-scheme '#{$scheme}' is missing required 'mode' config";
+  }
+
+  // Semantic color variables stay on concrete theme class to override base rules.
+  body.theme-#{$mode}.scheme-#{$scheme} {
+    // Color semantic variables (assigned from res-* directly)
+    --background-primary: var(--res-bg0);
+    --background-primary-alt: var(--res-bg1);
+    --background-secondary: var(--res-bg2);
+    --background-secondary-alt: var(--res-bg4);
+    --icon-color: var(--res-tx1);
+    --ribbon-background: var(--res-bg3);
+    --tab-container-background: var(--res-bg3);
+
+    --text-normal: var(--res-tx2);
+    --text-muted: var(--res-tx3);
+    --text-faint: var(--res-tx3);
+    --text-accent: var(--res-tx-accent);
+    --text-accent-hover: var(--res-ax1);
+    --interactive-accent: var(--res-ax1);
+    --interactive-accent-hover: var(--res-ax1);
+    --interactive-normal: var(--res-bg1);
+    --interactive-hover: var(--res-bg2);
+    --nav-item-color: var(--text-normal);
+    --blockquote-color: var(--res-tx-sup);
+
+    --res-color-em: var(--res-tx-sup);
+    --res-color-strong: var(--res-tx-sup-strong);
+    --res-color-quote: var(--res-tx3);
+
+    --h1-color: var(--res-tx1);
+    --h2-color: var(--res-tx-accent);
+    --h3-color: var(--res-tx1);
+    --h4-color: var(--res-tx-accent);
+    --h5-color: var(--res-tx1);
+    --h6-color: var(--res-tx-accent);
+
+    --text-highlight: var(--res-bg0);
+
+    // Keep useful Obsidian interaction vars
+    --background-modifier-hover: var(--res-bg2);
+    --background-modifier-active-hover: var(--res-bg2);
+    --background-modifier-border: var(--res-bg3);
+    --background-modifier-border-hover: var(--res-bg4);
+    --background-modifier-border-focus: var(--res-bg4);
+  }
 }

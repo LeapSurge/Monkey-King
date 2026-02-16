@@ -37,6 +37,27 @@ settings:
                 label: "花果山"
                 value: 'style-huaguo-mount'
     -
+        id: bg-tune-settings-heading
+        title: 背景微调
+        type: heading
+        level: 2
+        collapsed: true
+    -
+        id: bg-tune-override
+        title: 启用手动接管
+        type: class-toggle
+        default: false
+        description: 关闭时使用每个“配色 × 模式”的默认背景微调值，开启后使用下方滑块值。
+    -
+        id: u-bg-tune
+        title: 背景总微调
+        type: variable-number-slider
+        default: 0
+        min: -100
+        max: 100
+        step: 1
+        description: 单滑块统一微调所有背景色的饱和度与亮度（不改变色相）。0 为不偏移。
+    -
         id: u-cn-hei
         title: 黑体
         type: variable-text
