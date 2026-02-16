@@ -1,4 +1,3 @@
-@use "sass:string";
 @use "sass:map";
 @use "../01. abstracts/maps" as *;
 @use "../01. abstracts/mixins" as *;
@@ -38,14 +37,32 @@
 }
 
 @each $name, $props in $color-schemes {
-  $mode: map.get($props, "mode");
+  $mode: map.get($props, mode);
+  @if $mode == null {
+    @error "color-scheme '#{$name}' is missing required 'mode' config";
+  }
 
   body.theme-#{$mode}.scheme-#{$name} {
     @each $key, $val in $props {
-      // 【逻辑判定】：只有 $val 不为 null 且不为空字符串时才执行
-      @if $val !=null and $val != "" {
+      @if $key != mode and $val != null and $val != "" {
         --preset-#{$key}: #{$val};
       }
+    }
+  }
+}
+
+@each $scheme, $mode-tunes in $bg-tune-by-scheme-mode {
+  @if map.get($color-schemes, $scheme) == null {
+    @error "bg-tune matrix references unknown scheme '#{$scheme}'";
+  }
+
+  @each $style-mode, $tune in $mode-tunes {
+    @if map.get($style-modes, $style-mode) == null {
+      @error "bg-tune matrix references unknown style-mode '#{$style-mode}'";
+    }
+
+    body.scheme-#{$scheme}.style-#{$style-mode} {
+      --preset-bg-tune: #{$tune};
     }
   }
 }

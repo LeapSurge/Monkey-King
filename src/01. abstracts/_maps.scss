@@ -130,13 +130,77 @@ $gap-strategies: (
 
 $color-schemes: (
   "monkey": (
-    "mode": "light",
-    "bg0": #fcf8e0,
-    "accent": #c9242b,
+    mode: "light",
+
+    // Background seeds in H/S/L axes
+    bg0-h: 51.9deg,
+    bg0-s: 72.5%,
+    bg0-l: 90%,
+    bg1-h: 48deg,
+    bg1-s: 100%,
+    bg1-l: 98%,
+    bg2-h: 127.5deg,
+    bg2-s: 87%,
+    bg2-l: 91%,
+    bg3-h: 139.8deg,
+    bg3-s: 40%,
+    bg3-l: 56.9%,
+    bg4-h: 44.8deg,
+    bg4-s: 100%,
+    bg4-l: 74.5%,
+
+    // Text (fixed)
+    tx1: #000000,
+    tx2: #222222,
+    tx3: #333333,
+    tx-sup: #426350,
+    tx-sup-strong: #03632b,
+    tx-accent: #a8262d,
+
+    // Interactive
+    ax1: #c9242b,
   ),
   "lord": (
-    "mode": "light",
-    "bg0": #f4efe4,
-    "accent": #d6831f,
+    mode: "light",
+
+    // Background seeds in H/S/L axes
+    bg0-h: 41.2deg,
+    bg0-s: 42.1%,
+    bg0-l: 92.5%,
+    bg1-h: 37.3deg,
+    bg1-s: 69.6%,
+    bg1-l: 100%,
+    bg2-h: 116.8deg,
+    bg2-s: 56.6%,
+    bg2-l: 93.5%,
+    bg3-h: 129.1deg,
+    bg3-s: 9.6%,
+    bg3-l: 59.4%,
+    bg4-h: 34.1deg,
+    bg4-s: 69.6%,
+    bg4-l: 77%,
+
+    // Text (fixed)
+    tx1: #1f1a17,
+    tx2: #3a312b,
+    tx3: #5b4f45,
+    tx-sup: #5b4f45,
+    tx-sup-strong: #3a312b,
+    tx-accent: #b15e14,
+
+    // Interactive
+    ax1: #d6831f,
+  ),
+);
+
+// scheme x style-mode default background tune
+$bg-tune-by-scheme-mode: (
+  "monkey": (
+    great-hall: 0,
+    huaguo-mount: -8,
+  ),
+  "lord": (
+    great-hall: -6,
+    huaguo-mount: -12,
   ),
 );

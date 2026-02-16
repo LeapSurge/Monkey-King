@@ -47,3 +47,12 @@ $gap-tokens: (
       keys: $gap-keys-headings,
     )
 );
+
+// Color tokens (minimal table-driven set)
+$color-background-tokens: (bg0, bg1, bg2, bg3, bg4);
+$color-axes: (h, s, l);
+$bg-tune-factors: (
+  s: 0.08%,
+  l: -0.12%,
+);
+$color-fixed-tokens: (tx1, tx2, tx3, tx-sup, tx-sup-strong, tx-accent, ax1);
