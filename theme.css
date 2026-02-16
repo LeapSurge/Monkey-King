@@ -448,7 +448,7 @@ settings:
   unicode-range: U+0000-007F, U+0080-00B6, U+00B8-00FF, U+0100-017F, U+0180-024F, U+1E00-1EFF, U+2000-2013, U+2100-214F;
 }
 body.style-huaguo-mount {
-  --preset-stack-hei: "械黑GB";
+  --preset-stack-hei: "HONOR Sans CN";
   --preset-stack-song: "屏显臻宋";
   --preset-stack-kai: "Yozai";
   --preset-stack-fang: "";
@@ -458,6 +458,7 @@ body.style-huaguo-mount {
   --preset-font-interface-weight: normal;
   --preset-font-theme-zh: var(--stack-song);
   --preset-font-theme-weight: normal;
+  --preset-font-headings-west: var(--stack-sans);
   --preset-font-headings-zh: var(--stack-hei);
   --preset-font-headings-weight: 900;
   --preset-font-quote-west: var(--stack-hand);
@@ -466,7 +467,6 @@ body.style-huaguo-mount {
   --preset-font-em-west: var(--stack-sans-i);
   --preset-font-em-zh: var(--stack-kai);
   --preset-font-em-weight: 600;
-  --preset-font-strong-west: var(--stack-sans);
   --preset-font-strong-zh: var(--stack-hei);
   --preset-font-strong-weight: 700;
   --preset-font-tag-west: var(--stack-hei);
@@ -520,7 +520,7 @@ body.style-great-hall {
   --preset-font-em-weight: normal;
   --preset-font-strong-west: var(--stack-sans);
   --preset-font-strong-zh: var(--stack-hei);
-  --preset-font-strong-weight: 400;
+  --preset-font-strong-weight: 500;
   --preset-font-tag-west: var(--stack-hei);
   --preset-font-tag-zh: var(--stack-hei);
   --preset-font-tag-weight: normal;
@@ -551,8 +551,8 @@ body.style-great-hall {
   --preset-gap-h6-margin-bottom: 5;
 }
 
-body {
-  --preset-stack-hei: "械黑GB";
+body:not(.style-huaguo-mount):not(.style-great-hall) {
+  --preset-stack-hei: "HONOR Sans CN";
   --preset-stack-song: "屏显臻宋";
   --preset-stack-kai: "Yozai";
   --preset-stack-fang: "";
@@ -562,6 +562,7 @@ body {
   --preset-font-interface-weight: normal;
   --preset-font-theme-zh: var(--stack-song);
   --preset-font-theme-weight: normal;
+  --preset-font-headings-west: var(--stack-sans);
   --preset-font-headings-zh: var(--stack-hei);
   --preset-font-headings-weight: 900;
   --preset-font-quote-west: var(--stack-hand);
@@ -570,7 +571,6 @@ body {
   --preset-font-em-west: var(--stack-sans-i);
   --preset-font-em-zh: var(--stack-kai);
   --preset-font-em-weight: 600;
-  --preset-font-strong-west: var(--stack-sans);
   --preset-font-strong-zh: var(--stack-hei);
   --preset-font-strong-weight: 700;
   --preset-font-tag-west: var(--stack-hei);
@@ -678,7 +678,7 @@ body.theme-light.scheme-monkey {
   --preset-tx1: #000000;
   --preset-tx2: #222222;
   --preset-tx3: #333333;
-  --preset-tx-sup: #7f9688;
+  --preset-tx-sup: #5A7162;
   --preset-tx-sup-strong: #03632b;
   --preset-tx-accent: #a8262d;
   --preset-ax1: #c9242b;
@@ -709,7 +709,7 @@ body.theme-dark.scheme-lord {
   --preset-ax1: #d6831f;
 }
 
-body.theme-light {
+body.theme-light:not(.scheme-monkey):not(.scheme-lord) {
   --preset-bg0-h: 51.67deg;
   --preset-bg0-s: 72%;
   --preset-bg0-l: 90.2%;
@@ -728,13 +728,13 @@ body.theme-light {
   --preset-tx1: #000000;
   --preset-tx2: #222222;
   --preset-tx3: #333333;
-  --preset-tx-sup: #7f9688;
+  --preset-tx-sup: #5A7162;
   --preset-tx-sup-strong: #03632b;
   --preset-tx-accent: #a8262d;
   --preset-ax1: #c9242b;
 }
 
-body.theme-dark {
+body.theme-dark:not(.scheme-monkey):not(.scheme-lord) {
   --preset-bg0-h: 51.67deg;
   --preset-bg0-s: 72%;
   --preset-bg0-l: 90.2%;
@@ -759,19 +759,19 @@ body.theme-dark {
   --preset-ax1: #d6831f;
 }
 
-body.theme-light.style-great-hall {
+body.theme-light.style-great-hall:not(.scheme-monkey):not(.scheme-lord) {
   --preset-bg-tune: 12;
 }
 
-body.theme-light.style-huaguo-mount {
+body.theme-light.style-huaguo-mount:not(.scheme-monkey):not(.scheme-lord) {
   --preset-bg-tune: 0;
 }
 
-body.theme-dark.style-great-hall {
+body.theme-dark.style-great-hall:not(.scheme-monkey):not(.scheme-lord) {
   --preset-bg-tune: -6;
 }
 
-body.theme-dark.style-huaguo-mount {
+body.theme-dark.style-huaguo-mount:not(.scheme-monkey):not(.scheme-lord) {
   --preset-bg-tune: -12;
 }
 
@@ -1077,7 +1077,7 @@ body {
   --radius-l: 24px;
   --radius-xl: 32px;
   --res-bg-tune: clamp(-30, var(--preset-bg-tune, 0), 30);
-  --res-bg-ds: calc(var(--res-bg-tune) * 1.206%);
+  --res-bg-ds: calc(var(--res-bg-tune) * 1.106%);
   --res-bg-dl: calc(var(--res-bg-tune) * 0.278%);
   --res-bg0-h: var(--preset-bg0-h);
   --res-bg0-s: clamp(

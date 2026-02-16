@@ -9,17 +9,17 @@
 $font-presets: (
   base: (
     stacks: (
-      hei: "械黑GB", song: "屏显臻宋", kai: "Yozai", fang: "",
+      hei: "HONOR Sans CN", song: "屏显臻宋", kai: "Yozai", fang: "",
       serif: "", sans: "", hand: "",
     ),
     roles: (
       interface: (west: null,     zh: null,   weight: normal),
       theme    : (west: null,     zh: "song", weight: normal),
-      mono     : (west: null,     zh: null,                  ),
-      headings : (west: null,     zh: "hei",  weight: 900   ),
+      mono     : (west: null,     zh: null,                 ),
+      headings : (west: "sans",     zh: "hei",  weight: 900   ),
       quote    : (west: "hand",   zh: "kai",  weight: normal),
       em       : (west: "sans-i", zh: "kai",  weight: 600   ),
-      strong   : (west: "sans",   zh: "hei",  weight: 700   ),
+      strong   : (west: null,   zh: "hei",  weight: 700   ),
       tag      : (west: "hei",    zh: "hei",  weight: normal),
     ),
   ),
@@ -31,11 +31,11 @@ $font-presets: (
     roles: (
       interface: (west: null,      zh: null,   weight: normal),
       theme    : (west: null,      zh: "song", weight: normal),
-      mono     : (west: null,      zh: null,                  ),
+      mono     : (west: null,      zh: null,                 ),
       headings : (west: null,      zh: "fang", weight: normal),
       quote    : (west: "hand",    zh: "kai",  weight: normal),
       em       : (west: "serif-i", zh: "kai",  weight: normal),
-      strong   : (west: "sans",    zh: "hei",  weight: 400   ),
+      strong   : (west: "sans",    zh: "hei",  weight: 500   ),
       tag      : (west: "hei",     zh: "hei",  weight: normal),
     ),
   ),
@@ -99,7 +99,7 @@ $color-schemes: (
     tx1: #000000,
     tx2: #222222,
     tx3: #333333,
-    tx-sup: #7f9688,
+    tx-sup: #5A7162,
     tx-sup-strong: #03632b,
     tx-accent: #a8262d,
 
