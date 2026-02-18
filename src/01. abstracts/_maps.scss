@@ -85,7 +85,7 @@ $gap-strategies: (
 
 // prettier-ignore
 $color-schemes: (
-  "monkey": (
+  "monkey": ( // #region
     mode: "light",
 
     // Background seeds in H/S/L axes
@@ -101,33 +101,35 @@ $color-schemes: (
     tx3: #404040,
     tx-sup: #5b7163,
     tx-sup-strong: #03632b,
-    tx-accent: #a8262d,
+    tx-accent: #a6262c,
 
     // Interactive
     ax0: hsl(357, 70%, 46%),
     ax0-h: 357, ax0-s: 0.7, ax0-l: 0.46,
+    // #endregion
   ),
-  "lord": (
+  "lord": ( // #region
     mode: "dark",
 
     // Background seeds in H/S/L axes
-    bg0-h: 51.67deg,  bg0-s: 72%,    bg0-l: 90.2%,
-    bg1-h: 45deg,     bg1-s: 42.11%, bg1-l: 92.55%,
-    bg2-h: 127.89deg, bg2-s: 51.35%, bg2-l: 85.49%,
-    bg3-h: 140.25deg, bg3-s: 32.79%, bg3-l: 52.16%,
-    bg4-h: 44.77deg,  bg4-s: 100%,   bg4-l: 74.51%,
+    bg0-h: 8deg,   bg0-s:12%,   bg0-l:8%,
+    bg1-h: 0deg,   bg1-s:6%,    bg1-l: 16%,
+    bg2-h: 16deg,  bg2-s: 63%,  bg2-l: 15%,
+    bg3-h: 16deg,  bg3-s: 88%,  bg3-l: 6%,
+    bg4-h: 203deg, bg4-s: 100%, bg4-l: 15%,
 
     // Text (fixed)
-    tx1: #1f1a17,
-    tx2: #3a312b,
-    tx3: #5b4f45,
-    tx-sup: #5b4f45,
-    tx-sup-strong: #3a312b,
-    tx-accent: #b15e14,
+    tx1: #fafafa,
+    tx2: #dadada,
+    tx3: #b3b3b3,
+    tx-sup: #b3a06b,
+    tx-sup-strong: #e00623,
+    tx-accent: #2b92ab,
 
     // Interactive
-    ax0: #d6831f,
+    ax0: hsl(192, 60%, 35%),
     ax0-h: 357, ax0-s: 0.7, ax0-l: 0.46,
+    // #endregion
   ),
 );
 
@@ -142,5 +144,5 @@ $default-color-scheme-by-theme-mode: (
 // prettier-ignore
 $bg-tune-by-scheme-mode: (
   "monkey": (great-hall: 12, huaguo-mount: 0,  ),
-  "lord"  : (great-hall: -6, huaguo-mount: -12,),
+  "lord"  : (great-hall: 0, huaguo-mount: 12,),
 );
