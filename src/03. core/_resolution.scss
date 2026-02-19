@@ -150,7 +150,7 @@ body {
   --text-highlight: var(--res-bg0);
 
   // Keep useful Obsidian interaction vars
-  --background-modifier-hover: #c7232b2d;
+  --background-modifier-hover: rgba(var(--res-ax0-rgb), 0.15);
   --background-modifier-active-hover: var(--res-bg2);
 
   --background-modifier-border: var(--res-bg3);

@@ -100,11 +100,12 @@ $color-schemes: (
     tx2: #212121,
     tx3: #404040,
     tx-sup: #5b7163,
-    tx-sup-strong: #03632b,
+    tx-strong: #03632b,
     tx-accent: #a6262c,
 
     // Interactive
     ax0: hsl(357, 70%, 46%),
+    ax0-rgb:(199, 35, 43),
     ax0-h: 357, ax0-s: 70%, ax0-l: 46%,
     // #endregion
   ),
@@ -124,12 +125,13 @@ $color-schemes: (
     tx2: #212121,
     tx3: #404040,
     tx-sup: #a36947,
-    tx-sup-strong: #9c0606,
-    tx-accent: #351168,
+    tx-strong: #9c0606,
+    tx-accent: hsl(264, 92%, 23%),
 
     // Interactive
-    ax0: hsl(265, 72%, 24%),
-    ax0-h: 265, ax0-s: 72%, ax0-l: 24%,
+    ax0: hsl(265, 53%, 32%),
+    ax0-rgb: (74, 38, 125),
+    ax0-h: 265, ax0-s: 53%, ax0-l: 32%,
     // #endregion
   ),
   "lord": ( // #region
@@ -147,12 +149,14 @@ $color-schemes: (
     tx2: #dadada,
     tx3: #b3b3b3,
     tx-sup: #b3a06b,
-    tx-sup-strong: #e00623,
-    tx-accent: #2b92ab,
+    tx-strong: #e00623,
+    tx-accent: #19b7df,
 
     // Interactive
-    ax0: hsl(192, 60%, 35%),
-    ax0-h: 192, ax0-s: 60%, ax0-l: 35%,
+    ax0: rgb(25, 185, 225),
+    ax0-rgb: (25, 185, 225),
+    ax0-h: 192, ax0-s: 80%, ax0-l: 49%,
+    
     // #endregion
   ),
   "pagoda": ( // #region
@@ -169,12 +173,13 @@ $color-schemes: (
     tx1: #fafafa,
     tx2: #d9d9d9,
     tx3: #b3b3b3,
-    tx-sup: #f8566b,
-    tx-sup-strong: hsl(147, 100%, 34%),
-    tx-accent: #ece46a,
+    tx-sup: #a86871,
+    tx-strong: hsl(147, 100%, 34%),
+    tx-accent: #d3cb61,
 
     // Interactive
     ax0: hsl(56, 77%, 67%),
+    ax0-rgb: (236, 227, 106),
     ax0-h: 56, ax0-s: 77%, ax0-l: 67%,
     // #endregion
   ),
