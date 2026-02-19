@@ -105,7 +105,7 @@ $color-schemes: (
 
     // Interactive
     ax0: hsl(357, 70%, 46%),
-    ax0-h: 357, ax0-s: 0.7, ax0-l: 0.46,
+    ax0-h: 357, ax0-s: 70%, ax0-l: 46%,
     // #endregion
   ),
   "kid": ( // #region
@@ -128,8 +128,8 @@ $color-schemes: (
     tx-accent: #351168,
 
     // Interactive
-    ax0: #000000,
-    ax0-h: 357, ax0-s: 0.7, ax0-l: 0.46,
+    ax0: hsl(265, 72%, 24%),
+    ax0-h: 265, ax0-s: 72%, ax0-l: 24%,
     // #endregion
   ),
   "lord": ( // #region
@@ -152,7 +152,30 @@ $color-schemes: (
 
     // Interactive
     ax0: hsl(192, 60%, 35%),
-    ax0-h: 357, ax0-s: 0.7, ax0-l: 0.46,
+    ax0-h: 192, ax0-s: 60%, ax0-l: 35%,
+    // #endregion
+  ),
+  "pagoda": ( // #region
+    mode: "dark",
+
+    // Background seeds in H/S/L axes
+    bg0-h: 358deg,   bg0-s:0%,   bg0-l:6%,
+    bg1-h: 358deg,   bg1-s:72%,    bg1-l: 22%,
+    bg2-h: 358deg,  bg2-s: 72%,  bg2-l: 22%,
+    bg3-h: 0deg,  bg3-s: 0%,  bg3-l: 0%,
+    bg4-h: 147deg, bg4-s: 85%, bg4-l: 16%,
+
+    // Text (fixed)
+    tx1: #fafafa,
+    tx2: #d9d9d9,
+    tx3: #b3b3b3,
+    tx-sup: #f8566b,
+    tx-sup-strong: hsl(147, 100%, 34%),
+    tx-accent: #ece46a,
+
+    // Interactive
+    ax0: hsl(56, 77%, 67%),
+    ax0-h: 56, ax0-s: 77%, ax0-l: 67%,
     // #endregion
   ),
 );
@@ -170,4 +193,5 @@ $bg-tune-by-scheme-mode: (
   "monkey": (great-hall: 12, huaguo-mount: 0,),
   "kid"   : (great-hall: 12, huaguo-mount: 0,),
   "lord"  : (great-hall: 0,  huaguo-mount: 8,),
+  "pagoda"  : (great-hall: 0,  huaguo-mount: 8,),
 );

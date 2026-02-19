@@ -26,6 +26,9 @@ settings:
             -
                 label: "太上老君"
                 value: 'scheme-lord'
+            -
+                label: "李天王"
+                value: 'scheme-pagoda'
 
     -
         id: style-mode
@@ -686,8 +689,8 @@ body.theme-light.scheme-monkey {
   --preset-tx-accent: #a6262c;
   --preset-ax0: hsl(357, 70%, 46%);
   --preset-ax0-h: 357;
-  --preset-ax0-s: 0.7;
-  --preset-ax0-l: 0.46;
+  --preset-ax0-s: 70%;
+  --preset-ax0-l: 46%;
 }
 
 body.theme-light.scheme-kid {
@@ -712,10 +715,10 @@ body.theme-light.scheme-kid {
   --preset-tx-sup: #a36947;
   --preset-tx-sup-strong: #9c0606;
   --preset-tx-accent: #351168;
-  --preset-ax0: #000000;
-  --preset-ax0-h: 357;
-  --preset-ax0-s: 0.7;
-  --preset-ax0-l: 0.46;
+  --preset-ax0: hsl(265, 72%, 24%);
+  --preset-ax0-h: 265;
+  --preset-ax0-s: 72%;
+  --preset-ax0-l: 24%;
 }
 
 body.theme-dark.scheme-lord {
@@ -741,9 +744,37 @@ body.theme-dark.scheme-lord {
   --preset-tx-sup-strong: #e00623;
   --preset-tx-accent: #2b92ab;
   --preset-ax0: hsl(192, 60%, 35%);
-  --preset-ax0-h: 357;
-  --preset-ax0-s: 0.7;
-  --preset-ax0-l: 0.46;
+  --preset-ax0-h: 192;
+  --preset-ax0-s: 60%;
+  --preset-ax0-l: 35%;
+}
+
+body.theme-dark.scheme-pagoda {
+  --preset-bg0-h: 358deg;
+  --preset-bg0-s: 0%;
+  --preset-bg0-l: 6%;
+  --preset-bg1-h: 358deg;
+  --preset-bg1-s: 72%;
+  --preset-bg1-l: 22%;
+  --preset-bg2-h: 358deg;
+  --preset-bg2-s: 72%;
+  --preset-bg2-l: 22%;
+  --preset-bg3-h: 0deg;
+  --preset-bg3-s: 0%;
+  --preset-bg3-l: 0%;
+  --preset-bg4-h: 147deg;
+  --preset-bg4-s: 85%;
+  --preset-bg4-l: 16%;
+  --preset-tx1: #fafafa;
+  --preset-tx2: #d9d9d9;
+  --preset-tx3: #b3b3b3;
+  --preset-tx-sup: #f8566b;
+  --preset-tx-sup-strong: hsl(147, 100%, 34%);
+  --preset-tx-accent: #ece46a;
+  --preset-ax0: hsl(56, 77%, 67%);
+  --preset-ax0-h: 56;
+  --preset-ax0-s: 77%;
+  --preset-ax0-l: 67%;
 }
 
 body.theme-light:not(.css-settings-manager) {
@@ -770,8 +801,8 @@ body.theme-light:not(.css-settings-manager) {
   --preset-tx-accent: #a6262c;
   --preset-ax0: hsl(357, 70%, 46%);
   --preset-ax0-h: 357;
-  --preset-ax0-s: 0.7;
-  --preset-ax0-l: 0.46;
+  --preset-ax0-s: 70%;
+  --preset-ax0-l: 46%;
 }
 
 body.theme-dark:not(.css-settings-manager) {
@@ -797,9 +828,9 @@ body.theme-dark:not(.css-settings-manager) {
   --preset-tx-sup-strong: #e00623;
   --preset-tx-accent: #2b92ab;
   --preset-ax0: hsl(192, 60%, 35%);
-  --preset-ax0-h: 357;
-  --preset-ax0-s: 0.7;
-  --preset-ax0-l: 0.46;
+  --preset-ax0-h: 192;
+  --preset-ax0-s: 60%;
+  --preset-ax0-l: 35%;
 }
 
 body.theme-light:not(.css-settings-manager) {
@@ -831,6 +862,14 @@ body.scheme-lord.style-great-hall {
 }
 
 body.scheme-lord.style-huaguo-mount {
+  --preset-bg-tune: 8;
+}
+
+body.scheme-pagoda.style-great-hall {
+  --preset-bg-tune: 0;
+}
+
+body.scheme-pagoda.style-huaguo-mount {
   --preset-bg-tune: 8;
 }
 
@@ -1227,24 +1266,14 @@ body.bg-tune-override {
   --res-bg-tune: clamp(-30, var(--u-bg-tune, var(--preset-bg-tune, 0)), 30);
 }
 
-.theme-dark {
-  --background-secondary-alt: var(--res-bg4);
-  --interactive-accent: var(--res-ax0);
-  --interactive-accent-hover: var(--res-ax0);
-  --interactive-normal: var(--res-bg1);
-  --interactive-hover: var(--res-bg2);
-  --text-accent: var(--res-tx-accent);
-  --text-accent-hover: var(--res-ax0);
-}
-
+.theme-dark,
 .theme-light {
   --background-secondary-alt: var(--res-bg4);
-  --interactive-accent: var(--res-ax0);
-  --interactive-accent-hover: var(--res-ax0);
+  --accent-h: var(--res-ax0-h);
+  --accent-s: var(--res-ax0-s);
+  --accent-l: var(--res-ax0-l);
   --interactive-normal: var(--res-bg1);
   --interactive-hover: var(--res-bg2);
-  --text-accent: var(--res-tx-accent);
-  --text-accent-hover: var(--res-ax0);
 }
 
 .nav-file-tag {

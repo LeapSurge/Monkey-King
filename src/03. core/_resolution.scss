@@ -161,23 +161,17 @@ body.bg-tune-override {
   --res-bg-tune: clamp(-30, var(--u-bg-tune, var(--preset-bg-tune, 0)), 30);
 }
 
-.theme-dark {
-  --background-secondary-alt: var(--res-bg4);
-
-  --interactive-accent: var(--res-ax0);
-  --interactive-accent-hover: var(--res-ax0);
-  --interactive-normal: var(--res-bg1);
-  --interactive-hover: var(--res-bg2);
-  --text-accent: var(--res-tx-accent);
-  --text-accent-hover: var(--res-ax0);
-}
+.theme-dark,
 .theme-light {
   --background-secondary-alt: var(--res-bg4);
+  --accent-h: var(--res-ax0-h);
+  --accent-s: var(--res-ax0-s);
+  --accent-l: var(--res-ax0-l);
 
-  --interactive-accent: var(--res-ax0);
-  --interactive-accent-hover: var(--res-ax0);
+  // --interactive-accent: var(--res-ax0);
+  // --interactive-accent-hover: var(--res-ax0);
   --interactive-normal: var(--res-bg1);
   --interactive-hover: var(--res-bg2);
-  --text-accent: var(--res-tx-accent);
-  --text-accent-hover: var(--res-ax0);
+  // --text-accent: var(--res-tx-accent);
+  // --text-accent-hover: var(--res-ax0);
 }
