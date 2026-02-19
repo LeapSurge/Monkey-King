@@ -10,11 +10,11 @@ settings:
         level: 1
         collapsed: false
     -
-        id: color-scheme
+        id: color-scheme-light
         title: 配色
         type: class-select
         default: 'scheme-monkey'
-        description: 选择主题配色方案
+        description: 选择浅色配色方案
         options:
             -
                 label: "美猴王"
@@ -22,6 +22,13 @@ settings:
             -
                 label: "哪吒"
                 value: 'scheme-kid'
+    -
+        id: color-scheme-dark
+        title: 配色
+        type: class-select
+        default: 'scheme-lord'
+        description: 选择深色配色方案
+        options:
             -
                 label: "太上老君"
                 value: 'scheme-lord'

@@ -40,3 +40,10 @@
     }
   }
 }
+
+.theme-light [data-id="color-scheme-dark"] {
+  display: none;
+}
+.theme-dark [data-id="color-scheme-light"] {
+  display: none;
+}
