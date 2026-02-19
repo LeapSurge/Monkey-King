@@ -685,9 +685,10 @@ body.theme-light.scheme-monkey {
   --preset-tx2: #212121;
   --preset-tx3: #404040;
   --preset-tx-sup: #5b7163;
-  --preset-tx-sup-strong: #03632b;
+  --preset-tx-strong: #03632b;
   --preset-tx-accent: #a6262c;
   --preset-ax0: hsl(357, 70%, 46%);
+  --preset-ax0-rgb: 199, 35, 43;
   --preset-ax0-h: 357;
   --preset-ax0-s: 70%;
   --preset-ax0-l: 46%;
@@ -713,12 +714,13 @@ body.theme-light.scheme-kid {
   --preset-tx2: #212121;
   --preset-tx3: #404040;
   --preset-tx-sup: #a36947;
-  --preset-tx-sup-strong: #9c0606;
-  --preset-tx-accent: #351168;
-  --preset-ax0: hsl(265, 72%, 24%);
+  --preset-tx-strong: #9c0606;
+  --preset-tx-accent: hsl(264, 92%, 23%);
+  --preset-ax0: hsl(265, 53%, 32%);
+  --preset-ax0-rgb: 74, 38, 125;
   --preset-ax0-h: 265;
-  --preset-ax0-s: 72%;
-  --preset-ax0-l: 24%;
+  --preset-ax0-s: 53%;
+  --preset-ax0-l: 32%;
 }
 
 body.theme-dark.scheme-lord {
@@ -741,12 +743,13 @@ body.theme-dark.scheme-lord {
   --preset-tx2: #dadada;
   --preset-tx3: #b3b3b3;
   --preset-tx-sup: #b3a06b;
-  --preset-tx-sup-strong: #e00623;
-  --preset-tx-accent: #2b92ab;
-  --preset-ax0: hsl(192, 60%, 35%);
+  --preset-tx-strong: #e00623;
+  --preset-tx-accent: #19b7df;
+  --preset-ax0: rgb(25, 185, 225);
+  --preset-ax0-rgb: 25, 185, 225;
   --preset-ax0-h: 192;
-  --preset-ax0-s: 60%;
-  --preset-ax0-l: 35%;
+  --preset-ax0-s: 80%;
+  --preset-ax0-l: 49%;
 }
 
 body.theme-dark.scheme-pagoda {
@@ -768,10 +771,11 @@ body.theme-dark.scheme-pagoda {
   --preset-tx1: #fafafa;
   --preset-tx2: #d9d9d9;
   --preset-tx3: #b3b3b3;
-  --preset-tx-sup: #f8566b;
-  --preset-tx-sup-strong: hsl(147, 100%, 34%);
-  --preset-tx-accent: #ece46a;
+  --preset-tx-sup: #a86871;
+  --preset-tx-strong: hsl(147, 100%, 34%);
+  --preset-tx-accent: #d3cb61;
   --preset-ax0: hsl(56, 77%, 67%);
+  --preset-ax0-rgb: 236, 227, 106;
   --preset-ax0-h: 56;
   --preset-ax0-s: 77%;
   --preset-ax0-l: 67%;
@@ -797,9 +801,10 @@ body.theme-light:not(.css-settings-manager) {
   --preset-tx2: #212121;
   --preset-tx3: #404040;
   --preset-tx-sup: #5b7163;
-  --preset-tx-sup-strong: #03632b;
+  --preset-tx-strong: #03632b;
   --preset-tx-accent: #a6262c;
   --preset-ax0: hsl(357, 70%, 46%);
+  --preset-ax0-rgb: 199, 35, 43;
   --preset-ax0-h: 357;
   --preset-ax0-s: 70%;
   --preset-ax0-l: 46%;
@@ -825,12 +830,13 @@ body.theme-dark:not(.css-settings-manager) {
   --preset-tx2: #dadada;
   --preset-tx3: #b3b3b3;
   --preset-tx-sup: #b3a06b;
-  --preset-tx-sup-strong: #e00623;
-  --preset-tx-accent: #2b92ab;
-  --preset-ax0: hsl(192, 60%, 35%);
+  --preset-tx-strong: #e00623;
+  --preset-tx-accent: #19b7df;
+  --preset-ax0: rgb(25, 185, 225);
+  --preset-ax0-rgb: 25, 185, 225;
   --preset-ax0-h: 192;
-  --preset-ax0-s: 60%;
-  --preset-ax0-l: 35%;
+  --preset-ax0-s: 80%;
+  --preset-ax0-l: 49%;
 }
 
 body.theme-light:not(.css-settings-manager) {
@@ -1234,9 +1240,10 @@ body {
   --res-tx2: var(--preset-tx2);
   --res-tx3: var(--preset-tx3);
   --res-tx-sup: var(--preset-tx-sup);
-  --res-tx-sup-strong: var(--preset-tx-sup-strong);
+  --res-tx-strong: var(--preset-tx-strong);
   --res-tx-accent: var(--preset-tx-accent);
   --res-ax0: var(--preset-ax0);
+  --res-ax0-rgb: var(--preset-ax0-rgb);
   --res-ax0-h: var(--preset-ax0-h);
   --res-ax0-s: var(--preset-ax0-s);
   --res-ax0-l: var(--preset-ax0-l);
@@ -1257,9 +1264,9 @@ body {
   --h5-color: var(--res-tx1);
   --h6-color: var(--res-tx-accent);
   --text-highlight: var(--res-bg0);
-  --background-modifier-hover: #c7232b2d;
+  --background-modifier-hover: rgba(var(--res-ax0-rgb), 0.15);
   --background-modifier-active-hover: var(--res-bg2);
-  --background-modifier-border: var(--res-bg3);
+  --background-modifier-border: var(--res-tx-sup);
 }
 
 body.bg-tune-override {
@@ -1269,11 +1276,37 @@ body.bg-tune-override {
 .theme-dark,
 .theme-light {
   --background-secondary-alt: var(--res-bg4);
-  --accent-h: var(--res-ax0-h);
-  --accent-s: var(--res-ax0-s);
-  --accent-l: var(--res-ax0-l);
+  --color-accent: hsl(var(--res-ax0-h), var(--res-ax0-s), var(--res-ax0-l));
   --interactive-normal: var(--res-bg1);
   --interactive-hover: var(--res-bg2);
+  --text-accent: var(--res-tx-accent);
+  --interactive-accent: var(--res-ax0);
+}
+
+.theme-light {
+  --color-accent-1: hsl(
+    calc(var(--res-ax0-h) - 1),
+    calc(var(--res-ax0-s) * 1.01),
+    calc(var(--res-ax0-l) * 1.075)
+  );
+  --color-accent-2: hsl(
+    calc(var(--res-ax0-h) - 3),
+    calc(var(--res-ax0-s) * 1.02),
+    calc(var(--res-ax0-l) * 1.15)
+  );
+}
+
+.theme-dark {
+  --color-accent-1: hsl(
+    calc(var(--res-ax0-h) - 3),
+    calc(var(--res-ax0-s) * 1.02),
+    calc(var(--res-ax0-l) * 1.15)
+  );
+  --color-accent-2: hsl(
+    calc(var(--accent-h) - 5),
+    calc(var(--res-ax0-s) * 1.05),
+    calc(var(--res-ax0-l) * 1.29)
+  );
 }
 
 .nav-file-tag {
@@ -1396,7 +1429,7 @@ body {
 .markdown-reading-view .markdown-preview-view.markdown-rendered strong {
   font-family: var(--res-font-strong-west), var(--res-font-strong-zh);
   font-weight: var(--res-font-strong-weight);
-  color: var(--res-tx-sup-strong);
+  color: var(--res-tx-strong);
 }
 
 body {
@@ -1487,6 +1520,11 @@ body {
 [data-id=monkey-king-theme] + .style-settings-container .style-settings-container > .setting-item:not(.style-settings-heading) .setting-item-info,
 [data-id=monkey-king-theme] + .style-settings-container .style-settings-container > .setting-item:not(.style-settings-heading) .setting-item-control {
   flex: none;
+}
+
+.setting-item select.dropdown,
+.setting-item button {
+  border: 1px solid var(--text-muted);
 }
 
 /*# sourceMappingURL=theme.css.map */
