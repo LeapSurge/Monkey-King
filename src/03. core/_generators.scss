@@ -76,13 +76,11 @@ $allowed-color-keys: (mode);
   }
   $font-preset: map.get($font-presets, $font-preset-name);
   @if $font-preset == null {
-    @error
-      "style-mode '#{$mode}' references unknown font-preset '#{$font-preset-name}'";
+    @error "style-mode '#{$mode}' references unknown font-preset '#{$font-preset-name}'";
   }
   @each $required-group in $font-preset-required-groups {
     @if map.get($font-preset, $required-group) == null {
-      @error
-        "font-preset '#{$font-preset-name}' is missing required group '#{$required-group}'";
+      @error "font-preset '#{$font-preset-name}' is missing required group '#{$required-group}'";
     }
   }
 
@@ -128,8 +126,7 @@ $allowed-color-keys: (mode);
       $allowed-font-keys: map.get($font-element-keys, $element);
       @each $key, $val in $font-config {
         @if list.index($allowed-font-keys, $key) == null {
-          @error
-            "style-mode '#{$mode}' font '#{$element}' has unknown key '#{$key}'";
+          @error "style-mode '#{$mode}' font '#{$element}' has unknown key '#{$key}'";
         }
       }
       @include generate-font-preset($element, $font-config);
@@ -145,8 +142,7 @@ $allowed-color-keys: (mode);
         }
         @each $key, $val in $config {
           @if list.index($allowed-keys, $key) == null {
-            @error
-              "gap token '#{$token}' in strategy '#{$gap-strategy}' has unknown key '#{$key}'";
+            @error "gap token '#{$token}' in strategy '#{$gap-strategy}' has unknown key '#{$key}'";
           }
         }
         @include generate-gap-preset($token, $config);
@@ -162,18 +158,15 @@ $default-style-groups: map.get($style-modes, $default-style-mode);
 
 $default-font-preset-name: map.get($default-style-groups, font-preset);
 @if $default-font-preset-name == null {
-  @error
-    "default style-mode '#{$default-style-mode}' is missing required 'font-preset' config";
+  @error "default style-mode '#{$default-style-mode}' is missing required 'font-preset' config";
 }
 $default-font-preset: map.get($font-presets, $default-font-preset-name);
 @if $default-font-preset == null {
-  @error
-    "default style-mode '#{$default-style-mode}' references unknown font-preset '#{$default-font-preset-name}'";
+  @error "default style-mode '#{$default-style-mode}' references unknown font-preset '#{$default-font-preset-name}'";
 }
 @each $required-group in $font-preset-required-groups {
   @if map.get($default-font-preset, $required-group) == null {
-    @error
-      "font-preset '#{$default-font-preset-name}' is missing required group '#{$required-group}'";
+    @error "font-preset '#{$default-font-preset-name}' is missing required group '#{$required-group}'";
   }
 }
 
@@ -201,35 +194,27 @@ $default-gap-map: null;
 @if $default-gap-strategy != null {
   $default-gap-map: map.get($gap-strategies, $default-gap-strategy);
   @if $default-gap-map == null {
-    @error
-      "gap-strategy '#{$default-gap-strategy}' is not defined in gap-strategies";
+    @error "gap-strategy '#{$default-gap-strategy}' is not defined in gap-strategies";
   }
 }
 
-// Default style preset fallback only when no known style-* class is present.
-$default-style-fallback-selector: "body";
-@each $mode, $groups in $style-modes {
-  $default-style-fallback-selector:
-    "#{$default-style-fallback-selector}:not(.style-#{$mode})";
-}
-#{$default-style-fallback-selector} {
+// Default style preset fallback only when no style setting.
+
+body:not(#{$style-setting-selector}) {
   @each $stack, $font-family in $default-font-stacks {
     @include generate-stack-preset($stack, $font-family);
   }
   @each $element, $font-config in $default-font-roles {
     @if list.index($font-elements, $element) == null {
-      @error
-        "default style-mode '#{$default-style-mode}' has unknown font element '#{$element}'";
+      @error "default style-mode '#{$default-style-mode}' has unknown font element '#{$element}'";
     }
     @if meta.type-of($font-config) != map {
-      @error
-        "default style-mode '#{$default-style-mode}' font '#{$element}' must be a map";
+      @error "default style-mode '#{$default-style-mode}' font '#{$element}' must be a map";
     }
     $allowed-font-keys: map.get($font-element-keys, $element);
     @each $key, $val in $font-config {
       @if list.index($allowed-font-keys, $key) == null {
-        @error
-          "default style-mode '#{$default-style-mode}' font '#{$element}' has unknown key '#{$key}'";
+        @error "default style-mode '#{$default-style-mode}' font '#{$element}' has unknown key '#{$key}'";
       }
     }
     @include generate-font-preset($element, $font-config);
@@ -238,17 +223,14 @@ $default-style-fallback-selector: "body";
     @each $token, $config in $default-gap-map {
       $allowed-keys: map.get($gap-token-keys, $token);
       @if $allowed-keys == null {
-        @error
-          "gap-strategy '#{$default-gap-strategy}' has unknown token '#{$token}'";
+        @error "gap-strategy '#{$default-gap-strategy}' has unknown token '#{$token}'";
       }
       @if meta.type-of($config) != map {
-        @error
-          "gap token '#{$token}' in strategy '#{$default-gap-strategy}' must be a map";
+        @error "gap token '#{$token}' in strategy '#{$default-gap-strategy}' must be a map";
       }
       @each $key, $val in $config {
         @if list.index($allowed-keys, $key) == null {
-          @error
-            "gap token '#{$token}' in strategy '#{$default-gap-strategy}' has unknown key '#{$key}'";
+          @error "gap token '#{$token}' in strategy '#{$default-gap-strategy}' has unknown key '#{$key}'";
         }
       }
       @include generate-gap-preset($token, $config);
@@ -268,8 +250,7 @@ $default-style-fallback-selector: "body";
       }
       @each $key, $val in $config {
         @if list.index($allowed-keys, $key) == null {
-          @error
-            "gap token '#{$token}' in strategy '#{$strategy}' has unknown key '#{$key}'";
+          @error "gap token '#{$token}' in strategy '#{$strategy}' has unknown key '#{$key}'";
         }
       }
       @include generate-gap-preset($token, $config);
@@ -325,17 +306,10 @@ $default-style-fallback-selector: "body";
   }
   $scheme-mode: map.get($props, mode);
   @if $scheme-mode != $mode {
-    @error
-      "default color-scheme '#{$name}' mode '#{$scheme-mode}' does not match '#{$mode}'";
+    @error "default color-scheme '#{$name}' mode '#{$scheme-mode}' does not match '#{$mode}'";
   }
 
-  $default-color-fallback-selector: "body.theme-#{$mode}";
-  @each $scheme-name, $scheme-props in $color-schemes {
-    $default-color-fallback-selector:
-      "#{$default-color-fallback-selector}:not(.scheme-#{$scheme-name})";
-  }
-
-  #{$default-color-fallback-selector} {
+  body.theme-#{$mode}:not(#{$style-setting-selector}) {
     @each $key, $val in $props {
       @if $key != mode and $val != null and $val != "" {
         --preset-#{$key}: #{$val};
@@ -350,20 +324,13 @@ $default-style-fallback-selector: "body";
     @error "default color-scheme '#{$scheme}' has no bg-tune config";
   }
 
-  @each $style-mode, $tune in $mode-tunes {
-    @if map.get($style-modes, $style-mode) == null {
-      @error "bg-tune matrix references unknown style-mode '#{$style-mode}'";
-    }
+  $tune: map.get($mode-tunes, $default-style-mode);
+  @if $tune == null {
+    @error "default style-mode '#{$default-style-mode}' has no bg-tune config";
+  }
 
-    $default-bg-tune-fallback-selector: "body.theme-#{$mode}.style-#{$style-mode}";
-    @each $scheme-name, $scheme-props in $color-schemes {
-      $default-bg-tune-fallback-selector:
-        "#{$default-bg-tune-fallback-selector}:not(.scheme-#{$scheme-name})";
-    }
-
-    #{$default-bg-tune-fallback-selector} {
-      --preset-bg-tune: #{$tune};
-    }
+  body.theme-#{$mode}:not(#{$style-setting-selector}) {
+    --preset-bg-tune: #{$tune};
   }
 }
 
