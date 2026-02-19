@@ -108,11 +108,35 @@ $color-schemes: (
     ax0-h: 357, ax0-s: 0.7, ax0-l: 0.46,
     // #endregion
   ),
+  "kid": ( // #region
+    mode: "light",
+
+    // Background seeds in H/S/L axes
+    bg0-h: 18deg,  bg0-s: 88%,    bg0-l: 91%,
+    bg1-h: 6deg,  bg1-s: 84%, bg1-l: 88%,
+    bg2-h: 16deg, bg2-s: 68%, bg2-l: 79%,
+    bg3-h: 44deg,  bg3-s: 72%,   bg3-l: 50%,
+    bg4-h: 0deg,  bg4-s: 83%,   bg4-l: 60%,
+    // bg4-h: 247deg, bg4-s: 73%, bg4-l: 75%,
+
+    // Text (fixed)
+    tx1: #000000,
+    tx2: #212121,
+    tx3: #404040,
+    tx-sup: #a36947,
+    tx-sup-strong: #9c0606,
+    tx-accent: #351168,
+
+    // Interactive
+    ax0: #000000,
+    ax0-h: 357, ax0-s: 0.7, ax0-l: 0.46,
+    // #endregion
+  ),
   "lord": ( // #region
     mode: "dark",
 
     // Background seeds in H/S/L axes
-    bg0-h: 8deg,   bg0-s:12%,   bg0-l:8%,
+    bg0-h: 203deg,   bg0-s:10%,   bg0-l:8%,
     bg1-h: 0deg,   bg1-s:6%,    bg1-l: 16%,
     bg2-h: 16deg,  bg2-s: 63%,  bg2-l: 15%,
     bg3-h: 16deg,  bg3-s: 88%,  bg3-l: 6%,
@@ -143,6 +167,7 @@ $default-color-scheme-by-theme-mode: (
 // scheme x style-mode default background tune
 // prettier-ignore
 $bg-tune-by-scheme-mode: (
-  "monkey": (great-hall: 12, huaguo-mount: 0,  ),
-  "lord"  : (great-hall: 0, huaguo-mount: 12,),
+  "monkey": (great-hall: 12, huaguo-mount: 0,),
+  "kid"   : (great-hall: 12, huaguo-mount: 0,),
+  "lord"  : (great-hall: 0,  huaguo-mount: 8,),
 );
