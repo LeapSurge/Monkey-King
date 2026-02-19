@@ -11,11 +11,11 @@ settings:
         level: 1
         collapsed: false
     -
-        id: color-scheme
+        id: color-scheme-light
         title: 配色
         type: class-select
         default: 'scheme-monkey'
-        description: 选择主题配色方案
+        description: 选择浅色配色方案
         options:
             -
                 label: "美猴王"
@@ -23,6 +23,13 @@ settings:
             -
                 label: "哪吒"
                 value: 'scheme-kid'
+    -
+        id: color-scheme-dark
+        title: 配色
+        type: class-select
+        default: 'scheme-lord'
+        description: 选择深色配色方案
+        options:
             -
                 label: "太上老君"
                 value: 'scheme-lord'
@@ -847,35 +854,19 @@ body.theme-dark:not(.css-settings-manager) {
   --preset-bg-tune: 8;
 }
 
-body.scheme-monkey.style-great-hall {
-  --preset-bg-tune: 12;
-}
-
-body.scheme-monkey.style-huaguo-mount {
-  --preset-bg-tune: 0;
-}
-
-body.scheme-kid.style-great-hall {
-  --preset-bg-tune: 12;
-}
-
-body.scheme-kid.style-huaguo-mount {
-  --preset-bg-tune: 0;
-}
-
-body.scheme-lord.style-great-hall {
-  --preset-bg-tune: 0;
-}
-
-body.scheme-lord.style-huaguo-mount {
+body.theme-light.style-great-hall {
   --preset-bg-tune: 8;
 }
 
-body.scheme-pagoda.style-great-hall {
+body.theme-light.style-huaguo-mount {
   --preset-bg-tune: 0;
 }
 
-body.scheme-pagoda.style-huaguo-mount {
+body.theme-dark.style-great-hall {
+  --preset-bg-tune: 0;
+}
+
+body.theme-dark.style-huaguo-mount {
   --preset-bg-tune: 8;
 }
 
@@ -1520,6 +1511,14 @@ body {
 [data-id=monkey-king-theme] + .style-settings-container .style-settings-container > .setting-item:not(.style-settings-heading) .setting-item-info,
 [data-id=monkey-king-theme] + .style-settings-container .style-settings-container > .setting-item:not(.style-settings-heading) .setting-item-control {
   flex: none;
+}
+
+.theme-light [data-id=color-scheme-dark] {
+  display: none;
+}
+
+.theme-dark [data-id=color-scheme-light] {
+  display: none;
 }
 
 .setting-item select.dropdown,

@@ -319,12 +319,9 @@ body:not(#{$style-setting-selector}) {
 }
 
 @each $mode, $scheme in $default-color-scheme-by-theme-mode {
-  $mode-tunes: map.get($bg-tune-by-scheme-mode, $scheme);
-  @if $mode-tunes == null {
-    @error "default color-scheme '#{$scheme}' has no bg-tune config";
-  }
-
+  $mode-tunes: map.get($bg-tune-by-theme-mode, $mode);
   $tune: map.get($mode-tunes, $default-style-mode);
+
   @if $tune == null {
     @error "default style-mode '#{$default-style-mode}' has no bg-tune config";
   }
@@ -334,17 +331,13 @@ body:not(#{$style-setting-selector}) {
   }
 }
 
-@each $scheme, $mode-tunes in $bg-tune-by-scheme-mode {
-  @if map.get($color-schemes, $scheme) == null {
-    @error "bg-tune matrix references unknown scheme '#{$scheme}'";
-  }
-
+@each $mode, $mode-tunes in $bg-tune-by-theme-mode {
   @each $style-mode, $tune in $mode-tunes {
     @if map.get($style-modes, $style-mode) == null {
       @error "bg-tune matrix references unknown style-mode '#{$style-mode}'";
     }
 
-    body.scheme-#{$scheme}.style-#{$style-mode} {
+    body.theme-#{$mode}.style-#{$style-mode} {
       --preset-bg-tune: #{$tune};
     }
   }

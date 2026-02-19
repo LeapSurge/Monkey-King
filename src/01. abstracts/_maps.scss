@@ -194,9 +194,7 @@ $default-color-scheme-by-theme-mode: (
 
 // scheme x style-mode default background tune
 // prettier-ignore
-$bg-tune-by-scheme-mode: (
-  "monkey": (great-hall: 12, huaguo-mount: 0,),
-  "kid"   : (great-hall: 12, huaguo-mount: 0,),
-  "lord"  : (great-hall: 0,  huaguo-mount: 8,),
-  "pagoda"  : (great-hall: 0,  huaguo-mount: 8,),
+$bg-tune-by-theme-mode: (
+  "light": (great-hall: 8, huaguo-mount: 0,),
+  "dark"   : (great-hall: 0, huaguo-mount: 8,),
 );
