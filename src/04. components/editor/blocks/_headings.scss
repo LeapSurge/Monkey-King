@@ -31,4 +31,9 @@ body.style-great-hall {
   #{$reading} :is(h1, h2, h3, h4, h5, h6) {
     text-align: center;
   }
+
+  #{$reading} .inline-title,
+  #{$preview} .inline-title {
+    text-align: center;
+  }
 }
