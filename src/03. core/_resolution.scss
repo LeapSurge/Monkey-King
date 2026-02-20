@@ -1,4 +1,4 @@
-@use "../01. abstracts/maps" as *;
+﻿@use "../01. abstracts/maps" as *;
 @use "../01. abstracts/variables" as *;
 @use "sass:map";
 @use "sass:meta";
@@ -94,9 +94,9 @@ body {
 
   // 圆角
   --radius-s: 8px;
-  --radius-m: 16px;
-  --radius-l: 24px;
-  --radius-xl: 32px;
+  --radius-m: 12px;
+  --radius-l: 16px;
+  // --radius-xl: 32px;
 
   // Color resolution variables (resolved from preset on body classes)
   --res-bg-tune: clamp(-30, var(--preset-bg-tune, 0), 30);
@@ -138,7 +138,7 @@ body {
 
   --text-normal: var(--res-tx2);
   --text-muted: var(--res-tx3);
-  --text-faint: var(--res-tx3);
+  --text-faint: var(--res-tx-sup);
 
   --h1-color: var(--res-tx1);
   --h2-color: var(--res-tx-accent);
@@ -150,11 +150,11 @@ body {
   --text-highlight: var(--res-bg0);
 
   // Keep useful Obsidian interaction vars
-  --background-modifier-hover: var(--res-bg2);
+  --background-modifier-hover: #c7232b2d;
   --background-modifier-active-hover: var(--res-bg2);
+
   --background-modifier-border: var(--res-bg3);
-  --background-modifier-border-hover: var(--res-bg4);
-  --background-modifier-border-focus: var(--res-bg4);
+  // --background-modifier-border-hover: var(--res-tx-accent); // --background-modifier-border-focus: var(--res-tx-accent);
 }
 
 body.bg-tune-override {
@@ -164,20 +164,20 @@ body.bg-tune-override {
 .theme-dark {
   --background-secondary-alt: var(--res-bg4);
 
-  --interactive-accent: var(--res-ax1);
-  --interactive-accent-hover: var(--res-ax1);
+  --interactive-accent: var(--res-ax0);
+  --interactive-accent-hover: var(--res-ax0);
   --interactive-normal: var(--res-bg1);
   --interactive-hover: var(--res-bg2);
   --text-accent: var(--res-tx-accent);
-  --text-accent-hover: var(--res-ax1);
+  --text-accent-hover: var(--res-ax0);
 }
 .theme-light {
   --background-secondary-alt: var(--res-bg4);
 
-  --interactive-accent: var(--res-ax1);
-  --interactive-accent-hover: var(--res-ax1);
+  --interactive-accent: var(--res-ax0);
+  --interactive-accent-hover: var(--res-ax0);
   --interactive-normal: var(--res-bg1);
   --interactive-hover: var(--res-bg2);
   --text-accent: var(--res-tx-accent);
-  --text-accent-hover: var(--res-ax1);
+  --text-accent-hover: var(--res-ax0);
 }

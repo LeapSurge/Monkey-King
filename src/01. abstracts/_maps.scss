@@ -97,14 +97,15 @@ $color-schemes: (
 
     // Text (fixed)
     tx1: #000000,
-    tx2: #222222,
-    tx3: #333333,
-    tx-sup: #5A7162,
+    tx2: #212121,
+    tx3: #404040,
+    tx-sup: #5b7163,
     tx-sup-strong: #03632b,
     tx-accent: #a8262d,
 
     // Interactive
-    ax1: #c9242b,
+    ax0: hsl(357, 70%, 46%),
+    ax0-h: 357, ax0-s: 0.7, ax0-l: 0.46,
   ),
   "lord": (
     mode: "dark",
@@ -125,7 +126,8 @@ $color-schemes: (
     tx-accent: #b15e14,
 
     // Interactive
-    ax1: #d6831f,
+    ax0: #d6831f,
+    ax0-h: 357, ax0-s: 0.7, ax0-l: 0.46,
   ),
 );
 
