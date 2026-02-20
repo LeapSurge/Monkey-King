@@ -55,6 +55,8 @@ $gap-token-keys: ();
   $gap-token-keys: map.set($gap-token-keys, $token, $keys);
 }
 
+$radius-keys: (s, m, l, xl);
+
 $allowed-color-keys: (mode);
 @each $token in $color-background-tokens {
   @each $axis in $color-axes {
@@ -111,6 +113,27 @@ $allowed-color-keys: (mode);
       @error "gap-strategy '#{$gap-strategy}' is not defined in gap-strategies";
     }
   }
+  $radius-preset-name: map.get($groups, radius-preset);
+  @if $radius-preset-name == null {
+    @error "style-mode '#{$mode}' is missing required 'radius-preset' config";
+  }
+  $radius-preset: map.get($radius-presets, $radius-preset-name);
+  @if $radius-preset == null {
+    @error "style-mode '#{$mode}' references unknown radius-preset '#{$radius-preset-name}'";
+  }
+  @if meta.type-of($radius-preset) != map {
+    @error "radius-preset '#{$radius-preset-name}' must be a map";
+  }
+  @each $key, $val in $radius-preset {
+    @if list.index($radius-keys, $key) == null {
+      @error "radius-preset '#{$radius-preset-name}' has unknown key '#{$key}'";
+    }
+  }
+  @each $key in $radius-keys {
+    @if map.has-key($radius-preset, $key) == false {
+      @error "radius-preset '#{$radius-preset-name}' is missing key '#{$key}'";
+    }
+  }
 
   body.style-#{$mode} {
     @each $stack, $font-family in $font-stacks {
@@ -147,6 +170,9 @@ $allowed-color-keys: (mode);
         }
         @include generate-gap-preset($token, $config);
       }
+    }
+    @each $key, $val in $radius-preset {
+      --preset-radius-#{$key}: #{$val};
     }
   }
 }
@@ -197,6 +223,27 @@ $default-gap-map: null;
     @error "gap-strategy '#{$default-gap-strategy}' is not defined in gap-strategies";
   }
 }
+$default-radius-preset-name: map.get($default-style-groups, radius-preset);
+@if $default-radius-preset-name == null {
+  @error "default style-mode '#{$default-style-mode}' is missing required 'radius-preset' config";
+}
+$default-radius-preset: map.get($radius-presets, $default-radius-preset-name);
+@if $default-radius-preset == null {
+  @error "default style-mode '#{$default-style-mode}' references unknown radius-preset '#{$default-radius-preset-name}'";
+}
+@if meta.type-of($default-radius-preset) != map {
+  @error "radius-preset '#{$default-radius-preset-name}' must be a map";
+}
+@each $key, $val in $default-radius-preset {
+  @if list.index($radius-keys, $key) == null {
+    @error "radius-preset '#{$default-radius-preset-name}' has unknown key '#{$key}'";
+  }
+}
+@each $key in $radius-keys {
+  @if map.has-key($default-radius-preset, $key) == false {
+    @error "radius-preset '#{$default-radius-preset-name}' is missing key '#{$key}'";
+  }
+}
 
 // Default style preset fallback only when no style setting.
 
@@ -235,6 +282,9 @@ body:not(#{$style-setting-selector}) {
       }
       @include generate-gap-preset($token, $config);
     }
+  }
+  @each $key, $val in $default-radius-preset {
+    --preset-radius-#{$key}: #{$val};
   }
 }
 

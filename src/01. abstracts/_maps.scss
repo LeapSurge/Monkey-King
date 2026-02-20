@@ -46,10 +46,12 @@ $style-modes: (
   huaguo-mount: (
     gap-strategy: compact,
     font-preset: base,
+    radius-preset: large,
   ),
   great-hall: (
     gap-strategy: loose,
     font-preset: great-hall,
+    radius-preset: none,
   ),
 );
 
@@ -80,6 +82,23 @@ $gap-strategies: (
     h5: (font-size: 9,   line-height: 13,  margin-top: 4,  margin-bottom: 0,),
     h6: (font-size: 8,   line-height: 12,  margin-top: 4,  margin-bottom: 0,),
     // #endregion
+  ),
+);
+
+// Unified radius presets for semantic radius vars.
+// prettier-ignore
+$radius-presets: (
+  none: (
+    s: 0px,
+    m: 0px,
+    l: 0px,
+    xl: 0px,
+  ),
+  large: (
+    s: 8px,
+    m: 12px,
+    l: 16px,
+    xl: 18px,
   ),
 );
 
