@@ -39,8 +39,10 @@ $token-structure: (
 );
 
 // Font preset validation constants.
+$style-mode-required-keys: (font-preset, gap-strategy, radius-preset);
 $font-preset-required-groups: (stacks, roles);
 $font-stack-keys: (hei, song, kai, fang, serif, sans, hand);
+$radius-keys: (s, m, l, xl);
 
 // Color tokens (minimal table-driven set)
 $color-background-tokens: (bg0, bg1, bg2, bg3, bg4);

@@ -1,380 +1,186 @@
 @use "sass:map";
-@use "sass:list";
-@use "sass:meta";
 @use "../01. abstracts/maps" as *;
 @use "../01. abstracts/mixins" as *;
+@use "../01. abstracts/functions" as *;
 @use "../01. abstracts/variables" as *;
 
-$font-structure: map.get($token-structure, font);
-$font-defaults: map.get($font-structure, defaults);
-$font-items: map.get($font-structure, items);
-$font-elements: ();
-$font-element-keys: ();
-@if meta.type-of($font-items) != list {
-  @error "font token structure items must be a list";
-}
-@if meta.type-of($font-defaults) != map {
-  @error "font token structure defaults must be a map";
-}
-@each $item in $font-items {
-  $id: map.get($item, id);
-  $keys: map.get($item, keys);
-  @if $id == null {
-    @error "font token structure item is missing required 'id'";
-  }
-  @if $keys == null {
-    @error "font token structure item '#{$id}' is missing required 'keys'";
-  }
-  $font-elements: list.append($font-elements, $id, comma);
-  $font-element-keys: map.set($font-element-keys, $id, $keys);
-}
-@each $id, $keys in $font-element-keys {
-  @each $key, $default in $font-defaults {
-    @if list.index($keys, $key) == null {
-      @error "font token '#{$id}' does not include default key '#{$key}'";
-    }
-  }
-}
-
-// Build gap token schema lookup once for validation.
-$gap-structure: map.get($token-structure, gap);
-$gap-items: map.get($gap-structure, items);
-$gap-token-keys: ();
-@if meta.type-of($gap-items) != list {
-  @error "gap token structure items must be a list";
-}
-@each $item in $gap-items {
-  $token: map.get($item, id);
-  $keys: map.get($item, keys);
-  @if $token == null {
-    @error "gap token structure item is missing required 'id'";
-  }
-  @if $keys == null {
-    @error "gap token '#{$token}' is missing required 'keys'";
-  }
-  $gap-token-keys: map.set($gap-token-keys, $token, $keys);
-}
-
-$radius-keys: (s, m, l, xl);
-
-$allowed-color-keys: (mode);
-@each $token in $color-background-tokens {
-  @each $axis in $color-axes {
-    $allowed-color-keys: list.append(
-      $allowed-color-keys,
-      #{$token}-#{$axis},
-      comma
-    );
-  }
-}
-@each $token in $color-fixed-tokens {
-  $allowed-color-keys: list.append($allowed-color-keys, $token, comma);
-}
-
-@each $mode, $groups in $style-modes {
-  $font-preset-name: map.get($groups, font-preset);
-  @if $font-preset-name == null {
-    @error "style-mode '#{$mode}' is missing required 'font-preset' config";
-  }
-  $font-preset: map.get($font-presets, $font-preset-name);
-  @if $font-preset == null {
-    @error "style-mode '#{$mode}' references unknown font-preset '#{$font-preset-name}'";
-  }
-  @each $required-group in $font-preset-required-groups {
-    @if map.get($font-preset, $required-group) == null {
-      @error "font-preset '#{$font-preset-name}' is missing required group '#{$required-group}'";
-    }
-  }
-
-  $font-stacks: map.get($font-preset, stacks);
-  @if meta.type-of($font-stacks) != map {
-    @error "font-preset '#{$font-preset-name}' stacks must be a map";
-  }
-  @each $stack, $font-family in $font-stacks {
-    @if list.index($font-stack-keys, $stack) == null {
-      @error "font-preset '#{$font-preset-name}' has unknown stack '#{$stack}'";
-    }
-  }
-  @each $stack in $font-stack-keys {
-    @if map.has-key($font-stacks, $stack) == false {
-      @error "font-preset '#{$font-preset-name}' is missing stack '#{$stack}'";
-    }
-  }
-
-  $font-roles: map.get($font-preset, roles);
-  @if meta.type-of($font-roles) != map {
-    @error "font-preset '#{$font-preset-name}' roles must be a map";
-  }
-  $gap-strategy: map.get($groups, gap-strategy);
-  $gap-map: null;
-  @if $gap-strategy != null {
-    $gap-map: map.get($gap-strategies, $gap-strategy);
-    @if $gap-map == null {
-      @error "gap-strategy '#{$gap-strategy}' is not defined in gap-strategies";
-    }
-  }
-  $radius-preset-name: map.get($groups, radius-preset);
-  @if $radius-preset-name == null {
-    @error "style-mode '#{$mode}' is missing required 'radius-preset' config";
-  }
-  $radius-preset: map.get($radius-presets, $radius-preset-name);
-  @if $radius-preset == null {
-    @error "style-mode '#{$mode}' references unknown radius-preset '#{$radius-preset-name}'";
-  }
-  @if meta.type-of($radius-preset) != map {
-    @error "radius-preset '#{$radius-preset-name}' must be a map";
-  }
-  @each $key, $val in $radius-preset {
-    @if list.index($radius-keys, $key) == null {
-      @error "radius-preset '#{$radius-preset-name}' has unknown key '#{$key}'";
-    }
-  }
-  @each $key in $radius-keys {
-    @if map.has-key($radius-preset, $key) == false {
-      @error "radius-preset '#{$radius-preset-name}' is missing key '#{$key}'";
-    }
-  }
-
-  body.style-#{$mode} {
-    @each $stack, $font-family in $font-stacks {
-      @include generate-stack-preset($stack, $font-family);
-    }
-    @each $element, $font-config in $font-roles {
-      @if list.index($font-elements, $element) == null {
-        @error "style-mode '#{$mode}' has unknown font element '#{$element}'";
-      }
-      @if meta.type-of($font-config) != map {
-        @error "style-mode '#{$mode}' font '#{$element}' must be a map";
-      }
-      $allowed-font-keys: map.get($font-element-keys, $element);
-      @each $key, $val in $font-config {
-        @if list.index($allowed-font-keys, $key) == null {
-          @error "style-mode '#{$mode}' font '#{$element}' has unknown key '#{$key}'";
-        }
-      }
-      @include generate-font-preset($element, $font-config);
-    }
-    @if $gap-map != null {
-      @each $token, $config in $gap-map {
-        $allowed-keys: map.get($gap-token-keys, $token);
-        @if $allowed-keys == null {
-          @error "gap-strategy '#{$gap-strategy}' has unknown token '#{$token}'";
-        }
-        @if meta.type-of($config) != map {
-          @error "gap token '#{$token}' in strategy '#{$gap-strategy}' must be a map";
-        }
-        @each $key, $val in $config {
-          @if list.index($allowed-keys, $key) == null {
-            @error "gap token '#{$token}' in strategy '#{$gap-strategy}' has unknown key '#{$key}'";
-          }
-        }
-        @include generate-gap-preset($token, $config);
-      }
-    }
-    @each $key, $val in $radius-preset {
-      --preset-radius-#{$key}: #{$val};
-    }
-  }
-}
-
-$default-style-groups: map.get($style-modes, $default-style-mode);
-@if $default-style-groups == null {
-  @error "default style-mode '#{$default-style-mode}' is not defined in style-modes";
-}
-
-$default-font-preset-name: map.get($default-style-groups, font-preset);
-@if $default-font-preset-name == null {
-  @error "default style-mode '#{$default-style-mode}' is missing required 'font-preset' config";
-}
-$default-font-preset: map.get($font-presets, $default-font-preset-name);
-@if $default-font-preset == null {
-  @error "default style-mode '#{$default-style-mode}' references unknown font-preset '#{$default-font-preset-name}'";
-}
-@each $required-group in $font-preset-required-groups {
-  @if map.get($default-font-preset, $required-group) == null {
-    @error "font-preset '#{$default-font-preset-name}' is missing required group '#{$required-group}'";
-  }
-}
-
-$default-font-stacks: map.get($default-font-preset, stacks);
-@if meta.type-of($default-font-stacks) != map {
-  @error "font-preset '#{$default-font-preset-name}' stacks must be a map";
-}
-@each $stack, $font-family in $default-font-stacks {
-  @if list.index($font-stack-keys, $stack) == null {
-    @error "font-preset '#{$default-font-preset-name}' has unknown stack '#{$stack}'";
-  }
-}
-@each $stack in $font-stack-keys {
-  @if map.has-key($default-font-stacks, $stack) == false {
-    @error "font-preset '#{$default-font-preset-name}' is missing stack '#{$stack}'";
-  }
-}
-
-$default-font-roles: map.get($default-font-preset, roles);
-@if meta.type-of($default-font-roles) != map {
-  @error "font-preset '#{$default-font-preset-name}' roles must be a map";
-}
-$default-gap-strategy: map.get($default-style-groups, gap-strategy);
-$default-gap-map: null;
-@if $default-gap-strategy != null {
-  $default-gap-map: map.get($gap-strategies, $default-gap-strategy);
-  @if $default-gap-map == null {
-    @error "gap-strategy '#{$default-gap-strategy}' is not defined in gap-strategies";
-  }
-}
-$default-radius-preset-name: map.get($default-style-groups, radius-preset);
-@if $default-radius-preset-name == null {
-  @error "default style-mode '#{$default-style-mode}' is missing required 'radius-preset' config";
-}
-$default-radius-preset: map.get($radius-presets, $default-radius-preset-name);
-@if $default-radius-preset == null {
-  @error "default style-mode '#{$default-style-mode}' references unknown radius-preset '#{$default-radius-preset-name}'";
-}
-@if meta.type-of($default-radius-preset) != map {
-  @error "radius-preset '#{$default-radius-preset-name}' must be a map";
-}
-@each $key, $val in $default-radius-preset {
-  @if list.index($radius-keys, $key) == null {
-    @error "radius-preset '#{$default-radius-preset-name}' has unknown key '#{$key}'";
-  }
-}
-@each $key in $radius-keys {
-  @if map.has-key($default-radius-preset, $key) == false {
-    @error "radius-preset '#{$default-radius-preset-name}' is missing key '#{$key}'";
-  }
-}
-
-// Default style preset fallback only when no style setting.
-
-body:not(#{$style-setting-selector}) {
-  @each $stack, $font-family in $default-font-stacks {
+// Emit helpers keep selector blocks concise.
+@mixin emit-font-preset-vars($font-preset) {
+  @each $stack, $font-family in map.get($font-preset, stacks) {
     @include generate-stack-preset($stack, $font-family);
   }
-  @each $element, $font-config in $default-font-roles {
-    @if list.index($font-elements, $element) == null {
-      @error "default style-mode '#{$default-style-mode}' has unknown font element '#{$element}'";
-    }
-    @if meta.type-of($font-config) != map {
-      @error "default style-mode '#{$default-style-mode}' font '#{$element}' must be a map";
-    }
-    $allowed-font-keys: map.get($font-element-keys, $element);
-    @each $key, $val in $font-config {
-      @if list.index($allowed-font-keys, $key) == null {
-        @error "default style-mode '#{$default-style-mode}' font '#{$element}' has unknown key '#{$key}'";
-      }
-    }
+
+  @each $element, $font-config in map.get($font-preset, roles) {
     @include generate-font-preset($element, $font-config);
   }
-  @if $default-gap-map != null {
-    @each $token, $config in $default-gap-map {
-      $allowed-keys: map.get($gap-token-keys, $token);
-      @if $allowed-keys == null {
-        @error "gap-strategy '#{$default-gap-strategy}' has unknown token '#{$token}'";
-      }
-      @if meta.type-of($config) != map {
-        @error "gap token '#{$token}' in strategy '#{$default-gap-strategy}' must be a map";
-      }
-      @each $key, $val in $config {
-        @if list.index($allowed-keys, $key) == null {
-          @error "gap token '#{$token}' in strategy '#{$default-gap-strategy}' has unknown key '#{$key}'";
-        }
-      }
-      @include generate-gap-preset($token, $config);
-    }
+}
+
+@mixin emit-gap-preset-vars($gap-map) {
+  @each $token, $config in $gap-map {
+    @include generate-gap-preset($token, $config);
   }
-  @each $key, $val in $default-radius-preset {
+}
+
+@mixin emit-radius-preset-vars($radius-preset) {
+  @each $key, $val in $radius-preset {
     --preset-radius-#{$key}: #{$val};
   }
 }
 
+@mixin emit-color-preset-vars($props) {
+  @each $key, $val in $props {
+    @if $key != mode and $val != null and $val != "" {
+      --preset-#{$key}: #{$val};
+    }
+  }
+}
+
+// Resolve one style-mode config and emit all related preset vars.
+@mixin emit-style-mode-vars($groups, $context) {
+  $groups: require-map-keys(
+    $groups,
+    $style-mode-required-keys,
+    $context
+  );
+
+  // 1) style-mode -> font-preset -> emit font vars
+  $font-preset-name: require-value(
+    map.get($groups, font-preset),
+    "#{$context} font-preset"
+  );
+  $font-preset: lookup-registry(
+    $font-presets,
+    $font-preset-name,
+    "font-preset",
+    $context
+  );
+  $font-preset: require-map-keys(
+    $font-preset,
+    $font-preset-required-groups,
+    "#{$context} font-preset"
+  );
+  $font-stacks: require-value(
+    map.get($font-preset, stacks),
+    "#{$context} font-preset stacks"
+  );
+  $font-stacks: require-map-keys(
+    $font-stacks,
+    $font-stack-keys,
+    "#{$context} font-preset stacks"
+  );
+  $font-preset: map.set($font-preset, stacks, $font-stacks);
+  @include emit-font-preset-vars($font-preset);
+
+  // 2) style-mode -> gap-strategy -> emit gap vars
+  $gap-strategy-name: require-value(
+    map.get($groups, gap-strategy),
+    "#{$context} gap-strategy"
+  );
+  $gap-map: lookup-registry(
+    $gap-strategies,
+    $gap-strategy-name,
+    "gap-strategy",
+    $context
+  );
+  @include emit-gap-preset-vars($gap-map);
+
+  // 3) style-mode -> radius-preset -> emit radius vars
+  $radius-preset-name: require-value(
+    map.get($groups, radius-preset),
+    "#{$context} radius-preset"
+  );
+  $radius-preset: lookup-registry(
+    $radius-presets,
+    $radius-preset-name,
+    "radius-preset",
+    $context
+  );
+  $radius-preset: require-map-keys(
+    $radius-preset,
+    $radius-keys,
+    "#{$context} radius-preset"
+  );
+  @include emit-radius-preset-vars($radius-preset);
+}
+
+/* --------------------------------------------------------
+  1) style-* 模式注入
+-------------------------------------------------------- */
+@each $mode, $groups in $style-modes {
+  body.style-#{$mode} {
+    @include emit-style-mode-vars($groups, "style-mode '#{$mode}'");
+  }
+}
+
+/* --------------------------------------------------------
+  2) 无 style setting 时的默认模式
+-------------------------------------------------------- */
+$default-style-groups: lookup-registry(
+  $style-modes,
+  $default-style-mode,
+  "style-mode",
+  "default style-mode '#{$default-style-mode}'"
+);
+
+body:not(#{$style-setting-selector}) {
+  @include emit-style-mode-vars(
+    $default-style-groups,
+    "default style-mode '#{$default-style-mode}'"
+  );
+}
+
+/* --------------------------------------------------------
+  3) 手动 gap 策略覆盖
+-------------------------------------------------------- */
 @each $strategy, $tokens in $gap-strategies {
   body.gap-#{$strategy} {
-    @each $token, $config in $tokens {
-      $allowed-keys: map.get($gap-token-keys, $token);
-      @if $allowed-keys == null {
-        @error "gap-strategy '#{$strategy}' has unknown token '#{$token}'";
-      }
-      @if meta.type-of($config) != map {
-        @error "gap token '#{$token}' in strategy '#{$strategy}' must be a map";
-      }
-      @each $key, $val in $config {
-        @if list.index($allowed-keys, $key) == null {
-          @error "gap token '#{$token}' in strategy '#{$strategy}' has unknown key '#{$key}'";
-        }
-      }
-      @include generate-gap-preset($token, $config);
-    }
+    @include emit-gap-preset-vars($tokens);
   }
 }
 
+/* --------------------------------------------------------
+  4) 配色注入 (theme + scheme)
+-------------------------------------------------------- */
 @each $name, $props in $color-schemes {
-  $mode: map.get($props, mode);
-  @if $mode == null {
-    @error "color-scheme '#{$name}' is missing required 'mode' config";
-  }
-  @each $key, $val in $props {
-    @if list.index($allowed-color-keys, $key) == null {
-      @error "color-scheme '#{$name}' has unknown token '#{$key}'";
-    }
-  }
-  @if list.index($theme-modes, $mode) == null {
-    @error "color-scheme '#{$name}' has unsupported mode '#{$mode}'";
-  }
-
-  @each $token in $color-background-tokens {
-    @each $axis in $color-axes {
-      $key: #{$token}-#{$axis};
-      @if map.get($props, $key) == null {
-        @error "color-scheme '#{$name}' is missing required token '#{$key}'";
-      }
-    }
-  }
-
-  @each $token in $color-fixed-tokens {
-    @if map.get($props, $token) == null {
-      @error "color-scheme '#{$name}' is missing required token '#{$token}'";
-    }
-  }
+  $mode: require-value(
+    map.get($props, mode),
+    "color-scheme '#{$name}' mode"
+  );
 
   body.theme-#{$mode}.scheme-#{$name} {
-    @each $key, $val in $props {
-      @if $key != mode and $val != null and $val != "" {
-        --preset-#{$key}: #{$val};
-      }
-    }
+    @include emit-color-preset-vars($props);
   }
 }
 
+/* --------------------------------------------------------
+  5) 每个 theme mode 的默认配色
+-------------------------------------------------------- */
 @each $mode, $name in $default-color-scheme-by-theme-mode {
-  @if list.index($theme-modes, $mode) == null {
-    @error "default color-scheme map has unsupported mode '#{$mode}'";
-  }
-  $props: map.get($color-schemes, $name);
-  @if $props == null {
-    @error "default color-scheme map references unknown scheme '#{$name}'";
-  }
-  $scheme-mode: map.get($props, mode);
-  @if $scheme-mode != $mode {
-    @error "default color-scheme '#{$name}' mode '#{$scheme-mode}' does not match '#{$mode}'";
-  }
+  $props: lookup-registry(
+    $color-schemes,
+    $name,
+    "scheme",
+    "default color-scheme map"
+  );
 
   body.theme-#{$mode}:not(#{$style-setting-selector}) {
-    @each $key, $val in $props {
-      @if $key != mode and $val != null and $val != "" {
-        --preset-#{$key}: #{$val};
-      }
-    }
+    @include emit-color-preset-vars($props);
   }
 }
 
-@each $mode, $scheme in $default-color-scheme-by-theme-mode {
+/* --------------------------------------------------------
+  6) 背景微调默认值与矩阵
+-------------------------------------------------------- */
+@each $mode, $name in $default-color-scheme-by-theme-mode {
   $mode-tunes: map.get($bg-tune-by-theme-mode, $mode);
-  $tune: map.get($mode-tunes, $default-style-mode);
-
-  @if $tune == null {
-    @error "default style-mode '#{$default-style-mode}' has no bg-tune config";
+  $default-tune: null;
+  @if $mode-tunes != null {
+    $default-tune: map.get($mode-tunes, $default-style-mode);
   }
+  $tune: require-value(
+    $default-tune,
+    "bg-tune defaults '#{$mode} x #{$default-style-mode}'"
+  );
 
   body.theme-#{$mode}:not(#{$style-setting-selector}) {
     --preset-bg-tune: #{$tune};
@@ -383,11 +189,14 @@ body:not(#{$style-setting-selector}) {
 
 @each $mode, $mode-tunes in $bg-tune-by-theme-mode {
   @each $style-mode, $tune in $mode-tunes {
-    @if map.get($style-modes, $style-mode) == null {
-      @error "bg-tune matrix references unknown style-mode '#{$style-mode}'";
-    }
+    $validated-style-mode: require-known-key(
+      $style-modes,
+      $style-mode,
+      "style-mode",
+      "bg-tune matrix"
+    );
 
-    body.theme-#{$mode}.style-#{$style-mode} {
+    body.theme-#{$mode}.style-#{$validated-style-mode} {
       --preset-bg-tune: #{$tune};
     }
   }

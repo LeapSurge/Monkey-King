@@ -51,6 +51,64 @@
   @return $group-map;
 }
 
+// -------------------------------------------------------
+// 描述：值不能为空（最基础的必填校验）。
+// $value: 要检查的值。
+// $context: 报错时显示的来源说明。
+// -------------------------------------------------------
+@function require-value($value, $context) {
+  @if $value == null {
+    @error "#{$context} is required";
+  }
+  @return $value;
+}
+
+// -------------------------------------------------------
+// 描述：从 registry 里按名字查配置。
+// $registry: 配置总表（map）。
+// $name: 要查找的键名。
+// $kind: 键的类型名（用于报错文案）。
+// $context: 报错上下文。
+// -------------------------------------------------------
+@function lookup-registry($registry, $name, $kind, $context) {
+  $resolved: map.get($registry, $name);
+  @if $resolved == null {
+    @error "#{$context} references unknown #{$kind} '#{$name}'";
+  }
+  @return $resolved;
+}
+
+// -------------------------------------------------------
+// 描述：校验 map 必须包含指定 keys。
+// $target-map: 被校验的 map。
+// $required-keys: 必须存在的 key 列表。
+// $context: 报错上下文。
+// -------------------------------------------------------
+@function require-map-keys($target-map, $required-keys, $context) {
+  @if $required-keys == null {
+    @return $target-map;
+  }
+
+  @each $key in $required-keys {
+    @if map.has-key($target-map, $key) == false {
+      @error "#{$context} is missing '#{$key}'";
+    }
+  }
+
+  @return $target-map;
+}
+
+// -------------------------------------------------------
+// 描述：只校验 key 是否存在，返回 key 本身（不返回 map 值）。
+// 适用场景：key 要继续用于 class 名拼接，而不是读取配置内容。
+// -------------------------------------------------------
+@function require-known-key($registry, $name, $kind, $context) {
+  @if map.has-key($registry, $name) == false {
+    @error "#{$context} references unknown #{$kind} '#{$name}'";
+  }
+  @return $name;
+}
+
 ///
 /// get a list of his, separate by comma.
 ///

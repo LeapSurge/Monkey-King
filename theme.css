@@ -460,6 +460,9 @@ settings:
   src: local("Georgia Italic"), local("Georgia-Italic"), local("Charter Italic"), local("Charter-Italic"), local("Bitstream Charter Italic"), local("Bitstream Charter-Italic"), local("Times New Roman Italic"), local("Times New Roman-Italic"), local("Times Italic"), local("Times-Italic");
   unicode-range: U+0000-007F, U+0080-00B6, U+00B8-00FF, U+0100-017F, U+0180-024F, U+1E00-1EFF, U+2000-2013, U+2100-214F;
 }
+/* --------------------------------------------------------
+  1) style-* 模式注入
+-------------------------------------------------------- */
 body.style-huaguo-mount {
   --preset-stack-hei: "HONOR Sans CN";
   --preset-stack-song: "屏显臻宋";
@@ -572,6 +575,9 @@ body.style-great-hall {
   --preset-radius-xl: 0px;
 }
 
+/* --------------------------------------------------------
+  2) 无 style setting 时的默认模式
+-------------------------------------------------------- */
 body:not(.css-settings-manager) {
   --preset-stack-hei: "HONOR Sans CN";
   --preset-stack-song: "屏显臻宋";
@@ -628,6 +634,9 @@ body:not(.css-settings-manager) {
   --preset-radius-xl: 18px;
 }
 
+/* --------------------------------------------------------
+  3) 手动 gap 策略覆盖
+-------------------------------------------------------- */
 body.gap-loose {
   --preset-gap-p-line-height: 14;
   --preset-gap-h1-font-size: 14;
@@ -684,6 +693,9 @@ body.gap-compact {
   --preset-gap-h6-margin-bottom: 0;
 }
 
+/* --------------------------------------------------------
+  4) 配色注入 (theme + scheme)
+-------------------------------------------------------- */
 body.theme-light.scheme-monkey {
   --preset-bg0-h: 51.67deg;
   --preset-bg0-s: 72%;
@@ -800,6 +812,9 @@ body.theme-dark.scheme-pagoda {
   --preset-ax0-l: 67%;
 }
 
+/* --------------------------------------------------------
+  5) 每个 theme mode 的默认配色
+-------------------------------------------------------- */
 body.theme-light:not(.css-settings-manager) {
   --preset-bg0-h: 51.67deg;
   --preset-bg0-s: 72%;
@@ -858,6 +873,9 @@ body.theme-dark:not(.css-settings-manager) {
   --preset-ax0-l: 49%;
 }
 
+/* --------------------------------------------------------
+  6) 背景微调默认值与矩阵
+-------------------------------------------------------- */
 body.theme-light:not(.css-settings-manager) {
   --preset-bg-tune: 0;
 }
