@@ -717,7 +717,7 @@ body.theme-light.scheme-monkey {
   --preset-tx3: #404040;
   --preset-tx-sup: #5b7163;
   --preset-tx-strong: #03632b;
-  --preset-tx-accent: #a6262c;
+  --preset-tx-accent: hsl(357, 63%, 40%);
   --preset-ax0: hsl(357, 70%, 46%);
   --preset-ax0-rgb: 199, 35, 43;
   --preset-ax0-h: 357;
@@ -773,14 +773,14 @@ body.theme-dark.scheme-lord {
   --preset-tx1: #fafafa;
   --preset-tx2: #dadada;
   --preset-tx3: #b3b3b3;
-  --preset-tx-sup: #9b8a5c;
+  --preset-tx-sup: #8b7d57;
   --preset-tx-strong: #e00623;
-  --preset-tx-accent: #19b7df;
-  --preset-ax0: rgb(25, 185, 225);
-  --preset-ax0-rgb: 25, 185, 225;
+  --preset-tx-accent: hsl(192, 92%, 52%);
+  --preset-ax0: hsl(192, 75%, 46%);
+  --preset-ax0-rgb: 29, 170, 205;
   --preset-ax0-h: 192;
-  --preset-ax0-s: 80%;
-  --preset-ax0-l: 49%;
+  --preset-ax0-s: 75%;
+  --preset-ax0-l: 46%;
 }
 
 body.theme-dark.scheme-pagoda {
@@ -803,13 +803,13 @@ body.theme-dark.scheme-pagoda {
   --preset-tx2: #d9d9d9;
   --preset-tx3: #b3b3b3;
   --preset-tx-sup: #a86871;
-  --preset-tx-strong: hsl(147, 100%, 34%);
-  --preset-tx-accent: #d3cb61;
-  --preset-ax0: hsl(56, 77%, 67%);
-  --preset-ax0-rgb: 236, 227, 106;
+  --preset-tx-strong: #00ad4e;
+  --preset-tx-accent: hsl(56, 81%, 70%);
+  --preset-ax0: hsl(56, 62%, 58%);
+  --preset-ax0-rgb: 214, 208, 81;
   --preset-ax0-h: 56;
-  --preset-ax0-s: 77%;
-  --preset-ax0-l: 67%;
+  --preset-ax0-s: 62%;
+  --preset-ax0-l: 58%;
 }
 
 /* --------------------------------------------------------
@@ -836,7 +836,7 @@ body.theme-light:not(.css-settings-manager) {
   --preset-tx3: #404040;
   --preset-tx-sup: #5b7163;
   --preset-tx-strong: #03632b;
-  --preset-tx-accent: #a6262c;
+  --preset-tx-accent: hsl(357, 63%, 40%);
   --preset-ax0: hsl(357, 70%, 46%);
   --preset-ax0-rgb: 199, 35, 43;
   --preset-ax0-h: 357;
@@ -863,14 +863,14 @@ body.theme-dark:not(.css-settings-manager) {
   --preset-tx1: #fafafa;
   --preset-tx2: #dadada;
   --preset-tx3: #b3b3b3;
-  --preset-tx-sup: #9b8a5c;
+  --preset-tx-sup: #8b7d57;
   --preset-tx-strong: #e00623;
-  --preset-tx-accent: #19b7df;
-  --preset-ax0: rgb(25, 185, 225);
-  --preset-ax0-rgb: 25, 185, 225;
+  --preset-tx-accent: hsl(192, 92%, 52%);
+  --preset-ax0: hsl(192, 75%, 46%);
+  --preset-ax0-rgb: 29, 170, 205;
   --preset-ax0-h: 192;
-  --preset-ax0-s: 80%;
-  --preset-ax0-l: 49%;
+  --preset-ax0-s: 75%;
+  --preset-ax0-l: 46%;
 }
 
 /* --------------------------------------------------------
