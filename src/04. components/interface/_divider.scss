@@ -1,0 +1,17 @@
+body {
+  --divider-width: 2px;
+  /* --background-modifier-border >> --divider-color */
+  --tab-outline-width: 2px;
+  --divider-color: black;
+}
+body.theme-dark {
+  --divider-color: black;
+}
+.titlebar-button-container {
+  display: flex;
+  position: absolute;
+  top: calc(-1 * var(--tab-outline-width));
+}
+.mod-root .workspace-tab-header-container-inner {
+  padding-top: var(--tab-outline-width);
+}

@@ -167,7 +167,7 @@ $color-schemes: (
     tx1: #fafafa,
     tx2: #dadada,
     tx3: #b3b3b3,
-    tx-sup: #b3a06b,
+    tx-sup: #9b8a5c,
     tx-strong: #e00623,
     tx-accent: #19b7df,
 
@@ -215,5 +215,5 @@ $default-color-scheme-by-theme-mode: (
 // prettier-ignore
 $bg-tune-by-theme-mode: (
   "light": (great-hall: 8, huaguo-mount: 0,),
-  "dark"   : (great-hall: 0, huaguo-mount: 8,),
+  "dark"   : (great-hall: 0, huaguo-mount: 5,),
 );

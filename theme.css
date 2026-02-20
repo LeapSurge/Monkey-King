@@ -773,7 +773,7 @@ body.theme-dark.scheme-lord {
   --preset-tx1: #fafafa;
   --preset-tx2: #dadada;
   --preset-tx3: #b3b3b3;
-  --preset-tx-sup: #b3a06b;
+  --preset-tx-sup: #9b8a5c;
   --preset-tx-strong: #e00623;
   --preset-tx-accent: #19b7df;
   --preset-ax0: rgb(25, 185, 225);
@@ -863,7 +863,7 @@ body.theme-dark:not(.css-settings-manager) {
   --preset-tx1: #fafafa;
   --preset-tx2: #dadada;
   --preset-tx3: #b3b3b3;
-  --preset-tx-sup: #b3a06b;
+  --preset-tx-sup: #9b8a5c;
   --preset-tx-strong: #e00623;
   --preset-tx-accent: #19b7df;
   --preset-ax0: rgb(25, 185, 225);
@@ -881,7 +881,7 @@ body.theme-light:not(.css-settings-manager) {
 }
 
 body.theme-dark:not(.css-settings-manager) {
-  --preset-bg-tune: 8;
+  --preset-bg-tune: 5;
 }
 
 body.theme-light.style-great-hall {
@@ -897,7 +897,7 @@ body.theme-dark.style-great-hall {
 }
 
 body.theme-dark.style-huaguo-mount {
-  --preset-bg-tune: 8;
+  --preset-bg-tune: 5;
 }
 
 /* =========================================================
@@ -1335,6 +1335,15 @@ body.bg-tune-override {
   line-height: var(--line-height-title);
 }
 
+.modal.mod-settings,
+div.prompt {
+  border: var(--divider-width) solid var(--background-modifier-border);
+}
+
+.mod-settings .vertical-tab-content-container {
+  border-width: 0;
+}
+
 body {
   --font-text:
     var(--font-text-theme), var(--font-text-override), var(--font-default);
@@ -1433,6 +1442,10 @@ body {
 }
 
 body.style-great-hall .markdown-reading-view .markdown-preview-view.markdown-rendered :is(h1, h2, h3, h4, h5, h6) {
+  text-align: center;
+}
+body.style-great-hall .markdown-reading-view .markdown-preview-view.markdown-rendered .inline-title,
+body.style-great-hall .markdown-source-view.cm-s-obsidian.mod-cm6.is-live-preview .inline-title {
   text-align: center;
 }
 
@@ -1559,6 +1572,27 @@ body {
 .setting-item select.dropdown,
 .setting-item button {
   border: 1px solid var(--text-muted);
+}
+
+body {
+  --divider-width: 2px;
+  /* --background-modifier-border >> --divider-color */
+  --tab-outline-width: 2px;
+  --divider-color: black;
+}
+
+body.theme-dark {
+  --divider-color: black;
+}
+
+.titlebar-button-container {
+  display: flex;
+  position: absolute;
+  top: calc(-1 * var(--tab-outline-width));
+}
+
+.mod-root .workspace-tab-header-container-inner {
+  padding-top: var(--tab-outline-width);
 }
 
 /*# sourceMappingURL=theme.css.map */

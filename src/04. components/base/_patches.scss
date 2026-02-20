@@ -2,3 +2,13 @@
 .nav-file-tag {
   line-height: var(--line-height-title);
 }
+
+// Fix the modal border width
+.modal.mod-settings,
+div.prompt {
+  border: var(--divider-width) solid var(--background-modifier-border);
+}
+
+.mod-settings .vertical-tab-content-container {
+  border-width: 0;
+}
