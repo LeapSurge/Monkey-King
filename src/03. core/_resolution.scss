@@ -193,7 +193,7 @@ body.bg-tune-override {
     calc(var(--res-ax0-l) * 1.15)
   );
   --color-accent-2: hsl(
-    calc(var(--accent-h) - 5),
+    calc(var(--res-ax0-h) - 5),
     calc(var(--res-ax0-s) * 1.05),
     calc(var(--res-ax0-l) * 1.29)
   );

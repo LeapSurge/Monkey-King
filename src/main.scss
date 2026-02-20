@@ -16,6 +16,7 @@
 
 // base
 @use "04. components/base/patches";
+@use "04. components/base/semantics";
 
 // Editor styles
 @use "04. components/editor/blocks/paragraphs";

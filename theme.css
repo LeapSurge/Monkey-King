@@ -1325,7 +1325,7 @@ body.bg-tune-override {
     calc(var(--res-ax0-l) * 1.15)
   );
   --color-accent-2: hsl(
-    calc(var(--accent-h) - 5),
+    calc(var(--res-ax0-h) - 5),
     calc(var(--res-ax0-s) * 1.05),
     calc(var(--res-ax0-l) * 1.29)
   );
@@ -1342,6 +1342,14 @@ div.prompt {
 
 .mod-settings .vertical-tab-content-container {
   border-width: 0;
+}
+
+body {
+  --mkk-line-width: 2px;
+}
+
+body.style-great-hall {
+  --mkk-line-width: 1px;
 }
 
 body {
@@ -1474,52 +1482,53 @@ body.style-great-hall .markdown-source-view.cm-s-obsidian.mod-cm6.is-live-previe
 body {
   --link-color: var(--text-normal);
   --link-color-hover: var(--text-normal);
-  /* --link-decoration: underline; */
-  /* --link-decoration-hover: underline; */
-  --link-decoration-thickness: 2px;
-  --preset-link-underline-offset: 4px;
-  --preset-link-decoration-color: #5dad78;
-  --preset-link-decoration-color-hover: #c9242b;
-  --preset-link-decoration-thickness-hover: 4px;
-  /* --link-weight: var(--font-weight); */
-  /* --link-external-color: var(--text-accent); */
-  /* --link-external-color-hover: var(--text-accent-hover); */
-  /* --link-external-decoration: underline; */
-  /* --link-external-decoration-hover: underline; */
-  /* --link-external-filter: none; */
+  --link-decoration-thickness: var(--mkk-line-width);
+  --mkk-link-underline-offset: 4px;
+  --mkk-link-decoration-color: var(--res-tx-sup);
+  --mkk-link-decoration-color-hover: var(--interactive-accent);
+  --mkk-link-decoration-thickness-hover: calc(var(--mkk-line-width) * 2);
   --link-unresolved-color: var(--text-normal);
   --link-unresolved-opacity: 0.7;
-  /* --link-unresolved-filter: none; */
   --link-unresolved-decoration-style: dashed;
-  --preset-link-unresolved-decoration-style-hover: solid;
-  --link-unresolved-decoration-color: #5dad78;
+  --mkk-link-unresolved-decoration-style-hover: solid;
+  --link-unresolved-decoration-color: var(--res-tx-sup);
+  --link-external-color-hover: var(--interactive-accent);
 }
 
-.markdown-source-view.mod-cm6 {
-  /* 通用 underline */
-}
-.markdown-source-view.mod-cm6 .cm-underline {
-  text-underline-offset: var(--preset-link-underline-offset);
-  text-decoration-color: var(--preset-link-decoration-color);
-}
-.markdown-source-view.mod-cm6 .cm-underline:hover {
-  text-decoration-color: var(--preset-link-decoration-color-hover);
-  text-decoration-thickness: var(--preset-link-decoration-thickness-hover);
-}
-.markdown-source-view.mod-cm6 {
-  /* ===== 内部链接 ===== */
-}
 @media (hover: hover) {
-  .markdown-source-view.mod-cm6 .cm-hmd-internal-link:hover {
+  .cm-s-obsidian span.cm-hmd-internal-link:hover,
+  .cm-s-obsidian span.cm-link:hover {
     text-decoration-line: none;
   }
 }
-.markdown-source-view.mod-cm6 {
-  /* ===== 未解析链接 ===== */
+.markdown-source-view.mod-cm6 .cm-underline {
+  text-underline-offset: var(--mkk-link-underline-offset);
+  text-decoration-color: var(--mkk-link-decoration-color);
+}
+.markdown-source-view.mod-cm6 .cm-underline:hover {
+  text-decoration-color: var(--mkk-link-decoration-color-hover);
+  text-decoration-thickness: var(--mkk-link-decoration-thickness-hover);
 }
 @media (hover: hover) {
   .markdown-source-view.mod-cm6 .is-unresolved .cm-underline:hover {
-    text-decoration-style: var(--preset-link-unresolved-decoration-style-hover);
+    text-decoration-style: var(--mkk-link-unresolved-decoration-style-hover);
+  }
+}
+
+a {
+  text-underline-offset: var(--mkk-link-underline-offset);
+  text-decoration-color: var(--mkk-link-decoration-color);
+}
+a:hover {
+  text-decoration-color: var(--mkk-link-decoration-color-hover);
+  text-decoration-thickness: var(--mkk-link-decoration-thickness-hover);
+}
+
+@media (hover: hover) {
+  .metadata-property-value .internal-link.is-unresolved:hover,
+  .markdown-rendered .internal-link.is-unresolved:hover {
+    text-decoration-style: var(--mkk-link-unresolved-decoration-style-hover);
+    text-decoration-color: var(--mkk-link-decoration-color-hover);
   }
 }
 
