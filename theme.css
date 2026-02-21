@@ -6,6 +6,7 @@ settings:
     -
         id: h-sec-stage
         title: 短诗定场
+        description: 仙山灵石，久孕猿猴，碎开新篇。
         type: heading
         level: 1
         collapsed: false
@@ -79,7 +80,8 @@ settings:
                 value: 'var(--stack-fang)'
     -
         id: h-sec-optimize
-        title: 守桃饲马
+        title: 看桃放马
+        description: 恭恭敬敬，规规矩矩，小打小闹。
         type: heading
         level: 1
         collapsed: true
@@ -89,7 +91,7 @@ settings:
             title: 亲调天光
             type: class-toggle
             default: false
-            description: 关闭时跟随场景默认天光；开启后使用滑块。
+            description: 关闭时跟随默认背景；开启后使用滑块。
     -
             id: u-bg-tune
             title: 天光偏移
@@ -142,57 +144,25 @@ settings:
                 label: "浓重"
                 value: 'line-width-bold'
     -
-        id: h-group-opt-link
-        title: 链接字法
-        type: heading
-        level: 2
-        collapsed: true
-    -
-        id: u-mkk-link-underline-offset
-        title: 下划线偏移
-        type: variable-text
-        default: ""
-        description: 覆盖链接下划线与文字的距离。示例：4px（留空跟随预设）
-    -
-        id: u-mkk-link-decoration-thickness-hover
-        title: 悬停线宽
-        type: variable-text
-        default: ""
-        description: 覆盖链接悬停时下划线粗细。示例：2px（留空跟随预设）
-    -
-        id: u-mkk-link-unresolved-decoration-style-hover
-        title: 未解析链接悬停样式
-        type: variable-select
-        default: initial
-        options:
-            -
-                label: "顺应预设"
-                value: initial
-            -
-                label: "实线"
-                value: solid
-            -
-                label: "虚线"
-                value: dashed
-            -
-                label: "点线"
-                value: dotted
-            -
-                label: "波浪线"
-                value: wavy
-    -
         id: h-sec-advance
         title: 大闹天宫
         type: heading
         level: 1
         collapsed: true
-        description: 字体与进阶排版设置。
+        description: 踢丹炉，碎金匾，铁棒到处生烟。
     -
-        id: h-group-font
-        title: 字体
+        id: h-group-editor
+        title: 编辑器
         type: heading
         level: 2
         collapsed: false
+    -
+        id: h-note-limitation
+        title: 注意
+        type: heading
+        level: 2
+        collapsed: false
+        description: 目前只实现了对元素的字体调整。
     -
         id: h-note-fontpack-advanced
         title: 预设字库下载
@@ -2098,20 +2068,14 @@ body {
   --link-color: var(--text-normal);
   --link-color-hover: var(--text-normal);
   --link-decoration-thickness: var(--mkk-line-width);
-  --mkk-link-underline-offset: var(--u-mkk-link-underline-offset, 4px);
+  --mkk-link-underline-offset: 4px;
   --mkk-link-decoration-color: var(--res-tx-sup);
   --mkk-link-decoration-color-hover: var(--interactive-accent);
-  --mkk-link-decoration-thickness-hover: var(
-    --u-mkk-link-decoration-thickness-hover,
-    calc(var(--mkk-line-width) * 2)
-  );
+  --mkk-link-decoration-thickness-hover: calc(var(--mkk-line-width) * 2);
   --link-unresolved-color: var(--text-normal);
   --link-unresolved-opacity: 0.7;
   --link-unresolved-decoration-style: dashed;
-  --mkk-link-unresolved-decoration-style-hover: var(
-    --u-mkk-link-unresolved-decoration-style-hover,
-    solid
-  );
+  --mkk-link-unresolved-decoration-style-hover: solid;
   --link-unresolved-decoration-color: var(--res-tx-sup);
   --link-external-color-hover: var(--interactive-accent);
 }

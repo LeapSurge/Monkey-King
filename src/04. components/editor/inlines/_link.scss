@@ -5,21 +5,16 @@ body {
   --link-color-hover: var(--text-normal);
 
   --link-decoration-thickness: var(--mkk-line-width);
-  --mkk-link-underline-offset: var(--u-mkk-link-underline-offset, 4px);
+  --mkk-link-underline-offset: 4px;
   --mkk-link-decoration-color: var(--res-tx-sup);
   --mkk-link-decoration-color-hover: var(--interactive-accent);
-  --mkk-link-decoration-thickness-hover: var(
-    --u-mkk-link-decoration-thickness-hover,
-    calc(var(--mkk-line-width) * 2)
-  );
+  --mkk-link-decoration-thickness-hover: calc(var(--mkk-line-width) * 2);
 
   --link-unresolved-color: var(--text-normal);
   --link-unresolved-opacity: 0.7;
   --link-unresolved-decoration-style: dashed;
-  --mkk-link-unresolved-decoration-style-hover: var(
-    --u-mkk-link-unresolved-decoration-style-hover,
-    solid
-  );
+  --mkk-link-unresolved-decoration-style-hover: solid;
+
   --link-unresolved-decoration-color: var(--res-tx-sup);
 
   --link-external-color-hover: var(--interactive-accent);
