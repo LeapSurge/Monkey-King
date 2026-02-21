@@ -92,12 +92,6 @@ body {
     }
   }
 
-  // 圆角语义变量（由 style-mode 的 radius-preset 驱动）
-  --radius-s: var(--preset-radius-s, 0px);
-  --radius-m: var(--preset-radius-m, 0px);
-  --radius-l: var(--preset-radius-l, 0px);
-  --radius-xl: var(--preset-radius-xl, 0px);
-
   // Color resolution variables (resolved from preset on body classes)
   --res-bg-tune: clamp(-30, var(--preset-bg-tune, 0), 30);
 
@@ -127,6 +121,11 @@ body {
     --res-#{$token}: var(--preset-#{$token});
   }
 
+  // 圆角语义变量（由 style-mode 的 radius-preset 驱动）
+  --radius-s: var(--preset-radius-s, 0px);
+  --radius-m: var(--preset-radius-m, 0px);
+  --radius-l: var(--preset-radius-l, 0px);
+  --radius-xl: var(--preset-radius-xl, 0px);
   // Semantic color variables (default mapping from resolved tokens)
   --background-primary: var(--res-bg0);
   --background-primary-alt: var(--res-bg1);

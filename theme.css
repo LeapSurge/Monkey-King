@@ -480,6 +480,8 @@ body.style-huaguo-mount {
   --preset-font-quote-west: var(--stack-hand);
   --preset-font-quote-zh: var(--stack-kai);
   --preset-font-quote-weight: normal;
+  --preset-font-th-zh: var(--stack-hei);
+  --preset-font-th-weight: 700;
   --preset-font-em-west: var(--stack-sans-i);
   --preset-font-em-zh: var(--stack-kai);
   --preset-font-em-weight: 600;
@@ -489,6 +491,7 @@ body.style-huaguo-mount {
   --preset-font-tag-zh: var(--stack-hei);
   --preset-font-tag-weight: normal;
   --preset-gap-p-line-height: 12;
+  --preset-gap-p-spacing: 12;
   --preset-gap-h1-font-size: 14;
   --preset-gap-h1-line-height: 18;
   --preset-gap-h1-margin-top: 9;
@@ -513,6 +516,7 @@ body.style-huaguo-mount {
   --preset-gap-h6-line-height: 12;
   --preset-gap-h6-margin-top: 4;
   --preset-gap-h6-margin-bottom: 0;
+  --preset-gap-list-margin-block-start: -12;
   --preset-radius-s: 8px;
   --preset-radius-m: 12px;
   --preset-radius-l: 16px;
@@ -535,16 +539,18 @@ body.style-great-hall {
   --preset-font-quote-west: var(--stack-hand);
   --preset-font-quote-zh: var(--stack-kai);
   --preset-font-quote-weight: normal;
+  --preset-font-th-zh: var(--stack-hei);
+  --preset-font-th-weight: 500;
   --preset-font-em-west: var(--stack-serif-i);
   --preset-font-em-zh: var(--stack-kai);
   --preset-font-em-weight: normal;
-  --preset-font-strong-west: var(--stack-sans);
   --preset-font-strong-zh: var(--stack-hei);
   --preset-font-strong-weight: 500;
   --preset-font-tag-west: var(--stack-hei);
   --preset-font-tag-zh: var(--stack-hei);
   --preset-font-tag-weight: normal;
   --preset-gap-p-line-height: 14;
+  --preset-gap-p-spacing: 14;
   --preset-gap-h1-font-size: 14;
   --preset-gap-h1-line-height: 20;
   --preset-gap-h1-margin-top: 18;
@@ -569,6 +575,7 @@ body.style-great-hall {
   --preset-gap-h6-line-height: 14;
   --preset-gap-h6-margin-top: 9;
   --preset-gap-h6-margin-bottom: 5;
+  --preset-gap-list-margin-block-start: 14;
   --preset-radius-s: 0px;
   --preset-radius-m: 0px;
   --preset-radius-l: 0px;
@@ -595,6 +602,8 @@ body:not(.css-settings-manager) {
   --preset-font-quote-west: var(--stack-hand);
   --preset-font-quote-zh: var(--stack-kai);
   --preset-font-quote-weight: normal;
+  --preset-font-th-zh: var(--stack-hei);
+  --preset-font-th-weight: 700;
   --preset-font-em-west: var(--stack-sans-i);
   --preset-font-em-zh: var(--stack-kai);
   --preset-font-em-weight: 600;
@@ -604,6 +613,7 @@ body:not(.css-settings-manager) {
   --preset-font-tag-zh: var(--stack-hei);
   --preset-font-tag-weight: normal;
   --preset-gap-p-line-height: 12;
+  --preset-gap-p-spacing: 12;
   --preset-gap-h1-font-size: 14;
   --preset-gap-h1-line-height: 18;
   --preset-gap-h1-margin-top: 9;
@@ -628,6 +638,7 @@ body:not(.css-settings-manager) {
   --preset-gap-h6-line-height: 12;
   --preset-gap-h6-margin-top: 4;
   --preset-gap-h6-margin-bottom: 0;
+  --preset-gap-list-margin-block-start: -12;
   --preset-radius-s: 8px;
   --preset-radius-m: 12px;
   --preset-radius-l: 16px;
@@ -639,6 +650,7 @@ body:not(.css-settings-manager) {
 -------------------------------------------------------- */
 body.gap-loose {
   --preset-gap-p-line-height: 14;
+  --preset-gap-p-spacing: 14;
   --preset-gap-h1-font-size: 14;
   --preset-gap-h1-line-height: 20;
   --preset-gap-h1-margin-top: 18;
@@ -663,10 +675,12 @@ body.gap-loose {
   --preset-gap-h6-line-height: 14;
   --preset-gap-h6-margin-top: 9;
   --preset-gap-h6-margin-bottom: 5;
+  --preset-gap-list-margin-block-start: 14;
 }
 
 body.gap-compact {
   --preset-gap-p-line-height: 12;
+  --preset-gap-p-spacing: 12;
   --preset-gap-h1-font-size: 14;
   --preset-gap-h1-line-height: 18;
   --preset-gap-h1-margin-top: 9;
@@ -691,6 +705,7 @@ body.gap-compact {
   --preset-gap-h6-line-height: 12;
   --preset-gap-h6-margin-top: 4;
   --preset-gap-h6-margin-bottom: 0;
+  --preset-gap-list-margin-block-start: -12;
 }
 
 /* --------------------------------------------------------
@@ -1042,6 +1057,27 @@ body {
       normal
     )
   );
+  --res-font-th-west: var(
+    --u-font-th-west,
+    var(
+      --preset-font-th-west,
+      ""
+    )
+  );
+  --res-font-th-zh: var(
+    --u-font-th-zh,
+    var(
+      --preset-font-th-zh,
+      ""
+    )
+  );
+  --res-font-th-weight: var(
+    --u-font-th-weight,
+    var(
+      --preset-font-th-weight,
+      normal
+    )
+  );
   --res-font-em-west: var(
     --u-font-em-west,
     var(
@@ -1108,6 +1144,9 @@ body {
   --gap-unit: calc(var(--font-text-size) / 8);
   --res-gap-p-line-height: calc(
     var(--gap-unit) * var(--preset-gap-p-line-height)
+  );
+  --res-gap-p-spacing: calc(
+    var(--gap-unit) * var(--preset-gap-p-spacing)
   );
   --res-gap-h1-font-size: calc(
     var(--gap-unit) * var(--preset-gap-h1-font-size)
@@ -1181,10 +1220,9 @@ body {
   --res-gap-h6-margin-bottom: calc(
     var(--gap-unit) * var(--preset-gap-h6-margin-bottom)
   );
-  --radius-s: var(--preset-radius-s, 0px);
-  --radius-m: var(--preset-radius-m, 0px);
-  --radius-l: var(--preset-radius-l, 0px);
-  --radius-xl: var(--preset-radius-xl, 0px);
+  --res-gap-list-margin-block-start: calc(
+    var(--gap-unit) * var(--preset-gap-list-margin-block-start)
+  );
   --res-bg-tune: clamp(-30, var(--preset-bg-tune, 0), 30);
   --res-bg-ds: calc(var(--res-bg-tune) * 1.106%);
   --res-bg-dl: calc(var(--res-bg-tune) * 0.278%);
@@ -1269,6 +1307,10 @@ body {
   --res-ax0-h: var(--preset-ax0-h);
   --res-ax0-s: var(--preset-ax0-s);
   --res-ax0-l: var(--preset-ax0-l);
+  --radius-s: var(--preset-radius-s, 0px);
+  --radius-m: var(--preset-radius-m, 0px);
+  --radius-l: var(--preset-radius-l, 0px);
+  --radius-xl: var(--preset-radius-xl, 0px);
   --background-primary: var(--res-bg0);
   --background-primary-alt: var(--res-bg1);
   --background-secondary: var(--res-bg2);
@@ -1358,6 +1400,7 @@ body {
   --font-text-theme: var(--res-font-theme-west), var(--res-font-theme-zh);
   --font-monospace-theme: var(--res-font-mono-west), var(--res-font-mono-zh);
   --line-height-normal: var(--res-gap-p-line-height);
+  --p-spacing: var(--res-gap-p-spacing);
 }
 
 .markdown-reading-view .markdown-preview-view.markdown-rendered div:is(.el-h1, .el-h2, .el-h3, .el-h4, .el-h5, .el-h6) + div > :is(blockquote, p, ol, ul, pre) {
@@ -1455,6 +1498,55 @@ body.style-great-hall .markdown-reading-view .markdown-preview-view.markdown-ren
 body.style-great-hall .markdown-reading-view .markdown-preview-view.markdown-rendered .inline-title,
 body.style-great-hall .markdown-source-view.cm-s-obsidian.mod-cm6.is-live-preview .inline-title {
   text-align: center;
+}
+
+body {
+  --list-spacing: 0;
+}
+
+.markdown-reading-view .markdown-preview-view.markdown-rendered .el-p + div > :is(ul, ol) {
+  margin-block-start: var(--res-gap-list-margin-block-start);
+}
+
+/* Table Styles for Obsidian */
+table {
+  --table-text-size: calc(var(--font-text-size) * 0.9);
+  --table-header-border-color: var(--res-tx-sup);
+  --table-header-border-width: 0px;
+  --table-header-font: var(--res-font-th-zh);
+  --table-header-weight: var(--res-font-th-weight);
+  --table-header-background: rgba(var(--res-ax0-rgb), 0.35);
+  --table-header-background-hover: var(--table-header-background);
+  --table-row-alt-background: var(--res-bg1);
+  --table-row-background-hover: var(--res-bg3);
+  --table-row-alt-background-hover: var(--res-bg3);
+  --table-column-first-border-width: 0px;
+  --table-column-last-border-width: 0px;
+  --table-row-first-border-width: 0px;
+  --table-row-last-border-width: var(--mkk-line-width);
+  --table-border-width: var(--mkk-line-width);
+  --table-border-color: var(--res-tx-sup);
+}
+
+.cm-html-embed th,
+.markdown-rendered th {
+  border-bottom-width: calc(var(--mkk-line-width) + 1);
+  border-bottom-color: var(--res-tx-accent) !important;
+}
+
+tbody tr:hover {
+  transform: translateX(5px);
+}
+
+/* For reading view */
+.markdown-reading-view :is(.markdown-rendered td, .markdown-rendered th) {
+  border-inline: 0px;
+}
+
+/* specify for mode */
+.style-great-hall .cm-html-embed td,
+.style-great-hall .markdown-rendered td {
+  border-block-style: dashed;
 }
 
 .markdown-source-view.cm-s-obsidian.mod-cm6.is-live-preview .cm-quote,
@@ -1579,8 +1671,10 @@ a:hover {
 }
 
 .setting-item select.dropdown,
-.setting-item button {
+.setting-item button,
+.setting-item input {
   border: 1px solid var(--text-muted);
+  border-radius: var(--radius-s);
 }
 
 body {

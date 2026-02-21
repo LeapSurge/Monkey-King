@@ -1,6 +1,8 @@
 .setting-item {
   select.dropdown,
-  button {
+  button,
+  input {
     border: 1px solid var(--text-muted);
+    border-radius: var(--radius-s);
   }
 }
