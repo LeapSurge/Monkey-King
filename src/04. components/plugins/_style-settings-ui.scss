@@ -1,9 +1,20 @@
 // Style Settings Plugin Responsive Layout
 // Optimized for Obsidian tab/panel context
 
+// Align top heading and first container by overriding the plugin's level-0 indent rule.
+.style-settings-heading[data-level="0"][data-id="monkey-king-theme"] {
+  padding-left: 4px;
+}
+
+.style-settings-heading[data-level="0"][data-id="monkey-king-theme"]
+  + .style-settings-container {
+  padding-left: 6px;
+}
+
 // Specific Style Settings item - optimized for panel width
 [data-id="monkey-king-theme"] + .style-settings-container {
   width: 100%;
+  background: transparent;
 
   // // 输入框适应宽度
   input,
@@ -19,6 +30,8 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    column-gap: 8px;
+    row-gap: 4px;
 
     .style-settings-heading {
       width: 100%;
@@ -54,4 +67,242 @@
 
 .bg-tune-override [data-id="u-bg-tune"] {
   display: flex;
+}
+
+[data-id="u-font-stack-headings"],
+[data-id="u-font-stack-quote"],
+[data-id="u-font-stack-em"],
+[data-id="u-font-stack-strong"],
+[data-id="u-font-stack-theme"],
+[data-id="u-font-stack-mono"] {
+  display: none;
+}
+
+.font-stack-override-headings [data-id="u-font-stack-headings"],
+.font-stack-override-quote [data-id="u-font-stack-quote"],
+.font-stack-override-em [data-id="u-font-stack-em"],
+.font-stack-override-strong [data-id="u-font-stack-strong"],
+.font-stack-override-theme [data-id="u-font-stack-theme"],
+.font-stack-override-mono [data-id="u-font-stack-mono"] {
+  display: flex;
+}
+
+.cancel-font-override [data-id*="font-theme-"],
+.cancel-font-override [data-id="h-sub-font-theme"],
+.cancel-font-override [data-id*="font-mono-"],
+.cancel-font-override [data-id="font-stack-override-theme"],
+.cancel-font-override [data-id="u-font-stack-theme"],
+.cancel-font-override [data-id$="-mono"] {
+  display: none;
+}
+
+[data-id="monkey-king-theme"] + .style-settings-container {
+  .style-settings-container > .setting-item[data-id^="u-font-stack-"] {
+    flex: 0 0 100%;
+    width: 100%;
+    min-width: 100%;
+    align-self: stretch;
+  }
+
+  .style-settings-container > .setting-item[data-id="font-theme-zh-placeholder"] {
+    min-width: 120px;
+    flex: 1 1 120px;
+    pointer-events: none;
+    cursor: default;
+    opacity: 0.85;
+  }
+
+  .style-settings-container
+    > .setting-item[data-id="font-theme-zh-placeholder"]
+    .setting-item-control {
+    display: none !important;
+  }
+}
+
+// Only for pagoda: keep original colors, add borders to separate panel and items.
+.scheme-pagoda [data-id="monkey-king-theme"] + .style-settings-container {
+  outline: 1px solid
+    color-mix(in srgb, var(--background-modifier-border) 58%, transparent 42%);
+  outline-offset: 0;
+}
+
+.scheme-pagoda
+  [data-id="monkey-king-theme"]
+  + .style-settings-container
+  .style-settings-container
+  > .setting-item:not(.style-settings-heading) {
+  box-shadow: inset 0 0 0 1px
+    color-mix(in srgb, var(--background-modifier-border) 74%, transparent 26%);
+}
+
+// Visual hierarchy for Style Settings headings (id-prefix based)
+[data-id="monkey-king-theme"] + .style-settings-container {
+  --mk-group-line: color-mix(
+    in srgb,
+    var(--interactive-accent) 62%,
+    transparent 38%
+  );
+  --mk-group-bg: color-mix(
+    in srgb,
+    var(--interactive-accent) 10%,
+    var(--background-primary) 90%
+  );
+  --mk-sub-line: color-mix(in srgb, var(--text-muted) 78%, transparent 22%);
+  --mk-sub-bg: color-mix(
+    in srgb,
+    var(--background-primary-alt) 90%,
+    transparent 10%
+  );
+
+  .style-settings-heading {
+    width: 100%;
+    position: relative;
+    margin-top: 8px;
+    padding: 6px 10px;
+    border-radius: var(--radius-s);
+    border: 1px solid transparent;
+
+    .setting-item-name {
+      line-height: 1.3;
+    }
+  }
+
+  // First major section touches the top edge.
+  .style-settings-container > .style-settings-heading[data-id^="h-sec-"]:first-child {
+    margin-top: 0;
+  }
+
+  // Primary section heading.
+  .style-settings-heading[data-id^="h-sec-"] {
+    padding: 10px 12px;
+    border-color: var(--background-modifier-border);
+    border-left: 8px solid
+      color-mix(in srgb, var(--interactive-accent) 78%, transparent 22%);
+    background: color-mix(
+      in srgb,
+      var(--interactive-accent) 14%,
+      var(--background-primary) 86%
+    );
+    margin-bottom: 3px;
+
+    .setting-item-name {
+      font-size: 1.08em;
+      font-weight: 850;
+      letter-spacing: 0.02em;
+    }
+  }
+
+  // Secondary group heading.
+  .style-settings-heading[data-id^="h-group-"] {
+    padding: 9px 12px;
+    border-color: var(--background-modifier-border);
+    border-left: 6px solid var(--mk-group-line);
+    background: var(--mk-group-bg);
+    margin-bottom: 4px;
+
+    .setting-item-name {
+      font-size: 1.02em;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+    }
+  }
+
+  // Tertiary subgroup heading.
+  .style-settings-heading[data-id^="h-sub-"] {
+    padding: 7px 10px;
+    border-style: dashed;
+    border-color: var(--background-modifier-border);
+    border-left: 3px solid var(--mk-sub-line);
+    background: var(--mk-sub-bg);
+    margin-top: 6px;
+    margin-bottom: 2px;
+
+    .setting-item-name {
+      font-size: 0.94em;
+      font-weight: 700;
+      opacity: 0.95;
+    }
+  }
+
+  // Structural spacing for child containers.
+  .style-settings-heading[data-id^="h-group-"] + .style-settings-container,
+  .style-settings-heading[data-id^="h-sub-"] + .style-settings-container {
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 0;
+    margin-bottom: 8px;
+    padding-bottom: 6px;
+    margin-left: 0;
+    padding-left: 0;
+  }
+
+  // Keep one clear guide line for level-2 groups.
+  .style-settings-heading[data-id^="h-group-"] + .style-settings-container {
+    border-left: 2px solid var(--mk-group-line);
+    border-bottom: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  // Level-3 uses heading style only; avoid overlapping container guide lines.
+  .style-settings-heading[data-id^="h-sub-"] + .style-settings-container {
+    border-left: 0;
+    border-bottom: 0;
+    border-radius: 0;
+  }
+
+  // When heading is collapsed, remove guide artifacts from the hidden container.
+  .style-settings-heading.is-collapsed[data-id^="h-group-"]
+    + .style-settings-container,
+  .style-settings-heading.is-collapsed[data-id^="h-sub-"]
+    + .style-settings-container {
+    border-left: 0;
+    border-bottom: 0;
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+
+  .style-settings-heading.is-collapsed[data-id^="h-sec-"]
+    + .style-settings-container {
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+
+  // Notice headings are text-only hints, not structural containers.
+  .style-settings-heading[data-id^="h-note-"] {
+    border: 1px dashed
+      color-mix(in srgb, var(--background-modifier-border) 62%, transparent 38%);
+    border-left: 3px solid
+      color-mix(in srgb, var(--interactive-accent) 68%, transparent 32%);
+    background: color-mix(
+      in srgb,
+      var(--background-primary-alt) 82%,
+      transparent 18%
+    );
+    padding-block: 6px;
+    padding-inline: 12px;
+    margin-top: 6px;
+    margin-bottom: 2px;
+    border-radius: var(--radius-s);
+    cursor: default;
+    pointer-events: none;
+
+    .setting-item-name {
+      font-size: 0.95em;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+    }
+
+    .setting-item-description {
+      padding-inline: 2px;
+      margin-top: 3px;
+      line-height: 1.45;
+      color: var(--text-muted);
+    }
+
+    .setting-item-control,
+    .style-settings-collapse-indicator {
+      display: none !important;
+    }
+  }
 }
