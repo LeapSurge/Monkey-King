@@ -1,8 +1,19 @@
 @use "../../../01. abstracts/variables" as *;
 
+body {
+  --mkk-font-stack-strong: var(--res-font-strong-west), var(--res-font-strong-zh);
+}
+
+body.font-stack-override-strong {
+  --mkk-font-stack-strong: var(
+    --u-font-stack-strong,
+    var(--res-font-strong-west), var(--res-font-strong-zh)
+  );
+}
+
 #{$preview} .cm-strong,
 #{$reading} strong {
-  font-family: var(--res-font-strong-west), var(--res-font-strong-zh);
+  font-family: var(--mkk-font-stack-strong);
   font-weight: var(--res-font-strong-weight);
   color: var(--res-tx-strong);
 }

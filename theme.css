@@ -1,17 +1,16 @@
 @charset "UTF-8";
 /* @settings
-
 name: Monkey King Theme
 id: monkey-king-theme
 settings:
     -
-        id: simple-settings-heading
+        id: h-sec-stage
         title: 短诗定场
         type: heading
         level: 1
         collapsed: false
     -
-        id: font-pack-notice-quick
+        id: h-note-fontpack-quick
         title: 必读：预设字体
         type: heading
         level: 2
@@ -59,7 +58,7 @@ settings:
     -
         id: u-font-theme-zh
         title: ③ 念白开场
-        description: 最后确定正文的形态
+        description: 最后确定正文的字体
         type: variable-select
         default: initial
         options:
@@ -79,7 +78,7 @@ settings:
                 label: "仿宋"
                 value: 'var(--stack-fang)'
     -
-        id: optimization-settings-heading
+        id: h-sec-optimize
         title: 守桃饲马
         type: heading
         level: 1
@@ -118,7 +117,7 @@ settings:
                 value: 'gap-compact'
 
     -
-        id: optimization-border
+        id: h-group-opt-line
         title: 线条粗细
         type: heading
         level: 2
@@ -143,13 +142,7 @@ settings:
                 label: "浓重"
                 value: 'line-width-bold'
     -
-        id: cancel-font-override
-        title: 正文用字接管
-        type: class-toggle
-        default: false
-        description: 关闭：按篇章预设用字。开启：改用你在面板中填写的字体。
-    -
-        id: link-tuning-heading
+        id: h-group-opt-link
         title: 链接字法
         type: heading
         level: 2
@@ -188,32 +181,43 @@ settings:
                 label: "波浪线"
                 value: wavy
     -
-        id: advance-settings-heading
+        id: h-sec-advance
         title: 大闹天宫
         type: heading
         level: 1
         collapsed: true
-        description: 待开发……
+        description: 字体与进阶排版设置。
     -
-        id: font-settings-heading
+        id: h-group-font
         title: 字体
-        type: heading
-        level: 1
-        collapsed: true
-        description: 仅在你需要精细排版时使用；“顺应场景”代表回到篇章预设。
-    -
-        id: font-pack-notice-advanced
-        title: 预设字库下载
         type: heading
         level: 2
         collapsed: false
+    -
+        id: h-note-fontpack-advanced
+        title: 预设字库下载
+        type: heading
+        level: 3
+        collapsed: false
         description: 若风格与预期不符，请先安装预设字体包：主链 https://example.com/monkey-king-font-pack ，备用 https://example.com/monkey-king-font-pack-mirror 。
     -
-        id: font-base-settings-heading
+        id: h-group-font-base
         title: 正文与代码
         type: heading
-        level: 2
-        collapsed: true
+        level: 3
+        collapsed: false
+    -
+        id: cancel-font-override
+        title: 回归原本
+        type: class-toggle
+        default: false
+        description: 关闭：在style-setting设置正文和代码字体。开启：改用你在设置面板中设置的字体。
+    -
+        id: h-sub-font-theme
+        title: 正文
+        type: heading
+        level: 4
+        collapsed: false
     -
         id: u-font-theme-west
         title: 正文西文
@@ -226,7 +230,7 @@ settings:
             -
                 label: "衬线"
                 value: 'var(--stack-serif)'
-            -
+            -   
                 label: "非衬线"
                 value: 'var(--stack-sans)'
             -
@@ -238,6 +242,24 @@ settings:
             -
                 label: "系统非衬线斜体"
                 value: 'var(--stack-sans-i)'
+    -
+        id: font-theme-zh-placeholder
+        title: 正文中文
+        type: variable-text
+        default: ""
+        description: 已在前方“③ 念白开场”设置，这里不重复提供。
+    -
+        id: font-stack-override-theme
+        title: 自定义字体栈
+        type: class-toggle
+        default: false
+        description: 开启后使用下方文本框覆盖“西文 + 中文”组合。
+    -
+        id: u-font-stack-theme
+        title: 字体栈（CSS）
+        type: variable-text
+        default: initial
+        description: 直接填写完整 font-family 字体栈。
     -
         id: u-font-theme-weight
         title: 正文字重
@@ -269,22 +291,463 @@ settings:
                 label: "黑体 900"
                 value: 900
     -
+        id: h-sub-font-mono
+        title: 代码
+        type: heading
+        level: 4
+        collapsed: false
+    -
         id: u-font-mono-west
         title: 代码西文
-        type: variable-text
-        default: ""
-        description: 代码块和行内代码的西文部分字体。示例：JetBrains Mono
+        type: variable-select
+        default: initial
+        options:
+            -
+                label: "顺应场景"
+                value: initial
+            -
+                label: "衬线"
+                value: 'var(--stack-serif)'
+            -   
+                label: "非衬线"
+                value: 'var(--stack-sans)'
+            -
+                label: "手写体"
+                value: 'var(--stack-hand)'
+            -
+                label: "系统衬线斜体"
+                value: 'var(--stack-serif-i)'
+            -
+                label: "系统非衬线斜体"
+                value: 'var(--stack-sans-i)'
     -
         id: u-font-mono-zh
         title: 代码中文
-        type: variable-text
-        default: ""
-        description: 代码块和行内代码的中文部分字体。留空使用系统黑体。
+        type: variable-select
+        default: initial
+        options:
+            -
+                label: "顺应场景"
+                value: initial
+            -
+                label: "黑体"
+                value: 'var(--stack-hei)'
+            -
+                label: "宋体"
+                value: 'var(--stack-song)'
+            -
+                label: "楷体"
+                value: 'var(--stack-kai)'
+            -
+                label: "仿宋"
+                value: 'var(--stack-fang)'
     -
-        id: table-font-settings-heading
+        id: font-stack-override-mono
+        title: 自定义字体栈
+        type: class-toggle
+        default: false
+        description: 开启后使用下方文本框覆盖“西文 + 中文”组合。
+    -
+        id: u-font-stack-mono
+        title: 字体栈（CSS）
+        type: variable-text
+        default: "var(--res-font-mono-west), var(--res-font-mono-zh)"
+        description: 直接填写完整 font-family 字体栈。
+    -
+        id: u-font-mono-weight
+        title: 代码字重
+        type: variable-select
+        default: initial
+        options:
+            -
+                label: "顺应场景"
+                value: initial
+            -
+                label: "细体 300"
+                value: 300
+            -
+                label: "常规 400"
+                value: 400
+            -
+                label: "中等 500"
+                value: 500
+            -
+                label: "半粗 600"
+                value: 600
+            -
+                label: "粗体 700"
+                value: 700
+            -
+                label: "特粗 800"
+                value: 800
+            -
+                label: "黑体 900"
+                value: 900
+    -
+        id: h-group-font-headings
+        title: 标题
+        type: heading
+        level: 3
+        collapsed: true
+    -
+        id: u-font-headings-west
+        title: 西文
+        type: variable-select
+        default: initial
+        options:
+            - 
+                label: "顺应场景"
+                value: initial
+            -
+                label: "非衬线"
+                value: 'var(--stack-sans)'
+            -
+                label: "手写体"
+                value: 'var(--stack-hand)'
+            -
+                label: "系统衬线斜体"
+                value: 'var(--stack-serif-i)'
+            -
+                label: "系统非衬线斜体"
+                value: 'var(--stack-sans-i)'
+    -
+        id: u-font-headings-zh
+        title: 中文
+        type: variable-select
+        default: initial
+        options:
+            - 
+                label: "顺应场景"
+                value: initial
+            -
+                label: "黑体"
+                value: 'var(--stack-hei)'
+            -
+                label: "宋体"
+                value: 'var(--stack-song)'
+            -
+                label: "楷体"
+                value: 'var(--stack-kai)'
+            -
+                label: "仿宋"
+                value: 'var(--stack-fang)'
+    -
+        id: font-stack-override-headings
+        title: 自定义字体栈
+        type: class-toggle
+        default: false
+        description: 开启后使用下方文本框覆盖“西文 + 中文”组合。
+    -
+        id: u-font-stack-headings
+        title: 字体栈（CSS）
+        type: variable-text
+        default: "var(--res-font-headings-west), var(--res-font-headings-zh)"
+        description: 直接填写完整 font-family 字体栈。
+    -
+        id: u-font-headings-weight
+        title: 字重
+        type: variable-select
+        default: initial
+        options:
+            -
+                label: "顺应场景"
+                value: initial
+            -
+                label: "细体 300"
+                value: 300
+            -
+                label: "常规 400"
+                value: 400
+            -
+                label: "中等 500"
+                value: 500
+            -
+                label: "半粗 600"
+                value: 600
+            -
+                label: "粗体 700"
+                value: 700
+            -
+                label: "特粗 800"
+                value: 800
+            -
+                label: "黑体 900"
+                value: 900
+    -
+        id: h-group-font-quote
+        title: 引用块
+        type: heading
+        level: 3
+        collapsed: true
+    -
+        id: u-font-quote-west
+        title: 西文
+        type: variable-select
+        default: initial
+        options:
+            - 
+                label: "顺应场景"
+                value: initial
+            -
+                label: "非衬线"
+                value: 'var(--stack-sans)'
+            -
+                label: "手写体"
+                value: 'var(--stack-hand)'
+            -
+                label: "系统衬线斜体"
+                value: 'var(--stack-serif-i)'
+            -
+                label: "系统非衬线斜体"
+                value: 'var(--stack-sans-i)'
+    -
+        id: u-font-quote-zh
+        title: 中文
+        type: variable-select
+        default: initial
+        options:
+            - 
+                label: "顺应场景"
+                value: initial
+            -
+                label: "黑体"
+                value: 'var(--stack-hei)'
+            -
+                label: "宋体"
+                value: 'var(--stack-song)'
+            -
+                label: "楷体"
+                value: 'var(--stack-kai)'
+            -
+                label: "仿宋"
+                value: 'var(--stack-fang)'
+    -
+        id: font-stack-override-quote
+        title: 自定义字体栈
+        type: class-toggle
+        default: false
+        description: 开启后使用下方文本框覆盖“西文 + 中文”组合。
+    -
+        id: u-font-stack-quote
+        title: 字体栈（CSS）
+        type: variable-text
+        default: "var(--res-font-quote-west), var(--res-font-quote-zh)"
+        description: 直接填写完整 font-family 字体栈。
+    -
+        id: u-font-quote-weight
+        title: 字重
+        type: variable-select
+        default: initial
+        options:
+            -
+                label: "顺应场景"
+                value: initial
+            -
+                label: "细体 300"
+                value: 300
+            -
+                label: "常规 400"
+                value: 400
+            -
+                label: "中等 500"
+                value: 500
+            -
+                label: "半粗 600"
+                value: 600
+            -
+                label: "粗体 700"
+                value: 700
+            -
+                label: "特粗 800"
+                value: 800
+            -
+                label: "黑体 900"
+                value: 900
+    -
+        id: h-group-font-em
+        title: 强调块（*text*）
+        type: heading
+        level: 3
+        collapsed: true
+    -
+        id: u-font-em-west
+        title: 西文
+        type: variable-select
+        default: initial
+        options:
+            - 
+                label: "顺应场景"
+                value: initial
+            -
+                label: "非衬线"
+                value: 'var(--stack-sans)'
+            -
+                label: "手写体"
+                value: 'var(--stack-hand)'
+            -
+                label: "系统衬线斜体"
+                value: 'var(--stack-serif-i)'
+            -
+                label: "系统非衬线斜体"
+                value: 'var(--stack-sans-i)'
+    -
+        id: u-font-em-zh
+        title: 中文
+        type: variable-select
+        default: initial
+        options:
+            - 
+                label: "顺应场景"
+                value: initial
+            -
+                label: "黑体"
+                value: 'var(--stack-hei)'
+            -
+                label: "宋体"
+                value: 'var(--stack-song)'
+            -
+                label: "楷体"
+                value: 'var(--stack-kai)'
+            -
+                label: "仿宋"
+                value: 'var(--stack-fang)'
+    -
+        id: font-stack-override-em
+        title: 自定义字体栈
+        type: class-toggle
+        default: false
+        description: 开启后使用下方文本框覆盖“西文 + 中文”组合。
+    -
+        id: u-font-stack-em
+        title: 字体栈（CSS）
+        type: variable-text
+        default: "var(--res-font-em-west), var(--res-font-em-zh)"
+        description: 直接填写完整 font-family 字体栈。
+    -
+        id: u-font-em-weight
+        title: 字重
+        type: variable-select
+        default: initial
+        options:
+            -
+                label: "顺应场景"
+                value: initial
+            -
+                label: "细体 300"
+                value: 300
+            -
+                label: "常规 400"
+                value: 400
+            -
+                label: "中等 500"
+                value: 500
+            -
+                label: "半粗 600"
+                value: 600
+            -
+                label: "粗体 700"
+                value: 700
+            -
+                label: "特粗 800"
+                value: 800
+            -
+                label: "黑体 900"
+                value: 900
+    -
+        id: h-group-font-strong
+        title: 加重块（**text**）
+        type: heading
+        level: 3
+        collapsed: true
+    -
+        id: u-font-strong-west
+        title: 西文
+        type: variable-select
+        default: initial
+        options:
+            - 
+                label: "顺应场景"
+                value: initial
+            -
+                label: "非衬线"
+                value: 'var(--stack-sans)'
+            -
+                label: "手写体"
+                value: 'var(--stack-hand)'
+            -
+                label: "系统衬线斜体"
+                value: 'var(--stack-serif-i)'
+            -
+                label: "系统非衬线斜体"
+                value: 'var(--stack-sans-i)'
+    -
+        id: u-font-strong-zh
+        title: 中文
+        type: variable-select
+        default: initial
+        options:
+            - 
+                label: "顺应场景"
+                value: initial
+            -
+                label: "黑体"
+                value: 'var(--stack-hei)'
+            -
+                label: "宋体"
+                value: 'var(--stack-song)'
+            -
+                label: "楷体"
+                value: 'var(--stack-kai)'
+            -
+                label: "仿宋"
+                value: 'var(--stack-fang)'
+    -
+        id: font-stack-override-strong
+        title: 自定义字体栈
+        type: class-toggle
+        default: false
+        description: 开启后使用下方文本框覆盖“西文 + 中文”组合。
+    -
+        id: u-font-stack-strong
+        title: 字体栈（CSS）
+        type: variable-text
+        default: "var(--res-font-strong-west), var(--res-font-strong-zh)"
+        description: 直接填写完整 font-family 字体栈。
+    -
+        id: u-font-strong-weight
+        title: 字重
+        type: variable-select
+        default: initial
+        options:
+            -
+                label: "顺应场景"
+                value: initial
+            -
+                label: "细体 300"
+                value: 300
+            -
+                label: "常规 400"
+                value: 400
+            -
+                label: "中等 500"
+                value: 500
+            -
+                label: "半粗 600"
+                value: 600
+            -
+                label: "粗体 700"
+                value: 700
+            -
+                label: "特粗 800"
+                value: 800
+            -
+                label: "黑体 900"
+                value: 900
+    -
+        id: h-group-font-table
         title: 表格表头
         type: heading
-        level: 2
+        level: 3
         collapsed: true
     -
         id: u-font-th-west
@@ -334,318 +797,6 @@ settings:
     -
         id: u-font-th-weight
         title: 表头字重
-        type: variable-select
-        default: initial
-        options:
-            -
-                label: "顺应场景"
-                value: initial
-            -
-                label: "细体 300"
-                value: 300
-            -
-                label: "常规 400"
-                value: 400
-            -
-                label: "中等 500"
-                value: 500
-            -
-                label: "半粗 600"
-                value: 600
-            -
-                label: "粗体 700"
-                value: 700
-            -
-                label: "特粗 800"
-                value: 800
-            -
-                label: "黑体 900"
-                value: 900
-    -
-        id: block-font-settings-headings-heading
-        title: 标题
-        type: heading
-        level: 3
-        collapsed: true
-    -
-        id: u-font-headings-west
-        title: 西文
-        type: variable-select
-        default: initial
-        options:
-            - 
-                label: "顺应场景"
-                value: initial
-            -
-                label: "非衬线"
-                value: 'var(--stack-sans)'
-            -
-                label: "手写体"
-                value: 'var(--stack-hand)'
-            -
-                label: "系统衬线斜体"
-                value: 'var(--stack-serif-i)'
-            -
-                label: "系统非衬线斜体"
-                value: 'var(--stack-sans-i)'
-    -
-        id: u-font-headings-zh
-        title: 中文
-        type: variable-select
-        default: initial
-        options:
-            - 
-                label: "顺应场景"
-                value: initial
-            -
-                label: "黑体"
-                value: 'var(--stack-hei)'
-            -
-                label: "宋体"
-                value: 'var(--stack-song)'
-            -
-                label: "楷体"
-                value: 'var(--stack-kai)'
-            -
-                label: "仿宋"
-                value: 'var(--stack-fang)'
-    -
-        id: u-font-headings-weight
-        title: 字重
-        type: variable-select
-        default: initial
-        options:
-            -
-                label: "顺应场景"
-                value: initial
-            -
-                label: "细体 300"
-                value: 300
-            -
-                label: "常规 400"
-                value: 400
-            -
-                label: "中等 500"
-                value: 500
-            -
-                label: "半粗 600"
-                value: 600
-            -
-                label: "粗体 700"
-                value: 700
-            -
-                label: "特粗 800"
-                value: 800
-            -
-                label: "黑体 900"
-                value: 900
-    -
-        id: block-font-settings-quote-heading
-        title: 引用块
-        type: heading
-        level: 3
-        collapsed: true
-    -
-        id: u-font-quote-west
-        title: 西文
-        type: variable-select
-        default: initial
-        options:
-            - 
-                label: "顺应场景"
-                value: initial
-            -
-                label: "非衬线"
-                value: 'var(--stack-sans)'
-            -
-                label: "手写体"
-                value: 'var(--stack-hand)'
-            -
-                label: "系统衬线斜体"
-                value: 'var(--stack-serif-i)'
-            -
-                label: "系统非衬线斜体"
-                value: 'var(--stack-sans-i)'
-    -
-        id: u-font-quote-zh
-        title: 中文
-        type: variable-select
-        default: initial
-        options:
-            - 
-                label: "顺应场景"
-                value: initial
-            -
-                label: "黑体"
-                value: 'var(--stack-hei)'
-            -
-                label: "宋体"
-                value: 'var(--stack-song)'
-            -
-                label: "楷体"
-                value: 'var(--stack-kai)'
-            -
-                label: "仿宋"
-                value: 'var(--stack-fang)'
-    -
-        id: u-font-quote-weight
-        title: 字重
-        type: variable-select
-        default: initial
-        options:
-            -
-                label: "顺应场景"
-                value: initial
-            -
-                label: "细体 300"
-                value: 300
-            -
-                label: "常规 400"
-                value: 400
-            -
-                label: "中等 500"
-                value: 500
-            -
-                label: "半粗 600"
-                value: 600
-            -
-                label: "粗体 700"
-                value: 700
-            -
-                label: "特粗 800"
-                value: 800
-            -
-                label: "黑体 900"
-                value: 900
-    -
-        id: block-font-settings-em-heading
-        title: 强调块（*text*）
-        type: heading
-        level: 3
-        collapsed: true
-    -
-        id: u-font-em-west
-        title: 西文
-        type: variable-select
-        default: initial
-        options:
-            - 
-                label: "顺应场景"
-                value: initial
-            -
-                label: "非衬线"
-                value: 'var(--stack-sans)'
-            -
-                label: "手写体"
-                value: 'var(--stack-hand)'
-            -
-                label: "系统衬线斜体"
-                value: 'var(--stack-serif-i)'
-            -
-                label: "系统非衬线斜体"
-                value: 'var(--stack-sans-i)'
-    -
-        id: u-font-em-zh
-        title: 中文
-        type: variable-select
-        default: initial
-        options:
-            - 
-                label: "顺应场景"
-                value: initial
-            -
-                label: "黑体"
-                value: 'var(--stack-hei)'
-            -
-                label: "宋体"
-                value: 'var(--stack-song)'
-            -
-                label: "楷体"
-                value: 'var(--stack-kai)'
-            -
-                label: "仿宋"
-                value: 'var(--stack-fang)'
-    -
-        id: u-font-em-weight
-        title: 字重
-        type: variable-select
-        default: initial
-        options:
-            -
-                label: "顺应场景"
-                value: initial
-            -
-                label: "细体 300"
-                value: 300
-            -
-                label: "常规 400"
-                value: 400
-            -
-                label: "中等 500"
-                value: 500
-            -
-                label: "半粗 600"
-                value: 600
-            -
-                label: "粗体 700"
-                value: 700
-            -
-                label: "特粗 800"
-                value: 800
-            -
-                label: "黑体 900"
-                value: 900
-    -
-        id: block-font-settings-strong-heading
-        title: 加重块（**text**）
-        type: heading
-        level: 3
-        collapsed: true
-    -
-        id: u-font-strong-west
-        title: 西文
-        type: variable-select
-        default: initial
-        options:
-            - 
-                label: "顺应场景"
-                value: initial
-            -
-                label: "非衬线"
-                value: 'var(--stack-sans)'
-            -
-                label: "手写体"
-                value: 'var(--stack-hand)'
-            -
-                label: "系统衬线斜体"
-                value: 'var(--stack-serif-i)'
-            -
-                label: "系统非衬线斜体"
-                value: 'var(--stack-sans-i)'
-    -
-        id: u-font-strong-zh
-        title: 中文
-        type: variable-select
-        default: initial
-        options:
-            - 
-                label: "顺应场景"
-                value: initial
-            -
-                label: "黑体"
-                value: 'var(--stack-hei)'
-            -
-                label: "宋体"
-                value: 'var(--stack-song)'
-            -
-                label: "楷体"
-                value: 'var(--stack-kai)'
-            -
-                label: "仿宋"
-                value: 'var(--stack-fang)'
-    -
-        id: u-font-strong-weight
-        title: 字重
         type: variable-select
         default: initial
         options:
@@ -1229,13 +1380,6 @@ body.theme-dark.style-huaguo-mount {
 :root {
   /* 用户自定义字体 */
   --u-font-text-theme: initial;
-  --u-zh-hei: "";
-  --u-zh-song: "";
-  --u-zh-kai: "";
-  --u-zh-fang: "";
-  --u-west-serif: "";
-  --u-west-sans: "";
-  --u-west-hand: "";
   --u-bg-tune: 0;
 }
 
@@ -1243,21 +1387,14 @@ body {
   /* =========================================================
       字体栈 (用户自定义 > 系统栈 > 兜底)
     ========================================================= */
-  --stack-hei:
-    var(--u-zh-hei), var(--preset-stack-hei, ""), "SystemHei", sans-serif;
-  --stack-song:
-    var(--u-zh-song), var(--preset-stack-song, ""), "SystemSong", serif;
+  --stack-hei: var(--preset-stack-hei, ""), "SystemHei", sans-serif;
+  --stack-song: var(--preset-stack-song, ""), "SystemSong", serif;
   --stack-kai:
-    var(--u-zh-kai), var(--preset-stack-kai, ""), "SystemKai", "SystemHei",
-    sans-serif;
-  --stack-fang:
-    var(--u-zh-fang), var(--preset-stack-fang, ""), "SystemFang", "SystemSong",
-    serif;
-  --stack-serif:
-    var(--u-west-serif), var(--preset-stack-serif, ""), "SystemSerif";
-  --stack-sans: var(--u-west-sans), var(--preset-stack-sans, ""), "SystemSans";
-  --stack-hand:
-    var(--u-west-hand), var(--preset-stack-hand, ""), "SystemHand", "SystemSans";
+    var(--preset-stack-kai, ""), "SystemKai", "SystemHei", sans-serif;
+  --stack-fang: var(--preset-stack-fang, ""), "SystemFang", "SystemSong", serif;
+  --stack-serif: var(--preset-stack-serif, ""), "SystemSerif";
+  --stack-sans: var(--preset-stack-sans, ""), "SystemSans";
+  --stack-hand: var(--preset-stack-hand, ""), "SystemHand", "SystemSans";
   --stack-serif-i: "SystemSerifItalic", "SystemHand";
   --stack-sans-i: "SystemSansItalic", "SystemHand";
   --res-font-interface-west: var(
@@ -1715,9 +1852,11 @@ body.line-width-bold {
 }
 
 body {
+  --mkk-font-stack-theme: var(--res-font-theme-west), var(--res-font-theme-zh);
+  --mkk-font-stack-mono: var(--res-font-mono-west), var(--res-font-mono-zh);
   --file-line-width: calc(var(--font-text-size) * 35);
-  --font-text-theme: var(--res-font-theme-west), var(--res-font-theme-zh);
-  --font-monospace-theme: var(--res-font-mono-west), var(--res-font-mono-zh);
+  --font-text-theme: var(--mkk-font-stack-theme);
+  --font-monospace-theme: var(--mkk-font-stack-mono);
   --line-height-normal: var(--res-gap-p-line-height);
   --p-spacing: var(--res-gap-p-spacing);
 }
@@ -1726,36 +1865,63 @@ body {
   margin-top: 0;
 }
 
+body.font-stack-override-theme {
+  --mkk-font-stack-theme: var(
+    --u-font-stack-theme,
+    var(--res-font-theme-west),
+    var(--res-font-theme-zh)
+  );
+}
+
+body.font-stack-override-mono {
+  --mkk-font-stack-mono: var(
+    --u-font-stack-mono,
+    var(--res-font-mono-west),
+    var(--res-font-mono-zh)
+  );
+}
+
 body:not(.cancel-font-override) {
   --font-text:
     var(--font-text-theme), var(--font-text-override), var(--font-default);
+  --font-monospace:
+    var(--font-monospace-override), var(--font-monospace-theme),
+    var(--font-monospace-default);
 }
 
 body {
-  --h1-font: var(--res-font-headings-west), var(--res-font-headings-zh);
+  --mkk-font-stack-headings: var(--res-font-headings-west), var(--res-font-headings-zh);
+  --h1-font: var(--mkk-font-stack-headings);
   --h1-weight: var(--res-font-headings-weight);
   --h1-size: var(--res-gap-h1-font-size);
   --h1-line-height: var(--res-gap-h1-line-height);
-  --h2-font: var(--res-font-headings-west), var(--res-font-headings-zh);
+  --h2-font: var(--mkk-font-stack-headings);
   --h2-weight: var(--res-font-headings-weight);
   --h2-size: var(--res-gap-h2-font-size);
   --h2-line-height: var(--res-gap-h2-line-height);
-  --h3-font: var(--res-font-headings-west), var(--res-font-headings-zh);
+  --h3-font: var(--mkk-font-stack-headings);
   --h3-weight: var(--res-font-headings-weight);
   --h3-size: var(--res-gap-h3-font-size);
   --h3-line-height: var(--res-gap-h3-line-height);
-  --h4-font: var(--res-font-headings-west), var(--res-font-headings-zh);
+  --h4-font: var(--mkk-font-stack-headings);
   --h4-weight: var(--res-font-headings-weight);
   --h4-size: var(--res-gap-h4-font-size);
   --h4-line-height: var(--res-gap-h4-line-height);
-  --h5-font: var(--res-font-headings-west), var(--res-font-headings-zh);
+  --h5-font: var(--mkk-font-stack-headings);
   --h5-weight: var(--res-font-headings-weight);
   --h5-size: var(--res-gap-h5-font-size);
   --h5-line-height: var(--res-gap-h5-line-height);
-  --h6-font: var(--res-font-headings-west), var(--res-font-headings-zh);
+  --h6-font: var(--mkk-font-stack-headings);
   --h6-weight: var(--res-font-headings-weight);
   --h6-size: var(--res-gap-h6-font-size);
   --h6-line-height: var(--res-gap-h6-line-height);
+}
+
+body.font-stack-override-headings {
+  --mkk-font-stack-headings: var(
+    --u-font-stack-headings,
+    var(--res-font-headings-west), var(--res-font-headings-zh)
+  );
 }
 
 .markdown-source-view.cm-s-obsidian.mod-cm6.is-live-preview .cm-line.HyperMD-header {
@@ -1873,24 +2039,57 @@ tbody tr:hover {
   border-block-style: dashed;
 }
 
+body {
+  --mkk-font-stack-quote: var(--res-font-quote-west), var(--res-font-quote-zh);
+}
+
+body.font-stack-override-quote {
+  --mkk-font-stack-quote: var(
+    --u-font-stack-quote,
+    var(--res-font-quote-west), var(--res-font-quote-zh)
+  );
+}
+
 .markdown-source-view.cm-s-obsidian.mod-cm6.is-live-preview .cm-quote,
 .markdown-reading-view .markdown-preview-view.markdown-rendered blockquote {
-  font-family: var(--res-font-quote-west), var(--res-font-quote-zh);
+  font-family: var(--mkk-font-stack-quote);
   font-weight: var(--res-font-quote-weight);
   color: var(--res-tx3);
 }
 
+body {
+  --mkk-font-stack-em: var(--res-font-em-west), var(--res-font-em-zh);
+}
+
+body.font-stack-override-em {
+  --mkk-font-stack-em: var(
+    --u-font-stack-em,
+    var(--res-font-em-west), var(--res-font-em-zh)
+  );
+}
+
 .markdown-source-view.cm-s-obsidian.mod-cm6.is-live-preview .cm-em,
 .markdown-reading-view .markdown-preview-view.markdown-rendered em {
-  font-family: var(--res-font-em-west), var(--res-font-em-zh);
+  font-family: var(--mkk-font-stack-em);
   font-weight: var(--res-font-em-weight);
   font-style: normal;
   color: var(--res-tx-sup);
 }
 
+body {
+  --mkk-font-stack-strong: var(--res-font-strong-west), var(--res-font-strong-zh);
+}
+
+body.font-stack-override-strong {
+  --mkk-font-stack-strong: var(
+    --u-font-stack-strong,
+    var(--res-font-strong-west), var(--res-font-strong-zh)
+  );
+}
+
 .markdown-source-view.cm-s-obsidian.mod-cm6.is-live-preview .cm-strong,
 .markdown-reading-view .markdown-preview-view.markdown-rendered strong {
-  font-family: var(--res-font-strong-west), var(--res-font-strong-zh);
+  font-family: var(--mkk-font-stack-strong);
   font-weight: var(--res-font-strong-weight);
   color: var(--res-tx-strong);
 }
@@ -1961,8 +2160,17 @@ a:hover {
   background-color: var(--res-tx-accent);
 }
 
+.style-settings-heading[data-level="0"][data-id=monkey-king-theme] {
+  padding-left: 4px;
+}
+
+.style-settings-heading[data-level="0"][data-id=monkey-king-theme] + .style-settings-container {
+  padding-left: 6px;
+}
+
 [data-id=monkey-king-theme] + .style-settings-container {
   width: 100%;
+  background: transparent;
 }
 [data-id=monkey-king-theme] + .style-settings-container input,
 [data-id=monkey-king-theme] + .style-settings-container select,
@@ -1975,6 +2183,8 @@ a:hover {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  column-gap: 8px;
+  row-gap: 4px;
 }
 [data-id=monkey-king-theme] + .style-settings-container .style-settings-container .style-settings-heading {
   width: 100%;
@@ -2006,6 +2216,189 @@ a:hover {
 
 .bg-tune-override [data-id=u-bg-tune] {
   display: flex;
+}
+
+[data-id=u-font-stack-headings],
+[data-id=u-font-stack-quote],
+[data-id=u-font-stack-em],
+[data-id=u-font-stack-strong],
+[data-id=u-font-stack-theme],
+[data-id=u-font-stack-mono] {
+  display: none;
+}
+
+.font-stack-override-headings [data-id=u-font-stack-headings],
+.font-stack-override-quote [data-id=u-font-stack-quote],
+.font-stack-override-em [data-id=u-font-stack-em],
+.font-stack-override-strong [data-id=u-font-stack-strong],
+.font-stack-override-theme [data-id=u-font-stack-theme],
+.font-stack-override-mono [data-id=u-font-stack-mono] {
+  display: flex;
+}
+
+.cancel-font-override [data-id*=font-theme-],
+.cancel-font-override [data-id=h-sub-font-theme],
+.cancel-font-override [data-id*=font-mono-],
+.cancel-font-override [data-id=font-stack-override-theme],
+.cancel-font-override [data-id=u-font-stack-theme],
+.cancel-font-override [data-id$=-mono] {
+  display: none;
+}
+
+[data-id=monkey-king-theme] + .style-settings-container .style-settings-container > .setting-item[data-id^=u-font-stack-] {
+  flex: 0 0 100%;
+  width: 100%;
+  min-width: 100%;
+  align-self: stretch;
+}
+[data-id=monkey-king-theme] + .style-settings-container .style-settings-container > .setting-item[data-id=font-theme-zh-placeholder] {
+  min-width: 120px;
+  flex: 1 1 120px;
+  pointer-events: none;
+  cursor: default;
+  opacity: 0.85;
+}
+[data-id=monkey-king-theme] + .style-settings-container .style-settings-container > .setting-item[data-id=font-theme-zh-placeholder] .setting-item-control {
+  display: none !important;
+}
+
+.scheme-pagoda [data-id=monkey-king-theme] + .style-settings-container {
+  outline: 1px solid color-mix(in srgb, var(--background-modifier-border) 58%, transparent 42%);
+  outline-offset: 0;
+}
+
+.scheme-pagoda [data-id=monkey-king-theme] + .style-settings-container .style-settings-container > .setting-item:not(.style-settings-heading) {
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--background-modifier-border) 74%, transparent 26%);
+}
+
+[data-id=monkey-king-theme] + .style-settings-container {
+  --mk-group-line: color-mix(
+    in srgb,
+    var(--interactive-accent) 62%,
+    transparent 38%
+  );
+  --mk-group-bg: color-mix(
+    in srgb,
+    var(--interactive-accent) 10%,
+    var(--background-primary) 90%
+  );
+  --mk-sub-line: color-mix(in srgb, var(--text-muted) 78%, transparent 22%);
+  --mk-sub-bg: color-mix(
+    in srgb,
+    var(--background-primary-alt) 90%,
+    transparent 10%
+  );
+}
+[data-id=monkey-king-theme] + .style-settings-container .style-settings-heading {
+  width: 100%;
+  position: relative;
+  margin-top: 8px;
+  padding: 6px 10px;
+  border-radius: var(--radius-s);
+  border: 1px solid transparent;
+}
+[data-id=monkey-king-theme] + .style-settings-container .style-settings-heading .setting-item-name {
+  line-height: 1.3;
+}
+[data-id=monkey-king-theme] + .style-settings-container .style-settings-container > .style-settings-heading[data-id^=h-sec-]:first-child {
+  margin-top: 0;
+}
+[data-id=monkey-king-theme] + .style-settings-container .style-settings-heading[data-id^=h-sec-] {
+  padding: 10px 12px;
+  border-color: var(--background-modifier-border);
+  border-left: 8px solid color-mix(in srgb, var(--interactive-accent) 78%, transparent 22%);
+  background: color-mix(in srgb, var(--interactive-accent) 14%, var(--background-primary) 86%);
+  margin-bottom: 3px;
+}
+[data-id=monkey-king-theme] + .style-settings-container .style-settings-heading[data-id^=h-sec-] .setting-item-name {
+  font-size: 1.08em;
+  font-weight: 850;
+  letter-spacing: 0.02em;
+}
+[data-id=monkey-king-theme] + .style-settings-container .style-settings-heading[data-id^=h-group-] {
+  padding: 9px 12px;
+  border-color: var(--background-modifier-border);
+  border-left: 6px solid var(--mk-group-line);
+  background: var(--mk-group-bg);
+  margin-bottom: 4px;
+}
+[data-id=monkey-king-theme] + .style-settings-container .style-settings-heading[data-id^=h-group-] .setting-item-name {
+  font-size: 1.02em;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+[data-id=monkey-king-theme] + .style-settings-container .style-settings-heading[data-id^=h-sub-] {
+  padding: 7px 10px;
+  border-style: dashed;
+  border-color: var(--background-modifier-border);
+  border-left: 3px solid var(--mk-sub-line);
+  background: var(--mk-sub-bg);
+  margin-top: 6px;
+  margin-bottom: 2px;
+}
+[data-id=monkey-king-theme] + .style-settings-container .style-settings-heading[data-id^=h-sub-] .setting-item-name {
+  font-size: 0.94em;
+  font-weight: 700;
+  opacity: 0.95;
+}
+[data-id=monkey-king-theme] + .style-settings-container .style-settings-heading[data-id^=h-group-] + .style-settings-container,
+[data-id=monkey-king-theme] + .style-settings-container .style-settings-heading[data-id^=h-sub-] + .style-settings-container {
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 0;
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  margin-left: 0;
+  padding-left: 0;
+}
+[data-id=monkey-king-theme] + .style-settings-container .style-settings-heading[data-id^=h-group-] + .style-settings-container {
+  border-left: 2px solid var(--mk-group-line);
+  border-bottom: 0;
+  border-bottom-left-radius: 0;
+}
+[data-id=monkey-king-theme] + .style-settings-container .style-settings-heading[data-id^=h-sub-] + .style-settings-container {
+  border-left: 0;
+  border-bottom: 0;
+  border-radius: 0;
+}
+[data-id=monkey-king-theme] + .style-settings-container .style-settings-heading.is-collapsed[data-id^=h-group-] + .style-settings-container,
+[data-id=monkey-king-theme] + .style-settings-container .style-settings-heading.is-collapsed[data-id^=h-sub-] + .style-settings-container {
+  border-left: 0;
+  border-bottom: 0;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+[data-id=monkey-king-theme] + .style-settings-container .style-settings-heading.is-collapsed[data-id^=h-sec-] + .style-settings-container {
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+[data-id=monkey-king-theme] + .style-settings-container .style-settings-heading[data-id^=h-note-] {
+  border: 1px dashed color-mix(in srgb, var(--background-modifier-border) 62%, transparent 38%);
+  border-left: 3px solid color-mix(in srgb, var(--interactive-accent) 68%, transparent 32%);
+  background: color-mix(in srgb, var(--background-primary-alt) 82%, transparent 18%);
+  padding-block: 6px;
+  padding-inline: 12px;
+  margin-top: 6px;
+  margin-bottom: 2px;
+  border-radius: var(--radius-s);
+  cursor: default;
+  pointer-events: none;
+}
+[data-id=monkey-king-theme] + .style-settings-container .style-settings-heading[data-id^=h-note-] .setting-item-name {
+  font-size: 0.95em;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+[data-id=monkey-king-theme] + .style-settings-container .style-settings-heading[data-id^=h-note-] .setting-item-description {
+  padding-inline: 2px;
+  margin-top: 3px;
+  line-height: 1.45;
+  color: var(--text-muted);
+}
+[data-id=monkey-king-theme] + .style-settings-container .style-settings-heading[data-id^=h-note-] .setting-item-control,
+[data-id=monkey-king-theme] + .style-settings-container .style-settings-heading[data-id^=h-note-] .style-settings-collapse-indicator {
+  display: none !important;
 }
 
 .setting-item select.dropdown,

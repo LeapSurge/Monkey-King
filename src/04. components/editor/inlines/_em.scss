@@ -1,8 +1,19 @@
 @use "../../../01. abstracts/variables" as *;
 
+body {
+  --mkk-font-stack-em: var(--res-font-em-west), var(--res-font-em-zh);
+}
+
+body.font-stack-override-em {
+  --mkk-font-stack-em: var(
+    --u-font-stack-em,
+    var(--res-font-em-west), var(--res-font-em-zh)
+  );
+}
+
 #{$preview} .cm-em,
 #{$reading} em {
-  font-family: var(--res-font-em-west), var(--res-font-em-zh);
+  font-family: var(--mkk-font-stack-em);
   font-weight: var(--res-font-em-weight);
   font-style: normal;
   color: var(--res-tx-sup);

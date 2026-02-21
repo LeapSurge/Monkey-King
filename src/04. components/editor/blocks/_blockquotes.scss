@@ -1,8 +1,19 @@
 @use "../../../01. abstracts/variables" as *;
 
+body {
+  --mkk-font-stack-quote: var(--res-font-quote-west), var(--res-font-quote-zh);
+}
+
+body.font-stack-override-quote {
+  --mkk-font-stack-quote: var(
+    --u-font-stack-quote,
+    var(--res-font-quote-west), var(--res-font-quote-zh)
+  );
+}
+
 #{$preview} .cm-quote,
 #{$reading} blockquote {
-  font-family: var(--res-font-quote-west), var(--res-font-quote-zh);
+  font-family: var(--mkk-font-stack-quote);
   font-weight: var(--res-font-quote-weight);
   color: var(--res-tx3);
 }

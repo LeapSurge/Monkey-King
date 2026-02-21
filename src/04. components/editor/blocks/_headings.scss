@@ -3,12 +3,21 @@
 
 // 1. 接管默认css变量
 body {
+  --mkk-font-stack-headings: var(--res-font-headings-west), var(--res-font-headings-zh);
+
   @for $i from 1 through 6 {
-    --h#{$i}-font: var(--res-font-headings-west), var(--res-font-headings-zh);
+    --h#{$i}-font: var(--mkk-font-stack-headings);
     --h#{$i}-weight: var(--res-font-headings-weight);
     --h#{$i}-size: var(--res-gap-h#{$i}-font-size);
     --h#{$i}-line-height: var(--res-gap-h#{$i}-line-height);
   }
+}
+
+body.font-stack-override-headings {
+  --mkk-font-stack-headings: var(
+    --u-font-stack-headings,
+    var(--res-font-headings-west), var(--res-font-headings-zh)
+  );
 }
 
 #{$preview} .cm-line.HyperMD-header {
