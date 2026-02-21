@@ -151,6 +151,7 @@ body.bg-tune-override {
 .theme-light {
   --background-secondary-alt: var(--res-bg4);
   --color-accent: hsl(var(--res-ax0-h), var(--res-ax0-s), var(--res-ax0-l));
+  --color-accent-hsl: var(--res-ax0-h), var(--res-ax0-s), var(--res-ax0-l);
 
   --interactive-normal: var(--res-bg1);
   --interactive-hover: var(--res-bg2);

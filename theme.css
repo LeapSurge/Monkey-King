@@ -896,7 +896,7 @@ body.style-huaguo-mount {
   --preset-stack-hei: "HONOR Sans CN";
   --preset-stack-song: "屏显臻宋";
   --preset-stack-kai: "Yozai";
-  --preset-stack-fang: "";
+  --preset-stack-fang: "朱雀仿宋（预览测试版）";
   --preset-stack-serif: "";
   --preset-stack-sans: "";
   --preset-stack-hand: "";
@@ -1018,7 +1018,7 @@ body:not(.css-settings-manager) {
   --preset-stack-hei: "HONOR Sans CN";
   --preset-stack-song: "屏显臻宋";
   --preset-stack-kai: "Yozai";
-  --preset-stack-fang: "";
+  --preset-stack-fang: "朱雀仿宋（预览测试版）";
   --preset-stack-serif: "";
   --preset-stack-sans: "";
   --preset-stack-hand: "";
@@ -1214,17 +1214,17 @@ body.theme-dark.scheme-lord {
   --preset-bg4-h: 203deg;
   --preset-bg4-s: 100%;
   --preset-bg4-l: 15%;
-  --preset-tx1: #fafafa;
+  --preset-tx1: #ebebeb;
   --preset-tx2: #dadada;
   --preset-tx3: #b3b3b3;
   --preset-tx-sup: #8b7d57;
   --preset-tx-strong: #e00623;
-  --preset-tx-accent: hsl(192, 92%, 52%);
-  --preset-ax0: hsl(192, 75%, 46%);
-  --preset-ax0-rgb: 29, 170, 205;
+  --preset-tx-accent: hsl(192, 77%, 54%);
+  --preset-ax0: hsl(192, 82%, 63%);
+  --preset-ax0-rgb: 83, 207, 238;
   --preset-ax0-h: 192;
-  --preset-ax0-s: 75%;
-  --preset-ax0-l: 46%;
+  --preset-ax0-s: 82%;
+  --preset-ax0-l: 63%;
 }
 
 body.theme-dark.scheme-pagoda {
@@ -1243,17 +1243,17 @@ body.theme-dark.scheme-pagoda {
   --preset-bg4-h: 147deg;
   --preset-bg4-s: 85%;
   --preset-bg4-l: 16%;
-  --preset-tx1: #fafafa;
+  --preset-tx1: #ebebeb;
   --preset-tx2: #d9d9d9;
   --preset-tx3: #b3b3b3;
   --preset-tx-sup: #a86871;
   --preset-tx-strong: #00ad4e;
-  --preset-tx-accent: hsl(56, 81%, 70%);
-  --preset-ax0: hsl(56, 62%, 58%);
-  --preset-ax0-rgb: 214, 208, 81;
+  --preset-tx-accent: hsl(56, 61%, 56%);
+  --preset-ax0: hsl(56, 84%, 63%);
+  --preset-ax0-rgb: 211, 202, 74;
   --preset-ax0-h: 56;
-  --preset-ax0-s: 62%;
-  --preset-ax0-l: 58%;
+  --preset-ax0-s: 84%;
+  --preset-ax0-l: 63%;
 }
 
 /* --------------------------------------------------------
@@ -1304,17 +1304,17 @@ body.theme-dark:not(.css-settings-manager) {
   --preset-bg4-h: 203deg;
   --preset-bg4-s: 100%;
   --preset-bg4-l: 15%;
-  --preset-tx1: #fafafa;
+  --preset-tx1: #ebebeb;
   --preset-tx2: #dadada;
   --preset-tx3: #b3b3b3;
   --preset-tx-sup: #8b7d57;
   --preset-tx-strong: #e00623;
-  --preset-tx-accent: hsl(192, 92%, 52%);
-  --preset-ax0: hsl(192, 75%, 46%);
-  --preset-ax0-rgb: 29, 170, 205;
+  --preset-tx-accent: hsl(192, 77%, 54%);
+  --preset-ax0: hsl(192, 82%, 63%);
+  --preset-ax0-rgb: 83, 207, 238;
   --preset-ax0-h: 192;
-  --preset-ax0-s: 75%;
-  --preset-ax0-l: 46%;
+  --preset-ax0-s: 82%;
+  --preset-ax0-l: 63%;
 }
 
 /* --------------------------------------------------------
@@ -1756,6 +1756,7 @@ body.bg-tune-override {
 .theme-light {
   --background-secondary-alt: var(--res-bg4);
   --color-accent: hsl(var(--res-ax0-h), var(--res-ax0-s), var(--res-ax0-l));
+  --color-accent-hsl: var(--res-ax0-h), var(--res-ax0-s), var(--res-ax0-l);
   --interactive-normal: var(--res-bg1);
   --interactive-hover: var(--res-bg2);
   --text-accent: var(--res-tx-accent);
@@ -1857,6 +1858,11 @@ body:not(.cancel-font-override) {
   --font-monospace:
     var(--font-monospace-override), var(--font-monospace-theme),
     var(--font-monospace-default);
+}
+
+body {
+  --hr-color: var(--res-tx-sup);
+  --hr-border-width: var(--mkk-line-width);
 }
 
 body {

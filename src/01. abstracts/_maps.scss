@@ -9,7 +9,7 @@
 $font-presets: (
   base: (
     stacks: (
-      hei: "HONOR Sans CN", song: "屏显臻宋", kai: "Yozai", fang: "",
+      hei: "HONOR Sans CN", song: "屏显臻宋", kai: "Yozai", fang: "朱雀仿宋（预览测试版）",
       serif: "", sans: "", hand: "",
     ),
     roles: (
@@ -168,17 +168,17 @@ $color-schemes: (
     bg4-h: 203deg, bg4-s: 100%, bg4-l: 15%,
 
     // Text (fixed)
-    tx1: #fafafa,
+    tx1: #ebebeb,
     tx2: #dadada,
     tx3: #b3b3b3,
     tx-sup: #8b7d57,
     tx-strong: #e00623,
-    tx-accent: hsl(192, 92%, 52%),
+    tx-accent: hsl(192, 77%, 54%),
 
     // Interactive
-    ax0: hsl(192, 75%, 46%),
-    ax0-rgb: (29, 170, 205),
-    ax0-h: 192, ax0-s: 75%, ax0-l: 46%,
+    ax0: hsl(192, 82%, 63%),
+    ax0-rgb: (83, 207, 238),
+    ax0-h: 192, ax0-s: 82%, ax0-l: 63%,
     
     // #endregion
   ),
@@ -193,17 +193,17 @@ $color-schemes: (
     bg4-h: 147deg, bg4-s: 85%, bg4-l: 16%,
 
     // Text (fixed)
-    tx1: #fafafa,
+    tx1: #ebebeb,
     tx2: #d9d9d9,
     tx3: #b3b3b3,
     tx-sup: #a86871,
     tx-strong: #00ad4e,
-    tx-accent: hsl(56, 81%, 70%),
+    tx-accent: hsl(56, 61%, 56%),
 
     // Interactive
-    ax0: hsl(56, 62%, 58%),
-    ax0-rgb: (214, 208, 81),
-    ax0-h: 56, ax0-s: 62%, ax0-l: 58%,
+    ax0: hsl(56, 84%, 63%),
+    ax0-rgb: (211, 202, 74),
+    ax0-h: 56, ax0-s: 84%, ax0-l: 63%,
     // #endregion
   ),
 );
