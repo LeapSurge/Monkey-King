@@ -5,3 +5,15 @@ body {
 body.style-great-hall {
   --mkk-line-width: 1px;
 }
+
+body.line-width-thin {
+  --mkk-line-width: 1px;
+}
+
+body.line-width-regular {
+  --mkk-line-width: 2px;
+}
+
+body.line-width-bold {
+  --mkk-line-width: 3px;
+}

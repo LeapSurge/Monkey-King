@@ -5,16 +5,36 @@ id: monkey-king-theme
 settings:
     -
         id: simple-settings-heading
-        title: 简单设置
+        title: 短诗定场
         type: heading
         level: 1
         collapsed: false
     -
+        id: font-pack-notice-quick
+        title: 必读：预设字体
+        type: heading
+        level: 2
+        collapsed: false
+        description: 本主题搭配了多种免费字体，预设字体缺失会明显影响观感。请先安装字体包：主链 https://example.com/monkey-king-font-pack ，备用 https://example.com/monkey-king-font-pack-mirror 。安装后建议重启 Obsidian。
+    -
+        id: style-mode
+        title: ① 搭台布景
+        type: class-select
+        default: 'style-huaguo-mount'
+        description: 先定场景：花果山偏灵动，凌霄宝殿偏肃整。
+        options:
+            -
+                label: "花果山"
+                value: 'style-huaguo-mount'
+            -
+                label: "凌霄宝殿"
+                value: 'style-great-hall'
+    -
         id: color-scheme-light
-        title: 配色
+        title: ② 登台亮相
         type: class-select
         default: 'scheme-monkey'
-        description: 选择浅色配色方案
+        description: 再定昼光下的主色走向。
         options:
             -
                 label: "美猴王"
@@ -24,10 +44,10 @@ settings:
                 value: 'scheme-kid'
     -
         id: color-scheme-dark
-        title: 配色
+        title: ② 登台亮相
         type: class-select
         default: 'scheme-lord'
-        description: 选择深色配色方案
+        description: 再定夜色下的主色走向。
         options:
             -
                 label: "太上老君"
@@ -35,132 +55,316 @@ settings:
             -
                 label: "李天王"
                 value: 'scheme-pagoda'
-
     -
-        id: style-mode
-        title: 模式
-        type: class-select
-        default: 'style-huaguo-mount'
-        description: 选择主题模式
+        id: u-font-theme-zh
+        title: ③ 念白开场
+        description: 最后确定正文的形态
+        type: variable-select
+        default: initial
         options:
             -
-                label: "凌霄宝殿"
-                value: 'style-great-hall'
+                label: "顺应场景"
+                value: initial
             -
-                label: "花果山"
-                value: 'style-huaguo-mount'
+                label: "黑体"
+                value: 'var(--stack-hei)'
+            -
+                label: "宋体"
+                value: 'var(--stack-song)'
+            -
+                label: "楷体"
+                value: 'var(--stack-kai)'
+            -
+                label: "仿宋"
+                value: 'var(--stack-fang)'
     -
-        id: cancel-font-override
-        title: 取消字体接管
-        type: class-toggle
-        default: false
-        description: 关闭时使用模式预设字体；开启后恢复设置面板中的字体。
+        id: optimization-settings-heading
+        title: 守桃饲马
+        type: heading
+        level: 1
+        collapsed: true
+
     -
-        id: bg-tune-settings-heading
-        title: 背景微调
+            id: bg-tune-override
+            title: 亲调天光
+            type: class-toggle
+            default: false
+            description: 关闭时跟随场景默认天光；开启后使用滑块。
+    -
+            id: u-bg-tune
+            title: 天光偏移
+            type: variable-number-slider
+            default: 0
+            min: -20
+            max: 20
+            step: 1
+            description: 微调背景与文字的对比度，0 为不偏移。
+    -
+        id: gap-strategy
+        title: 疏密有致
+        type: class-select
+        default: 'gap-auto'
+        description: 调整元素间距。
+        options:
+            -
+                label: "顺应场景"
+                value: 'gap-auto'
+            -
+                label: "舒展"
+                value: 'gap-loose'
+            -
+                label: "利落"
+                value: 'gap-compact'
+
+    -
+        id: optimization-border
+        title: 线条粗细
         type: heading
         level: 2
         collapsed: true
     -
-        id: bg-tune-override
-        title: 启用手动接管
+        id: line-width-strategy
+        title: 全局线宽
+        type: class-select
+        default: 'line-width-auto'
+        description: 控制分隔线、表格边线、链接下划线等线条强度。
+        options:
+            -
+                label: "顺应场景"
+                value: 'line-width-auto'
+            -
+                label: "纤细"
+                value: 'line-width-thin'
+            -
+                label: "平衡"
+                value: 'line-width-regular'
+            -
+                label: "浓重"
+                value: 'line-width-bold'
+    -
+        id: cancel-font-override
+        title: 正文用字接管
         type: class-toggle
         default: false
-        description: 关闭时使用每个“配色 × 模式”的默认背景微调值，开启后使用下方滑块值。
+        description: 关闭：按篇章预设用字。开启：改用你在面板中填写的字体。
     -
-        id: u-bg-tune
-        title: 背景总微调
-        type: variable-number-slider
-        default: 0
-        min: -20
-        max: 20
-        step: 1
-        description: 单滑块统一微调所有背景色的饱和度与亮度（不改变色相）。0 为不偏移。
+        id: link-tuning-heading
+        title: 链接字法
+        type: heading
+        level: 2
+        collapsed: true
     -
-        id: u-zh-hei
-        title: 黑体
+        id: u-mkk-link-underline-offset
+        title: 下划线偏移
         type: variable-text
         default: ""
-        description: 用于无衬线场景。留空使用系统自带黑体
+        description: 覆盖链接下划线与文字的距离。示例：4px（留空跟随预设）
     -
-        id: u-zh-song
-        title: 宋体
+        id: u-mkk-link-decoration-thickness-hover
+        title: 悬停线宽
         type: variable-text
         default: ""
-        description: 用于衬线场景。留空使用系统自带宋体
+        description: 覆盖链接悬停时下划线粗细。示例：2px（留空跟随预设）
     -
-        id: optimization-settings-heading
-        title: 优化设置
+        id: u-mkk-link-unresolved-decoration-style-hover
+        title: 未解析链接悬停样式
+        type: variable-select
+        default: initial
+        options:
+            -
+                label: "顺应预设"
+                value: initial
+            -
+                label: "实线"
+                value: solid
+            -
+                label: "虚线"
+                value: dashed
+            -
+                label: "点线"
+                value: dotted
+            -
+                label: "波浪线"
+                value: wavy
+    -
+        id: advance-settings-heading
+        title: 大闹天宫
         type: heading
         level: 1
         collapsed: true
+        description: 待开发……
     -
         id: font-settings-heading
         title: 字体
         type: heading
+        level: 1
+        collapsed: true
+        description: 仅在你需要精细排版时使用；“顺应场景”代表回到篇章预设。
+    -
+        id: font-pack-notice-advanced
+        title: 预设字库下载
+        type: heading
+        level: 2
+        collapsed: false
+        description: 若风格与预期不符，请先安装预设字体包：主链 https://example.com/monkey-king-font-pack ，备用 https://example.com/monkey-king-font-pack-mirror 。
+    -
+        id: font-base-settings-heading
+        title: 正文与代码
+        type: heading
         level: 2
         collapsed: true
     -
+        id: u-font-theme-west
+        title: 正文西文
+        type: variable-select
+        default: initial
+        options:
+            -
+                label: "顺应场景"
+                value: initial
+            -
+                label: "衬线"
+                value: 'var(--stack-serif)'
+            -
+                label: "非衬线"
+                value: 'var(--stack-sans)'
+            -
+                label: "手写体"
+                value: 'var(--stack-hand)'
+            -
+                label: "系统衬线斜体"
+                value: 'var(--stack-serif-i)'
+            -
+                label: "系统非衬线斜体"
+                value: 'var(--stack-sans-i)'
+    -
+        id: u-font-theme-weight
+        title: 正文字重
+        type: variable-select
+        default: initial
+        options:
+            -
+                label: "顺应场景"
+                value: initial
+            -
+                label: "细体 300"
+                value: 300
+            -
+                label: "常规 400"
+                value: 400
+            -
+                label: "中等 500"
+                value: 500
+            -
+                label: "半粗 600"
+                value: 600
+            -
+                label: "粗体 700"
+                value: 700
+            -
+                label: "特粗 800"
+                value: 800
+            -
+                label: "黑体 900"
+                value: 900
+    -
+        id: u-font-mono-west
+        title: 代码西文
+        type: variable-text
+        default: ""
+        description: 代码块和行内代码的西文部分字体。示例：JetBrains Mono
+    -
         id: u-font-mono-zh
-        title: 代码字体
+        title: 代码中文
         type: variable-text
         default: ""
-        description: 代码块和行内代码的字体,留空使用黑体。
+        description: 代码块和行内代码的中文部分字体。留空使用系统黑体。
     -
-        id: chinese-font-heading
-        title: 中文字体
-        collapsed: false
+        id: table-font-settings-heading
+        title: 表格表头
         type: heading
-        level: 3
-
-    -
-        id: u-zh-kai
-        title: 楷体
-        type: variable-text
-        default: ""
-        description: 用于手写/笔记场景。留空使用系统自带楷体
-    -
-        id: u-zh-fang
-        title: 仿宋
-        type: variable-text
-        default: ""
-        description: 用于公文/引用场景。留空使用系统自带仿宋体
-    -
-        id: western-font-heading
-        title: 西文字体
-        collapsed: false
-        type: heading
-        level: 3
-    -
-        id: u-west-serif
-        title: 衬线
-        type: variable-text
-        default: ""
-        description: 西文衬线字体。留空使用系统默认
-    -
-        id: u-west-sans
-        title: 无衬线
-        type: variable-text
-        default: ""
-        description: 西文无衬线字体。留空使用系统默认
-    -
-        id: u-west-hand
-        title: 手写体
-        type: variable-text
-        default: ""
-        description: 西文手写字体。留空使用系统默认
-    -
-        id: block-font-settings-heading
-        title: 编辑器元素字体配置
-        type: heading
-        level: 3
+        level: 2
         collapsed: true
-        description: 配置文章中常用元素的字体族。注意：只能用给定的西文字体来实现西文斜体（Italic）和不斜的中文混排。
+    -
+        id: u-font-th-west
+        title: 表头西文
+        type: variable-select
+        default: initial
+        options:
+            -
+                label: "顺应场景"
+                value: initial
+            -
+                label: "衬线"
+                value: 'var(--stack-serif)'
+            -
+                label: "非衬线"
+                value: 'var(--stack-sans)'
+            -
+                label: "手写体"
+                value: 'var(--stack-hand)'
+            -
+                label: "系统衬线斜体"
+                value: 'var(--stack-serif-i)'
+            -
+                label: "系统非衬线斜体"
+                value: 'var(--stack-sans-i)'
+    -
+        id: u-font-th-zh
+        title: 表头中文
+        type: variable-select
+        default: initial
+        options:
+            -
+                label: "顺应场景"
+                value: initial
+            -
+                label: "黑体"
+                value: 'var(--stack-hei)'
+            -
+                label: "宋体"
+                value: 'var(--stack-song)'
+            -
+                label: "楷体"
+                value: 'var(--stack-kai)'
+            -
+                label: "仿宋"
+                value: 'var(--stack-fang)'
+    -
+        id: u-font-th-weight
+        title: 表头字重
+        type: variable-select
+        default: initial
+        options:
+            -
+                label: "顺应场景"
+                value: initial
+            -
+                label: "细体 300"
+                value: 300
+            -
+                label: "常规 400"
+                value: 400
+            -
+                label: "中等 500"
+                value: 500
+            -
+                label: "半粗 600"
+                value: 600
+            -
+                label: "粗体 700"
+                value: 700
+            -
+                label: "特粗 800"
+                value: 800
+            -
+                label: "黑体 900"
+                value: 900
     -
         id: block-font-settings-headings-heading
         title: 标题
         type: heading
-        level: 4
+        level: 3
         collapsed: true
     -
         id: u-font-headings-west
@@ -169,7 +373,7 @@ settings:
         default: initial
         options:
             - 
-                label: "模式默认"
+                label: "顺应场景"
                 value: initial
             -
                 label: "非衬线"
@@ -190,7 +394,7 @@ settings:
         default: initial
         options:
             - 
-                label: "模式默认"
+                label: "顺应场景"
                 value: initial
             -
                 label: "黑体"
@@ -205,10 +409,40 @@ settings:
                 label: "仿宋"
                 value: 'var(--stack-fang)'
     -
+        id: u-font-headings-weight
+        title: 字重
+        type: variable-select
+        default: initial
+        options:
+            -
+                label: "顺应场景"
+                value: initial
+            -
+                label: "细体 300"
+                value: 300
+            -
+                label: "常规 400"
+                value: 400
+            -
+                label: "中等 500"
+                value: 500
+            -
+                label: "半粗 600"
+                value: 600
+            -
+                label: "粗体 700"
+                value: 700
+            -
+                label: "特粗 800"
+                value: 800
+            -
+                label: "黑体 900"
+                value: 900
+    -
         id: block-font-settings-quote-heading
         title: 引用块
         type: heading
-        level: 4
+        level: 3
         collapsed: true
     -
         id: u-font-quote-west
@@ -217,7 +451,7 @@ settings:
         default: initial
         options:
             - 
-                label: "模式默认"
+                label: "顺应场景"
                 value: initial
             -
                 label: "非衬线"
@@ -238,7 +472,7 @@ settings:
         default: initial
         options:
             - 
-                label: "模式默认"
+                label: "顺应场景"
                 value: initial
             -
                 label: "黑体"
@@ -253,10 +487,40 @@ settings:
                 label: "仿宋"
                 value: 'var(--stack-fang)'
     -
+        id: u-font-quote-weight
+        title: 字重
+        type: variable-select
+        default: initial
+        options:
+            -
+                label: "顺应场景"
+                value: initial
+            -
+                label: "细体 300"
+                value: 300
+            -
+                label: "常规 400"
+                value: 400
+            -
+                label: "中等 500"
+                value: 500
+            -
+                label: "半粗 600"
+                value: 600
+            -
+                label: "粗体 700"
+                value: 700
+            -
+                label: "特粗 800"
+                value: 800
+            -
+                label: "黑体 900"
+                value: 900
+    -
         id: block-font-settings-em-heading
         title: 强调块（*text*）
         type: heading
-        level: 4
+        level: 3
         collapsed: true
     -
         id: u-font-em-west
@@ -265,7 +529,7 @@ settings:
         default: initial
         options:
             - 
-                label: "模式默认"
+                label: "顺应场景"
                 value: initial
             -
                 label: "非衬线"
@@ -286,7 +550,7 @@ settings:
         default: initial
         options:
             - 
-                label: "模式默认"
+                label: "顺应场景"
                 value: initial
             -
                 label: "黑体"
@@ -301,10 +565,40 @@ settings:
                 label: "仿宋"
                 value: 'var(--stack-fang)'
     -
+        id: u-font-em-weight
+        title: 字重
+        type: variable-select
+        default: initial
+        options:
+            -
+                label: "顺应场景"
+                value: initial
+            -
+                label: "细体 300"
+                value: 300
+            -
+                label: "常规 400"
+                value: 400
+            -
+                label: "中等 500"
+                value: 500
+            -
+                label: "半粗 600"
+                value: 600
+            -
+                label: "粗体 700"
+                value: 700
+            -
+                label: "特粗 800"
+                value: 800
+            -
+                label: "黑体 900"
+                value: 900
+    -
         id: block-font-settings-strong-heading
         title: 加重块（**text**）
         type: heading
-        level: 4
+        level: 3
         collapsed: true
     -
         id: u-font-strong-west
@@ -313,7 +607,7 @@ settings:
         default: initial
         options:
             - 
-                label: "模式默认"
+                label: "顺应场景"
                 value: initial
             -
                 label: "非衬线"
@@ -334,7 +628,7 @@ settings:
         default: initial
         options:
             - 
-                label: "模式默认"
+                label: "顺应场景"
                 value: initial
             -
                 label: "黑体"
@@ -349,25 +643,33 @@ settings:
                 label: "仿宋"
                 value: 'var(--stack-fang)'
     -
-        id: layout-settings-heading
-        title: 布局
-        type: heading
-        level: 2
-        collapsed: true
-    -
-        id: gap-strategy
-        title: 密度策略
-        type: class-select
-        default: 'gap-auto'
-        description: 选择间距/字号密度策略（默认跟随模式）
+        id: u-font-strong-weight
+        title: 字重
+        type: variable-select
+        default: initial
         options:
             -
-                label: "跟随模式"
-                value: 'gap-auto'
+                label: "顺应场景"
+                value: initial
             -
-                label: "宽松"
-                value: 'gap-loose'
+                label: "细体 300"
+                value: 300
             -
-                label: "紧凑"
-                value: 'gap-compact'
+                label: "常规 400"
+                value: 400
+            -
+                label: "中等 500"
+                value: 500
+            -
+                label: "半粗 600"
+                value: 600
+            -
+                label: "粗体 700"
+                value: 700
+            -
+                label: "特粗 800"
+                value: 800
+            -
+                label: "黑体 900"
+                value: 900
 */

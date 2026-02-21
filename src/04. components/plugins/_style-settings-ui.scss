@@ -47,3 +47,11 @@
 .theme-dark [data-id="color-scheme-light"] {
   display: none;
 }
+
+[data-id="u-bg-tune"] {
+  display: none;
+}
+
+.bg-tune-override [data-id="u-bg-tune"] {
+  display: flex;
+}

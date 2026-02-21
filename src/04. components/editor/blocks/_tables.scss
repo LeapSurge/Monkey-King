@@ -4,7 +4,7 @@ table {
   --table-text-size: calc(var(--font-text-size) * 0.9);
   --table-header-border-color: var(--res-tx-sup);
   --table-header-border-width: 0px;
-  --table-header-font: var(--res-font-th-zh);
+  --table-header-font: var(--res-font-th-west), var(--res-font-th-zh);
   --table-header-weight: var(--res-font-th-weight);
   --table-header-background: rgba(var(--res-ax0-rgb), 0.35);
   --table-header-background-hover: var(--table-header-background);
@@ -24,7 +24,7 @@ table {
 
 .cm-html-embed th,
 .markdown-rendered th {
-  border-bottom-width: calc(var(--mkk-line-width) + 1);
+  border-bottom-width: calc(var(--mkk-line-width) + 1px);
   border-bottom-color: var(--res-tx-accent) !important;
 }
 
