@@ -13,10 +13,17 @@ settings:
     -
         id: h-note-fontpack-quick
         title: 必读：预设字体
-        type: heading
-        level: 2
-        collapsed: false
-        description: 本主题搭配了多种免费字体，预设字体缺失会明显影响观感。请先安装字体包：主链 https://example.com/monkey-king-font-pack ，备用 https://example.com/monkey-king-font-pack-mirror 。安装后建议重启 Obsidian。
+        type: info-text
+        markdown: true
+        description: "本主题搭配了多款免费字体，预设字体缺失会**明显影响观感**。请先下载安装字体包：[主链](https://example.com/monkey-king-font-pack) ｜ [备用](https://example.com/monkey-king-font-pack-mirror)。安装后建议*重启 Obsidian*。"
+    -
+        id: h-note-mode-huaguo
+        title: 一条涧壑藤萝密，四面原堤草色新。
+        type: info-text
+    -
+        id: h-note-mode-hall
+        title: 金钉攒玉户，彩凤舞朱门。
+        type: info-text
     -
         id: style-mode
         title: ① 搭台布景
@@ -91,7 +98,7 @@ settings:
             title: 亲调天光
             type: class-toggle
             default: false
-            description: 关闭时跟随默认背景；开启后使用滑块。
+            description: 关闭时跟随默认背景；开启后使用滑块微调背景。
     -
             id: u-bg-tune
             title: 天光偏移
@@ -159,17 +166,14 @@ settings:
     -
         id: h-note-limitation
         title: 注意
-        type: heading
-        level: 2
-        collapsed: false
+        type: info-text
         description: 目前只实现了对元素的字体调整。
     -
         id: h-note-fontpack-advanced
         title: 预设字库下载
-        type: heading
-        level: 3
-        collapsed: false
-        description: 若风格与预期不符，请先安装预设字体包：主链 https://example.com/monkey-king-font-pack ，备用 https://example.com/monkey-king-font-pack-mirror 。
+        type: info-text
+        markdown: true
+        description: "若风格与预期不符，请先安装预设字体包：主链 [https://example.com/monkey-king-font-pack](https://example.com/monkey-king-font-pack) ｜ 备用 [https://example.com/monkey-king-font-pack-mirror](https://example.com/monkey-king-font-pack-mirror) 。"
     -
         id: h-group-font-base
         title: 正文与代码
@@ -1862,7 +1866,7 @@ body:not(.cancel-font-override) {
 
 body {
   --hr-color: var(--res-tx-sup);
-  --hr-border-width: var(--mkk-line-width);
+  --hr-thickness: var(--mkk-line-width);
 }
 
 body {
@@ -2343,32 +2347,95 @@ a:hover {
   padding-bottom: 0;
   margin-bottom: 0;
 }
-[data-id=monkey-king-theme] + .style-settings-container .style-settings-heading[data-id^=h-note-] {
+[data-id=monkey-king-theme] + .style-settings-container .setting-item.style-settings-info-text[data-id^=h-note-] {
   border: 1px dashed color-mix(in srgb, var(--background-modifier-border) 62%, transparent 38%);
   border-left: 3px solid color-mix(in srgb, var(--interactive-accent) 68%, transparent 32%);
   background: color-mix(in srgb, var(--background-primary-alt) 82%, transparent 18%);
-  padding-block: 6px;
-  padding-inline: 12px;
-  margin-top: 6px;
-  margin-bottom: 2px;
+  padding: 8px 12px;
   border-radius: var(--radius-s);
-  cursor: default;
-  pointer-events: none;
 }
-[data-id=monkey-king-theme] + .style-settings-container .style-settings-heading[data-id^=h-note-] .setting-item-name {
-  font-size: 0.95em;
-  font-weight: 700;
-  letter-spacing: 0.01em;
-}
-[data-id=monkey-king-theme] + .style-settings-container .style-settings-heading[data-id^=h-note-] .setting-item-description {
-  padding-inline: 2px;
-  margin-top: 3px;
+[data-id=monkey-king-theme] + .style-settings-container .setting-item.style-settings-info-text[data-id^=h-note-] .setting-item-description {
   line-height: 1.45;
-  color: var(--text-muted);
+  user-select: text;
 }
-[data-id=monkey-king-theme] + .style-settings-container .style-settings-heading[data-id^=h-note-] .setting-item-control,
-[data-id=monkey-king-theme] + .style-settings-container .style-settings-heading[data-id^=h-note-] .style-settings-collapse-indicator {
-  display: none !important;
+[data-id=monkey-king-theme] + .style-settings-container .setting-item.style-settings-info-text[data-id^=h-note-] .setting-item-control {
+  display: none;
+}
+[data-id=monkey-king-theme] + .style-settings-container .setting-item.style-settings-info-text[data-id^=h-note-] a {
+  color: var(--interactive-accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+[data-id=monkey-king-theme] + .style-settings-container .setting-item.style-settings-info-text[data-id=h-note-mode-huaguo],
+[data-id=monkey-king-theme] + .style-settings-container .setting-item.style-settings-info-text[data-id=h-note-mode-hall] {
+  display: none;
+  width: 100%;
+  min-width: 100%;
+  flex: 0 0 100%;
+  border-style: solid;
+  border-left-width: 4px;
+  border-left-color: var(--res-tx-sup);
+  border-color: color-mix(in srgb, var(--res-tx-sup) 45%, transparent 55%);
+  background: color-mix(in srgb, var(--background-primary-alt) 90%, transparent 10%);
+}
+[data-id=monkey-king-theme] + .style-settings-container .setting-item.style-settings-info-text[data-id=h-note-mode-huaguo] .setting-item-info,
+[data-id=monkey-king-theme] + .style-settings-container .setting-item.style-settings-info-text[data-id=h-note-mode-hall] .setting-item-info {
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+}
+[data-id=monkey-king-theme] + .style-settings-container .setting-item.style-settings-info-text[data-id=h-note-mode-huaguo] .setting-item-info::before,
+[data-id=monkey-king-theme] + .style-settings-container .setting-item.style-settings-info-text[data-id=h-note-mode-hall] .setting-item-info::before {
+  content: "“";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--res-tx-sup);
+  font-family: var(--font-monospace-default), monospace;
+  font-style: normal;
+  font-weight: 700;
+  font-size: calc(var(--font-text-size) * 1.15);
+  line-height: 1;
+}
+[data-id=monkey-king-theme] + .style-settings-container .setting-item.style-settings-info-text[data-id=h-note-mode-huaguo] .setting-item-name,
+[data-id=monkey-king-theme] + .style-settings-container .setting-item.style-settings-info-text[data-id=h-note-mode-hall] .setting-item-name {
+  font-family: var(--mkk-font-stack-quote);
+  font-weight: var(--res-font-quote-weight, 400);
+  font-size: calc(var(--font-text-size) * 0.85);
+  color: var(--res-tx3);
+}
+[data-id=monkey-king-theme] + .style-settings-container .style-settings-container > .setting-item.style-settings-info-text[data-id=h-note-fontpack-quick] {
+  width: 100%;
+  min-width: 100%;
+  flex: 0 0 100%;
+}
+[data-id=monkey-king-theme] + .style-settings-container .setting-item.style-settings-info-text[data-id=h-note-fontpack-quick] .setting-item-description {
+  font-family: var(--mkk-font-stack-theme);
+  font-weight: var(--res-font-theme-weight, 400);
+  font-size: calc(var(--font-text-size) * 0.85);
+  line-height: 1.45;
+}
+[data-id=monkey-king-theme] + .style-settings-container .setting-item.style-settings-info-text[data-id=h-note-fontpack-quick] .setting-item-name {
+  font-family: var(--mkk-font-stack-headings);
+  font-weight: var(--res-font-headings-weight, 700);
+  font-size: calc(var(--font-text-size) * 1);
+}
+[data-id=monkey-king-theme] + .style-settings-container .setting-item.style-settings-info-text[data-id=h-note-fontpack-quick] .setting-item-description strong {
+  font-family: var(--mkk-font-stack-strong, var(--mkk-font-stack-theme));
+  font-weight: var(--res-font-strong-weight, 700);
+}
+[data-id=monkey-king-theme] + .style-settings-container .setting-item.style-settings-info-text[data-id=h-note-fontpack-quick] .setting-item-description em {
+  font-family: var(--mkk-font-stack-em, var(--mkk-font-stack-theme));
+  font-weight: var(--res-font-em-weight, 400);
+  font-style: normal;
+}
+
+body.style-huaguo-mount [data-id=monkey-king-theme] + .style-settings-container .setting-item.style-settings-info-text[data-id=h-note-mode-huaguo] {
+  display: flex;
+}
+
+body.style-great-hall [data-id=monkey-king-theme] + .style-settings-container .setting-item.style-settings-info-text[data-id=h-note-mode-hall] {
+  display: flex;
 }
 
 .setting-item select.dropdown,

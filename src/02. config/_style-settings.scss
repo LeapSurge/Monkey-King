@@ -12,10 +12,17 @@ settings:
     -
         id: h-note-fontpack-quick
         title: 必读：预设字体
-        type: heading
-        level: 2
-        collapsed: false
-        description: 本主题搭配了多种免费字体，预设字体缺失会明显影响观感。请先安装字体包：主链 https://example.com/monkey-king-font-pack ，备用 https://example.com/monkey-king-font-pack-mirror 。安装后建议重启 Obsidian。
+        type: info-text
+        markdown: true
+        description: "本主题搭配了多款免费字体，预设字体缺失会**明显影响观感**。请先下载安装字体包：[主链](https://example.com/monkey-king-font-pack) ｜ [备用](https://example.com/monkey-king-font-pack-mirror)。安装后建议*重启 Obsidian*。"
+    -
+        id: h-note-mode-huaguo
+        title: 一条涧壑藤萝密，四面原堤草色新。
+        type: info-text
+    -
+        id: h-note-mode-hall
+        title: 金钉攒玉户，彩凤舞朱门。
+        type: info-text
     -
         id: style-mode
         title: ① 搭台布景
@@ -90,7 +97,7 @@ settings:
             title: 亲调天光
             type: class-toggle
             default: false
-            description: 关闭时跟随默认背景；开启后使用滑块。
+            description: 关闭时跟随默认背景；开启后使用滑块微调背景。
     -
             id: u-bg-tune
             title: 天光偏移
@@ -158,17 +165,14 @@ settings:
     -
         id: h-note-limitation
         title: 注意
-        type: heading
-        level: 2
-        collapsed: false
+        type: info-text
         description: 目前只实现了对元素的字体调整。
     -
         id: h-note-fontpack-advanced
         title: 预设字库下载
-        type: heading
-        level: 3
-        collapsed: false
-        description: 若风格与预期不符，请先安装预设字体包：主链 https://example.com/monkey-king-font-pack ，备用 https://example.com/monkey-king-font-pack-mirror 。
+        type: info-text
+        markdown: true
+        description: "若风格与预期不符，请先安装预设字体包：主链 [https://example.com/monkey-king-font-pack](https://example.com/monkey-king-font-pack) ｜ 备用 [https://example.com/monkey-king-font-pack-mirror](https://example.com/monkey-king-font-pack-mirror) 。"
     -
         id: h-group-font-base
         title: 正文与代码
