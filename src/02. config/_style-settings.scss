@@ -1,16 +1,15 @@
 /* @settings
-
 name: Monkey King Theme
 id: monkey-king-theme
 settings:
     -
-        id: simple-settings-heading
+        id: h-sec-stage
         title: 短诗定场
         type: heading
         level: 1
         collapsed: false
     -
-        id: font-pack-notice-quick
+        id: h-note-fontpack-quick
         title: 必读：预设字体
         type: heading
         level: 2
@@ -58,7 +57,7 @@ settings:
     -
         id: u-font-theme-zh
         title: ③ 念白开场
-        description: 最后确定正文的形态
+        description: 最后确定正文的字体
         type: variable-select
         default: initial
         options:
@@ -78,7 +77,7 @@ settings:
                 label: "仿宋"
                 value: 'var(--stack-fang)'
     -
-        id: optimization-settings-heading
+        id: h-sec-optimize
         title: 守桃饲马
         type: heading
         level: 1
@@ -117,7 +116,7 @@ settings:
                 value: 'gap-compact'
 
     -
-        id: optimization-border
+        id: h-group-opt-line
         title: 线条粗细
         type: heading
         level: 2
@@ -142,13 +141,7 @@ settings:
                 label: "浓重"
                 value: 'line-width-bold'
     -
-        id: cancel-font-override
-        title: 正文用字接管
-        type: class-toggle
-        default: false
-        description: 关闭：按篇章预设用字。开启：改用你在面板中填写的字体。
-    -
-        id: link-tuning-heading
+        id: h-group-opt-link
         title: 链接字法
         type: heading
         level: 2
@@ -187,32 +180,43 @@ settings:
                 label: "波浪线"
                 value: wavy
     -
-        id: advance-settings-heading
+        id: h-sec-advance
         title: 大闹天宫
         type: heading
         level: 1
         collapsed: true
-        description: 待开发……
+        description: 字体与进阶排版设置。
     -
-        id: font-settings-heading
+        id: h-group-font
         title: 字体
-        type: heading
-        level: 1
-        collapsed: true
-        description: 仅在你需要精细排版时使用；“顺应场景”代表回到篇章预设。
-    -
-        id: font-pack-notice-advanced
-        title: 预设字库下载
         type: heading
         level: 2
         collapsed: false
+    -
+        id: h-note-fontpack-advanced
+        title: 预设字库下载
+        type: heading
+        level: 3
+        collapsed: false
         description: 若风格与预期不符，请先安装预设字体包：主链 https://example.com/monkey-king-font-pack ，备用 https://example.com/monkey-king-font-pack-mirror 。
     -
-        id: font-base-settings-heading
+        id: h-group-font-base
         title: 正文与代码
         type: heading
-        level: 2
-        collapsed: true
+        level: 3
+        collapsed: false
+    -
+        id: cancel-font-override
+        title: 回归原本
+        type: class-toggle
+        default: false
+        description: 关闭：在style-setting设置正文和代码字体。开启：改用你在设置面板中设置的字体。
+    -
+        id: h-sub-font-theme
+        title: 正文
+        type: heading
+        level: 4
+        collapsed: false
     -
         id: u-font-theme-west
         title: 正文西文
@@ -225,7 +229,7 @@ settings:
             -
                 label: "衬线"
                 value: 'var(--stack-serif)'
-            -
+            -   
                 label: "非衬线"
                 value: 'var(--stack-sans)'
             -
@@ -237,6 +241,24 @@ settings:
             -
                 label: "系统非衬线斜体"
                 value: 'var(--stack-sans-i)'
+    -
+        id: font-theme-zh-placeholder
+        title: 正文中文
+        type: variable-text
+        default: ""
+        description: 已在前方“③ 念白开场”设置，这里不重复提供。
+    -
+        id: font-stack-override-theme
+        title: 自定义字体栈
+        type: class-toggle
+        default: false
+        description: 开启后使用下方文本框覆盖“西文 + 中文”组合。
+    -
+        id: u-font-stack-theme
+        title: 字体栈（CSS）
+        type: variable-text
+        default: initial
+        description: 直接填写完整 font-family 字体栈。
     -
         id: u-font-theme-weight
         title: 正文字重
@@ -268,22 +290,463 @@ settings:
                 label: "黑体 900"
                 value: 900
     -
+        id: h-sub-font-mono
+        title: 代码
+        type: heading
+        level: 4
+        collapsed: false
+    -
         id: u-font-mono-west
         title: 代码西文
-        type: variable-text
-        default: ""
-        description: 代码块和行内代码的西文部分字体。示例：JetBrains Mono
+        type: variable-select
+        default: initial
+        options:
+            -
+                label: "顺应场景"
+                value: initial
+            -
+                label: "衬线"
+                value: 'var(--stack-serif)'
+            -   
+                label: "非衬线"
+                value: 'var(--stack-sans)'
+            -
+                label: "手写体"
+                value: 'var(--stack-hand)'
+            -
+                label: "系统衬线斜体"
+                value: 'var(--stack-serif-i)'
+            -
+                label: "系统非衬线斜体"
+                value: 'var(--stack-sans-i)'
     -
         id: u-font-mono-zh
         title: 代码中文
-        type: variable-text
-        default: ""
-        description: 代码块和行内代码的中文部分字体。留空使用系统黑体。
+        type: variable-select
+        default: initial
+        options:
+            -
+                label: "顺应场景"
+                value: initial
+            -
+                label: "黑体"
+                value: 'var(--stack-hei)'
+            -
+                label: "宋体"
+                value: 'var(--stack-song)'
+            -
+                label: "楷体"
+                value: 'var(--stack-kai)'
+            -
+                label: "仿宋"
+                value: 'var(--stack-fang)'
     -
-        id: table-font-settings-heading
+        id: font-stack-override-mono
+        title: 自定义字体栈
+        type: class-toggle
+        default: false
+        description: 开启后使用下方文本框覆盖“西文 + 中文”组合。
+    -
+        id: u-font-stack-mono
+        title: 字体栈（CSS）
+        type: variable-text
+        default: "var(--res-font-mono-west), var(--res-font-mono-zh)"
+        description: 直接填写完整 font-family 字体栈。
+    -
+        id: u-font-mono-weight
+        title: 代码字重
+        type: variable-select
+        default: initial
+        options:
+            -
+                label: "顺应场景"
+                value: initial
+            -
+                label: "细体 300"
+                value: 300
+            -
+                label: "常规 400"
+                value: 400
+            -
+                label: "中等 500"
+                value: 500
+            -
+                label: "半粗 600"
+                value: 600
+            -
+                label: "粗体 700"
+                value: 700
+            -
+                label: "特粗 800"
+                value: 800
+            -
+                label: "黑体 900"
+                value: 900
+    -
+        id: h-group-font-headings
+        title: 标题
+        type: heading
+        level: 3
+        collapsed: true
+    -
+        id: u-font-headings-west
+        title: 西文
+        type: variable-select
+        default: initial
+        options:
+            - 
+                label: "顺应场景"
+                value: initial
+            -
+                label: "非衬线"
+                value: 'var(--stack-sans)'
+            -
+                label: "手写体"
+                value: 'var(--stack-hand)'
+            -
+                label: "系统衬线斜体"
+                value: 'var(--stack-serif-i)'
+            -
+                label: "系统非衬线斜体"
+                value: 'var(--stack-sans-i)'
+    -
+        id: u-font-headings-zh
+        title: 中文
+        type: variable-select
+        default: initial
+        options:
+            - 
+                label: "顺应场景"
+                value: initial
+            -
+                label: "黑体"
+                value: 'var(--stack-hei)'
+            -
+                label: "宋体"
+                value: 'var(--stack-song)'
+            -
+                label: "楷体"
+                value: 'var(--stack-kai)'
+            -
+                label: "仿宋"
+                value: 'var(--stack-fang)'
+    -
+        id: font-stack-override-headings
+        title: 自定义字体栈
+        type: class-toggle
+        default: false
+        description: 开启后使用下方文本框覆盖“西文 + 中文”组合。
+    -
+        id: u-font-stack-headings
+        title: 字体栈（CSS）
+        type: variable-text
+        default: "var(--res-font-headings-west), var(--res-font-headings-zh)"
+        description: 直接填写完整 font-family 字体栈。
+    -
+        id: u-font-headings-weight
+        title: 字重
+        type: variable-select
+        default: initial
+        options:
+            -
+                label: "顺应场景"
+                value: initial
+            -
+                label: "细体 300"
+                value: 300
+            -
+                label: "常规 400"
+                value: 400
+            -
+                label: "中等 500"
+                value: 500
+            -
+                label: "半粗 600"
+                value: 600
+            -
+                label: "粗体 700"
+                value: 700
+            -
+                label: "特粗 800"
+                value: 800
+            -
+                label: "黑体 900"
+                value: 900
+    -
+        id: h-group-font-quote
+        title: 引用块
+        type: heading
+        level: 3
+        collapsed: true
+    -
+        id: u-font-quote-west
+        title: 西文
+        type: variable-select
+        default: initial
+        options:
+            - 
+                label: "顺应场景"
+                value: initial
+            -
+                label: "非衬线"
+                value: 'var(--stack-sans)'
+            -
+                label: "手写体"
+                value: 'var(--stack-hand)'
+            -
+                label: "系统衬线斜体"
+                value: 'var(--stack-serif-i)'
+            -
+                label: "系统非衬线斜体"
+                value: 'var(--stack-sans-i)'
+    -
+        id: u-font-quote-zh
+        title: 中文
+        type: variable-select
+        default: initial
+        options:
+            - 
+                label: "顺应场景"
+                value: initial
+            -
+                label: "黑体"
+                value: 'var(--stack-hei)'
+            -
+                label: "宋体"
+                value: 'var(--stack-song)'
+            -
+                label: "楷体"
+                value: 'var(--stack-kai)'
+            -
+                label: "仿宋"
+                value: 'var(--stack-fang)'
+    -
+        id: font-stack-override-quote
+        title: 自定义字体栈
+        type: class-toggle
+        default: false
+        description: 开启后使用下方文本框覆盖“西文 + 中文”组合。
+    -
+        id: u-font-stack-quote
+        title: 字体栈（CSS）
+        type: variable-text
+        default: "var(--res-font-quote-west), var(--res-font-quote-zh)"
+        description: 直接填写完整 font-family 字体栈。
+    -
+        id: u-font-quote-weight
+        title: 字重
+        type: variable-select
+        default: initial
+        options:
+            -
+                label: "顺应场景"
+                value: initial
+            -
+                label: "细体 300"
+                value: 300
+            -
+                label: "常规 400"
+                value: 400
+            -
+                label: "中等 500"
+                value: 500
+            -
+                label: "半粗 600"
+                value: 600
+            -
+                label: "粗体 700"
+                value: 700
+            -
+                label: "特粗 800"
+                value: 800
+            -
+                label: "黑体 900"
+                value: 900
+    -
+        id: h-group-font-em
+        title: 强调块（*text*）
+        type: heading
+        level: 3
+        collapsed: true
+    -
+        id: u-font-em-west
+        title: 西文
+        type: variable-select
+        default: initial
+        options:
+            - 
+                label: "顺应场景"
+                value: initial
+            -
+                label: "非衬线"
+                value: 'var(--stack-sans)'
+            -
+                label: "手写体"
+                value: 'var(--stack-hand)'
+            -
+                label: "系统衬线斜体"
+                value: 'var(--stack-serif-i)'
+            -
+                label: "系统非衬线斜体"
+                value: 'var(--stack-sans-i)'
+    -
+        id: u-font-em-zh
+        title: 中文
+        type: variable-select
+        default: initial
+        options:
+            - 
+                label: "顺应场景"
+                value: initial
+            -
+                label: "黑体"
+                value: 'var(--stack-hei)'
+            -
+                label: "宋体"
+                value: 'var(--stack-song)'
+            -
+                label: "楷体"
+                value: 'var(--stack-kai)'
+            -
+                label: "仿宋"
+                value: 'var(--stack-fang)'
+    -
+        id: font-stack-override-em
+        title: 自定义字体栈
+        type: class-toggle
+        default: false
+        description: 开启后使用下方文本框覆盖“西文 + 中文”组合。
+    -
+        id: u-font-stack-em
+        title: 字体栈（CSS）
+        type: variable-text
+        default: "var(--res-font-em-west), var(--res-font-em-zh)"
+        description: 直接填写完整 font-family 字体栈。
+    -
+        id: u-font-em-weight
+        title: 字重
+        type: variable-select
+        default: initial
+        options:
+            -
+                label: "顺应场景"
+                value: initial
+            -
+                label: "细体 300"
+                value: 300
+            -
+                label: "常规 400"
+                value: 400
+            -
+                label: "中等 500"
+                value: 500
+            -
+                label: "半粗 600"
+                value: 600
+            -
+                label: "粗体 700"
+                value: 700
+            -
+                label: "特粗 800"
+                value: 800
+            -
+                label: "黑体 900"
+                value: 900
+    -
+        id: h-group-font-strong
+        title: 加重块（**text**）
+        type: heading
+        level: 3
+        collapsed: true
+    -
+        id: u-font-strong-west
+        title: 西文
+        type: variable-select
+        default: initial
+        options:
+            - 
+                label: "顺应场景"
+                value: initial
+            -
+                label: "非衬线"
+                value: 'var(--stack-sans)'
+            -
+                label: "手写体"
+                value: 'var(--stack-hand)'
+            -
+                label: "系统衬线斜体"
+                value: 'var(--stack-serif-i)'
+            -
+                label: "系统非衬线斜体"
+                value: 'var(--stack-sans-i)'
+    -
+        id: u-font-strong-zh
+        title: 中文
+        type: variable-select
+        default: initial
+        options:
+            - 
+                label: "顺应场景"
+                value: initial
+            -
+                label: "黑体"
+                value: 'var(--stack-hei)'
+            -
+                label: "宋体"
+                value: 'var(--stack-song)'
+            -
+                label: "楷体"
+                value: 'var(--stack-kai)'
+            -
+                label: "仿宋"
+                value: 'var(--stack-fang)'
+    -
+        id: font-stack-override-strong
+        title: 自定义字体栈
+        type: class-toggle
+        default: false
+        description: 开启后使用下方文本框覆盖“西文 + 中文”组合。
+    -
+        id: u-font-stack-strong
+        title: 字体栈（CSS）
+        type: variable-text
+        default: "var(--res-font-strong-west), var(--res-font-strong-zh)"
+        description: 直接填写完整 font-family 字体栈。
+    -
+        id: u-font-strong-weight
+        title: 字重
+        type: variable-select
+        default: initial
+        options:
+            -
+                label: "顺应场景"
+                value: initial
+            -
+                label: "细体 300"
+                value: 300
+            -
+                label: "常规 400"
+                value: 400
+            -
+                label: "中等 500"
+                value: 500
+            -
+                label: "半粗 600"
+                value: 600
+            -
+                label: "粗体 700"
+                value: 700
+            -
+                label: "特粗 800"
+                value: 800
+            -
+                label: "黑体 900"
+                value: 900
+    -
+        id: h-group-font-table
         title: 表格表头
         type: heading
-        level: 2
+        level: 3
         collapsed: true
     -
         id: u-font-th-west
@@ -360,316 +823,5 @@ settings:
             -
                 label: "黑体 900"
                 value: 900
-    -
-        id: block-font-settings-headings-heading
-        title: 标题
-        type: heading
-        level: 3
-        collapsed: true
-    -
-        id: u-font-headings-west
-        title: 西文
-        type: variable-select
-        default: initial
-        options:
-            - 
-                label: "顺应场景"
-                value: initial
-            -
-                label: "非衬线"
-                value: 'var(--stack-sans)'
-            -
-                label: "手写体"
-                value: 'var(--stack-hand)'
-            -
-                label: "系统衬线斜体"
-                value: 'var(--stack-serif-i)'
-            -
-                label: "系统非衬线斜体"
-                value: 'var(--stack-sans-i)'
-    -
-        id: u-font-headings-zh
-        title: 中文
-        type: variable-select
-        default: initial
-        options:
-            - 
-                label: "顺应场景"
-                value: initial
-            -
-                label: "黑体"
-                value: 'var(--stack-hei)'
-            -
-                label: "宋体"
-                value: 'var(--stack-song)'
-            -
-                label: "楷体"
-                value: 'var(--stack-kai)'
-            -
-                label: "仿宋"
-                value: 'var(--stack-fang)'
-    -
-        id: u-font-headings-weight
-        title: 字重
-        type: variable-select
-        default: initial
-        options:
-            -
-                label: "顺应场景"
-                value: initial
-            -
-                label: "细体 300"
-                value: 300
-            -
-                label: "常规 400"
-                value: 400
-            -
-                label: "中等 500"
-                value: 500
-            -
-                label: "半粗 600"
-                value: 600
-            -
-                label: "粗体 700"
-                value: 700
-            -
-                label: "特粗 800"
-                value: 800
-            -
-                label: "黑体 900"
-                value: 900
-    -
-        id: block-font-settings-quote-heading
-        title: 引用块
-        type: heading
-        level: 3
-        collapsed: true
-    -
-        id: u-font-quote-west
-        title: 西文
-        type: variable-select
-        default: initial
-        options:
-            - 
-                label: "顺应场景"
-                value: initial
-            -
-                label: "非衬线"
-                value: 'var(--stack-sans)'
-            -
-                label: "手写体"
-                value: 'var(--stack-hand)'
-            -
-                label: "系统衬线斜体"
-                value: 'var(--stack-serif-i)'
-            -
-                label: "系统非衬线斜体"
-                value: 'var(--stack-sans-i)'
-    -
-        id: u-font-quote-zh
-        title: 中文
-        type: variable-select
-        default: initial
-        options:
-            - 
-                label: "顺应场景"
-                value: initial
-            -
-                label: "黑体"
-                value: 'var(--stack-hei)'
-            -
-                label: "宋体"
-                value: 'var(--stack-song)'
-            -
-                label: "楷体"
-                value: 'var(--stack-kai)'
-            -
-                label: "仿宋"
-                value: 'var(--stack-fang)'
-    -
-        id: u-font-quote-weight
-        title: 字重
-        type: variable-select
-        default: initial
-        options:
-            -
-                label: "顺应场景"
-                value: initial
-            -
-                label: "细体 300"
-                value: 300
-            -
-                label: "常规 400"
-                value: 400
-            -
-                label: "中等 500"
-                value: 500
-            -
-                label: "半粗 600"
-                value: 600
-            -
-                label: "粗体 700"
-                value: 700
-            -
-                label: "特粗 800"
-                value: 800
-            -
-                label: "黑体 900"
-                value: 900
-    -
-        id: block-font-settings-em-heading
-        title: 强调块（*text*）
-        type: heading
-        level: 3
-        collapsed: true
-    -
-        id: u-font-em-west
-        title: 西文
-        type: variable-select
-        default: initial
-        options:
-            - 
-                label: "顺应场景"
-                value: initial
-            -
-                label: "非衬线"
-                value: 'var(--stack-sans)'
-            -
-                label: "手写体"
-                value: 'var(--stack-hand)'
-            -
-                label: "系统衬线斜体"
-                value: 'var(--stack-serif-i)'
-            -
-                label: "系统非衬线斜体"
-                value: 'var(--stack-sans-i)'
-    -
-        id: u-font-em-zh
-        title: 中文
-        type: variable-select
-        default: initial
-        options:
-            - 
-                label: "顺应场景"
-                value: initial
-            -
-                label: "黑体"
-                value: 'var(--stack-hei)'
-            -
-                label: "宋体"
-                value: 'var(--stack-song)'
-            -
-                label: "楷体"
-                value: 'var(--stack-kai)'
-            -
-                label: "仿宋"
-                value: 'var(--stack-fang)'
-    -
-        id: u-font-em-weight
-        title: 字重
-        type: variable-select
-        default: initial
-        options:
-            -
-                label: "顺应场景"
-                value: initial
-            -
-                label: "细体 300"
-                value: 300
-            -
-                label: "常规 400"
-                value: 400
-            -
-                label: "中等 500"
-                value: 500
-            -
-                label: "半粗 600"
-                value: 600
-            -
-                label: "粗体 700"
-                value: 700
-            -
-                label: "特粗 800"
-                value: 800
-            -
-                label: "黑体 900"
-                value: 900
-    -
-        id: block-font-settings-strong-heading
-        title: 加重块（**text**）
-        type: heading
-        level: 3
-        collapsed: true
-    -
-        id: u-font-strong-west
-        title: 西文
-        type: variable-select
-        default: initial
-        options:
-            - 
-                label: "顺应场景"
-                value: initial
-            -
-                label: "非衬线"
-                value: 'var(--stack-sans)'
-            -
-                label: "手写体"
-                value: 'var(--stack-hand)'
-            -
-                label: "系统衬线斜体"
-                value: 'var(--stack-serif-i)'
-            -
-                label: "系统非衬线斜体"
-                value: 'var(--stack-sans-i)'
-    -
-        id: u-font-strong-zh
-        title: 中文
-        type: variable-select
-        default: initial
-        options:
-            - 
-                label: "顺应场景"
-                value: initial
-            -
-                label: "黑体"
-                value: 'var(--stack-hei)'
-            -
-                label: "宋体"
-                value: 'var(--stack-song)'
-            -
-                label: "楷体"
-                value: 'var(--stack-kai)'
-            -
-                label: "仿宋"
-                value: 'var(--stack-fang)'
-    -
-        id: u-font-strong-weight
-        title: 字重
-        type: variable-select
-        default: initial
-        options:
-            -
-                label: "顺应场景"
-                value: initial
-            -
-                label: "细体 300"
-                value: 300
-            -
-                label: "常规 400"
-                value: 400
-            -
-                label: "中等 500"
-                value: 500
-            -
-                label: "半粗 600"
-                value: 600
-            -
-                label: "粗体 700"
-                value: 700
-            -
-                label: "特粗 800"
-                value: 800
-            -
-                label: "黑体 900"
-                value: 900
 */
+
