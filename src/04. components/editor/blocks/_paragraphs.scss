@@ -1,8 +1,8 @@
 @use "../../../01. abstracts/variables" as *;
 
 body {
-  --font-text:
-    var(--font-text-theme), var(--font-text-override), var(--font-default);
+  --file-line-width: calc(var(--font-text-size) * 35);
+
   --font-text-theme: var(--res-font-theme-west), var(--res-font-theme-zh);
   --font-monospace-theme: var(--res-font-mono-west), var(--res-font-mono-zh);
   --line-height-normal: var(--res-gap-p-line-height);
@@ -15,4 +15,9 @@ body {
     > :is(blockquote, p, ol, ul, pre) {
     margin-top: 0;
   }
+}
+
+body:not(.cancel-font-override) {
+  --font-text:
+    var(--font-text-theme), var(--font-text-override), var(--font-default);
 }

@@ -1,3 +1,4 @@
+@use "../../../01. abstracts/variables" as *;
 /* Table Styles for Obsidian */
 table {
   --table-text-size: calc(var(--font-text-size) * 0.9);
@@ -32,7 +33,7 @@ tbody tr:hover {
 }
 
 /* For reading view */
-.markdown-reading-view :is(.markdown-rendered td, .markdown-rendered th) {
+#{$reading} :is(td, th) {
   border-inline: 0px;
 }
 

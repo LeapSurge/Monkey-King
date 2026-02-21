@@ -51,6 +51,12 @@ settings:
                 label: "花果山"
                 value: 'style-huaguo-mount'
     -
+        id: cancel-font-override
+        title: 取消字体接管
+        type: class-toggle
+        default: false
+        description: 关闭时使用模式预设字体；开启后恢复设置面板中的字体。
+    -
         id: bg-tune-settings-heading
         title: 背景微调
         type: heading
@@ -1395,8 +1401,7 @@ body.style-great-hall {
 }
 
 body {
-  --font-text:
-    var(--font-text-theme), var(--font-text-override), var(--font-default);
+  --file-line-width: calc(var(--font-text-size) * 35);
   --font-text-theme: var(--res-font-theme-west), var(--res-font-theme-zh);
   --font-monospace-theme: var(--res-font-mono-west), var(--res-font-mono-zh);
   --line-height-normal: var(--res-gap-p-line-height);
@@ -1405,6 +1410,11 @@ body {
 
 .markdown-reading-view .markdown-preview-view.markdown-rendered div:is(.el-h1, .el-h2, .el-h3, .el-h4, .el-h5, .el-h6) + div > :is(blockquote, p, ol, ul, pre) {
   margin-top: 0;
+}
+
+body:not(.cancel-font-override) {
+  --font-text:
+    var(--font-text-theme), var(--font-text-override), var(--font-default);
 }
 
 body {
@@ -1539,7 +1549,7 @@ tbody tr:hover {
 }
 
 /* For reading view */
-.markdown-reading-view :is(.markdown-rendered td, .markdown-rendered th) {
+.markdown-reading-view .markdown-preview-view.markdown-rendered :is(td, th) {
   border-inline: 0px;
 }
 

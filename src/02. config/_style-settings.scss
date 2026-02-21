@@ -50,6 +50,12 @@ settings:
                 label: "花果山"
                 value: 'style-huaguo-mount'
     -
+        id: cancel-font-override
+        title: 取消字体接管
+        type: class-toggle
+        default: false
+        description: 关闭时使用模式预设字体；开启后恢复设置面板中的字体。
+    -
         id: bg-tune-settings-heading
         title: 背景微调
         type: heading
