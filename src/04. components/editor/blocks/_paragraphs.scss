@@ -6,6 +6,7 @@ body {
   --font-text-theme: var(--res-font-theme-west), var(--res-font-theme-zh);
   --font-monospace-theme: var(--res-font-mono-west), var(--res-font-mono-zh);
   --line-height-normal: var(--res-gap-p-line-height);
+  --p-spacing: var(--res-gap-p-spacing);
 }
 
 #{$reading} {

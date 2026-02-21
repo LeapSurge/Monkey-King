@@ -20,6 +20,7 @@ $token-structure: (
       (id: mono,      keys: $font-keys,),
       (id: headings,  keys: $font-keys,),
       (id: quote,     keys: $font-keys,),
+      (id: th,        keys: $font-keys,),
       (id: em,        keys: $font-keys,),
       (id: strong,    keys: $font-keys,),
       (id: tag,       keys: $font-keys,),
@@ -27,13 +28,14 @@ $token-structure: (
   ),
   gap: (
     items: (
-      (id: p,  keys: (line-height,),),
+      (id: p,  keys: (line-height, spacing),),
       (id: h1, keys: $gap-keys-headings,),
       (id: h2, keys: $gap-keys-headings,),
       (id: h3, keys: $gap-keys-headings,),
       (id: h4, keys: $gap-keys-headings,),
       (id: h5, keys: $gap-keys-headings,),
       (id: h6, keys: $gap-keys-headings,),
+      (id: list, keys: (margin-block-start))
     ),
   ),
 );

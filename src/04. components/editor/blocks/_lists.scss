@@ -1,0 +1,11 @@
+@use "../../../01. abstracts/variables" as *;
+
+body {
+  --list-spacing: 0;
+}
+
+#{$reading} {
+  .el-p + div > :is(ul, ol) {
+    margin-block-start: var(--res-gap-list-margin-block-start);
+  }
+}

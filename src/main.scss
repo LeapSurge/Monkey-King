@@ -22,8 +22,8 @@
 @use "04. components/editor/blocks/paragraphs";
 @use "04. components/editor/blocks/headings";
 // @use '04. components/editor/paragraphs';
-// @use '04. components/editor/lists';
-// @use '04. components/editor/tables';
+@use "04. components/editor/blocks/lists";
+@use "04. components/editor/blocks/tables";
 // @use '04. components/editor/code';
 @use "04. components/editor/blocks/blockquotes";
 @use "04. components/editor/inlines/em";
