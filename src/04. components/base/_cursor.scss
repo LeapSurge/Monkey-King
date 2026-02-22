@@ -1,0 +1,37 @@
+/* 设置指针 */
+body {
+  --cursor: pointer;
+}
+
+/* -------  修补：变指针  ----------- */
+/* 页签（Tabs）的指针 */
+.workspace-tab-header {
+  cursor: pointer;
+}
+
+/* -------  修补：变箭头 ----------- */
+/* 编辑器列表指示器 */
+.markdown-source-view.mod-cm6 .cm-fold-indicator .collapse-indicator {
+  cursor: default;
+}
+
+/* 取消文件夹的指针 */
+.tree-item-self.is-clickable.nav-folder-title {
+  cursor: default;
+}
+
+/* 收藏栏的折叠项 */
+.tree-item-self.is-clickable.bookmark.mod-collapsible {
+  cursor: default;
+}
+
+/* 折叠按钮 */
+/* 菜单项的折叠按钮 */
+.tree-item-self .tree-item-icon.collapse-icon {
+  cursor: default;
+}
+
+/* 编辑器阅读模式折叠按钮 */
+.markdown-preview-view .collapse-indicator {
+  cursor: default;
+}
