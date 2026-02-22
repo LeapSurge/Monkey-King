@@ -123,16 +123,9 @@ settings:
             -
                 label: "利落"
                 value: 'gap-compact'
-
-    -
-        id: h-group-opt-line
-        title: 线条粗细
-        type: heading
-        level: 2
-        collapsed: true
     -
         id: line-width-strategy
-        title: 全局线宽
+        title: 线条浓淡
         type: class-select
         default: 'line-width-auto'
         description: 控制分隔线、表格边线、链接下划线等线条强度。
@@ -161,7 +154,7 @@ settings:
         title: 编辑器
         type: heading
         level: 2
-        collapsed: false
+        collapsed: true
     -
         id: h-note-limitation
         title: 注意
@@ -178,7 +171,7 @@ settings:
         title: 正文与代码
         type: heading
         level: 3
-        collapsed: false
+        collapsed: true
     -
         id: cancel-font-override
         title: 回归原本
@@ -190,7 +183,7 @@ settings:
         title: 正文
         type: heading
         level: 4
-        collapsed: false
+        collapsed: true
     -
         id: u-font-theme-west
         title: 正文西文
@@ -268,7 +261,7 @@ settings:
         title: 代码
         type: heading
         level: 4
-        collapsed: false
+        collapsed: true
     -
         id: u-font-mono-west
         title: 代码西文
@@ -797,4 +790,23 @@ settings:
             -
                 label: "黑体 900"
                 value: 900
+    - 
+        id: h-group-navigation
+        title: 导航栏
+        type: heading
+        description: 针对文件夹，书签，搜索，链接，标签等导航栏的样式。
+        level: 2
+        collapsed: true
+    - 
+        id: cancel-nav-item-rotate
+        title: 取消导航项悬停动效
+        type: class-toggle
+        default: false
+        description: 关闭：导航项在悬停时会有旋转的动效。开启：取消悬停动效，回归默认静态样式。
+    - 
+        id: cancel-nav-item-color
+        title: 取消导航项强调色
+        type: class-toggle
+        default: false
+        description: 关闭：导航项使用主题强调色。开启：回归阴影颜色。
 */

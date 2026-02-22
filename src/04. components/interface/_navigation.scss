@@ -1,0 +1,76 @@
+body:not(.cancel-nav-item-color) {
+  --nav-item-background-hover: var(--color-accent);
+  --nav-item-background-active: var(--color-accent);
+  --nav-item-background-selected: var(--res-tx-accent);
+  --nav-item-color-hover: var(--res-bg4);
+  --nav-item-color-active: var(--res-bg4);
+  --nav-item-color-selected: var(--res-bg4);
+}
+
+body:not(.cancel-nav-item-rotate) .tree-item-self:hover {
+  transform: scale(1.05) rotate(1deg);
+}
+
+body:not(.cancel-nav-item-color) {
+  .tree-item-self {
+    &:hover {
+      box-shadow: 3px 3px 0px #222222e8;
+    }
+
+    &.is-active:not(.is-selected) {
+      font-weight: bold;
+      box-shadow: 3px 3px 0px #0f0f0fe8;
+    }
+
+    // change color when selected/hovered/active
+    &:is(:hover, .is-active, .is-selected, .is-being-renamed) {
+      --icon-color: var(--nav-item-color-hover);
+      --nav-collapse-icon-color: var(--res-bg4);
+
+      .nav-file-tag {
+        color: var(--res-bg4);
+        outline: 1px solid var(--res-bg4);
+      }
+
+      .tree-item-flair {
+        color: var(--res-bg4);
+      }
+    }
+
+    // Handle the case when the item being renamed
+    &.is-being-renamed {
+      background-color: var(--res-tx-accent);
+      caret-color: var(--res-bg4);
+      --text-selection: hsla(calc(var(--res-ax0-h) + 180), 100%, 50%, 0.2);
+    }
+  }
+
+  // Handle the case where a folder is being dragged over while selected
+
+  .tree-item.nav-folder.is-being-dragged-over > .nav-folder-title.is-selected {
+    color: var(--res-bg4);
+  }
+
+  // Specific styles for search results in the navigation pane
+  .search-result {
+    .search-result-file-title {
+      color: var(--nav-item-color);
+    }
+
+    .tree-item-self:hover .tree-item-icon.collapse-icon {
+      --nav-collapse-icon-color: var(--res-tx-accent);
+      background: var(--res-bg4);
+      border-radius: inherit;
+    }
+  }
+}
+
+// Adjust the font weight of folder titles
+.tree-item-self.nav-folder-title {
+  font-weight: bold;
+  --nav-item-weight-hover: bold;
+}
+// Adjust the nav buttons container to align left
+.nav-buttons-container {
+  justify-content: left;
+}

@@ -124,16 +124,9 @@ settings:
             -
                 label: "利落"
                 value: 'gap-compact'
-
-    -
-        id: h-group-opt-line
-        title: 线条粗细
-        type: heading
-        level: 2
-        collapsed: true
     -
         id: line-width-strategy
-        title: 全局线宽
+        title: 线条浓淡
         type: class-select
         default: 'line-width-auto'
         description: 控制分隔线、表格边线、链接下划线等线条强度。
@@ -162,7 +155,7 @@ settings:
         title: 编辑器
         type: heading
         level: 2
-        collapsed: false
+        collapsed: true
     -
         id: h-note-limitation
         title: 注意
@@ -179,7 +172,7 @@ settings:
         title: 正文与代码
         type: heading
         level: 3
-        collapsed: false
+        collapsed: true
     -
         id: cancel-font-override
         title: 回归原本
@@ -191,7 +184,7 @@ settings:
         title: 正文
         type: heading
         level: 4
-        collapsed: false
+        collapsed: true
     -
         id: u-font-theme-west
         title: 正文西文
@@ -269,7 +262,7 @@ settings:
         title: 代码
         type: heading
         level: 4
-        collapsed: false
+        collapsed: true
     -
         id: u-font-mono-west
         title: 代码西文
@@ -798,6 +791,25 @@ settings:
             -
                 label: "黑体 900"
                 value: 900
+    - 
+        id: h-group-navigation
+        title: 导航栏
+        type: heading
+        description: 针对文件夹，书签，搜索，链接，标签等导航栏的样式。
+        level: 2
+        collapsed: true
+    - 
+        id: cancel-nav-item-rotate
+        title: 取消导航项悬停动效
+        type: class-toggle
+        default: false
+        description: 关闭：导航项在悬停时会有旋转的动效。开启：取消悬停动效，回归默认静态样式。
+    - 
+        id: cancel-nav-item-color
+        title: 取消导航项强调色
+        type: class-toggle
+        default: false
+        description: 关闭：导航项使用主题强调色。开启：回归阴影颜色。
 */
 @font-face {
   font-family: "SystemHei";
@@ -1826,6 +1838,44 @@ body.line-width-bold {
   --mkk-line-width: 3px;
 }
 
+/* 设置指针 */
+body {
+  --cursor: pointer;
+}
+
+/* -------  修补：变指针  ----------- */
+/* 页签（Tabs）的指针 */
+.workspace-tab-header {
+  cursor: pointer;
+}
+
+/* -------  修补：变箭头 ----------- */
+/* 编辑器列表指示器 */
+.markdown-source-view.mod-cm6 .cm-fold-indicator .collapse-indicator {
+  cursor: default;
+}
+
+/* 取消文件夹的指针 */
+.tree-item-self.is-clickable.nav-folder-title {
+  cursor: default;
+}
+
+/* 收藏栏的折叠项 */
+.tree-item-self.is-clickable.bookmark.mod-collapsible {
+  cursor: default;
+}
+
+/* 折叠按钮 */
+/* 菜单项的折叠按钮 */
+.tree-item-self .tree-item-icon.collapse-icon {
+  cursor: default;
+}
+
+/* 编辑器阅读模式折叠按钮 */
+.markdown-preview-view .collapse-indicator {
+  cursor: default;
+}
+
 body {
   --mkk-font-stack-theme: var(--res-font-theme-west), var(--res-font-theme-zh);
   --mkk-font-stack-mono: var(--res-font-mono-west), var(--res-font-mono-zh);
@@ -2464,6 +2514,69 @@ body.theme-dark {
 
 .mod-root .workspace-tab-header-container-inner {
   padding-top: var(--tab-outline-width);
+}
+
+body:not(.cancel-nav-item-color) {
+  --nav-item-background-hover: var(--color-accent);
+  --nav-item-background-active: var(--color-accent);
+  --nav-item-background-selected: var(--res-tx-accent);
+  --nav-item-color-hover: var(--res-bg4);
+  --nav-item-color-active: var(--res-bg4);
+  --nav-item-color-selected: var(--res-bg4);
+}
+
+body:not(.cancel-nav-item-rotate) .tree-item-self:hover {
+  transform: scale(1.05) rotate(1deg);
+}
+
+body:not(.cancel-nav-item-color) .tree-item-self:hover {
+  box-shadow: 3px 3px 0px rgba(34, 34, 34, 0.9098039216);
+}
+body:not(.cancel-nav-item-color) .tree-item-self.is-active:not(.is-selected) {
+  font-weight: bold;
+  box-shadow: 3px 3px 0px rgba(15, 15, 15, 0.9098039216);
+}
+body:not(.cancel-nav-item-color) .tree-item-self:is(:hover, .is-active, .is-selected, .is-being-renamed) {
+  --icon-color: var(--nav-item-color-hover);
+  --nav-collapse-icon-color: var(--res-bg4);
+}
+body:not(.cancel-nav-item-color) .tree-item-self:is(:hover, .is-active, .is-selected, .is-being-renamed) .nav-file-tag {
+  color: var(--res-bg4);
+  outline: 1px solid var(--res-bg4);
+}
+body:not(.cancel-nav-item-color) .tree-item-self:is(:hover, .is-active, .is-selected, .is-being-renamed) .tree-item-flair {
+  color: var(--res-bg4);
+}
+body:not(.cancel-nav-item-color) .tree-item-self.is-being-renamed {
+  background-color: var(--res-tx-accent);
+  caret-color: var(--res-bg4);
+  --text-selection: hsla(calc(var(--res-ax0-h) + 180), 100%, 50%, 0.2);
+}
+body:not(.cancel-nav-item-color) .tree-item.nav-folder.is-being-dragged-over > .nav-folder-title.is-selected {
+  color: var(--res-bg4);
+}
+body:not(.cancel-nav-item-color) .search-result .search-result-file-title {
+  color: var(--nav-item-color);
+}
+body:not(.cancel-nav-item-color) .search-result .tree-item-self:hover .tree-item-icon.collapse-icon {
+  --nav-collapse-icon-color: var(--res-tx-accent);
+  background: var(--res-bg4);
+  border-radius: inherit;
+}
+
+.tree-item-self.nav-folder-title {
+  font-weight: bold;
+  --nav-item-weight-hover: bold;
+}
+
+.nav-buttons-container {
+  justify-content: left;
+}
+
+.mod-sidedock .workspace-tab-header.is-active {
+  --icon-color-focused: var(--res-bg4);
+  --tab-text-color-focused-active-current: var(--res-bg4);
+  --background-modifier-hover: var(--res-tx-accent);
 }
 
 /*# sourceMappingURL=theme.css.map */
