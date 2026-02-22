@@ -2,11 +2,13 @@
 
 ![封面图cover](./cover.png)
 
-一款面向中文书写场景的 Obsidian 主题，视觉风格取材自60年代动画电影大闹天宫。适用于下列Obsidian用户：
+Monkey King is a Chinese-first Obsidian theme inspired by *Havoc in Heaven* (`大闹天宫`), a classic cel-animation film from Shanghai Animation Film Studio in 1960s. It includes dual scene presets, multiple color combinations, and fine-grained typography settings for mixed Chinese/Latin writing.
+
+美猴王是一款面向中文书写场景的 Obsidian 主题，视觉风格取材自60年代上美厂的动画电影大闹天宫。适用于下列Obsidian用户：
 
 1. 常用**实时预览模式**写长篇笔记和阅读长文的用户
 2. 对默认主题的垂直空白感到恼火的用户
-3. 对灰蒙蒙，模糊模糊的界面感到乏味的用户
+3. 对灰蒙蒙，模模糊糊的界面感到乏味的用户
 4. 爱编排各种字体，进行中英文混排的用户
 
 ## 功能亮点
@@ -87,12 +89,20 @@
 npm install
 npm run build   #编译
 npm run dev     #实时编译
-npm run version #同步 package.json 版本到 manifest.json / versions.json（不自动发布）
+npm run version #同步 package.json 版本到 manifest.json / versions.json
 ```
+
+## 打赏支持
+
+如果这个主题对你有帮助，欢迎扫码支持持续维护：
+
+<image src="./funding.png" width="350px"/>
 
 ## 感谢
 
-主题[Minimal](https://github.com/kepano/obsidian-minimal)
-主题[AnuPpuccin](https://github.com/AnubisNekhet/AnuPpuccin)
-主题[Willamstad](https://github.com/tingmelvin/willemstad-x)
-主题[Iridium](https://github.com/kyffa/Iridium)
+以下主题对本项目提供了很多启发
+
+- 主题 [Minimal](https://github.com/kepano/obsidian-minimal)
+- 主题 [AnuPpuccin](https://github.com/AnubisNekhet/AnuPpuccin)
+- 主题 [Willamstad](https://github.com/tingmelvin/willemstad-x)
+- 主题 [Iridium](https://github.com/kyffa/Iridium)
