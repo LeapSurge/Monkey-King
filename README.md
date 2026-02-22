@@ -68,8 +68,9 @@
 
 本项目**提供字体包**，但采用分层发布：
 
-- `字体包（开源可再分发）`：包含 OFL 字体（如 `霞鹜文楷`、`GenWanMin2 JP`、`朱雀仿宋`）
-- `字体安装指引`：对 `MiSans`、`HONOR Sans CN` 提供官方链接和安装步骤（不打包字体文件）
+- Release 附件包含：`theme.css`、`manifest.json`（主题本体）和 `font-pack-open.zip`（开源字体包）
+- `font-pack-open.zip` 仅包含可再分发字体（如 `屏显臻宋`、`霞鹜文楷`、`GenWanMin2 JP`、`朱雀仿宋`）
+- 受限字体（如 `MiSans`、`HONOR Sans CN`）通过官方链接引导安装，不打包分发
 
 完整字体授权、官方链接、再分发注意事项见：[`FONT-LICENSES.md`](FONT-LICENSES.md)
 
@@ -86,7 +87,7 @@
 npm install
 npm run build   #编译
 npm run dev     #实时编译
-npm run version #自动发版 
+npm run version #同步 package.json 版本到 manifest.json / versions.json（不自动发布）
 ```
 
 ## 感谢
