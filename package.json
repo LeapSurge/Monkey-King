@@ -6,10 +6,16 @@
   "scripts": {
     "build": "sass src/main.scss theme.css",
     "watch": "sass --watch src/main.scss:theme.css",
-    "dev": "npm run watch"
+    "dev": "npm run watch",
+    "version": "node version-bump.mjs && git add manifest.json versions.json"
   },
-  "keywords": ["obsidian", "theme", "css", "sass"],
-  "author": "Your Name",
+  "keywords": [
+    "obsidian",
+    "theme",
+    "css",
+    "sass"
+  ],
+  "author": "LeapSurge",
   "license": "MIT",
   "devDependencies": {
     "sass": "^1.97.2"

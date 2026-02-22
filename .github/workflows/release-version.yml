@@ -1,0 +1,79 @@
+name: Publish new theme version
+
+on:
+  push:
+    # Sequence of patterns matched against refs/tags
+    tags:
+      - "*" # Push events to matching any tag format, i.e. 1.0, 20.15.10
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Bundle
+        id: bundle
+        run: |
+          ls
+          echo "::set-output name=tag_name::$(git tag --sort version:refname | tail -n 1)"
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VERSION: ${{ github.ref }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: ${{ github.ref }}
+          draft: false
+          prerelease: false
+      - name: Upload manifest.json
+        id: upload-manifest
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./manifest.json
+          asset_name: manifest.json
+          asset_content_type: application/json
+      - name: Upload theme.css
+        id: upload-css
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./theme.css
+          asset_name: theme.css
+          asset_content_type: text/css
+      - name: Prepare open font pack (optional)
+        id: prep-font-pack
+        shell: bash
+        run: |
+          if [ -d "fonts/open" ] && [ -n "$(find fonts/open -type f -print -quit)" ]; then
+            mkdir -p dist
+            FILE_NAME="font-pack-open.zip"
+            ZIP_INPUTS="fonts/open"
+            if [ -f "FONT-LICENSES.md" ]; then
+              ZIP_INPUTS="${ZIP_INPUTS} FONT-LICENSES.md"
+            fi
+            zip -r "dist/${FILE_NAME}" ${ZIP_INPUTS}
+            echo "has_font_pack=true" >> "$GITHUB_OUTPUT"
+            echo "font_pack_path=dist/${FILE_NAME}" >> "$GITHUB_OUTPUT"
+            echo "font_pack_name=${FILE_NAME}" >> "$GITHUB_OUTPUT"
+          else
+            echo "has_font_pack=false" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Upload open font pack
+        if: steps.prep-font-pack.outputs.has_font_pack == 'true'
+        id: upload-font-pack
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./${{ steps.prep-font-pack.outputs.font_pack_path }}
+          asset_name: ${{ steps.prep-font-pack.outputs.font_pack_name }}
+          asset_content_type: application/zip
