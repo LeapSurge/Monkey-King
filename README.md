@@ -96,7 +96,7 @@ npm run version #同步 package.json 版本到 manifest.json / versions.json
 
 如果这个主题对你有帮助，欢迎扫码支持持续维护：
 
-<image src="./funding.png" width="350px"/>
+![付款码](./funding.png)
 
 ## 感谢
 
