@@ -15,6 +15,7 @@
 // 4. 应用层
 
 // base
+@use "04. components/base/reset";
 @use "04. components/base/patches";
 @use "04. components/base/semantics";
 @use "04. components/base/cursor";

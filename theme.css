@@ -1805,6 +1805,46 @@ body.bg-tune-override {
   );
 }
 
+/* ============================================================
+   阴影重置 
+   ============================================================ */
+body {
+  --shadow-xs: none;
+  --shadow-s: none;
+  --shadow-l: none;
+  --shadow-edges: none;
+}
+
+body {
+  --input-shadow: none;
+  --input-shadow-hover: none;
+  --button-shadow: none;
+  --pdf-shadow: none;
+  --pdf-thumbnail-shadow: none;
+  --bases-cards-shadow: none;
+  --tab-stacked-shadow: none;
+  --tab-switcher-preview-shadow: none;
+  --embed-block-shadow-hover: none;
+  --metadata-property-box-shadow-hover: none;
+  --swatch-shadow: none;
+  --raised-shadow: none;
+  --menu-shadow: none;
+  --modal-shadow: none;
+  --prompt-shadow: none;
+}
+
+.modal,
+.menu,
+.vertical-tab-content-container,
+.popover,
+.tooltip,
+.prompt,
+.file-embed,
+.markdown-embed {
+  box-shadow: none !important;
+  border: 1px solid var(--background-modifier-border);
+}
+
 .nav-file-tag {
   line-height: var(--line-height-title);
 }
