@@ -2,10 +2,7 @@
   "name": "Monkey King",
   "version": "1.0.0",
   "minAppVersion": "0.16.0",
-  "description": "A custom Obsidian theme",
-  "author": "Your Name",
-  "authorUrl": "",
-  "fundingUrl": {
-    "Buy Me a Coffee": ""
-  }
+  "description": "一款面向中文书写场景的赛璐璐动画风格主题",
+  "author": "LeapSurge",
+  "authorUrl": "https://github.com/LeapSurge"
 }
