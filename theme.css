@@ -1815,7 +1815,8 @@ body {
   --shadow-edges: none;
 }
 
-body {
+.theme-light,
+.theme-dark {
   --input-shadow: none;
   --input-shadow-hover: none;
   --button-shadow: none;

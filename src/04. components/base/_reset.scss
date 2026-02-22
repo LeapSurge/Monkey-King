@@ -11,7 +11,8 @@ body {
 }
 
 // 2. 组件变量重置
-body {
+.theme-light,
+.theme-dark {
   --input-shadow: none;
   --input-shadow-hover: none;
   --button-shadow: none;
