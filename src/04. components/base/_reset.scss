@@ -4,21 +4,6 @@
 // 1. 全局变量重置
 
 body {
-  --shadow-xs: none;
-  --shadow-s: none;
-  --shadow-l: none;
-  --shadow-edges: none;
-}
-
-// 2. 组件变量重置
-.theme-light,
-.theme-dark {
-  --input-shadow: none;
-  --input-shadow-hover: none;
-  --button-shadow: none;
-
-  --pdf-shadow: none;
-  --pdf-thumbnail-shadow: none;
   --bases-cards-shadow: none;
   --tab-stacked-shadow: none;
   --tab-switcher-preview-shadow: none;
@@ -35,6 +20,21 @@ body {
   --prompt-shadow: none;
 }
 
+// 2. 组件变量重置
+.theme-light,
+.theme-dark {
+  --shadow-xs: none;
+  --shadow-s: none;
+  --shadow-l: none;
+  --shadow-edges: none;
+  --input-shadow: none;
+  --input-shadow-hover: none;
+  --button-shadow: none;
+  --background-modifier-box-shadow: none;
+  --pdf-shadow: none;
+  --pdf-thumbnail-shadow: none;
+}
+
 // 3. 组件强制重置
 .modal,
 .menu,
@@ -44,6 +44,6 @@ body {
 .prompt,
 .file-embed,
 .markdown-embed {
-  box-shadow: none !important;
+  // box-shadow: none !important;
   border: 1px solid var(--background-modifier-border);
 }
