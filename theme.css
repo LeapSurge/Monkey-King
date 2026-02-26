@@ -2529,6 +2529,11 @@ body.style-great-hall [data-id=monkey-king-theme] + .style-settings-container .s
   display: flex;
 }
 
+.dataview.inline-field-value,
+.dataview.inline-field-key {
+  color: var(--res-tx2);
+}
+
 .setting-item select.dropdown,
 .setting-item button,
 .setting-item input {
