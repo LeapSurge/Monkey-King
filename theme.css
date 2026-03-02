@@ -1859,6 +1859,12 @@ div.prompt {
   border-width: 0;
 }
 
+.tree-item.graph-control-section .tree-item-self:hover {
+  transform: none;
+  box-shadow: none;
+  --nav-collapse-icon-color: var(--text-faint);
+}
+
 body {
   --mkk-line-width: 2px;
 }
@@ -2572,43 +2578,43 @@ body:not(.cancel-nav-item-color) {
   --nav-heading-color-collapsed-hover: var(--res-bg4);
 }
 
-body:not(.cancel-nav-item-rotate) .tree-item:not(.graph-control-section) .tree-item-self:hover {
+body:not(.cancel-nav-item-rotate) .tree-item-self:hover {
   transform: scale(1.05) rotate(1deg);
 }
 
-body:not(.cancel-nav-item-color) .tree-item:not(.graph-control-section) .tree-item-self:hover {
+body:not(.cancel-nav-item-color) .tree-item-self:hover {
   box-shadow: 3px 3px 0px rgba(34, 34, 34, 0.9098039216);
 }
-body:not(.cancel-nav-item-color) .tree-item:not(.graph-control-section) .tree-item-self:hover .tree-item-inner-subtext {
+body:not(.cancel-nav-item-color) .tree-item-self:hover .tree-item-inner-subtext {
   color: var(--res-bg4);
 }
-body:not(.cancel-nav-item-color) .tree-item:not(.graph-control-section) .tree-item-self.is-active:not(.is-selected) {
+body:not(.cancel-nav-item-color) .tree-item-self.is-active:not(.is-selected) {
   font-weight: bold;
   box-shadow: 3px 3px 0px rgba(15, 15, 15, 0.9098039216);
 }
-body:not(.cancel-nav-item-color) .tree-item:not(.graph-control-section) .tree-item-self:is(:hover, .is-active, .is-selected, .is-being-renamed) {
+body:not(.cancel-nav-item-color) .tree-item-self:is(:hover, .is-active, .is-selected, .is-being-renamed) {
   --icon-color: var(--nav-item-color-hover);
   --nav-collapse-icon-color: var(--res-bg4);
 }
-body:not(.cancel-nav-item-color) .tree-item:not(.graph-control-section) .tree-item-self:is(:hover, .is-active, .is-selected, .is-being-renamed) .nav-file-tag {
+body:not(.cancel-nav-item-color) .tree-item-self:is(:hover, .is-active, .is-selected, .is-being-renamed) .nav-file-tag {
   color: var(--res-bg4);
   outline: 1px solid var(--res-bg4);
 }
-body:not(.cancel-nav-item-color) .tree-item:not(.graph-control-section) .tree-item-self:is(:hover, .is-active, .is-selected, .is-being-renamed) .tree-item-flair {
+body:not(.cancel-nav-item-color) .tree-item-self:is(:hover, .is-active, .is-selected, .is-being-renamed) .tree-item-flair {
   color: var(--res-bg4);
 }
-body:not(.cancel-nav-item-color) .tree-item:not(.graph-control-section) .tree-item-self.is-being-renamed {
+body:not(.cancel-nav-item-color) .tree-item-self.is-being-renamed {
   background-color: var(--res-tx-accent);
   caret-color: var(--res-bg4);
   --text-selection: hsla(calc(var(--res-ax0-h) + 180), 100%, 50%, 0.2);
 }
-body:not(.cancel-nav-item-color) .tree-item:not(.graph-control-section) .tree-item.nav-folder.is-being-dragged-over > .nav-folder-title.is-selected {
+body:not(.cancel-nav-item-color) .tree-item.nav-folder.is-being-dragged-over > .nav-folder-title.is-selected {
   color: var(--res-bg4);
 }
-body:not(.cancel-nav-item-color) .tree-item:not(.graph-control-section) .search-result .search-result-file-title {
+body:not(.cancel-nav-item-color) .search-result .search-result-file-title {
   color: var(--nav-item-color);
 }
-body:not(.cancel-nav-item-color) .tree-item:not(.graph-control-section) .search-result .tree-item-self:hover .tree-item-icon.collapse-icon {
+body:not(.cancel-nav-item-color) .search-result .tree-item-self:hover .tree-item-icon.collapse-icon {
   --nav-collapse-icon-color: var(--res-tx-accent);
   background: var(--res-bg4);
   border-radius: inherit;

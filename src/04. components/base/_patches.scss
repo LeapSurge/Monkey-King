@@ -12,3 +12,10 @@ div.prompt {
 .mod-settings .vertical-tab-content-container {
   border-width: 0;
 }
+
+// Fix the graph menu with navigation style
+.tree-item.graph-control-section .tree-item-self:hover {
+  transform: none;
+  box-shadow: none;
+  --nav-collapse-icon-color: var(--text-faint);
+}
