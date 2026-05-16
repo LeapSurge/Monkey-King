@@ -1,6 +1,6 @@
 {
   "name": "monkey-king-obsidian-theme",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A custom Obsidian theme built with Sass",
   "main": "theme.css",
   "scripts": {
@@ -21,4 +21,3 @@
     "sass": "^1.97.2"
   }
 }
-
